@@ -1,0 +1,22 @@
+src/islands/parts/DurationField.tsx
+  s_7510e9041608db::t_b6928241a6a0bb 82-83,94,103,118
+  s_7510e9041608db::t_df1bf16b53f72b 104-117
+src/islands/parts/Settings.tsx
+  s_7510e9041608db::t_df1bf16b53f72b 63,70,111,130-131,159-160,167-168,175-176,184
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "901ffe0cf9eb54626f41997407207ef3f46394f2",
+  "prompts": {},
+  "sessions": {
+    "s_7510e9041608db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "88cc67a1-d318-46b0-83ae-59fd7b55ba77",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
