@@ -1,0 +1,67 @@
+src/components/Nav.astro
+  s_7510e9041608db::t_200bc1fa5088b7 94-95
+README.md
+  s_7510e9041608db::t_1a2b0ec4bd3563 46-52
+  s_7510e9041608db::t_31ec9d20943813 3-16,21-23,33-37,40-42,44-45,53-62,66-79,81
+public/llms.txt
+  s_7510e9041608db::t_84348e8a47d220 7
+src/styles/base.css
+  s_7510e9041608db::t_200bc1fa5088b7 18,50-54,64,149-152,156-158,183,186-190,222-225,247-249,251
+src/styles/timer.css
+  s_7510e9041608db::t_200bc1fa5088b7 6-7,30,32,35-38,43,46,48,91,93,96,125
+.github/ISSUE_TEMPLATE/feature_request.yml
+  s_7510e9041608db::t_2b7da76fbad82e 1-20
+.node-version
+  s_7510e9041608db::t_31ec9d20943813 1
+SECURITY.md
+  s_7510e9041608db::t_2b7da76fbad82e 1-5
+.github/PULL_REQUEST_TEMPLATE.md
+  s_7510e9041608db::t_2b7da76fbad82e 1-13
+CONTRIBUTING.md
+  s_7510e9041608db::t_2b7da76fbad82e 1-48
+.github/ISSUE_TEMPLATE/config.yml
+  s_7510e9041608db::t_2b7da76fbad82e 1-5
+.github/ISSUE_TEMPLATE/preset_page.yml
+  s_7510e9041608db::t_2b7da76fbad82e 1-24
+CHANGELOG.md
+  s_7510e9041608db::t_31ec9d20943813 5-17
+src/components/Footer.astro
+  s_7510e9041608db::t_1a2b0ec4bd3563 10-12,36
+src/lib/pages.ts
+  s_7510e9041608db::t_84348e8a47d220 43
+.github/ISSUE_TEMPLATE/bug_report.yml
+  s_7510e9041608db::t_2b7da76fbad82e 1-12,25-58
+  s_7510e9041608db::t_1a2b0ec4bd3563 13-24
+src/lib/site.ts
+  s_7510e9041608db::t_84348e8a47d220 11
+package.json
+  s_7510e9041608db::t_31ec9d20943813 20-21,45-53
+src/pages/about.astro
+  s_7510e9041608db::t_84348e8a47d220 14,64,72-73
+  s_7510e9041608db::t_1a2b0ec4bd3563 66-67,71,74-75
+src/pages/index.astro
+  s_7510e9041608db::t_84348e8a47d220 67-68,73
+  s_7510e9041608db::t_1a2b0ec4bd3563 69-72
+src/lib/seo.ts
+  s_7510e9041608db::t_84348e8a47d220 26,41-43,67-68
+CODE_OF_CONDUCT.md
+  s_7510e9041608db::t_2b7da76fbad82e 1-7
+tests/e2e/smoke.spec.ts
+  s_7510e9041608db::t_5396263a083ff7 53-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "94b8dc02e12290cbf554b831ac7310f4c3e54698",
+  "prompts": {},
+  "sessions": {
+    "s_7510e9041608db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "88cc67a1-d318-46b0-83ae-59fd7b55ba77",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
