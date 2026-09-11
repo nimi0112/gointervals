@@ -1,0 +1,69 @@
+tests/unit/install.test.ts
+  s_616f0b49356297::t_05a368ecd2990a 140-148
+  s_616f0b49356297::t_4d35705b784787 1-139,149-199
+src/platform/analytics.ts
+  s_616f0b49356297::t_dd1eb4b7e6b83d 15-19,27-31
+src/islands/Timer.tsx
+  s_616f0b49356297::t_2d62a2b4410309 14,24,83-84,116,273
+src/layouts/Base.astro
+  s_616f0b49356297::t_23b7aff1a2b0b7 54-55,58-60,62
+  s_616f0b49356297::t_bf83616312902b 35-45
+  s_616f0b49356297::t_46dc9be6a59e38 51-53,56-57,61,63-64
+src/platform/install.ts
+  s_616f0b49356297::t_cf23a06c7dbbc3 1-61,64-114,119-120
+  s_616f0b49356297::t_05a368ecd2990a 62-63,115-118
+src/islands/parts/InstallPrompt.tsx
+  s_616f0b49356297::t_23b7aff1a2b0b7 68
+  s_616f0b49356297::t_c204b93b4e99db 110,113,117
+  s_616f0b49356297::t_28ded07c29f498 1-34,38-41,50-60,62-64,66-67,69-109,111-112,114-116,118-136,138-143
+  s_616f0b49356297::t_bd284c6dcbc1ff 137
+  s_616f0b49356297::t_47304108e57131 37
+  s_616f0b49356297::t_466b4c87034220 35-36
+  s_616f0b49356297::t_bdd24411e48baa 42-49,61,65
+src/styles/timer.css
+  s_616f0b49356297::t_8688b1bb6b0b15 212-240,242-243,249-253
+  s_616f0b49356297::t_bd284c6dcbc1ff 241,244-248
+public/manifest.webmanifest
+  s_616f0b49356297::t_031be9e494db78 2,14-15,17,20
+tests/e2e/install.spec.ts
+  s_616f0b49356297::t_19ccaa43e0d589 1-11,14-18,20,40,42-76,78,80,94-118,144-176
+  s_616f0b49356297::t_c4633904017a6e 77,79,81-84
+  s_616f0b49356297::t_4ec060e6688916 12-13,19,21-39,41,85-93
+  s_616f0b49356297::t_643a0f438cfef0 119-143
+scripts/gen-icons.mjs
+  s_616f0b49356297::t_2e7e2302f76adf 14,16
+  s_616f0b49356297::t_8ac3dec8462583 6-13,15,17-25,27-31,33-34
+scripts/check-build.mjs
+  s_616f0b49356297::t_9f8deeec6ca5d4 92-119
+tests/unit/manifest.test.ts
+  s_616f0b49356297::t_312a5664d5d70c 1-4,27-28,30-47,49-53,58-60,62-86,96-109
+  s_616f0b49356297::t_05a368ecd2990a 87-95
+  s_616f0b49356297::t_c204b93b4e99db 5-26,29,48,54-57,61
+CHANGELOG.md
+  s_616f0b49356297::t_fc436b8f19c3e4 15-18
+public/sw.js
+  s_616f0b49356297::t_9b44cb07b58f71 2
+  s_616f0b49356297::t_f0b81ec8d85d57 3-5
+package.json
+  s_616f0b49356297::t_9b44cb07b58f71 9,21-22
+scripts/stamp-sw.mjs
+  s_616f0b49356297::t_9b44cb07b58f71 1-19
+AGENTS.md
+  s_616f0b49356297::t_fc436b8f19c3e4 46-64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "673630ec87699028e5083672e4505d0018280fc6",
+  "prompts": {},
+  "sessions": {
+    "s_616f0b49356297": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1b9bd1cc-647f-4867-83f4-d48b238896e1",
+        "model": "claude-opus-5"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
