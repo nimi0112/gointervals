@@ -55,14 +55,9 @@ const current = Astro.url.pathname;
     margin: 0;
     padding: 0;
     display: flex;
+    flex-wrap: wrap;
     gap: var(--sp-1);
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
     max-width: 100%;
-  }
-  .nav__list::-webkit-scrollbar {
-    display: none;
   }
   .nav__list a {
     display: inline-block;
@@ -89,10 +84,13 @@ const current = Astro.url.pathname;
     }
     .nav nav {
       flex-basis: 100%;
-      margin-inline: calc(-1 * var(--sp-4));
-      padding-inline: var(--sp-4);
-      mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
-      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+    }
+    .nav__list {
+      gap: 0;
+    }
+    .nav__list a {
+      padding: 8px 6px;
+      min-height: 40px;
     }
   }
 </style>
