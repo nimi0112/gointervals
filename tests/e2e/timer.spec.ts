@@ -108,3 +108,19 @@ test('clear my data removes gi: keys', async ({ page }) => {
   await expect(page.locator('#clear-status')).toContainText('Cleared');
   expect(await page.evaluate(() => localStorage.getItem('gi:test'))).toBeNull();
 });
+
+test.describe('meditation', () => {
+  test('settles in, then sits through three bells', async ({ page }) => {
+    await page.clock.install();
+    await open(page, '/meditation');
+    await expect(page.locator('.settings__summary')).toContainText(
+      'A bell every 10 min for 30 min',
+    );
+    await page.getByRole('button', { name: 'Start' }).click();
+    await expect(page.locator('.timer__phase')).toHaveText('Settling in');
+    await page.clock.fastForward(10_500);
+    await expect(page.locator('.timer__phase')).toHaveText('Sitting 1/3');
+    await page.clock.fastForward(600_000);
+    await expect(page.locator('.timer__phase')).toHaveText('Sitting 2/3');
+  });
+});

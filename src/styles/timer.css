@@ -13,7 +13,8 @@
 .timer[data-status='running'][data-phase^='Set break'],
 .timer[data-status='running'][data-phase^='Break'],
 .timer[data-status='running'][data-phase^='Long break'],
-.timer[data-status='running'][data-phase^='Get ready'] {
+.timer[data-status='running'][data-phase^='Get ready'],
+.timer[data-status='running'][data-phase^='Settling in'] {
   --digit-color: var(--grey-700);
 }
 .timer[data-status='paused'] {

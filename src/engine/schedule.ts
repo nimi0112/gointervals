@@ -1,5 +1,5 @@
 export type Phase =
-  'prep' | 'work' | 'rest' | 'setrest' | 'focus' | 'break' | 'longbreak' | 'countdown';
+  'prep' | 'work' | 'rest' | 'setrest' | 'focus' | 'break' | 'longbreak' | 'countdown' | 'sit';
 
 export interface Segment {
   phase: Phase;
@@ -50,12 +50,27 @@ export interface PomodoroConfig {
   sessionsBeforeLong: number;
   cycles: number;
 }
+export interface MeditationConfig {
+  mode: 'meditation';
+  /** settle-in countdown, seconds */
+  prep: number;
+  /** seconds between bells */
+  bell: number;
+  /** total seconds */
+  total: number;
+}
 export interface StopwatchConfig {
   mode: 'stopwatch';
 }
 
 export type ModeConfig =
-  CountdownConfig | IntervalConfig | TabataConfig | EmomConfig | PomodoroConfig | StopwatchConfig;
+  | CountdownConfig
+  | IntervalConfig
+  | TabataConfig
+  | EmomConfig
+  | PomodoroConfig
+  | MeditationConfig
+  | StopwatchConfig;
 export type Mode = ModeConfig['mode'];
 
 const PHASE_LABEL: Record<Phase, string> = {
@@ -67,6 +82,7 @@ const PHASE_LABEL: Record<Phase, string> = {
   break: 'Break',
   longbreak: 'Long break',
   countdown: 'Countdown',
+  sit: 'Sitting',
 };
 
 function seg(
@@ -134,6 +150,14 @@ export function buildSchedule(cfg: ModeConfig): Segment[] {
         }
         out.push(seg('longbreak', cfg.longBreak * 60, per, per, c, cycles));
       }
+      break;
+    }
+    case 'meditation': {
+      const bell = Math.max(1, cfg.bell);
+      const n = Math.max(1, Math.floor(cfg.total / bell));
+      out = [];
+      if (cfg.prep > 0) out.push({ ...seg('prep', cfg.prep, 0, n), label: 'Settling in' });
+      for (let r = 1; r <= n; r++) out.push(seg('sit', bell, r, n));
       break;
     }
     case 'stopwatch':

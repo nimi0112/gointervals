@@ -4,7 +4,7 @@
 [![MIT](https://img.shields.io/badge/licence-MIT-0f7a4f)](LICENSE)
 [![Lighthouse 100](https://img.shields.io/badge/lighthouse-100%2F100%2F100%2F100-0f7a4f)](#verify-it)
 
-Free, open source browser timers at [gointervals.com](https://gointervals.com): interval/HIIT, countdown, stopwatch, Tabata, EMOM and Pomodoro. No login, no ads, no server, no dark mode.
+Free, open source browser timers at [gointervals.com](https://gointervals.com): interval/HIIT, countdown, stopwatch, Tabata, EMOM, Pomodoro and a single-bell meditation timer. No login, no ads, no server, no dark mode.
 
 What makes it different:
 

@@ -116,3 +116,19 @@ describe('buildSchedule', () => {
     expect(s.every((x) => x.ms > 0)).toBe(true);
   });
 });
+
+describe('meditation schedule', () => {
+  it('builds sit blocks of one bell interval each, with a settle-in prep', () => {
+    const s = buildSchedule({ mode: 'meditation', prep: 10, bell: 600, total: 1800 });
+    expect(s.map((x) => x.phase)).toEqual(['prep', 'sit', 'sit', 'sit']);
+    expect(s[1]!.ms).toBe(600_000);
+    expect(s[3]!.round).toBe(3);
+    expect(totalMs(s)).toBe(1_810_000);
+  });
+
+  it('a single-bell sit is one block', () => {
+    const s = buildSchedule({ mode: 'meditation', prep: 0, bell: 300, total: 300 });
+    expect(s).toHaveLength(1);
+    expect(s[0]).toMatchObject({ phase: 'sit', ms: 300_000, label: 'Sitting' });
+  });
+});

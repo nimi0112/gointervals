@@ -44,6 +44,7 @@ const PHASE_SOUND = {
   break: 'rest',
   longbreak: 'rest',
   countdown: 'work',
+  sit: 'bell',
 } as const;
 
 function phaseText(s: TimerSnapshot): string | null {
@@ -52,7 +53,7 @@ function phaseText(s: TimerSnapshot): string | null {
   if (s.status === 'done') return 'Done';
   if (seg.phase === 'countdown')
     return s.status === 'idle' ? 'Ready' : s.status === 'paused' ? 'Paused' : 'Counting down';
-  if (seg.phase === 'prep') return 'Get ready';
+  if (seg.phase === 'prep') return seg.label;
   const base = seg.label;
   const roundPart = seg.rounds > 1 ? ` ${seg.round}/${seg.rounds}` : '';
   const setPart = seg.sets > 1 ? ` · set ${seg.set}/${seg.sets}` : '';
@@ -102,8 +103,9 @@ export default function Timer({ config: initial, fixed = false, presets = false 
       const segs = events.filter((e) => e.type === 'segment');
       const complete = events.some((e) => e.type === 'complete');
       const warn = events.filter((e) => e.type === 'warning');
+      const single = mode === 'meditation';
       if (complete) {
-        play('done');
+        play(single ? 'bell' : 'done');
         if (!doneRef.current) {
           doneRef.current = true;
           track('timer_complete', { mode, duration_seconds: Math.round(snap.totalMs / 1000) });
@@ -120,11 +122,11 @@ export default function Timer({ config: initial, fixed = false, presets = false 
       }
       if (segs.length > 1) {
         // we slept through more than one boundary: one catch-up tone, then announce where we are
-        play('catchup');
+        play(single ? 'bell' : 'catchup');
       } else if (segs.length === 1) {
         const e = segs[0]!;
         if (e.type === 'segment') play(PHASE_SOUND[e.segment.phase]);
-      } else if (warn.length && snap.segment && snap.segment.ms > 5000) {
+      } else if (!single && warn.length && snap.segment && snap.segment.ms > 5000) {
         play('warning');
       }
       if (segs.length) {

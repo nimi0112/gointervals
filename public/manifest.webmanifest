@@ -22,6 +22,7 @@
     { "name": "Interval timer", "url": "/interval" },
     { "name": "Countdown", "url": "/timer" },
     { "name": "Stopwatch", "url": "/stopwatch" },
-    { "name": "Tabata", "url": "/tabata" }
+    { "name": "Tabata", "url": "/tabata" },
+    { "name": "Meditation", "url": "/meditation" }
   ]
 }

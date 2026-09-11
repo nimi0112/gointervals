@@ -47,11 +47,19 @@ const total = configSeconds(page.config);
       {setup} Press Start, or hit Space. The digits turn green while a work block runs and grey on
       rest.
     </p>
-    <p>
-      Sound is on by default: a rising pair for work, a falling pair for rest, a tick for the last
-      three seconds and a three-note finish. Mute with the speaker button. The screen stays on while
-      the timer runs and the tab title shows the time left.
-    </p>
+    {page.config.mode === 'meditation' ? (
+      <p>
+        The only sound is one soft bell: at the start, at each interval, and at the end. No ticks
+        before it. Mute with the speaker button for a silent sit. The screen stays on while the
+        timer runs.
+      </p>
+    ) : (
+      <p>
+        Sound is on by default: a rising pair for work, a falling pair for rest, a tick for the last
+        three seconds and a three-note finish. Mute with the speaker button. The screen stays on
+        while the timer runs and the tab title shows the time left.
+      </p>
+    )}
     <p>
       Change anything in Settings under the timer. The last setup you used on this page is
       remembered in your browser.

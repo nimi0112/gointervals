@@ -31,6 +31,13 @@ export const relatedTimers: Record<string, string[]> = {
     '/timer/study-timer',
     '/timer/25-minutes',
   ],
+  '/meditation': [
+    '/meditation/10-minutes',
+    '/meditation/20-minutes',
+    '/meditation/30-minutes',
+    '/timer/nap-timer',
+    '/pomodoro',
+  ],
 };
 
 export const relatedPosts: Record<string, string[]> = {
@@ -49,4 +56,5 @@ export const relatedPosts: Record<string, string[]> = {
     '/blog/best-pomodoro-length',
     '/blog/study-timer-vs-pomodoro',
   ],
+  '/meditation': ['/blog/meditation-timer-with-interval-bells', '/blog/how-long-to-meditate'],
 };

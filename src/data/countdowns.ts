@@ -391,7 +391,7 @@ export const countdowns: ProgrammaticPage[] = [
       '/timer/15-minutes',
       '/timer/20-minutes',
       '/timer/kitchen-timer',
-      '/timer/meditation-timer',
+      '/meditation',
     ],
   },
   {

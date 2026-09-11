@@ -66,7 +66,7 @@ Buttons say what happens: "Start", "Pause", "Resume", "Save current as preset", 
 Live in `src/engine`. Pure TypeScript, no DOM, fully unit tested with an injected clock.
 
 1. Position is derived from `clock.now() - startedAt - pausedTotal`. Nothing counts ticks. `requestAnimationFrame` and `setInterval` only trigger re-reads of the clock.
-2. Every mode except stopwatch compiles to a `Segment[]`. Zero-length segments are dropped at build time. "Beep every N minutes" is an interval with `rest: 0`, not a mode.
+2. Every mode except stopwatch compiles to a `Segment[]`. Zero-length segments are dropped at build time. "Beep every N minutes" is an interval with `rest: 0`, not a mode. Meditation is its own mode only because its sound design differs: one soft bell for every event, no warning ticks, no catch-up tone.
 3. `tick()` returns every boundary crossed since the last tick, in order. The UI plays one catch-up tone when more than one segment boundary was crossed, so a phone that slept never fires a burst of beeps.
 4. `visibilitychange` to visible triggers an immediate `tick()`.
 5. Wake lock is requested when status becomes `running` and released otherwise, with re-acquisition on `visibilitychange`. The video fallback is inline, no dependency.
@@ -105,7 +105,7 @@ Changing any of these needs a test change in `tests/unit` first.
 
 ### Adding a programmatic page
 
-1. Add an entry to the right file in `src/data/`: `countdowns.ts` (lengths), `uses.ts` (purpose pages under `/timer/`), `tabatas.ts`, `workouts.ts`, `beeps.ts` (repeating beeps under `/interval/`), or `pomodoros.ts`. Every field is required, including hand-written intro paragraphs and 3-4 FAQs. `src/data/index.ts` concatenates them all for lookups and OG images.
+1. Add an entry to the right file in `src/data/`: `countdowns.ts` (lengths), `uses.ts` (purpose pages under `/timer/`), `tabatas.ts`, `workouts.ts`, `beeps.ts` (repeating beeps under `/interval/`), `pomodoros.ts`, or `meditations.ts`. Every field is required, including hand-written intro paragraphs and 3-4 FAQs. `src/data/index.ts` concatenates them all for lookups and OG images.
 2. Add it to `related` on two or three neighbouring entries.
 3. Build. The route, OG image and sitemap entry are generated. `check:build` will tell you if a link is dead.
 4. If it is a new _kind_ of page, add a `[slug].astro` under `src/pages/<kind>/` using `ProgrammaticTimer.astro`, and add the paths to `src/lib/pages.ts`.

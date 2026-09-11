@@ -8,6 +8,8 @@ const routes = [
   '/tabata',
   '/emom',
   '/pomodoro',
+  '/meditation',
+  '/meditation/30-minutes',
   '/timer/5-minutes',
   '/timer/30-seconds',
   '/tabata/20-10-8',

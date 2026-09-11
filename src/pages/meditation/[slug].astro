@@ -1,0 +1,15 @@
+---
+import ProgrammaticTimer from '@/components/ProgrammaticTimer.astro';
+import { meditations } from '@/data/meditations';
+import type { ProgrammaticPage } from '@/data/types';
+
+export function getStaticPaths() {
+  return meditations.map((page) => ({
+    params: { slug: page.path.replace('/meditation/', '') },
+    props: { page },
+  }));
+}
+const { page } = Astro.props as { page: ProgrammaticPage };
+---
+
+<ProgrammaticTimer {page} posts={['/blog/meditation-timer-with-interval-bells']} />

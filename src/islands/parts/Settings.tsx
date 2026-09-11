@@ -183,6 +183,34 @@ function Fields({ config, onChange, disabled }: Props) {
           </div>
         </div>
       );
+    case 'meditation':
+      return (
+        <div class="settings">
+          <div class="fields">
+            <DurationField
+              label="Bell every"
+              value={config.bell}
+              min={30}
+              disabled={disabled}
+              onChange={(bell) => onChange({ ...config, bell: Math.max(30, bell) })}
+            />
+            <DurationField
+              label="Total"
+              value={config.total}
+              min={30}
+              disabled={disabled}
+              onChange={(total) => onChange({ ...config, total: Math.max(30, total) })}
+            />
+            <DurationField
+              label="Settle in"
+              value={config.prep}
+              hint="before the first bell"
+              disabled={disabled}
+              onChange={(prep) => onChange({ ...config, prep })}
+            />
+          </div>
+        </div>
+      );
     case 'stopwatch':
       return null;
   }

@@ -48,6 +48,7 @@ export function webApplication(): JsonLd {
       'Tabata timer',
       'EMOM timer',
       'Pomodoro timer',
+      'Meditation timer with interval bells',
       'Works offline',
       'Keeps the screen on',
     ],

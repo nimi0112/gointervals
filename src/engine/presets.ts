@@ -111,5 +111,6 @@ export const defaultConfigs: { [K in ModeConfig['mode']]: Extract<ModeConfig, { 
     sessionsBeforeLong: 4,
     cycles: 1,
   },
+  meditation: { mode: 'meditation', prep: 10, bell: 600, total: 1800 },
   stopwatch: { mode: 'stopwatch' },
 };

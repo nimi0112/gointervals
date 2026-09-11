@@ -13,6 +13,14 @@ export function describeConfig(cfg: ModeConfig): string {
       return `Counts down ${d(cfg.seconds)}, then beeps.`;
     case 'stopwatch':
       return 'Counts up until you stop it.';
+    case 'meditation': {
+      const n = Math.max(1, Math.floor(cfg.total / Math.max(1, cfg.bell)));
+      const body =
+        n === 1
+          ? `One bell after ${d(cfg.total)}.`
+          : `A bell every ${d(cfg.bell)} for ${d(cfg.bell * n)}, ${n} bells in all.`;
+      return body + (cfg.prep > 0 ? ` Starts with ${d(cfg.prep)} to settle in.` : '');
+    }
     case 'emom':
       return `Beep every ${d(cfg.interval)} for ${d(cfg.minutes * 60)}.${prep(cfg.prep)}`;
     case 'pomodoro':

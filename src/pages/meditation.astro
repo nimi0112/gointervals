@@ -1,0 +1,59 @@
+---
+import TimerPage from '@/layouts/TimerPage.astro';
+import Section from '@/components/Section.astro';
+import { faqs } from '@/data/faqs';
+import { relatedTimers, relatedPosts } from '@/data/related';
+import { defaultConfigs } from '@/engine/presets';
+import { meditations } from '@/data/meditations';
+---
+
+<TimerPage
+  title="Meditation Timer – One Soft Bell, Screen Stays On"
+  description="Free meditation timer: one soft bell every 10 minutes for 30 minutes, or any interval you set. No ticks, no alarm. Screen stays awake, works offline."
+  path="/meditation"
+  h1="Meditation timer"
+  lede="One soft bell every 10 minutes for 30 minutes, then one to finish. Change the interval or the length. Nothing else makes a sound."
+  config={defaultConfigs.meditation}
+  faq={faqs['/meditation']}
+  related={relatedTimers['/meditation']!}
+  posts={relatedPosts['/meditation']}
+  crumbName="Meditation timer"
+>
+  <Section num="01" title="How it is different" flush>
+    <p>
+      The other timers on this site are built to be noticed: a rising pair for work, a falling pair
+      for rest, ticks for the last three seconds. This one is built to be forgotten. There is one
+      bell. It rings once when the sit begins after a short settle-in, once at each interval, and
+      once at the end. Between bells the page is silent and the digits are the only thing that
+      moves.
+    </p>
+    <p>
+      The default is a 30 minute sit with a bell every 10 minutes. That gives three blocks, which is
+      enough structure for a body scan, then breath, then open awareness, or simply three reminders
+      to come back. Set Bell every equal to Total for a single bell at the end.
+    </p>
+  </Section>
+  <Section num="02" title="Presets">
+    <p>Each length has its own page with the bells already placed.</p>
+    <ul>
+      {meditations.map((m) => (
+        <li>
+          <a href={m.path}>{m.h1}</a>
+        </li>
+      ))}
+    </ul>
+  </Section>
+  <Section num="03" title="Screen, sound, silence">
+    <p>
+      The timer asks the phone or laptop to keep the screen awake while it runs, so the display does
+      not go dark and the sit does not end with a locked phone. Turn the brightness down by hand if
+      you want a dim room. The bell is generated in the browser, so there is nothing to download and
+      it works with no connection after the first visit.
+    </p>
+    <p>
+      If you would rather sit in the dark with the phone face down, that works too: the timing is
+      based on timestamps, so the bell lands on the right second as long as the page stays open.
+      Mute is available for a fully silent sit where you only glance at the digits.
+    </p>
+  </Section>
+</TimerPage>

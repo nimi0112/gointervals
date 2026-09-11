@@ -115,4 +115,26 @@ export const faqs: Record<string, Faq[]> = {
       a: 'Press Skip to jump to the next block. It counts as taking the break as far as the session counter is concerned.',
     },
   ],
+  '/meditation': [
+    {
+      q: 'What does the bell sound like?',
+      a: 'One soft, generated tone with a two-second decay. Not a recorded singing bowl, so nothing has to download and it works offline. The same bell marks the start, every interval and the end.',
+    },
+    {
+      q: 'Will the screen stay on while I sit?',
+      a: 'Yes. The timer holds a screen wake lock while it runs, on phones and desktops, with a fallback for browsers without the API. Turn the brightness down by hand if the light bothers you.',
+    },
+    {
+      q: 'Does the bell ring if my phone locks or I switch apps?',
+      a: 'The timing stays exact because it is based on timestamps, and you will land on the right bell when you come back. But browsers only play sound from a page that is open, so leave the tab in front. The wake lock is there so the phone does not lock on its own.',
+    },
+    {
+      q: 'Can I have one bell at the end and nothing in between?',
+      a: 'Set "Bell every" to the same value as "Total". The preset pages for 5 and 10 minutes are already set up that way.',
+    },
+    {
+      q: 'Why is there no countdown tick before the bell?',
+      a: 'On purpose. The other timers tick for the last three seconds so you can brace for a change. In a sit that is the opposite of the point, so the meditation timer is silent until the bell.',
+    },
+  ],
 };

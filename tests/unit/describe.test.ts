@@ -66,3 +66,14 @@ describe('describeConfig', () => {
     );
   });
 });
+
+describe('describeConfig meditation', () => {
+  it('reads bells in plain words', () => {
+    expect(describeConfig({ mode: 'meditation', prep: 10, bell: 600, total: 1800 })).toBe(
+      'A bell every 10 min for 30 min, 3 bells in all. Starts with 10 sec to settle in.',
+    );
+    expect(describeConfig({ mode: 'meditation', prep: 0, bell: 300, total: 300 })).toBe(
+      'One bell after 5 min.',
+    );
+  });
+});

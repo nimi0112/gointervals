@@ -4,7 +4,7 @@
  */
 import { storage, KEYS } from './storage';
 
-export type Sound = 'work' | 'rest' | 'warning' | 'done' | 'catchup';
+export type Sound = 'work' | 'rest' | 'warning' | 'done' | 'catchup' | 'bell';
 
 let ctx: AudioContext | null = null;
 let muted = storage.get<boolean>(KEYS.muted, false);
@@ -79,6 +79,11 @@ const PATTERNS: Record<Sound, (t: number) => void> = {
   },
   // single longer note when we had to catch up after a sleep
   catchup: (t) => tone(880, t, 0.35),
+  // one soft bell: fundamental plus a quiet octave, long decay. Used for every meditation event.
+  bell: (t) => {
+    tone(528, t, 2.2, 0.28);
+    tone(1056, t, 1.4, 0.06);
+  },
 };
 
 const VIBE: Record<Sound, number[]> = {
@@ -87,6 +92,7 @@ const VIBE: Record<Sound, number[]> = {
   warning: [30],
   done: [100, 50, 100, 50, 200],
   catchup: [200],
+  bell: [180],
 };
 
 export function play(sound: Sound): void {

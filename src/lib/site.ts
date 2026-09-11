@@ -4,7 +4,7 @@ export const SITE = {
   url: (import.meta.env.PUBLIC_SITE_URL || 'https://gointervals.com').replace(/\/$/, ''),
   tagline: 'Free timers that just run.',
   description:
-    'Free online stopwatch, countdown, interval, HIIT, Tabata, EMOM and Pomodoro timers. No login, no ads, works offline, keeps your screen on.',
+    'Free online stopwatch, countdown, interval, HIIT, Tabata, EMOM, Pomodoro and meditation timers. No login, no ads, works offline, keeps your screen on.',
   author: 'Go Intervals',
   twitter: '',
   accent: '#0f7a4f',
@@ -15,7 +15,7 @@ export interface TimerRoute {
   path: string;
   name: string;
   short: string;
-  mode: 'interval' | 'stopwatch' | 'countdown' | 'tabata' | 'emom' | 'pomodoro';
+  mode: 'interval' | 'stopwatch' | 'countdown' | 'tabata' | 'emom' | 'pomodoro' | 'meditation';
 }
 
 export const TIMERS: readonly TimerRoute[] = [
@@ -25,6 +25,7 @@ export const TIMERS: readonly TimerRoute[] = [
   { path: '/tabata', name: 'Tabata timer', short: 'Tabata', mode: 'tabata' },
   { path: '/emom', name: 'EMOM timer', short: 'EMOM', mode: 'emom' },
   { path: '/pomodoro', name: 'Pomodoro timer', short: 'Pomodoro', mode: 'pomodoro' },
+  { path: '/meditation', name: 'Meditation timer', short: 'Meditation', mode: 'meditation' },
 ];
 
 export const timerByPath = (path: string): TimerRoute | undefined =>

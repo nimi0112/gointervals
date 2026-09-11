@@ -9,6 +9,7 @@ const PRECACHE = [
   '/tabata',
   '/emom',
   '/pomodoro',
+  '/meditation',
   '/about',
   '/404',
   '/manifest.webmanifest',
