@@ -79,6 +79,8 @@ interface NumProps {
   max?: number;
   disabled?: boolean;
   hint?: string;
+  /** caption under the input, e.g. "rounds", "min" */
+  unit: string;
 }
 
 export function NumberField({
@@ -89,6 +91,7 @@ export function NumberField({
   max = 999,
   disabled,
   hint,
+  unit,
 }: NumProps) {
   const id = `n-${label.replace(/\W+/g, '-').toLowerCase()}`;
   return (
@@ -97,20 +100,22 @@ export function NumberField({
         {label}
         {hint && <span class="field__hint"> {hint}</span>}
       </label>
-      <input
-        id={id}
-        class="field__input field__input--single"
-        type="number"
-        inputMode="numeric"
-        min={min}
-        max={max}
-        value={value}
-        disabled={disabled}
-        onInput={(e) => {
-          const n = parseInt((e.currentTarget as HTMLInputElement).value, 10);
-          onChange(Math.min(max, Math.max(min, Number.isFinite(n) ? n : min)));
-        }}
-      />
+      <span class="field__unit" data-unit={unit}>
+        <input
+          id={id}
+          class="field__input field__input--single"
+          type="number"
+          inputMode="numeric"
+          min={min}
+          max={max}
+          value={value}
+          disabled={disabled}
+          onInput={(e) => {
+            const n = parseInt((e.currentTarget as HTMLInputElement).value, 10);
+            onChange(Math.min(max, Math.max(min, Number.isFinite(n) ? n : min)));
+          }}
+        />
+      </span>
     </div>
   );
 }

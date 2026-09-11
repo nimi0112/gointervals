@@ -60,12 +60,14 @@ function Fields({ config, onChange, disabled }: Props) {
             />
             <NumberField
               label="Rounds"
+              unit="rounds"
               value={config.rounds}
               disabled={disabled}
               onChange={(rounds) => onChange({ ...config, rounds })}
             />
             <NumberField
               label="Sets"
+              unit="sets"
               value={config.sets}
               max={99}
               disabled={disabled}
@@ -106,6 +108,7 @@ function Fields({ config, onChange, disabled }: Props) {
             />
             <NumberField
               label="Rounds"
+              unit="rounds"
               value={config.rounds}
               disabled={disabled}
               onChange={(rounds) => onChange({ ...config, rounds })}
@@ -124,7 +127,8 @@ function Fields({ config, onChange, disabled }: Props) {
         <div class="settings">
           <div class="fields">
             <NumberField
-              label="Total minutes"
+              label="Total"
+              unit="min"
               value={config.minutes}
               max={180}
               disabled={disabled}
@@ -152,21 +156,24 @@ function Fields({ config, onChange, disabled }: Props) {
         <div class="settings">
           <div class="fields">
             <NumberField
-              label="Focus (min)"
+              label="Focus"
+              unit="min"
               value={config.focus}
               max={180}
               disabled={disabled}
               onChange={(focus) => onChange({ ...config, focus })}
             />
             <NumberField
-              label="Short break (min)"
+              label="Short break"
+              unit="min"
               value={config.shortBreak}
               max={60}
               disabled={disabled}
               onChange={(shortBreak) => onChange({ ...config, shortBreak })}
             />
             <NumberField
-              label="Long break (min)"
+              label="Long break"
+              unit="min"
               value={config.longBreak}
               max={120}
               disabled={disabled}
@@ -174,9 +181,9 @@ function Fields({ config, onChange, disabled }: Props) {
             />
             <NumberField
               label="Long break after"
+              unit="sessions"
               value={config.sessionsBeforeLong}
               max={12}
-              hint="sessions"
               disabled={disabled}
               onChange={(sessionsBeforeLong) => onChange({ ...config, sessionsBeforeLong })}
             />
