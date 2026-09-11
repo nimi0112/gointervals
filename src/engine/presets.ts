@@ -100,7 +100,7 @@ export const builtinIntervalPresets: readonly IntervalPreset[] = [
 
 export const defaultConfigs: { [K in ModeConfig['mode']]: Extract<ModeConfig, { mode: K }> } = {
   countdown: { mode: 'countdown', seconds: 300 },
-  interval: { mode: 'interval', prep: 10, work: 30, rest: 15, rounds: 8, sets: 1, setRest: 60 },
+  interval: { mode: 'interval', prep: 0, work: 30, rest: 15, rounds: 8, sets: 1, setRest: 60 },
   tabata: { mode: 'tabata', prep: 10, work: 20, rest: 10, rounds: 8 },
   emom: { mode: 'emom', prep: 10, minutes: 10, interval: 60 },
   pomodoro: {
