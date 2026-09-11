@@ -1,0 +1,21 @@
+src/islands/parts/PresetBar.tsx
+  s_7510e9041608db::t_dc5ef4d1b34239 95-99
+src/styles/timer.css
+  s_7510e9041608db::t_dc5ef4d1b34239 354-359
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8ab39990371687fafbf9c0fc4ed2236c2e88b94a",
+  "prompts": {},
+  "sessions": {
+    "s_7510e9041608db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "88cc67a1-d318-46b0-83ae-59fd7b55ba77",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
