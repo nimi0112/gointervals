@@ -1,0 +1,23 @@
+src/pages/index.astro
+  s_7510e9041608db::t_bfeaebe0ed1d57 12-22
+src/lib/site.ts
+  s_7510e9041608db::t_f58bdc16ffceb1 23
+src/styles/timer.css
+  s_7510e9041608db::t_68fad4a35175d4 260-264,267,270-271,274
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3864b6e15b9c9baae9d1372341f4a9ff49134d13",
+  "prompts": {},
+  "sessions": {
+    "s_7510e9041608db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "88cc67a1-d318-46b0-83ae-59fd7b55ba77",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
