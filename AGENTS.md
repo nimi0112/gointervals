@@ -123,7 +123,7 @@ Changing any of these needs a test change in `tests/unit` first.
 - Do not use cookies. `localStorage` only, through `src/platform/storage.ts`.
 - Do not add a dependency without a one-line reason in `PLAN.md` under Dependencies. The current list is intentionally short.
 - Do not add client JS to content pages. Blog, about and 404 must stay JS-free.
-- Do not add third-party scripts other than GA4.
+- Do not add third-party scripts other than GA4 and Cloudflare Web Analytics (injected by Pages, allowed in the CSP).
 - Do not ship audio files, icon fonts, or an animation library.
 - Do not count ticks in anything time-related.
 - Do not write templated copy with a number swapped in.
