@@ -1,0 +1,19 @@
+src/engine/presets.ts
+  s_7510e9041608db::t_80f12f012cc8fc 103
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6bd16dacb723c85a002958fb4e0681a310c07f41",
+  "prompts": {},
+  "sessions": {
+    "s_7510e9041608db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "88cc67a1-d318-46b0-83ae-59fd7b55ba77",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
