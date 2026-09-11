@@ -54,10 +54,6 @@ export function PresetBar({ builtin, saved, current, disabled, onLoad, onSave, o
 
   return (
     <div class="presets">
-      <ul class="presets__list" aria-label="Presets">
-        {saved.map((p) => chip(p, true))}
-        {builtin.map((p) => chip(p, false))}
-      </ul>
       {naming ? (
         <form
           class="presets__form"
@@ -96,6 +92,11 @@ export function PresetBar({ builtin, saved, current, disabled, onLoad, onSave, o
           Save current as preset
         </button>
       )}
+      <h2 class="presets__title">Presets</h2>
+      <ul class="presets__list" aria-label="Presets">
+        {saved.map((p) => chip(p, true))}
+        {builtin.map((p) => chip(p, false))}
+      </ul>
     </div>
   );
 }
