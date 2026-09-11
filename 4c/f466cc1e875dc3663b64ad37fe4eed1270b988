@@ -1,0 +1,21 @@
+src/components/Nav.astro
+  s_19d6622e9c43a1::t_0b3d0e6eca2f60 92
+  s_19d6622e9c43a1::t_0024dc7a4f14cd 58,87-88,90-91
+  s_19d6622e9c43a1::t_9ac19314338293 89,93
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "4cf466cc1e875dc3663b64ad37fe4eed1270b988",
+  "prompts": {},
+  "sessions": {
+    "s_19d6622e9c43a1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "842c4295-4911-45e4-ae01-32a73ed1598c",
+        "model": "claude-opus-5"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
