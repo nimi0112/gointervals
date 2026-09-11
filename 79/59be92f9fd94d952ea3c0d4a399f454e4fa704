@@ -1,0 +1,100 @@
+src/pages/interval/[slug].astro
+  s_7510e9041608db::t_e6a6e4964a4e1f 4,8,14-16,19
+src/lib/pages.ts
+  s_7510e9041608db::t_e6a6e4964a4e1f 4,26
+src/layouts/Post.astro
+  s_7510e9041608db::t_58f70c967fdbdd 29
+  s_7510e9041608db::t_e6a6e4964a4e1f 6
+src/content/blog/timer-that-beeps-every-10-minutes.md
+  s_7510e9041608db::t_58f70c967fdbdd 51-57
+  s_7510e9041608db::t_f9bd0acc685211 1-50,58-73
+src/components/ProgrammaticTimer.astro
+  s_7510e9041608db::t_e6a6e4964a4e1f 6-7,14-15,31
+src/content/blog/how-many-rounds-in-a-boxing-match.md
+  s_7510e9041608db::t_83a9721a416bad 1-2,4-17,25-43,52-67
+  s_7510e9041608db::t_180dd01a454d0a 3
+  s_7510e9041608db::t_58f70c967fdbdd 18-24,44-51
+src/data/uses.ts
+  s_7510e9041608db::t_8b2a930cfacc5d 163,203-209,297,336-342
+  s_7510e9041608db::t_1a9d785354dee9 1-162,164-202,210-296,298-335,343-384
+src/data/pomodoros.ts
+  s_7510e9041608db::t_061d94fda3adb0 1-46,55-97,106-150,158-200,208-210
+  s_7510e9041608db::t_8b2a930cfacc5d 47-54,98-105,151-157,201-207
+src/components/Related.astro
+  s_7510e9041608db::t_e6a6e4964a4e1f 4,14
+src/pages/pomodoro/[slug].astro
+  s_7510e9041608db::t_e6a6e4964a4e1f 1-15
+src/pages/index.astro
+  s_7510e9041608db::t_58f70c967fdbdd 9-10,83-84,86-102,140-161
+src/pages/interval.astro
+  s_7510e9041608db::t_58f70c967fdbdd 7-8,47-62,70-82
+src/content/blog/plank-timer-how-long-to-hold.md
+  s_7510e9041608db::t_58f70c967fdbdd 14-20,48-55
+  s_7510e9041608db::t_b1b105656d2d09 2
+  s_7510e9041608db::t_180dd01a454d0a 3
+  s_7510e9041608db::t_7314f41e6bd140 1,4-13,21-47,56-75
+src/content/blog/interval-timer-for-running.md
+  s_7510e9041608db::t_58f70c967fdbdd 16-22,36-41
+  s_7510e9041608db::t_096feee72d81c4 1,3-15,23-35,42-69
+  s_7510e9041608db::t_b1b105656d2d09 2
+src/data/countdowns.ts
+  s_7510e9041608db::t_8b2a930cfacc5d 78-84,195-201,388-395,468-474,512-517,561,600-605,714-721,791,1028,1067-1072
+  s_7510e9041608db::t_0337e793c02586 560,982,1025
+  s_7510e9041608db::t_c6c5226efeacdb 430,641,679,756,826,907,942
+  s_7510e9041608db::t_38a606a0841e97 518,606,1073-1824
+src/pages/timer/[slug].astro
+  s_7510e9041608db::t_e6a6e4964a4e1f 4,8
+src/data/tabatas.ts
+  s_7510e9041608db::t_8b2a930cfacc5d 40-46,226,260-266,301-307,340-346,380-386
+  s_7510e9041608db::t_9f419994be6a6c 221-225,227
+  s_7510e9041608db::t_85a01bd5757a3c 189-220,228-259,267-300,308-339,347-379,387-388
+src/data/beeps.ts
+  s_7510e9041608db::t_76a403e7ce716b 264
+  s_7510e9041608db::t_8b2a930cfacc5d 45,89,221,265-266,353
+  s_7510e9041608db::t_27fdd5ca1efee4 1-44,46-88,90-220,222-263,267-352,354-443
+src/data/workouts.ts
+  s_7510e9041608db::t_8b2a930cfacc5d 78-84,123
+src/data/related.ts
+  s_7510e9041608db::t_e6a6e4964a4e1f 26,45
+  s_7510e9041608db::t_58f70c967fdbdd 4-17,19-25,27-33,38-42,47-51
+src/pages/pomodoro.astro
+  s_7510e9041608db::t_58f70c967fdbdd 7,38-46
+  s_7510e9041608db::t_b37ffd779a1e0f 47
+src/lib/seo.ts
+  s_7510e9041608db::t_e6a6e4964a4e1f 155-187
+src/content/blog/how-long-is-a-tabata-workout.md
+  s_7510e9041608db::t_2c4cd90954e38b 1-13,19-27,34-65
+  s_7510e9041608db::t_58f70c967fdbdd 14-18,28-33
+src/data/index.ts
+  s_7510e9041608db::t_e6a6e4964a4e1f 1-20
+src/content/blog/best-pomodoro-length.md
+  s_7510e9041608db::t_b1b105656d2d09 2
+  s_7510e9041608db::t_58f70c967fdbdd 14-19,37-43
+  s_7510e9041608db::t_fb155a2310c62e 1,3-13,20-36,44-61
+CHANGELOG.md
+  s_7510e9041608db::t_4bfa6dcbfd67ad 15-16
+src/pages/timer.astro
+  s_7510e9041608db::t_58f70c967fdbdd 8,11,42-58,60
+AGENTS.md
+  s_7510e9041608db::t_837d9306c7dd86 108
+public/llms.txt
+  s_7510e9041608db::t_287f0b7b91c01d 23-25,27-28,43-48
+tests/e2e/smoke.spec.ts
+  s_7510e9041608db::t_2050e8971ef21d 15-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7959be92f9fd94d952ea3c0d4a399f454e4fa704",
+  "prompts": {},
+  "sessions": {
+    "s_7510e9041608db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "88cc67a1-d318-46b0-83ae-59fd7b55ba77",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
