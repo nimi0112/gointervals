@@ -20,12 +20,12 @@ export interface TimerRoute {
 
 export const TIMERS: readonly TimerRoute[] = [
   { path: '/interval', name: 'Interval timer', short: 'Interval', mode: 'interval' },
+  { path: '/meditation', name: 'Meditation timer', short: 'Meditation', mode: 'meditation' },
   { path: '/timer', name: 'Countdown timer', short: 'Countdown', mode: 'countdown' },
   { path: '/stopwatch', name: 'Stopwatch', short: 'Stopwatch', mode: 'stopwatch' },
   { path: '/tabata', name: 'Tabata timer', short: 'Tabata', mode: 'tabata' },
   { path: '/emom', name: 'EMOM timer', short: 'EMOM', mode: 'emom' },
   { path: '/pomodoro', name: 'Pomodoro timer', short: 'Pomodoro', mode: 'pomodoro' },
-  { path: '/meditation', name: 'Meditation timer', short: 'Meditation', mode: 'meditation' },
 ];
 
 export const timerByPath = (path: string): TimerRoute | undefined =>

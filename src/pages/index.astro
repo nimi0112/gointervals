@@ -9,22 +9,17 @@ import { defaultConfigs } from '@/engine/presets';
 import { beeps } from '@/data/beeps';
 import { uses } from '@/data/uses';
 
-const modes = [
-  {
-    ...TIMERS[0]!,
-    blurb:
-      'Work, rest, rounds, sets. Presets for HIIT, boxing, run/walk and "beep every 10 minutes".',
-  },
-  { ...TIMERS[1]!, blurb: 'One number, one beep. Presets from 1 to 60 minutes, or type your own.' },
-  { ...TIMERS[2]!, blurb: 'Laps with split and total. Fastest and slowest marked.' },
-  { ...TIMERS[3]!, blurb: '20 on, 10 off, 8 rounds. The real one, or edit it.' },
-  { ...TIMERS[4]!, blurb: 'Every minute on the minute. Or every 90 seconds, or every two.' },
-  { ...TIMERS[5]!, blurb: '25/5 with a long break every four. Session count survives reloads.' },
-  {
-    ...TIMERS[6]!,
-    blurb: 'One soft bell every 10 minutes for 30. No ticks, no alarm, screen stays on.',
-  },
-];
+const blurbs: Record<string, string> = {
+  '/interval':
+    'Work, rest, rounds, sets. Presets for HIIT, boxing, run/walk and "beep every 10 minutes".',
+  '/meditation': 'One soft bell every 10 minutes for 30. No ticks, no alarm, screen stays on.',
+  '/timer': 'One number, one beep. Presets from 1 to 60 minutes, or type your own.',
+  '/stopwatch': 'Laps with split and total. Fastest and slowest marked.',
+  '/tabata': '20 on, 10 off, 8 rounds. The real one, or edit it.',
+  '/emom': 'Every minute on the minute. Or every 90 seconds, or every two.',
+  '/pomodoro': '25/5 with a long break every four. Session count survives reloads.',
+};
+const modes = TIMERS.map((t) => ({ ...t, blurb: blurbs[t.path] ?? '' }));
 ---
 
 <TimerPage
