@@ -1,0 +1,77 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { readingTime } from '@/lib/readingTime';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+const { posts } = Astro.props;
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+
+<ul class="posts">
+  {posts.map((p) => {
+    const rt = readingTime(p.body ?? '');
+    return (
+      <li class="posts__item">
+        <p class="posts__meta mono">
+          <time datetime={p.data.pubDate.toISOString()}>{fmt(p.data.pubDate)}</time> · {rt.minutes}{' '}
+          min read
+        </p>
+        <h2 class="posts__title">
+          <a href={`/blog/${p.id}`}>{p.data.title}</a>
+        </h2>
+        <p class="posts__desc">{p.data.description}</p>
+        <p class="posts__tags">
+          {p.data.tags.map((t) => (
+            <a class="tag" href={`/blog/tag/${t}`}>
+              {t}
+            </a>
+          ))}
+        </p>
+      </li>
+    );
+  })}
+</ul>
+
+<style>
+  .posts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: var(--measure);
+    border-top: 1px solid var(--grey-300);
+  }
+  .posts__item {
+    padding-block: var(--sp-5);
+    border-bottom: 1px solid var(--grey-300);
+  }
+  .posts__meta {
+    color: var(--grey-500);
+    font-size: var(--fs-1);
+    margin-bottom: var(--sp-2);
+  }
+  .posts__title {
+    font-size: var(--fs-4);
+    margin-bottom: var(--sp-2);
+  }
+  .posts__title a {
+    text-decoration: none;
+  }
+  .posts__title a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+  }
+  .posts__desc {
+    color: var(--grey-700);
+    margin-bottom: var(--sp-3);
+  }
+  .posts__tags {
+    display: flex;
+    gap: var(--sp-2);
+    flex-wrap: wrap;
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import PostList from '@/components/PostList.astro';
+import { breadcrumbList } from '@/lib/seo';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', (p) => !p.data.draft);
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((p) => p.data.tags.includes(tag))
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+    },
+  }));
+}
+const { tag, posts } = Astro.props as { tag: string; posts: CollectionEntry<'blog'>[] };
+const path = `/blog/tag/${tag}`;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Blog', path: '/blog' },
+  { name: tag, path },
+];
+---
+
+<Base
+  title={`Posts tagged ${tag}`}
+  description={`Every Go Intervals blog post about ${tag}: ${posts.length} ${posts.length === 1 ? 'guide' : 'guides'} on timing, protocols and how to run them with a free browser timer.`}
+  {path}
+  jsonLd={[breadcrumbList(crumbs)]}
+>
+  <Breadcrumbs {crumbs} />
+  <main id="main" class="wrap">
+    <header class="th">
+      <p class="section__num">Tag</p>
+      <h1>{tag}</h1>
+    </header>
+    <PostList {posts} />
+  </main>
+</Base>
+
+<style>
+  .th {
+    padding-block: var(--sp-5) var(--sp-6);
+  }
+</style>

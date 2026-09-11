@@ -1,0 +1,109 @@
+---
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Section from '@/components/Section.astro';
+import { breadcrumbList } from '@/lib/seo';
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+];
+---
+
+<Base
+  title="About Go Intervals and Your Data"
+  description="What Go Intervals is, who made it, what is stored in your browser, and a button to delete all of it. No accounts, no cookies, no ads."
+  path="/about"
+  jsonLd={[breadcrumbList(crumbs)]}
+>
+  <Breadcrumbs {crumbs} />
+  <main id="main" class="wrap">
+    <header class="ah">
+      <h1>About</h1>
+      <p class="ah__lede">
+        A timer site that does not drift, does not nag, and does not need an account.
+      </p>
+    </header>
+
+    <Section num="01" title="What it is" flush>
+      <p>
+        Go Intervals is a set of browser timers: stopwatch, countdown, interval, Tabata, EMOM and
+        Pomodoro. It exists because every other timer site either drifts when the tab is
+        backgrounded, covers the screen in ads, or wants you to sign up to save a preset.
+      </p>
+      <p>
+        Timing is derived from the system clock, so a phone that sleeps through three rounds wakes
+        up on the right one. Sounds are generated in the browser. The site is static, hosted on
+        Cloudflare Pages, and works offline after the first visit.
+      </p>
+    </Section>
+
+    <Section num="02" title="What is stored, and where">
+      <p>
+        Everything lives in your browser's local storage, on your device. Nothing is sent to a
+        server.
+      </p>
+      <ul>
+        <li>The last settings you used on each timer</li>
+        <li>Interval presets you saved</li>
+        <li>Your last 50 completed sessions and the Pomodoro session count</li>
+        <li>Whether sound and vibration are muted</li>
+      </ul>
+      <p>
+        There are no cookies. The only third-party script is Google Analytics 4 with IP
+        anonymisation, used to see which timers get used. If your browser blocks it, nothing on the
+        site changes.
+      </p>
+      <p>
+        <button type="button" class="btn" id="clear-data">
+          Clear my data
+        </button>
+        <span id="clear-status" class="mono" role="status"></span>
+      </p>
+    </Section>
+
+    <Section num="03" title="Who made it">
+      <p>
+        Built by one person who got tired of a 20 minute EMOM ending 40 seconds late. The source is
+        on
+        <a href="https://github.com/nimi0112/gointervals" rel="noopener">
+          GitHub
+        </a>
+        . If something is wrong, open an issue.
+      </p>
+    </Section>
+  </main>
+
+  <script>
+    const btn = document.getElementById('clear-data');
+    const status = document.getElementById('clear-status');
+    btn?.addEventListener('click', () => {
+      try {
+        const keys: string[] = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && k.startsWith('gi:')) keys.push(k);
+        }
+        keys.forEach((k) => localStorage.removeItem(k));
+        if (status)
+          status.textContent = ` Cleared ${keys.length} item${keys.length === 1 ? '' : 's'}.`;
+      } catch {
+        if (status) status.textContent = ' Nothing to clear, or storage is blocked.';
+      }
+    });
+  </script>
+</Base>
+
+<style>
+  .ah {
+    padding-block: var(--sp-5) var(--sp-2);
+  }
+  .ah__lede {
+    color: var(--grey-700);
+    font-size: var(--fs-3);
+  }
+  #clear-status {
+    color: var(--grey-700);
+    font-size: var(--fs-1);
+    margin-left: var(--sp-3);
+  }
+</style>

@@ -1,0 +1,126 @@
+---
+import Base from './Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { article, breadcrumbList } from '@/lib/seo';
+import { SITE, ogSlug, timerByPath } from '@/lib/site';
+import { countdowns } from '@/data/countdowns';
+import { tabatas } from '@/data/tabatas';
+import { workouts } from '@/data/workouts';
+
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date | undefined;
+  tags: string[];
+  timer: string;
+  words: number;
+  minutes: number;
+}
+const { slug, title, description, pubDate, updatedDate, tags, timer, words, minutes } = Astro.props;
+const path = `/blog/${slug}`;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Blog', path: '/blog' },
+  { name: title, path },
+];
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+const timerName =
+  timerByPath(timer)?.name ??
+  [...countdowns, ...tabatas, ...workouts].find((p) => p.path === timer)?.h1 ??
+  'the timer';
+const ld = [
+  article({
+    title,
+    description,
+    path,
+    pubDate,
+    ...(updatedDate ? { updatedDate } : {}),
+    tags,
+    image: `${SITE.url}/og/${ogSlug(path)}.png`,
+    wordCount: words,
+  }),
+  breadcrumbList(crumbs),
+];
+---
+
+<Base
+  {title}
+  {description}
+  {path}
+  type="article"
+  jsonLd={ld}
+  publishedTime={pubDate.toISOString()}
+  modifiedTime={(updatedDate ?? pubDate).toISOString()}
+>
+  <Breadcrumbs {crumbs} />
+  <main id="main" class="wrap">
+    <article class="post">
+      <header class="post__head">
+        <p class="post__meta mono">
+          <time datetime={pubDate.toISOString()}>{fmt(pubDate)}</time>
+          {updatedDate && <span> · updated {fmt(updatedDate)}</span>}
+          <span> · {minutes} min read</span>
+        </p>
+        <h1>{title}</h1>
+        <p class="post__lede">{description}</p>
+        <p class="post__tags">
+          {tags.map((t) => (
+            <a class="tag" href={`/blog/tag/${t}`}>
+              {t}
+            </a>
+          ))}
+        </p>
+      </header>
+      <div class="prose post__body">
+        <slot />
+      </div>
+      <aside class="post__cta">
+        <p class="section__num">Try it</p>
+        <a class="btn btn--primary" href={timer}>
+          Open the {timerName.toLowerCase()}
+        </a>
+      </aside>
+    </article>
+  </main>
+</Base>
+
+<style>
+  .post {
+    max-width: var(--measure);
+    padding-block: var(--sp-5) 0;
+  }
+  .post__head {
+    margin-bottom: var(--sp-6);
+    padding-bottom: var(--sp-5);
+    border-bottom: 1px solid var(--grey-300);
+  }
+  .post__meta {
+    color: var(--grey-500);
+    font-size: var(--fs-1);
+    margin-bottom: var(--sp-3);
+  }
+  .post__lede {
+    font-size: var(--fs-3);
+    color: var(--grey-700);
+  }
+  .post__tags {
+    display: flex;
+    gap: var(--sp-2);
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  .post__body :global(h2) {
+    margin-top: var(--sp-7);
+  }
+  .post__body :global(h2:first-child) {
+    margin-top: 0;
+  }
+  .post__cta {
+    margin-top: var(--sp-7);
+    padding-top: var(--sp-5);
+    border-top: 1px solid var(--grey-300);
+  }
+</style>

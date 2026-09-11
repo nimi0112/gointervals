@@ -1,0 +1,15 @@
+---
+import ProgrammaticTimer from '@/components/ProgrammaticTimer.astro';
+import { tabatas } from '@/data/tabatas';
+import type { ProgrammaticPage } from '@/data/types';
+
+export function getStaticPaths() {
+  return tabatas.map((page) => ({
+    params: { slug: page.path.replace('/tabata/', '') },
+    props: { page },
+  }));
+}
+const { page } = Astro.props as { page: ProgrammaticPage };
+---
+
+<ProgrammaticTimer {page} posts={['/blog/what-is-a-tabata-timer']} />

@@ -1,0 +1,15 @@
+---
+import ProgrammaticTimer from '@/components/ProgrammaticTimer.astro';
+import { countdowns } from '@/data/countdowns';
+import type { ProgrammaticPage } from '@/data/types';
+
+export function getStaticPaths() {
+  return countdowns.map((page) => ({
+    params: { slug: page.path.replace('/timer/', '') },
+    props: { page },
+  }));
+}
+const { page } = Astro.props as { page: ProgrammaticPage };
+---
+
+<ProgrammaticTimer {page} posts={['/blog/free-online-timer-that-works-offline']} />

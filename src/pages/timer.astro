@@ -1,0 +1,78 @@
+---
+import TimerPage from '@/layouts/TimerPage.astro';
+import Section from '@/components/Section.astro';
+import { faqs } from '@/data/faqs';
+import { relatedTimers, relatedPosts } from '@/data/related';
+import { defaultConfigs } from '@/engine/presets';
+import { countdowns } from '@/data/countdowns';
+const minutes = countdowns.filter((c) => c.path.endsWith('-minutes'));
+const seconds = countdowns.filter((c) => c.path.endsWith('-seconds'));
+---
+
+<TimerPage
+  title="Online Timer – Free Countdown Timer with Alarm"
+  description="Free online countdown timer with an alarm at the end. Presets from 1 to 60 minutes or set your own. Keeps the screen on and works offline."
+  path="/timer"
+  h1="Countdown timer"
+  lede="Pick a length, press Start. It beeps at zero, keeps the screen on, and counts down in the tab title."
+  config={defaultConfigs.countdown}
+  faq={faqs['/timer']}
+  related={relatedTimers['/timer']!}
+  posts={relatedPosts['/timer']}
+  crumbName="Countdown timer"
+>
+  <Section num="01" title="Common lengths" flush>
+    <p>Each of these opens with the timer already set. Handy to bookmark.</p>
+    <ul class="grid">
+      {minutes.map((c) => (
+        <li>
+          <a href={c.path}>{c.h1}</a>
+        </li>
+      ))}
+    </ul>
+    <ul class="grid">
+      {seconds.map((c) => (
+        <li>
+          <a href={c.path}>{c.h1}</a>
+        </li>
+      ))}
+    </ul>
+  </Section>
+  <Section num="02" title="How it behaves">
+    <p>
+      The countdown reads the system clock rather than counting seconds, so if the tab gets
+      throttled or the phone sleeps it is still right when you look. If you missed the end, it plays
+      the finish tone as soon as the page is visible again.
+    </p>
+    <p>
+      The last three seconds tick. The end is a three-note chime and a vibration on phones that
+      support it. The last length you used is remembered.
+    </p>
+  </Section>
+</TimerPage>
+
+<style>
+  .grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--sp-2);
+    max-width: none;
+  }
+  .grid li {
+    margin: 0;
+  }
+  .grid a {
+    display: block;
+    padding: var(--sp-3);
+    border: 1px solid var(--grey-300);
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: var(--fs-1);
+  }
+  .grid a:hover {
+    border-color: var(--ink);
+  }
+</style>

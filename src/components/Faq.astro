@@ -1,0 +1,40 @@
+---
+import type { Faq } from '@/data/types';
+interface Props {
+  items: Faq[];
+  num?: string;
+}
+const { items, num } = Astro.props;
+---
+
+<section class="section" id="faq">
+  {num && <p class="section__num">{num}</p>}
+  <h2>Questions people ask</h2>
+  <dl class="faq">
+    {items.map((f) => (
+      <div class="faq__item">
+        <dt>{f.q}</dt>
+        <dd>{f.a}</dd>
+      </div>
+    ))}
+  </dl>
+</section>
+
+<style>
+  .faq {
+    margin: 0;
+    max-width: var(--measure);
+  }
+  .faq__item {
+    padding-block: var(--sp-4);
+    border-top: 1px solid var(--grey-300);
+  }
+  dt {
+    font-weight: 600;
+    margin-bottom: var(--sp-2);
+  }
+  dd {
+    margin: 0;
+    color: var(--grey-700);
+  }
+</style>

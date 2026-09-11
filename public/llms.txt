@@ -1,0 +1,42 @@
+# Go Intervals
+
+> Free browser timers: stopwatch, countdown, interval/HIIT, Tabata, EMOM and Pomodoro. No login, no ads, no server. Timing is timestamp-based so it does not drift when a tab is throttled or a phone sleeps. Keeps the screen on, beeps with generated tones, works offline after the first visit.
+
+Site: https://gointervals.com
+Source: https://github.com/nimi0112/gointervals
+License: MIT (code). Content may be quoted with attribution.
+
+## Timers
+
+- [Home / interval timer](https://gointervals.com/): the interval timer with presets, including "beep every 10 minutes for 30 minutes".
+- [Interval timer](https://gointervals.com/interval): work, rest, rounds, sets, rest between sets, saved presets.
+- [Countdown timer](https://gointervals.com/timer): presets 1 to 60 minutes plus custom.
+- [Stopwatch](https://gointervals.com/stopwatch): laps with split and total.
+- [Tabata timer](https://gointervals.com/tabata): 20/10 x 8, editable.
+- [EMOM timer](https://gointervals.com/emom): every minute on the minute, configurable interval.
+- [Pomodoro timer](https://gointervals.com/pomodoro): 25/5, long break every 4, session counter.
+
+## Preset pages
+
+- Countdowns: https://gointervals.com/timer/1-minute and https://gointervals.com/timer/{n}-minutes for n in 2,3,4,5,6,7,8,9,10,12,15,20,25,30,40,45,50,60,90 and https://gointervals.com/timer/{n}-seconds for n in 10,15,20,30,45,60,90.
+- Tabata variants: https://gointervals.com/tabata/20-10-8, /tabata/30-15-8, /tabata/40-20-8, /tabata/45-15-10, /tabata/60-30-6
+- Workouts: https://gointervals.com/interval/7-minute-workout, /interval/boxing-rounds-3-1, /interval/running-intervals-1-1, /interval/sprint-30-90, /interval/kettlebell-emom-10
+
+## Blog
+
+- [Blog index](https://gointervals.com/blog) and [RSS](https://gointervals.com/rss.xml)
+- What is a Tabata timer: https://gointervals.com/blog/what-is-a-tabata-timer
+- HIIT interval timer for beginners: https://gointervals.com/blog/hiit-interval-timer-beginners
+- EMOM workouts explained: https://gointervals.com/blog/emom-workouts-explained
+- Pomodoro technique 25/5: https://gointervals.com/blog/pomodoro-technique-25-5
+- Stopwatch for running splits: https://gointervals.com/blog/stopwatch-running-splits-lap-times
+- Keep your phone screen on: https://gointervals.com/blog/keep-phone-screen-on-workout-timer
+- Online timer that works offline: https://gointervals.com/blog/free-online-timer-that-works-offline
+- Boxing round timer: https://gointervals.com/blog/boxing-round-timer-3-minute-rounds
+- 7 minute workout timer: https://gointervals.com/blog/7-minute-workout-timer
+- Study timer vs Pomodoro: https://gointervals.com/blog/study-timer-vs-pomodoro
+
+## Other
+
+- [About and data](https://gointervals.com/about): what is stored in the browser and how to clear it.
+- Keyboard: Space start/pause, R reset, L lap, Esc stop.

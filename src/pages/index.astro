@@ -1,0 +1,117 @@
+---
+import TimerPage from '@/layouts/TimerPage.astro';
+import Section from '@/components/Section.astro';
+import { TIMERS, SITE } from '@/lib/site';
+import { faqs } from '@/data/faqs';
+import { relatedTimers, relatedPosts } from '@/data/related';
+import { webSite, organization } from '@/lib/seo';
+import { defaultConfigs } from '@/engine/presets';
+
+const modes = [
+  {
+    ...TIMERS[0]!,
+    blurb:
+      'Work, rest, rounds, sets. Presets for HIIT, boxing, run/walk and "beep every 10 minutes".',
+  },
+  { ...TIMERS[1]!, blurb: 'One number, one beep. Presets from 1 to 60 minutes, or type your own.' },
+  { ...TIMERS[2]!, blurb: 'Laps with split and total. Fastest and slowest marked.' },
+  { ...TIMERS[3]!, blurb: '20 on, 10 off, 8 rounds. The real one, or edit it.' },
+  { ...TIMERS[4]!, blurb: 'Every minute on the minute. Or every 90 seconds, or every two.' },
+  { ...TIMERS[5]!, blurb: '25/5 with a long break every four. Session count survives reloads.' },
+];
+---
+
+<TimerPage
+  title={SITE.tagline}
+  description={SITE.description}
+  path="/"
+  h1="Interval timer that beeps when it should"
+  lede="Free, no login, keeps your screen on, works offline. Pick a preset or set your own work and rest."
+  config={defaultConfigs.interval}
+  presets
+  faq={faqs['/']}
+  related={relatedTimers['/']!}
+  posts={relatedPosts['/']}
+  jsonLd={[webSite(), organization()]}
+>
+  <Section num="01" title="Every timer, one place" flush>
+    <ul class="modes">
+      {modes.map((m) => (
+        <li>
+          <a href={m.path}>
+            <span class="modes__name">{m.name}</span>
+            <span class="modes__blurb">{m.blurb}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section num="02" title="Why this one">
+    <p>
+      Most timer sites drift. They count ticks, the tab gets throttled, and your 20 minute EMOM ends
+      40 seconds late. This one reads the clock. Sleep the phone, switch apps, come back: it is on
+      the right second and plays anything you missed.
+    </p>
+    <ul>
+      <li>
+        Keeps the screen on while running, using the Wake Lock API with a fallback for older phones.
+      </li>
+      <li>Beeps are generated on the spot, so nothing to download and nothing to buffer.</li>
+      <li>Works offline after the first visit. Airplane mode is fine.</li>
+      <li>No account. Presets and history stay in your browser. There is a button to wipe them.</li>
+      <li>
+        Space to start, R to reset, Esc to stop. Fullscreen digits you can read from across the
+        room.
+      </li>
+    </ul>
+  </Section>
+
+  <Section num="03" title="Beep every N minutes">
+    <p>
+      A surprising number of people want a 30 minute timer that beeps every 10 minutes: for study
+      blocks, sauna rounds, tattoo sessions, saline soaks, checking the oven. That is an interval
+      timer with no rest. The first preset above does exactly that. Change Work to any length, set
+      Rest to 0, pick your rounds.
+    </p>
+  </Section>
+</TimerPage>
+
+<style>
+  .modes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--grey-300);
+    max-width: none;
+  }
+  .modes li {
+    border-bottom: 1px solid var(--grey-300);
+    margin: 0;
+  }
+  .modes a {
+    display: grid;
+    gap: var(--sp-1);
+    padding: var(--sp-4) 0;
+    text-decoration: none;
+  }
+  @media (min-width: 720px) {
+    .modes a {
+      grid-template-columns: 220px 1fr;
+      gap: var(--sp-5);
+      align-items: baseline;
+    }
+  }
+  .modes__name {
+    font-weight: 600;
+    font-size: var(--fs-3);
+  }
+  .modes a:hover .modes__name {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+  }
+  .modes__blurb {
+    color: var(--grey-700);
+  }
+</style>

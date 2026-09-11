@@ -1,0 +1,37 @@
+---
+import TimerPage from '@/layouts/TimerPage.astro';
+import Section from '@/components/Section.astro';
+import { faqs } from '@/data/faqs';
+import { relatedTimers, relatedPosts } from '@/data/related';
+import { defaultConfigs } from '@/engine/presets';
+---
+
+<TimerPage
+  title="Pomodoro Timer – Free 25/5 Focus Timer, No Login"
+  description="Free online Pomodoro timer: 25 minutes focus, 5 minute break, long break after four. Editable, session counter saved in your browser, tab title countdown."
+  path="/pomodoro"
+  h1="Pomodoro timer"
+  lede="25 minutes on, 5 off, a long break after four. Editable. The session count survives a reload."
+  config={defaultConfigs.pomodoro}
+  faq={faqs['/pomodoro']}
+  related={relatedTimers['/pomodoro']!}
+  posts={relatedPosts['/pomodoro']}
+  crumbName="Pomodoro timer"
+>
+  <Section num="01" title="The technique" flush>
+    <p>
+      Francesco Cirillo, a tomato-shaped kitchen timer, late 1980s. Work for 25 minutes on one
+      thing, take a 5 minute break, and after four of those take 15 to 30 minutes off. The numbers
+      are less important than the rule that a pomodoro is indivisible: if you get interrupted, it
+      does not count.
+    </p>
+  </Section>
+  <Section num="02" title="Using this one">
+    <p>
+      Press Start and leave the tab open. The title shows the minutes left, so you can see it from
+      another tab. A rising pair means focus, a falling pair means break. The counter under the
+      timer adds one each time a focus block finishes and is stored in your browser.
+    </p>
+    <p>Prefer 50/10? Change Focus and Short break in the settings. The change sticks.</p>
+  </Section>
+</TimerPage>

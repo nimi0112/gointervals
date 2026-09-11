@@ -1,0 +1,15 @@
+---
+import ProgrammaticTimer from '@/components/ProgrammaticTimer.astro';
+import { workouts } from '@/data/workouts';
+import type { ProgrammaticPage } from '@/data/types';
+
+export function getStaticPaths() {
+  return workouts.map((page) => ({
+    params: { slug: page.path.replace('/interval/', '') },
+    props: { page },
+  }));
+}
+const { page } = Astro.props as { page: ProgrammaticPage };
+---
+
+<ProgrammaticTimer {page} posts={['/blog/hiit-interval-timer-beginners']} />

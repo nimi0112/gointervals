@@ -1,0 +1,52 @@
+---
+import TimerPage from '@/layouts/TimerPage.astro';
+import Section from '@/components/Section.astro';
+import { faqs } from '@/data/faqs';
+import { relatedTimers, relatedPosts } from '@/data/related';
+import { defaultConfigs } from '@/engine/presets';
+---
+
+<TimerPage
+  title="Interval Timer – Free HIIT Timer with Rounds and Sets"
+  description="Free online interval timer for HIIT and circuits. Set work, rest, rounds and sets, save presets, beep every N minutes. No login, works offline, screen stays on."
+  path="/interval"
+  h1="Interval timer"
+  lede="Work, rest, rounds, sets. Save your own presets. Beeps at every change so you can put the phone down."
+  config={defaultConfigs.interval}
+  presets
+  faq={faqs['/interval']}
+  related={relatedTimers['/interval']!}
+  posts={relatedPosts['/interval']}
+  crumbName="Interval timer"
+>
+  <Section num="01" title="Set it up" flush>
+    <p>
+      Work is the hard bit, Rest is the easy bit, Rounds is how many times you repeat the pair. Sets
+      group rounds together with a longer break between them. Get ready is a short countdown before
+      round one so you are not starting mid-fumble.
+    </p>
+    <p>
+      Set Rest to 0 for a timer that just beeps every N minutes. Ten minute blocks, three rounds,
+      and you have a 30 minute timer with a beep at 10 and 20. That is the first preset.
+    </p>
+  </Section>
+  <Section num="02" title="Run it">
+    <p>
+      Press Start or hit Space. Digits go green on work, grey on rest, and the sounds are different
+      too: a rising pair to go, a falling pair to stop, a tick for the last three seconds, a
+      three-note finish. Skip jumps to the next block if you need to bail on a set.
+    </p>
+    <p>
+      The tab title counts down. Fullscreen gives you digits big enough to see from the other end of
+      the garage. The timer holds a screen wake lock while it runs, so the phone does not go dark
+      halfway through round six.
+    </p>
+  </Section>
+  <Section num="03" title="Save it">
+    <p>
+      Save current as preset stores your setup in this browser with a name. It sits at the top of
+      the list next time you open the page. Nothing leaves your device. Delete presets with the ×
+      next to them, or wipe everything from the About page.
+    </p>
+  </Section>
+</TimerPage>

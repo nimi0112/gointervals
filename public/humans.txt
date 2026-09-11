@@ -1,0 +1,11 @@
+/* TEAM */
+Maker: Nimish Nandwana
+Site: https://gointervals.com
+Source: https://github.com/nimi0112/gointervals
+
+/* SITE */
+Standards: HTML5, CSS custom properties, Web Audio, Screen Wake Lock, Service Worker
+Built with: Astro, Preact, satori
+Fonts: Bricolage Grotesque, JetBrains Mono
+Accent: #0f7a4f (pitch green)
+Last update: 2026-09-11

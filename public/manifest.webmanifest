@@ -1,0 +1,27 @@
+{
+  "name": "Go Intervals",
+  "short_name": "Intervals",
+  "description": "Free stopwatch, countdown, interval, Tabata, EMOM and Pomodoro timers. Works offline.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "categories": ["health", "fitness", "productivity", "utilities"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "Interval timer", "url": "/interval" },
+    { "name": "Countdown", "url": "/timer" },
+    { "name": "Stopwatch", "url": "/stopwatch" },
+    { "name": "Tabata", "url": "/tabata" }
+  ]
+}

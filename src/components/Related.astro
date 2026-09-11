@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import { TIMERS } from '@/lib/site';
+import { countdowns } from '@/data/countdowns';
+import { tabatas } from '@/data/tabatas';
+import { workouts } from '@/data/workouts';
+
+interface Props {
+  timers: string[];
+  posts?: string[];
+  num?: string;
+}
+const { timers, posts = [], num } = Astro.props;
+
+const all = [...countdowns, ...tabatas, ...workouts];
+const nameFor = (path: string): string =>
+  TIMERS.find((t) => t.path === path)?.name ?? all.find((p) => p.path === path)?.h1 ?? path;
+
+const blog = posts.length ? await getCollection('blog', (p) => !p.data.draft) : [];
+const postItems = posts
+  .map((path) => blog.find((p) => `/blog/${p.id}` === path))
+  .filter((p): p is NonNullable<typeof p> => !!p);
+---
+
+<section class="section">
+  {num && <p class="section__num">{num}</p>}
+  <h2>Related</h2>
+  <div class="related">
+    <div>
+      <h3>Timers</h3>
+      <ul class="list">
+        {timers.map((path) => (
+          <li>
+            <a href={path}>
+              <span class="list__title">{nameFor(path)}</span>
+              <span class="list__meta">{path}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    {postItems.length > 0 && (
+      <div>
+        <h3>From the blog</h3>
+        <ul class="list">
+          {postItems.map((p) => (
+            <li>
+              <a href={`/blog/${p.id}`}>
+                <span class="list__title">{p.data.title}</span>
+                <span class="list__meta">{p.data.tags[0]}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .related {
+    display: grid;
+    gap: var(--sp-6);
+  }
+  @media (min-width: 720px) {
+    .related {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  h3 {
+    font-size: var(--fs-2);
+    color: var(--grey-500);
+    font-weight: 500;
+    margin-bottom: var(--sp-2);
+  }
+</style>

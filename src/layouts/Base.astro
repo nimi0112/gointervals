@@ -1,0 +1,58 @@
+---
+import '@/styles/base.css';
+import Head from '@/components/Head.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+import Analytics from '@/components/Analytics.astro';
+import { webApplication } from '@/lib/seo';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  type?: 'website' | 'article';
+  jsonLd?: Record<string, unknown>[];
+  publishedTime?: string;
+  modifiedTime?: string;
+  noindex?: boolean;
+}
+const { jsonLd = [], ...head } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <Head {...head} jsonLd={[webApplication(), ...jsonLd]} />
+    <Analytics />
+  </head>
+  <body>
+    <a class="skip" href="#main">
+      Skip to content
+    </a>
+    <Nav />
+    <slot />
+    <Footer />
+    <script is:inline>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').catch(function () {});
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  .skip {
+    position: absolute;
+    left: var(--sp-4);
+    top: -100px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: var(--sp-2) var(--sp-4);
+    z-index: 100;
+    border-radius: var(--radius);
+  }
+  .skip:focus {
+    top: var(--sp-2);
+  }
+</style>

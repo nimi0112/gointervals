@@ -1,0 +1,57 @@
+---
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import PostList from '@/components/PostList.astro';
+import { getCollection } from 'astro:content';
+import { breadcrumbList } from '@/lib/seo';
+
+const posts = (await getCollection('blog', (p) => !p.data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Blog', path: '/blog' },
+];
+---
+
+<Base
+  title="Blog – Timers, Intervals and Focus, Explained"
+  description="Short, specific guides to Tabata, HIIT, EMOM, Pomodoro, stopwatch splits and keeping your phone awake during a workout. Written by people who use the timers."
+  path="/blog"
+  jsonLd={[breadcrumbList(crumbs)]}
+>
+  <Breadcrumbs {crumbs} />
+  <main id="main" class="wrap">
+    <header class="bh">
+      <h1>Blog</h1>
+      <p class="bh__lede">
+        How the protocols work and how to run them with a timer. No fluff intros.
+      </p>
+      <p class="bh__tags">
+        {tags.map((t) => (
+          <a class="tag" href={`/blog/tag/${t}`}>
+            {t}
+          </a>
+        ))}
+      </p>
+    </header>
+    <PostList {posts} />
+  </main>
+</Base>
+
+<style>
+  .bh {
+    padding-block: var(--sp-5) var(--sp-6);
+  }
+  .bh__lede {
+    color: var(--grey-700);
+    font-size: var(--fs-3);
+  }
+  .bh__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    margin: 0;
+  }
+</style>

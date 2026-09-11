@@ -1,0 +1,38 @@
+---
+import TimerPage from '@/layouts/TimerPage.astro';
+import Section from '@/components/Section.astro';
+import { faqs } from '@/data/faqs';
+import { relatedTimers, relatedPosts } from '@/data/related';
+import { defaultConfigs } from '@/engine/presets';
+---
+
+<TimerPage
+  title="EMOM Timer – Free Every Minute On the Minute Timer"
+  description="Free EMOM timer that beeps every minute (or every 90 seconds, or every 2). Set the total length, get a tick before each minute. No login, works offline."
+  path="/emom"
+  h1="EMOM timer"
+  lede="Every minute on the minute. Set the total length and the interval, get a beep at the top of each one."
+  config={defaultConfigs.emom}
+  faq={faqs['/emom']}
+  related={relatedTimers['/emom']!}
+  posts={relatedPosts['/emom']}
+  crumbName="EMOM timer"
+>
+  <Section num="01" title="How an EMOM works" flush>
+    <p>
+      Do a set at the top of the minute. Rest for whatever is left. When the next minute starts, go
+      again. The rest shrinks as you slow down, which is the whole point: the clock keeps you honest
+      about the weight and the reps.
+    </p>
+    <p>
+      Total minutes sets how long the session runs. Every sets the interval, so 1:30 makes it an
+      E90S and 2:00 makes it an E2MOM. Get ready adds a short countdown before the first minute.
+    </p>
+  </Section>
+  <Section num="02" title="What you hear">
+    <p>
+      A beep at the top of every interval, ticks through the last three seconds so you can pick the
+      bar up on time, and a finish chime. The phase label counts the minutes for you.
+    </p>
+  </Section>
+</TimerPage>
