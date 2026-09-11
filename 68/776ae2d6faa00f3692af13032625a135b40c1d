@@ -1,0 +1,27 @@
+tests/e2e/timer.spec.ts
+  s_7510e9041608db::t_8a2054ad5dd02c 76
+src/islands/parts/Shell.tsx
+  s_7510e9041608db::t_c5691f670332b6 107-122
+src/islands/parts/DurationField.tsx
+  s_7510e9041608db::t_c5691f670332b6 39-52,56-68
+src/islands/Timer.tsx
+  s_7510e9041608db::t_8a2054ad5dd02c 5,64,66,69,71
+src/styles/timer.css
+  s_7510e9041608db::t_8a2054ad5dd02c 60-85,260-272
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "68776ae2d6faa00f3692af13032625a135b40c1d",
+  "prompts": {},
+  "sessions": {
+    "s_7510e9041608db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "88cc67a1-d318-46b0-83ae-59fd7b55ba77",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
