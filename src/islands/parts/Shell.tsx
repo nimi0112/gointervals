@@ -104,7 +104,22 @@ export function Shell(p: ShellProps) {
             if (full) p.onPrimary();
           }}
         >
-          {p.digits}
+          {(() => {
+            const groups = p.digits.split(':');
+            const units = groups.length === 3 ? ['hr', 'min', 'sec'] : ['min', 'sec'];
+            return groups.map((g, i) => (
+              <>
+                {i > 0 && (
+                  <span class="timer__sep" aria-hidden="true">
+                    :
+                  </span>
+                )}
+                <span class="timer__group" data-unit={units[i]}>
+                  {g}
+                </span>
+              </>
+            ));
+          })()}
         </div>
         <div class="timer__bar" aria-hidden="true">
           <div

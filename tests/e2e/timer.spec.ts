@@ -73,7 +73,7 @@ test.describe('interval', () => {
     await expect(first).toContainText('Beep every 10 min for 30 min');
     await first.click();
     await expect(page.getByRole('timer')).toHaveText('10:00');
-    await expect(page.locator('.timer__meta')).toContainText('30:00 total left');
+    await expect(page.locator('.timer__meta')).toContainText('30 min total left');
   });
 });
 

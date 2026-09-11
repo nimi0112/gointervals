@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'preact/hooks';
 import type { ModeConfig, IntervalConfig, Segment } from '@/engine/schedule';
 import { configSeconds, buildSchedule } from '@/engine/schedule';
 import type { TimerEvent, TimerSnapshot } from '@/engine/timer';
-import { formatClock, formatTitle, describeSeconds } from '@/engine/format';
+import { formatClock, formatTitle, describeSeconds, formatDuration } from '@/engine/format';
 import {
   builtinIntervalPresets,
   parsePresets,
@@ -61,15 +61,14 @@ function phaseText(s: TimerSnapshot): string | null {
 
 function metaText(s: TimerSnapshot, segments: readonly Segment[]): string {
   if (s.status === 'done') return 'Finished. Reset to go again.';
+  const left = formatDuration(Math.ceil(s.totalRemainingMs / 1000));
   if (s.segmentCount <= 1)
-    return s.status === 'idle'
-      ? 'Tap start when you are ready'
-      : `${formatClock(s.totalRemainingMs)} left`;
+    return s.status === 'idle' ? 'Tap start when you are ready' : `${left} left`;
   const nextSeg = segments[s.segmentIndex + 1];
   const next = nextSeg
-    ? `next ${nextSeg.label.toLowerCase()} ${formatClock(nextSeg.ms)}`
+    ? `next ${nextSeg.label.toLowerCase()} ${formatDuration(nextSeg.ms / 1000)}`
     : 'last block';
-  return `${formatClock(s.totalRemainingMs)} total left · ${next}`;
+  return `${left} total left · ${next}`;
 }
 
 export default function Timer({ config: initial, fixed = false, presets = false }: Props) {
