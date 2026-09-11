@@ -1,0 +1,23 @@
+public/_headers
+  s_7510e9041608db::t_ef6f36dc283887 6
+AGENTS.md
+  s_7510e9041608db::t_ef6f36dc283887 126
+src/pages/about.astro
+  s_7510e9041608db::t_45f73fe1e7e1f2 52-54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8c964250636377c5f38aae03611fa2aee23ab1ee",
+  "prompts": {},
+  "sessions": {
+    "s_7510e9041608db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "88cc67a1-d318-46b0-83ae-59fd7b55ba77",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
