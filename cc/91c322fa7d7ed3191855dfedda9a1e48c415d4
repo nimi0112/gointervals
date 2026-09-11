@@ -1,0 +1,19 @@
+package-lock.json
+  s_7510e9041608db::t_7ebec7e42c5f5d 10,960-982,4163-4166,4169,4172,4349-4351,4355-4358,4389-4391,4542-4553,4644-4647,6761-6764,6767,7304-7331,7777-7791,7801-7813
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "cc91c322fa7d7ed3191855dfedda9a1e48c415d4",
+  "prompts": {},
+  "sessions": {
+    "s_7510e9041608db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "88cc67a1-d318-46b0-83ae-59fd7b55ba77",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
