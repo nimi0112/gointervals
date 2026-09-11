@@ -105,7 +105,7 @@ Changing any of these needs a test change in `tests/unit` first.
 
 ### Adding a programmatic page
 
-1. Add an entry to `src/data/countdowns.ts`, `tabatas.ts` or `workouts.ts`. Every field is required, including hand-written intro paragraphs and 3-4 FAQs.
+1. Add an entry to the right file in `src/data/`: `countdowns.ts` (lengths), `uses.ts` (purpose pages under `/timer/`), `tabatas.ts`, `workouts.ts`, `beeps.ts` (repeating beeps under `/interval/`), or `pomodoros.ts`. Every field is required, including hand-written intro paragraphs and 3-4 FAQs. `src/data/index.ts` concatenates them all for lookups and OG images.
 2. Add it to `related` on two or three neighbouring entries.
 3. Build. The route, OG image and sitemap entry are generated. `check:build` will tell you if a link is dead.
 4. If it is a new _kind_ of page, add a `[slug].astro` under `src/pages/<kind>/` using `ProgrammaticTimer.astro`, and add the paths to `src/lib/pages.ts`.

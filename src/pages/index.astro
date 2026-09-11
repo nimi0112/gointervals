@@ -6,6 +6,8 @@ import { faqs } from '@/data/faqs';
 import { relatedTimers, relatedPosts } from '@/data/related';
 import { webSite, organization } from '@/lib/seo';
 import { defaultConfigs } from '@/engine/presets';
+import { beeps } from '@/data/beeps';
+import { uses } from '@/data/uses';
 
 const modes = [
   {
@@ -78,9 +80,26 @@ const modes = [
     <p>
       A surprising number of people want a 30 minute timer that beeps every 10 minutes: for study
       blocks, sauna rounds, tattoo sessions, saline soaks, checking the oven. That is an interval
-      timer with no rest. The first preset above does exactly that. Change Work to any length, set
-      Rest to 0, pick your rounds.
+      timer with no rest. The first preset above does exactly that, and each cadence has its own
+      page with the timer already set.
     </p>
+    <ul class="links">
+      {beeps.map((b) => (
+        <li>
+          <a href={b.path}>{b.h1.replace('Timer that beeps ', 'Beep ')}</a>
+        </li>
+      ))}
+    </ul>
+  </Section>
+  <Section num="04" title="Timers by what you are doing">
+    <p>The same countdown, set up and written for a specific job.</p>
+    <ul class="links">
+      {uses.map((u) => (
+        <li>
+          <a href={u.path}>{u.h1}</a>
+        </li>
+      ))}
+    </ul>
   </Section>
 </TimerPage>
 
@@ -117,6 +136,28 @@ const modes = [
     text-decoration: underline;
     text-decoration-color: var(--accent);
     text-decoration-thickness: 2px;
+  }
+  .links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    max-width: none;
+  }
+  .links li {
+    margin: 0;
+  }
+  .links a {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid var(--grey-300);
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: var(--fs-1);
+  }
+  .links a:hover {
+    border-color: var(--ink);
   }
   .modes__blurb {
     color: var(--grey-700);

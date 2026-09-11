@@ -75,7 +75,13 @@ export const workouts: ProgrammaticPage[] = [
         a: 'Yes. The timer holds a screen wake lock while running, and falls back to a hidden looping video on browsers without one. 48 minutes at full brightness will eat some battery.',
       },
     ],
-    related: ['/blog/boxing-round-timer-3-minute-rounds', '/interval', '/timer/3-minutes', '/emom'],
+    related: [
+      '/blog/boxing-round-timer-3-minute-rounds',
+      '/interval',
+      '/timer/3-minutes',
+      '/emom',
+      '/blog/how-many-rounds-in-a-boxing-match',
+    ],
   },
   {
     path: '/interval/running-intervals-1-1',
@@ -114,6 +120,7 @@ export const workouts: ProgrammaticPage[] = [
       '/interval',
       '/stopwatch',
       '/blog/stopwatch-running-splits-lap-times',
+      '/blog/interval-timer-for-running',
     ],
   },
   {

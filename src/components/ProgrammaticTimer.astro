@@ -2,26 +2,17 @@
 import TimerPage from '@/layouts/TimerPage.astro';
 import Section from '@/components/Section.astro';
 import type { ProgrammaticPage } from '@/data/types';
-import { formatDuration } from '@/engine/format';
 import { configSeconds } from '@/engine/schedule';
+import { describeConfig } from '@/engine/describe';
+import { howTo } from '@/lib/seo';
 
 interface Props {
   page: ProgrammaticPage;
   posts?: string[];
 }
 const { page, posts = [] } = Astro.props;
-const total = formatDuration(configSeconds(page.config));
-const c = page.config;
-const setup =
-  c.mode === 'countdown'
-    ? `Counts down ${total}, then plays the finish tone.`
-    : c.mode === 'interval' || c.mode === 'tabata'
-      ? `${formatDuration(c.work)} work, ${c.rest ? formatDuration(c.rest) + ' rest' : 'no rest'}, ${c.rounds} rounds${
-          'sets' in c && c.sets > 1 ? `, ${c.sets} sets` : ''
-        }. ${total} total.`
-      : c.mode === 'emom'
-        ? `${c.minutes} minutes, a beep every ${formatDuration(c.interval)}.`
-        : '';
+const setup = describeConfig(page.config);
+const total = configSeconds(page.config);
 ---
 
 <TimerPage
@@ -37,6 +28,7 @@ const setup =
   related={page.related.filter((r) => !r.startsWith('/blog/'))}
   posts={[...page.related.filter((r) => r.startsWith('/blog/')), ...posts]}
   crumbName={page.h1}
+  jsonLd={[howTo(page.h1, page.path, setup, total)]}
 >
   <Section num="01" title="What this one is for" flush>
     {page.intro.map((p) => (

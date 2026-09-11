@@ -1,10 +1,11 @@
 ---
 import ProgrammaticTimer from '@/components/ProgrammaticTimer.astro';
 import { countdowns } from '@/data/countdowns';
+import { uses } from '@/data/uses';
 import type { ProgrammaticPage } from '@/data/types';
 
 export function getStaticPaths() {
-  return countdowns.map((page) => ({
+  return [...countdowns, ...uses].map((page) => ({
     params: { slug: page.path.replace('/timer/', '') },
     props: { page },
   }));

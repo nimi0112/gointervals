@@ -1,9 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { TIMERS } from '@/lib/site';
-import { countdowns } from '@/data/countdowns';
-import { tabatas } from '@/data/tabatas';
-import { workouts } from '@/data/workouts';
+import { timerPages } from '@/data';
 
 interface Props {
   timers: string[];
@@ -12,9 +10,8 @@ interface Props {
 }
 const { timers, posts = [], num } = Astro.props;
 
-const all = [...countdowns, ...tabatas, ...workouts];
 const nameFor = (path: string): string =>
-  TIMERS.find((t) => t.path === path)?.name ?? all.find((p) => p.path === path)?.h1 ?? path;
+  TIMERS.find((t) => t.path === path)?.name ?? timerPages.find((p) => p.path === path)?.h1 ?? path;
 
 const blog = posts.length ? await getCollection('blog', (p) => !p.data.draft) : [];
 const postItems = posts

@@ -1,9 +1,7 @@
 /** Every page that gets an OG image, with the text to put on it. */
 import { getCollection } from 'astro:content';
 import { TIMERS } from './site';
-import { countdowns } from '@/data/countdowns';
-import { tabatas } from '@/data/tabatas';
-import { workouts } from '@/data/workouts';
+import { timerPages } from '@/data';
 
 export interface OgPage {
   path: string;
@@ -25,7 +23,7 @@ export async function allOgPages(): Promise<OgPage[]> {
       title: t.name,
       kicker: 'Free, no login, works offline',
     })),
-    ...[...countdowns, ...tabatas, ...workouts].map((p) => ({
+    ...timerPages.map((p) => ({
       path: p.path,
       title: p.h1,
       kicker: 'Ready to start',

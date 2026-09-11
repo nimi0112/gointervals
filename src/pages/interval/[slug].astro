@@ -1,15 +1,19 @@
 ---
 import ProgrammaticTimer from '@/components/ProgrammaticTimer.astro';
 import { workouts } from '@/data/workouts';
+import { beeps } from '@/data/beeps';
 import type { ProgrammaticPage } from '@/data/types';
 
 export function getStaticPaths() {
-  return workouts.map((page) => ({
+  return [...workouts, ...beeps].map((page) => ({
     params: { slug: page.path.replace('/interval/', '') },
     props: { page },
   }));
 }
 const { page } = Astro.props as { page: ProgrammaticPage };
+const post = page.path.includes('beep-every')
+  ? '/blog/timer-that-beeps-every-10-minutes'
+  : '/blog/hiit-interval-timer-beginners';
 ---
 
-<ProgrammaticTimer {page} posts={['/blog/hiit-interval-timer-beginners']} />
+<ProgrammaticTimer {page} posts={[post]} />

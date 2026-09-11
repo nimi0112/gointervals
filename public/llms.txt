@@ -20,7 +20,12 @@ License: MIT, open source. Content may be quoted with attribution. Issues and co
 
 - Countdowns: https://gointervals.com/timer/1-minute and https://gointervals.com/timer/{n}-minutes for n in 2,3,4,5,6,7,8,9,10,12,15,20,25,30,40,45,50,60,90 and https://gointervals.com/timer/{n}-seconds for n in 10,15,20,30,45,60,90.
 - Tabata variants: https://gointervals.com/tabata/20-10-8, /tabata/30-15-8, /tabata/40-20-8, /tabata/45-15-10, /tabata/60-30-6
+- Also: /timer/{n}-minutes for n in 11,13,14,16,17,18,22,35,55, /timer/{n}-hours for n in 2,3,4,5,8, /timer/{n}-seconds for n in 5,7,8,25,40,75.
+- By purpose: https://gointervals.com/timer/kitchen-timer, /timer/classroom-timer, /timer/meditation-timer, /timer/plank-timer, /timer/sauna-timer, /timer/nap-timer, /timer/study-timer, /timer/rest-timer, /timer/loud-timer
+- More Tabata: /tabata/20-10-4, /tabata/10-20-8, /tabata/30-10-8, /tabata/30-30-8, /tabata/45-15-8
 - Workouts: https://gointervals.com/interval/7-minute-workout, /interval/boxing-rounds-3-1, /interval/running-intervals-1-1, /interval/sprint-30-90, /interval/kettlebell-emom-10
+- Repeating beeps: https://gointervals.com/interval/beep-every-30-seconds, /interval/beep-every-minute, /interval/beep-every-2-minutes, /interval/beep-every-3-minutes, /interval/beep-every-5-minutes, /interval/beep-every-10-minutes, /interval/beep-every-15-minutes, /interval/beep-every-20-minutes, /interval/beep-every-30-minutes, /interval/beep-every-hour
+- Pomodoro variants: https://gointervals.com/pomodoro/50-10, /pomodoro/52-17, /pomodoro/90-20, /pomodoro/15-5
 
 ## Blog
 
@@ -35,6 +40,12 @@ License: MIT, open source. Content may be quoted with attribution. Issues and co
 - Boxing round timer: https://gointervals.com/blog/boxing-round-timer-3-minute-rounds
 - 7 minute workout timer: https://gointervals.com/blog/7-minute-workout-timer
 - Study timer vs Pomodoro: https://gointervals.com/blog/study-timer-vs-pomodoro
+- How long is a Tabata workout: https://gointervals.com/blog/how-long-is-a-tabata-workout
+- How many rounds in a boxing match: https://gointervals.com/blog/how-many-rounds-in-a-boxing-match
+- Timer that beeps every 10 minutes: https://gointervals.com/blog/timer-that-beeps-every-10-minutes
+- Interval timer for running: https://gointervals.com/blog/interval-timer-for-running
+- Best Pomodoro length: https://gointervals.com/blog/best-pomodoro-length
+- How long to hold a plank: https://gointervals.com/blog/plank-timer-how-long-to-hold
 
 ## Other
 

@@ -4,6 +4,8 @@ import Section from '@/components/Section.astro';
 import { faqs } from '@/data/faqs';
 import { relatedTimers, relatedPosts } from '@/data/related';
 import { defaultConfigs } from '@/engine/presets';
+import { beeps } from '@/data/beeps';
+import { workouts } from '@/data/workouts';
 ---
 
 <TimerPage
@@ -42,7 +44,22 @@ import { defaultConfigs } from '@/engine/presets';
       halfway through round six.
     </p>
   </Section>
-  <Section num="03" title="Save it">
+  <Section num="03" title="Ready-made">
+    <p>Named workouts and repeating beeps, each on its own page with the timer already set.</p>
+    <ul class="two">
+      {workouts.map((w) => (
+        <li>
+          <a href={w.path}>{w.h1}</a>
+        </li>
+      ))}
+      {beeps.map((b) => (
+        <li>
+          <a href={b.path}>{b.h1}</a>
+        </li>
+      ))}
+    </ul>
+  </Section>
+  <Section num="04" title="Save it">
     <p>
       Save current as preset stores your setup in this browser with a name. It sits at the top of
       the list next time you open the page. Nothing leaves your device. Delete presets with the ×
@@ -50,3 +67,16 @@ import { defaultConfigs } from '@/engine/presets';
     </p>
   </Section>
 </TimerPage>
+
+<style>
+  .two {
+    columns: 2;
+    column-gap: var(--sp-5);
+    padding-left: 1.2em;
+  }
+  @media (max-width: 519px) {
+    .two {
+      columns: 1;
+    }
+  }
+</style>

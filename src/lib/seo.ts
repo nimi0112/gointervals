@@ -152,3 +152,36 @@ export function crumbsFor(path: string, leafName: string): Crumb[] {
   });
   return out;
 }
+
+/** HowTo for a preset timer page: three real steps the page's copy also describes. */
+export function howTo(name: string, path: string, setup: string, totalSeconds: number): JsonLd {
+  const iso = `PT${Math.max(1, Math.round(totalSeconds))}S`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: `How to use the ${name.toLowerCase()}`,
+    url: abs(path),
+    totalTime: iso,
+    tool: [{ '@type': 'HowToTool', name: 'A phone or computer with a web browser' }],
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Open the timer',
+        text: `Open ${abs(path)}. It loads preset: ${setup}`,
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Adjust if needed',
+        text: 'Open Settings under the timer to change any value. The summary line describes the result in plain words.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Start and listen',
+        text: 'Press Start or the Space bar. Distinct tones mark each change, the last three seconds tick, and the screen stays on until it finishes.',
+      },
+    ],
+  };
+}

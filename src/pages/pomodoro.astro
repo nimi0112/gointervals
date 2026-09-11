@@ -4,6 +4,7 @@ import Section from '@/components/Section.astro';
 import { faqs } from '@/data/faqs';
 import { relatedTimers, relatedPosts } from '@/data/related';
 import { defaultConfigs } from '@/engine/presets';
+import { pomodoros } from '@/data/pomodoros';
 ---
 
 <TimerPage
@@ -33,5 +34,15 @@ import { defaultConfigs } from '@/engine/presets';
       timer adds one each time a focus block finishes and is stored in your browser.
     </p>
     <p>Prefer 50/10? Change Focus and Short break in the settings. The change sticks.</p>
+  </Section>
+  <Section num="03" title="Other rhythms">
+    <p>Preset pages for the common alternatives, each with its own reasoning.</p>
+    <ul>
+      {pomodoros.map((p) => (
+        <li>
+          <a href={p.path}>{p.h1}</a>
+        </li>
+      ))}
+    </ul>
   </Section>
 </TimerPage>

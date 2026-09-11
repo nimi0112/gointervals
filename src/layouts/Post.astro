@@ -3,9 +3,7 @@ import Base from './Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import { article, breadcrumbList } from '@/lib/seo';
 import { SITE, ogSlug, timerByPath } from '@/lib/site';
-import { countdowns } from '@/data/countdowns';
-import { tabatas } from '@/data/tabatas';
-import { workouts } from '@/data/workouts';
+import { timerPages } from '@/data';
 
 interface Props {
   slug: string;
@@ -28,9 +26,7 @@ const crumbs = [
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 const timerName =
-  timerByPath(timer)?.name ??
-  [...countdowns, ...tabatas, ...workouts].find((p) => p.path === timer)?.h1 ??
-  'the timer';
+  timerByPath(timer)?.name ?? timerPages.find((p) => p.path === timer)?.h1 ?? 'the timer';
 const ld = [
   article({
     title,

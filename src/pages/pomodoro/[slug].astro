@@ -1,0 +1,15 @@
+---
+import ProgrammaticTimer from '@/components/ProgrammaticTimer.astro';
+import { pomodoros } from '@/data/pomodoros';
+import type { ProgrammaticPage } from '@/data/types';
+
+export function getStaticPaths() {
+  return pomodoros.map((page) => ({
+    params: { slug: page.path.replace('/pomodoro/', '') },
+    props: { page },
+  }));
+}
+const { page } = Astro.props as { page: ProgrammaticPage };
+---
+
+<ProgrammaticTimer {page} posts={['/blog/best-pomodoro-length']} />
