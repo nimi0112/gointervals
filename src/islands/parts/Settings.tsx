@@ -1,5 +1,6 @@
 import type { ModeConfig } from '@/engine/schedule';
 import { DurationField, NumberField } from './DurationField';
+import { describeConfig } from '@/engine/describe';
 
 interface Props {
   config: ModeConfig;
@@ -9,7 +10,7 @@ interface Props {
 
 const COUNTDOWN_PRESETS = [1, 3, 5, 10, 15, 20, 30, 45, 60];
 
-export function Settings({ config, onChange, disabled }: Props) {
+function Fields({ config, onChange, disabled }: Props) {
   switch (config.mode) {
     case 'countdown':
       return (
@@ -185,4 +186,16 @@ export function Settings({ config, onChange, disabled }: Props) {
     case 'stopwatch':
       return null;
   }
+}
+
+export function Settings(props: Props) {
+  if (props.config.mode === 'stopwatch') return null;
+  return (
+    <>
+      <p class="settings__summary" aria-live="polite">
+        {describeConfig(props.config)}
+      </p>
+      <Fields {...props} />
+    </>
+  );
 }

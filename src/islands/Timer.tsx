@@ -280,6 +280,10 @@ export default function Timer({ config: initial, fixed = false, presets = false 
               )}
             </p>
           )}
+          <details class="timer__settings" open={!running}>
+            <summary>Settings{busy ? ' (reset to edit)' : ''}</summary>
+            <Settings config={config} onChange={setConfig} disabled={busy} />
+          </details>
           {presets && config.mode === 'interval' && (
             <PresetBar
               builtin={builtinIntervalPresets}
@@ -291,10 +295,6 @@ export default function Timer({ config: initial, fixed = false, presets = false 
               onDelete={deletePreset}
             />
           )}
-          <details class="timer__settings" open={!running}>
-            <summary>Settings{busy ? ' (reset to edit)' : ''}</summary>
-            <Settings config={config} onChange={setConfig} disabled={busy} />
-          </details>
         </div>
       }
     />
