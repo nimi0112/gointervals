@@ -4,7 +4,7 @@
 
 Site: https://gointervals.com
 Source: https://github.com/nimi0112/gointervals
-License: MIT (code). Content may be quoted with attribution.
+License: MIT, open source. Content may be quoted with attribution. Issues and contributions: https://github.com/nimi0112/gointervals/issues
 
 ## Timers
 

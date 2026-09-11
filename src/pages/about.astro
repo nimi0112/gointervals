@@ -11,7 +11,7 @@ const crumbs = [
 
 <Base
   title="About Go Intervals and Your Data"
-  description="What Go Intervals is, who made it, what is stored in your browser, and a button to delete all of it. No accounts, no cookies, no ads."
+  description="What Go Intervals is, what is stored in your browser with a button to delete it, and where the open source code lives. No accounts, no cookies, no ads."
   path="/about"
   jsonLd={[breadcrumbList(crumbs)]}
 >
@@ -61,14 +61,18 @@ const crumbs = [
       </p>
     </Section>
 
-    <Section num="03" title="Who made it">
+    <Section num="03" title="Open source">
       <p>
-        Built by one person who got tired of a 20 minute EMOM ending 40 seconds late. The source is
-        on
+        Built by one person who got tired of a 20 minute EMOM ending 40 seconds late. The whole
+        thing, timer engine included, is MIT licensed on{' '}
         <a href="https://github.com/nimi0112/gointervals" rel="noopener">
           GitHub
         </a>
-        . If something is wrong, open an issue.
+        . Read how the timing works, run your own copy, or send a fix.
+      </p>
+      <p>
+        Found a bug or want a preset page for a workout you do? Open an issue. There are templates
+        for both, and the contributing guide explains what gets merged.
       </p>
     </Section>
   </main>

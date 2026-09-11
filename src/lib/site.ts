@@ -8,6 +8,7 @@ export const SITE = {
   author: 'Go Intervals',
   twitter: '',
   accent: '#0f7a4f',
+  repo: 'https://github.com/nimi0112/gointervals',
 } as const;
 
 export interface TimerRoute {

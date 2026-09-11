@@ -23,6 +23,7 @@ export function organization(): JsonLd {
     name: SITE.name,
     url: SITE.url,
     logo: `${SITE.url}/icons/icon-512.png`,
+    sameAs: [SITE.repo],
   };
 }
 
@@ -37,6 +38,9 @@ export function webApplication(): JsonLd {
     browserRequirements: 'Requires JavaScript for the timer. Content readable without it.',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     description: SITE.description,
+    isAccessibleForFree: true,
+    license: 'https://opensource.org/licenses/MIT',
+    codeRepository: SITE.repo,
     featureList: [
       'Stopwatch with laps',
       'Countdown timer',
@@ -60,6 +64,8 @@ export function softwareApplication(name: string, path: string, description: str
     operatingSystem: 'Any',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     description,
+    isAccessibleForFree: true,
+    license: 'https://opensource.org/licenses/MIT',
     isPartOf: { '@type': 'WebSite', name: SITE.name, url: SITE.url },
   };
 }

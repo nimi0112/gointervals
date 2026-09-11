@@ -50,8 +50,13 @@ test('robots, sitemap, llms and rss are served', async ({ request }) => {
 
 test('content pages ship no framework JS', async ({ page }) => {
   await page.goto('/blog/what-is-a-tabata-timer');
-  const scripts = await page.locator('script[src]').count();
-  expect(scripts).toBe(0);
+  // The only permitted external script is the GA4 loader (when PUBLIC_GA_MEASUREMENT_ID is set).
+  const own = await page.locator('script[src^="/"]').count();
+  expect(own).toBe(0);
+  const srcs = await page
+    .locator('script[src]')
+    .evaluateAll((els) => els.map((e) => (e as HTMLScriptElement).src));
+  expect(srcs.filter((s) => !s.startsWith('https://www.googletagmanager.com/'))).toEqual([]);
 });
 
 test('blog post is readable with JavaScript disabled', async ({ browser }) => {

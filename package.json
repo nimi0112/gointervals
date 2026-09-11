@@ -17,7 +17,8 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "check:build": "node scripts/check-build.mjs",
-    "lighthouse": "node scripts/lighthouse.mjs"
+    "lighthouse": "node scripts/lighthouse.mjs",
+    "deploy": "npm run build && npx --yes wrangler pages deploy dist --project-name gointervals"
   },
   "dependencies": {
     "@astrojs/preact": "^6.0.5",
@@ -41,5 +42,14 @@
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.70.0",
     "vitest": "^4.1.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nimi0112/gointervals.git"
+  },
+  "homepage": "https://gointervals.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nimi0112/gointervals/issues"
   }
 }

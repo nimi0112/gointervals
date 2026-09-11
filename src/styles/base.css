@@ -15,7 +15,7 @@ body {
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: var(--fs-2);
-  line-height: 1.5;
+  line-height: 1.6;
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
 }
@@ -47,6 +47,11 @@ ol {
 }
 p {
   max-width: var(--measure);
+  color: var(--grey-900);
+}
+h1 + p,
+.prose > p:first-child {
+  margin-top: 0;
 }
 a {
   color: inherit;
@@ -56,7 +61,7 @@ a {
   text-decoration-color: var(--grey-500);
 }
 a:hover {
-  text-decoration-color: var(--ink);
+  text-decoration-color: var(--accent);
 }
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -141,8 +146,15 @@ th {
 .prose {
   max-width: var(--measure);
 }
+.prose {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
 .prose h2 {
   margin-top: var(--sp-7);
+}
+.prose > *:last-child {
+  margin-bottom: 0;
 }
 .prose h3 {
   margin-top: var(--sp-6);
@@ -168,8 +180,13 @@ th {
 
 /* Numbered section, the structural device borrowed from the reference. */
 .section {
-  padding-block: var(--sp-7);
+  padding-block: var(--sp-8);
   border-top: 1px solid var(--grey-300);
+}
+@media (max-width: 719px) {
+  .section {
+    padding-block: var(--sp-7);
+  }
 }
 .section__num {
   font-family: var(--font-mono);
@@ -202,9 +219,10 @@ th {
   text-decoration: none;
   cursor: pointer;
   transition:
-    background var(--ease),
-    color var(--ease),
-    border-color var(--ease);
+    background 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease,
+    transform 120ms ease;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
 }
@@ -226,8 +244,11 @@ th {
   border-color: var(--ink);
   color: var(--ink);
 }
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
 .btn:disabled {
-  opacity: 0.4;
+  opacity: 0.35;
   cursor: default;
 }
 

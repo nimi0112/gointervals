@@ -1,0 +1,58 @@
+name: Bug report
+description: Something is wrong with a timer or a page
+title: '[bug] '
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks. Timers are unforgiving, so the more precise you are the faster this gets fixed.
+  - type: dropdown
+    id: timer
+    attributes:
+      label: Which timer
+      options:
+        [
+          Interval,
+          Countdown,
+          Stopwatch,
+          Tabata,
+          EMOM,
+          Pomodoro,
+          A preset page,
+          Blog or other page,
+          Not sure,
+        ]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what you got instead.
+      placeholder: Set 30/15 x 8, pressed Start, locked the phone for two rounds, unlocked, the timer was on round 1.
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      placeholder: https://gointervals.com/tabata/20-10-8
+  - type: input
+    id: device
+    attributes:
+      label: Device and browser
+      placeholder: iPhone 15, Safari 18 / Pixel 8, Chrome 130 / MacBook, Firefox 132
+    validations:
+      required: true
+  - type: dropdown
+    id: state
+    attributes:
+      label: Was the tab in the foreground when it went wrong?
+      options: ['Yes', 'No, another app or tab was in front', 'The screen was locked', 'Not sure']
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I reloaded the page and it still happens
+        - label: I tried with sound unmuted

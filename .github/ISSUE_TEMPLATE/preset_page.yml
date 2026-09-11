@@ -1,0 +1,24 @@
+name: Preset page request
+description: A timer configuration that deserves its own URL
+title: '[preset] '
+labels: [content]
+body:
+  - type: input
+    id: config
+    attributes:
+      label: The configuration
+      placeholder: 45 sec work, 15 sec rest, 12 rounds / 8 minute countdown / beep every 3 minutes for 30
+    validations:
+      required: true
+  - type: textarea
+    id: who
+    attributes:
+      label: Who uses it and what for
+      description: This becomes the page copy, so be specific. "Spin class warm-up" is better than "fitness".
+    validations:
+      required: true
+  - type: input
+    id: search
+    attributes:
+      label: What people type into a search engine to find it
+      placeholder: 45 15 interval timer

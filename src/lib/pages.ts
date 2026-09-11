@@ -40,7 +40,7 @@ export async function allOgPages(): Promise<OgPage[]> {
     {
       path: '/about',
       title: 'About Go Intervals',
-      kicker: 'No accounts. No cookies. No dark mode.',
+      kicker: 'Open source · No accounts · No cookies',
     },
     { path: '/404', title: 'Nothing here', kicker: '404' },
   ];
