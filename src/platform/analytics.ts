@@ -12,7 +12,11 @@ export type EventName =
   | 'preset_loaded'
   | 'fullscreen_enter'
   | 'mute_toggle'
-  | 'pwa_install';
+  | 'pwa_prompt_shown'
+  | 'pwa_prompt_accepted'
+  | 'pwa_prompt_dismissed'
+  | 'pwa_installed'
+  | 'pwa_launch';
 
 export interface EventParams {
   mode?: string;
@@ -20,6 +24,11 @@ export interface EventParams {
   rounds?: number;
   muted?: boolean;
   preset?: string;
+  /** install prompt: which surface asked, and what the user chose */
+  platform?: string;
+  outcome?: string;
+  /** how many timers the visitor had finished when we asked */
+  completions?: number;
 }
 
 declare global {

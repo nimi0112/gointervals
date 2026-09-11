@@ -32,10 +32,35 @@ const { jsonLd = [], ...head } = Astro.props;
     <slot />
     <Footer />
     <script is:inline>
+      // beforeinstallprompt fires once, and usually before the timer island has
+      // hydrated. Catch it here and stash it, or the install offer is lost for
+      // the whole page view. The island reads window.__giInstallEvent on mount
+      // and also listens for the replayed event if it arrives later.
+      window.__giInstallEvent = null;
+      window.addEventListener('beforeinstallprompt', function (e) {
+        e.preventDefault();
+        window.__giInstallEvent = e;
+        window.dispatchEvent(new CustomEvent('gi:installable'));
+      });
+
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
           navigator.serviceWorker.register('/sw.js').catch(function () {});
         });
+      }
+      // Report once per session when we are running as an installed app, so the
+      // install funnel has an end: prompt shown -> installed -> actually used.
+      try {
+        const ios = window.navigator.standalone === true;
+        const standalone = window.matchMedia('(display-mode: standalone)').matches || ios;
+        if (standalone && !sessionStorage.getItem('gi:launched')) {
+          sessionStorage.setItem('gi:launched', '1');
+          if (window.gtag) {
+            window.gtag('event', 'pwa_launch', { platform: ios ? 'ios' : 'native' });
+          }
+        }
+      } catch {
+        /* private mode: never break the page for a metric */
       }
     </script>
   </body>

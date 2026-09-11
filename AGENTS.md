@@ -43,6 +43,25 @@ A static Astro site of browser timers. No server, no auth, no dark mode. Timer U
 
 Gradient blobs, glassmorphism, purple-to-blue or any gradients, floating cards with drop shadows, three-column icon-in-circle feature grids, stock illustrations, sparkle icons, emoji in UI, rounded-everything, "Powered by AI" badges, tracked-out all-caps eyebrow labels, arrows appended to link text, dark mode, `prefers-color-scheme` handling of any kind, hero copy like "The ultimate timer for everything".
 
+## Installable app
+
+The site is a PWA and must stay one. `public/manifest.webmanifest`, `public/sw.js`, the icons in `public/icons/`, and the registration in `Base.astro` are the whole of it.
+
+- The service worker's `VERSION` is the literal `__BUILD_VERSION__` in `public/sw.js`. `scripts/stamp-sw.mjs` replaces it in `dist/` during `npm run build`. Never hardcode a version, and never edit `dist/sw.js` by hand.
+- Add a route to `PRECACHE` when it is a timer people would open offline. `check-build` fails if a precached route is not built, so a rename cannot silently break offline support.
+- Icons come from `npm run icons` (`scripts/gen-icons.mjs`), which derives everything from `public/favicon.svg`. The maskable icon is a separate padded file: adaptive launchers crop to a circle, so `any` and `maskable` must never be the same image or share one `"any maskable"` entry.
+- `manifest.id` is stable. Changing it orphans every installed copy into a second app.
+
+### The install prompt
+
+`src/platform/install.ts` decides when to ask; `src/islands/parts/InstallPrompt.tsx` renders it. The decision module is pure and DOM-free so the rules are unit-testable — keep it that way.
+
+The prompt is earned, never automatic. It shows only after a timer has run to completion, and never when the visitor is already in the installed app, has installed it, has dismissed it twice, is inside a 30-day snooze, or is on a browser that cannot install. iOS Safari is the one platform shown without a native event, because Share -> Add to Home Screen is the only route there.
+
+`beforeinstallprompt` fires once and usually before the island hydrates, so `Base.astro` catches it and stashes it on `window.__giInstallEvent`. Do not move that capture into the island.
+
+Do not add a second install surface, a sticky bar, or a prompt on page load.
+
 ## Voice
 
 Dry, direct, short sentences, written by a person who uses the thing. Gen Z indie-app, not a content farm, not a corporation. Sentence case everywhere. No exclamation marks. Say what it does.

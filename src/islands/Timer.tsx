@@ -11,6 +11,7 @@ import {
   type IntervalPreset,
 } from '@/engine/presets';
 import { storage, KEYS } from '@/platform/storage';
+import { recordCompletion } from '@/platform/install';
 import { play, unlockAudio } from '@/platform/audio';
 import { keepAwake, releaseAwake } from '@/platform/wakelock';
 import { setTitle } from '@/platform/title';
@@ -20,6 +21,7 @@ import { useEngine } from './useEngine';
 import { Shell } from './parts/Shell';
 import { Settings } from './parts/Settings';
 import { PresetBar } from './parts/PresetBar';
+import { InstallPrompt } from './parts/InstallPrompt';
 
 interface Props {
   config: Exclude<ModeConfig, { mode: 'stopwatch' }>;
@@ -78,6 +80,8 @@ export default function Timer({ config: initial, fixed = false, presets = false 
   const [saved, setSaved] = useState<IntervalPreset[]>([]);
   const [sessions, setSessions] = useState(0);
   const [announce, setAnnounce] = useState('');
+  // Finishing a timer is what earns the install prompt; this re-evaluates it in place.
+  const [completions, setCompletions] = useState(0);
   const doneRef = useRef(false);
 
   // load persisted settings after hydration (never on the server)
@@ -109,6 +113,7 @@ export default function Timer({ config: initial, fixed = false, presets = false 
         if (!doneRef.current) {
           doneRef.current = true;
           track('timer_complete', { mode, duration_seconds: Math.round(snap.totalMs / 1000) });
+          setCompletions(recordCompletion(storage).completions);
           const item: HistoryItem = {
             mode,
             seconds: Math.round(snap.totalMs / 1000),
@@ -265,6 +270,7 @@ export default function Timer({ config: initial, fixed = false, presets = false 
       onSkip={snap.segmentCount > 1 ? engine.skip : undefined}
       extra={
         <div class="timer__below">
+          <InstallPrompt mode={mode} completions={completions} />
           {mode === 'pomodoro' && (
             <p class="timer__sessions mono">
               Focus sessions completed: {sessions}

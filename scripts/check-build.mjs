@@ -89,6 +89,34 @@ for (const f of [
   }
 }
 
+// PWA integrity: a renamed route must not silently break offline support.
+try {
+  const sw = await readFile(join(DIST, 'sw.js'), 'utf8');
+  if (sw.includes('__BUILD_VERSION__'))
+    problems.push('sw.js: cache version placeholder was never stamped (run scripts/stamp-sw.mjs)');
+  const version = sw.match(/const VERSION = '([^']+)'/)?.[1];
+  if (!version) problems.push('sw.js: no VERSION constant');
+
+  const precache = sw.match(/const PRECACHE = \[([\s\S]*?)\]/)?.[1] ?? '';
+  for (const m of precache.matchAll(/'([^']+)'/g)) {
+    const route = m[1];
+    if (!resolves(route)) problems.push(`sw.js: precached route ${route} is not built`);
+  }
+
+  const manifest = JSON.parse(await readFile(join(DIST, 'manifest.webmanifest'), 'utf8'));
+  for (const icon of manifest.icons ?? []) {
+    if (!known.has(icon.src)) problems.push(`manifest: icon ${icon.src} not built`);
+  }
+  for (const s of manifest.shortcuts ?? []) {
+    if (!resolves(s.url)) problems.push(`manifest: shortcut ${s.url} is not built`);
+  }
+  if (!(manifest.icons ?? []).some((i) => i.purpose === 'maskable'))
+    problems.push('manifest: no maskable icon');
+  if (!manifest.id) problems.push('manifest: no stable id');
+} catch (e) {
+  problems.push(`pwa check failed: ${e.message}`);
+}
+
 if (problems.length) {
   console.error(
     `check-build: ${problems.length} problem(s)\n` + problems.map((p) => '  - ' + p).join('\n'),

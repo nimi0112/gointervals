@@ -12,6 +12,10 @@ All notable changes to this project are documented here. Format follows Keep a C
 
 ### Added
 
+- Installable app: stable manifest `id`, a separately padded maskable icon, and a per-build service worker cache version so a deploy evicts the previous cache instead of serving it forever.
+- An install prompt that has to be earned. It appears only after a timer has actually finished, never inside the installed app, and never where the browser cannot install. Closing it snoozes for 30 days; closing it twice stops it for good. iOS Safari gets the manual Share steps, since no install API exists there.
+- GA4 install funnel: `pwa_prompt_shown`, `pwa_prompt_accepted`, `pwa_prompt_dismissed`, `pwa_installed`, and `pwa_launch` once per session when running as an installed app.
+- `check-build` now fails if the service worker version was never stamped, if a precached route is not built, or if a manifest icon or shortcut is missing.
 - Meditation timer at `/meditation`: an interval with no rest where every event is one soft bell, no ticks, screen kept awake. Six preset lengths under `/meditation/`, two blog posts, and a redirect from the old `/timer/meditation-timer` countdown page.
 - 54 new pages: 20 countdown lengths (11 to 55 minutes, 2 to 8 hours, 5 to 75 seconds), 9 purpose pages (kitchen, classroom, meditation, plank, sauna, nap, study, rest, loud), 10 "beep every N" interval pages, 4 Pomodoro variants (50/10, 52/17, 90/20, 15/5), 5 more Tabata combos, and 6 blog posts.
 - `HowTo` JSON-LD on every preset timer page. Hub pages and the home page link every new page; each new page links back.

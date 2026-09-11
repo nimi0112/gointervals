@@ -1,6 +1,8 @@
 /* Go Intervals service worker. Cache-first for hashed assets, network-first for pages.
-   Bump VERSION to invalidate. Every timer route is precached so it works offline even if never visited. */
-const VERSION = 'gi-v1';
+   Every timer route is precached so it works offline even if never visited. */
+/* __BUILD_VERSION__ is replaced at build time by scripts/stamp-sw.mjs so every
+   deploy gets a fresh cache and the previous one is deleted on activate. */
+const VERSION = '__BUILD_VERSION__';
 const PRECACHE = [
   '/',
   '/interval',
