@@ -1,0 +1,92 @@
+public/_redirects
+  s_7510e9041608db::t_4bfb5677787db4 1-2
+src/data/faqs.ts
+  s_7510e9041608db::t_4bfb5677787db4 118-139
+src/islands/parts/Settings.tsx
+  s_7510e9041608db::t_ffe7e36a35f91b 186-213
+tests/unit/describe.test.ts
+  s_7510e9041608db::t_1ba83a31fa2620 69-79
+src/platform/audio.ts
+  s_7510e9041608db::t_1ba83a31fa2620 7,82-86,95
+tests/e2e/timer.spec.ts
+  s_7510e9041608db::t_889f229f40210c 111-115,119-126
+  s_7510e9041608db::t_ebbff75ed7ee34 116-118
+src/styles/timer.css
+  s_7510e9041608db::t_0724217a71ccd7 16-17
+tests/e2e/smoke.spec.ts
+  s_7510e9041608db::t_889f229f40210c 11-12
+src/content/blog/how-long-to-meditate.md
+  s_7510e9041608db::t_e348e3a7367740 1-56
+src/data/meditations.ts
+  s_7510e9041608db::t_e4989db972bfa2 1-39,46-82,89-124,131-168,175-211,218-253,260-262
+  s_7510e9041608db::t_ebbff75ed7ee34 40-45,83-88,125-130,169-174,212-217,254-259
+src/data/index.ts
+  s_7510e9041608db::t_4bfb5677787db4 9,18
+CHANGELOG.md
+  s_7510e9041608db::t_98b31678b898e0 15
+README.md
+  s_7510e9041608db::t_98b31678b898e0 7
+public/llms.txt
+  s_7510e9041608db::t_0724217a71ccd7 18,25,29,51-52
+tests/unit/schedule.test.ts
+  s_7510e9041608db::t_1ba83a31fa2620 119-134
+src/engine/describe.ts
+  s_7510e9041608db::t_1ba83a31fa2620 16-23
+src/pages/meditation.astro
+  s_7510e9041608db::t_889f229f40210c 1-11,13-23,29-31,34-38,44-47,52-53,57-59
+  s_7510e9041608db::t_c5aff2e7b3a7cb 12
+  s_7510e9041608db::t_ebbff75ed7ee34 24-28,32-33,39-43,48-51,54-56
+src/engine/presets.ts
+  s_7510e9041608db::t_1ba83a31fa2620 114
+src/islands/Timer.tsx
+  s_7510e9041608db::t_0724217a71ccd7 56
+  s_7510e9041608db::t_ffe7e36a35f91b 106,108,125,129
+  s_7510e9041608db::t_ebbff75ed7ee34 47
+src/engine/schedule.ts
+  s_7510e9041608db::t_1ba83a31fa2620 53-61,85,155-158,160
+  s_7510e9041608db::t_0724217a71ccd7 159
+  s_7510e9041608db::t_d3412f1d8cab79 2,67-73
+  s_7510e9041608db::t_8488418f226bc9 161-162
+src/data/uses.ts
+  s_7510e9041608db::t_ebbff75ed7ee34 209
+src/lib/site.ts
+  s_7510e9041608db::t_4bfb5677787db4 18,28
+  s_7510e9041608db::t_98b31678b898e0 7
+src/data/countdowns.ts
+  s_7510e9041608db::t_4bfb5677787db4 394
+src/pages/meditation/[slug].astro
+  s_7510e9041608db::t_889f229f40210c 1-15
+src/pages/index.astro
+  s_7510e9041608db::t_ebbff75ed7ee34 23-26
+AGENTS.md
+  s_7510e9041608db::t_98b31678b898e0 69,108
+src/data/related.ts
+  s_7510e9041608db::t_3cfccf9fa92114 34-40,59
+src/lib/seo.ts
+  s_7510e9041608db::t_98b31678b898e0 51
+src/components/ProgrammaticTimer.astro
+  s_7510e9041608db::t_ebbff75ed7ee34 50-62
+public/manifest.webmanifest
+  s_7510e9041608db::t_4bfb5677787db4 25-26
+public/sw.js
+  s_7510e9041608db::t_4bfb5677787db4 12
+src/content/blog/meditation-timer-with-interval-bells.md
+  s_7510e9041608db::t_0f86c19420e5a8 1-25,32-61
+  s_7510e9041608db::t_ebbff75ed7ee34 26-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0cb6766ec915155a13865a7a8c0e7b60266a4a4e",
+  "prompts": {},
+  "sessions": {
+    "s_7510e9041608db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "88cc67a1-d318-46b0-83ae-59fd7b55ba77",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
