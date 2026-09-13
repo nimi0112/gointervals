@@ -1,0 +1,25 @@
+tests/unit/wakelock.test.ts
+  s_c783a5a9b5bfbc::t_731fa2bdb962f7 2
+  s_c783a5a9b5bfbc::t_68abc5a20a6925 1,3-97,99-192
+  s_c783a5a9b5bfbc::t_0896c02f4721c3 98
+src/platform/wakelock.ts
+  s_c783a5a9b5bfbc::t_fd2a3471c70869 67-68
+  s_c783a5a9b5bfbc::t_b11fa32d96626c 87-90
+  s_c783a5a9b5bfbc::t_2affc627dccb63 21-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "052d36a86e55d11787c3235809fca7ab8b7812b6",
+  "prompts": {},
+  "sessions": {
+    "s_c783a5a9b5bfbc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "38032e92-269e-45da-beda-49fdd6ac4fdf",
+        "model": "claude-opus-5"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
