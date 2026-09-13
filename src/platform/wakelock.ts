@@ -18,9 +18,17 @@ function hasNative(): boolean {
 async function requestNative(): Promise<void> {
   try {
     if (sentinel && !sentinel.released) return;
-    sentinel = await navigator.wakeLock.request('screen');
-    sentinel.addEventListener('release', () => {
-      sentinel = null;
+    const held = await navigator.wakeLock.request('screen');
+    // The request is async, so a release may have landed while it was in flight.
+    // Honour the latest intent rather than the one we started with, or we strand
+    // a lock nobody will ever release and the screen stays on with no timer.
+    if (!wanted) {
+      void held.release().catch(() => undefined);
+      return;
+    }
+    sentinel = held;
+    held.addEventListener('release', () => {
+      if (sentinel === held) sentinel = null;
     });
   } catch {
     sentinel = null;
@@ -56,6 +64,8 @@ async function acquire(): Promise<void> {
   } else {
     try {
       await fallbackVideo().play();
+      // same race as the native path: a release may have landed mid-play()
+      if (!wanted) video?.pause();
     } catch {
       /* needs a gesture; we are always called from one */
     }
@@ -74,6 +84,10 @@ export function keepAwake(): void {
 
 export function releaseAwake(): void {
   wanted = false;
+  if (listening && typeof document !== 'undefined') {
+    document.removeEventListener('visibilitychange', onVisibility);
+    listening = false;
+  }
   if (sentinel) {
     void sentinel.release().catch(() => undefined);
     sentinel = null;
