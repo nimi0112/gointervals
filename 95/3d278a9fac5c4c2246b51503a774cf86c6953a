@@ -1,0 +1,19 @@
+.github/workflows/ci.yml
+  s_073c48a871cfe8::t_9971dd51d1976c 17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "953d278a9fac5c4c2246b51503a774cf86c6953a",
+  "prompts": {},
+  "sessions": {
+    "s_073c48a871cfe8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35446b01-851d-46f7-8ef0-95cc6a3e40d4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
