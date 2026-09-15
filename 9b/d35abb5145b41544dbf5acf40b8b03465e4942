@@ -1,0 +1,23 @@
+src/islands/copy.ts
+  s_073c48a871cfe8::t_1d115f2f12f53f 1-254
+src/lib/icons.ts
+  s_073c48a871cfe8::t_1d115f2f12f53f 1-45
+tests/unit/copy.test.ts
+  s_073c48a871cfe8::t_2795b4e4f062aa 1-199
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9bd35abb5145b41544dbf5acf40b8b03465e4942",
+  "prompts": {},
+  "sessions": {
+    "s_073c48a871cfe8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35446b01-851d-46f7-8ef0-95cc6a3e40d4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
