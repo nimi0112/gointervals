@@ -1,0 +1,25 @@
+src/platform/keyboard.ts
+  s_073c48a871cfe8::t_e2f64efe8ea4ab 2,4,6-17,27-47,49
+tests/unit/keyboard.test.ts
+  s_073c48a871cfe8::t_2e3e04955e9857 1-67
+src/platform/analytics.ts
+  s_073c48a871cfe8::t_0587cf224cb960 9-10,12-20,29-31,33-47,49-50
+src/platform/audio.ts
+  s_073c48a871cfe8::t_1b98e3f7e1fa04 23-33,35,37-38,45,47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9e308645e4272dd33c706c661f2915791b361cc0",
+  "prompts": {},
+  "sessions": {
+    "s_073c48a871cfe8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35446b01-851d-46f7-8ef0-95cc6a3e40d4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
