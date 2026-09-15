@@ -1,0 +1,28 @@
+AGENTS.md
+  s_073c48a871cfe8::t_6c8bc417545534 72
+src/engine/validate.ts
+  s_073c48a871cfe8::t_6c8bc417545534 30
+tests/e2e/timer.spec.ts
+  s_073c48a871cfe8::t_6c8bc417545534 13-19,23,42-43,57-59,63,66-67,72,76,80,87,104,126,144,191,234,293,301,304-305,311
+tests/unit/fields.test.ts
+  s_073c48a871cfe8::t_cdb21235988bd2 7,22,40,52-54
+  s_073c48a871cfe8::t_4e830545340fc9 55
+src/islands/fields.ts
+  s_073c48a871cfe8::t_6c8bc417545534 26,30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "378542c2ce619c3caf09f4e71624267576acf52b",
+  "prompts": {},
+  "sessions": {
+    "s_073c48a871cfe8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35446b01-851d-46f7-8ef0-95cc6a3e40d4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
