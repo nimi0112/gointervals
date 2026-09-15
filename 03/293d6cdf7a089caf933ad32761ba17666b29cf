@@ -1,0 +1,44 @@
+src/styles/base.css
+  s_073c48a871cfe8::t_32aa8de2f99b41 14,18-19,21-22,28,33-41,44-45,48-49,60,63-64,67,71,76-77,82-87,92-93,110,116,120-121,134-136,141,143,147,151-153,157,160-165,173,176,184-186,188,190-191,196-200,205-210,212,217-219,224-225,229-231,236,239-240,244-245,247-250,253-254,256-261,264-272,274-278,280-289,292-293,298,300,302-307,310-312,314-315,317-363,370-371
+src/components/Faq.astro
+  s_073c48a871cfe8::t_32aa8de2f99b41 5,7,11-12,15-16,19,24-26,29,32,34-35
+docs/superpowers/specs/2026-09-15-gointervals-redesign-design.md
+  s_073c48a871cfe8::t_49a029edb20c02 1-297
+docs/superpowers/plans/2026-09-15-gointervals-redesign.md
+  s_073c48a871cfe8::t_6ddc3f41fb668b 1-246
+src/components/Footer.astro
+  s_073c48a871cfe8::t_32aa8de2f99b41 2,5-9,13-15,17,19-27
+src/components/Breadcrumbs.astro
+  s_073c48a871cfe8::t_32aa8de2f99b41 9,25-26,34,40,43-45,47-48
+src/components/Header.astro
+  s_073c48a871cfe8::t_32aa8de2f99b41 1-76
+src/components/Section.astro
+  s_073c48a871cfe8::t_32aa8de2f99b41 7
+src/components/Related.astro
+  s_073c48a871cfe8::t_32aa8de2f99b41 10,26,29,36-37,40,52,60-61,64-66
+  s_073c48a871cfe8::t_3741a226013f3a 67
+src/layouts/Base.astro
+  s_073c48a871cfe8::t_d36e3d5408b448 4,18-19,21,30-31,40,47-48,51-70,73-81,83-84,87,90-107
+src/components/PostList.astro
+  s_073c48a871cfe8::t_32aa8de2f99b41 18,26,28-30,32,47,50-51,55,59-60,63
+src/components/Head.astro
+  s_073c48a871cfe8::t_d36e3d5408b448 28,39,46-47
+src/lib/site.ts
+  s_073c48a871cfe8::t_d36e3d5408b448 2,5,7-12,18,20,22-24,27,29-57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "03293d6cdf7a089caf933ad32761ba17666b29cf",
+  "prompts": {},
+  "sessions": {
+    "s_073c48a871cfe8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35446b01-851d-46f7-8ef0-95cc6a3e40d4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
