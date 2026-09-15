@@ -30,13 +30,13 @@ const crumbs = [
 
 <Base
   title={`Posts tagged ${tag}`}
-  description={`Every Go Intervals blog post about ${tag}: ${posts.length} ${posts.length === 1 ? 'guide' : 'guides'} on timing, protocols and how to run them with a free browser timer.`}
+  description={`Every gointervals article about ${tag}: ${posts.length} ${posts.length === 1 ? 'guide' : 'guides'} on timing, protocols and how to run them with a free browser timer.`}
   {path}
   jsonLd={[breadcrumbList(crumbs)]}
 >
-  <Breadcrumbs {crumbs} />
   <main id="main" class="wrap">
     <header class="th">
+      <Breadcrumbs {crumbs} />
       <p class="section__num">Tag</p>
       <h1>{tag}</h1>
     </header>
@@ -46,6 +46,6 @@ const crumbs = [
 
 <style>
   .th {
-    padding-block: var(--sp-5) var(--sp-6);
+    padding-block: var(--sp-6) var(--sp-5);
   }
 </style>

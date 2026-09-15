@@ -6,7 +6,7 @@ interface Props {
 const { crumbs } = Astro.props;
 ---
 
-<nav class="crumbs wrap" aria-label="Breadcrumb">
+<nav class="crumbs" aria-label="Breadcrumb">
   <ol>
     {crumbs.map((c, i) => (
       <li>
@@ -22,9 +22,8 @@ const { crumbs } = Astro.props;
 
 <style>
   .crumbs {
-    font-size: var(--fs-1);
-    color: var(--grey-500);
-    padding-block: var(--sp-2);
+    font-size: var(--fs-small);
+    color: var(--muted);
   }
   ol {
     list-style: none;
@@ -32,18 +31,20 @@ const { crumbs } = Astro.props;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: var(--sp-2);
   }
   li + li::before {
     content: '/';
     margin-right: var(--sp-2);
-    color: var(--grey-300);
+    color: var(--line);
   }
   a {
-    text-decoration: none;
-    color: var(--grey-700);
+    display: inline-block;
+    padding-block: 10px;
+    color: var(--ink);
   }
-  a:hover {
-    text-decoration: underline;
+  span {
+    font-size: 0.75rem;
   }
 </style>

@@ -56,11 +56,11 @@ Audio helps too. If the timer beeps at each transition, you can put the phone fa
 ## Practical setup for a workout
 
 - Tap start before you put the phone down, so the wake lock has its user gesture.
-- Use fullscreen mode so the digits are readable from across a mat.
+- The digits are the biggest thing on the page, readable from across a mat.
 - Turn your volume up enough to hear the cues over music.
 - Leave the tab in the foreground.
 
-Everything is stored in the browser, so your presets are still there the next time you open it, with no account to sign into while your hands are covered in chalk.
+Everything is stored in the browser, so your settings are still there the next time you open it, with no account to sign into while your hands are covered in chalk.
 
 If you want the timer to keep working with no connection at all, [a free online timer that works offline](/blog/free-online-timer-that-works-offline) covers how that part works.
 

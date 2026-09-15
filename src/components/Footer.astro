@@ -1,91 +1,45 @@
 ---
-import { TIMERS } from '@/lib/site';
-const year = new Date().getFullYear();
+/** Footer navigation is Timers / About only, by design. It follows all content. */
 ---
 
-<footer class="footer">
-  <div class="wrap footer__inner">
-    <div>
-      <p class="footer__brand">Go Intervals</p>
-      <p class="footer__line">
-        Free timers that just run. No login, no ads, no dark mode. Open source, MIT.
-      </p>
-    </div>
-    <ul class="footer__links">
-      {TIMERS.map((t) => (
-        <li>
-          <a href={t.path}>{t.name}</a>
-        </li>
-      ))}
-    </ul>
-    <ul class="footer__links">
-      <li>
-        <a href="/blog">Blog</a>
-      </li>
-      <li>
-        <a href="/about">About &amp; your data</a>
-      </li>
-      <li>
-        <a href="/rss.xml">RSS</a>
-      </li>
-      <li>
-        <a href="/llms.txt">llms.txt</a>
-      </li>
-      <li>
-        <a href="https://github.com/nimi0112/gointervals" rel="noopener">
-          Open source on GitHub
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="wrap footer__bottom mono">© {year} gointervals.com</div>
+<footer class="ftr wrap">
+  <nav class="ftr__inner" aria-label="Footer">
+    <a href="/">Timers</a>
+    <a href="/about">About</a>
+  </nav>
 </footer>
 
 <style>
-  .footer {
-    border-top: 1px solid var(--grey-300);
-    margin-top: var(--sp-9);
-    padding-block: var(--sp-7) var(--sp-6);
-    font-size: var(--fs-1);
-    color: var(--grey-700);
+  /* Canvas: 1px line, padding 16/0, two 88×44 links with a 16 gap, page bottom padding 20 / 28. */
+  .ftr {
+    margin-top: var(--sp-5);
+    padding-bottom: 20px;
   }
-  .footer__inner {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--sp-6);
+  .ftr__inner {
+    display: flex;
+    gap: var(--sp-4);
+    padding-block: var(--sp-4);
+    border-top: 1px solid var(--line);
+  }
+  .ftr a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 44px;
+    padding: var(--sp-1) var(--sp-4);
+    border-radius: var(--radius);
+    font-size: var(--fs-ui);
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .ftr a:hover {
+    background: var(--soft);
   }
   @media (min-width: 720px) {
-    .footer__inner {
-      grid-template-columns: 2fr 1fr 1fr;
+    .ftr {
+      margin-top: var(--sp-7);
+      padding-bottom: 28px;
     }
-  }
-  .footer__brand {
-    color: var(--ink);
-    font-weight: 700;
-    margin-bottom: var(--sp-1);
-  }
-  .footer__line {
-    margin: 0;
-  }
-  .footer__links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-2);
-  }
-  .footer__links a {
-    text-decoration: none;
-    display: inline-block;
-    padding-block: 4px;
-  }
-  .footer__links a:hover {
-    text-decoration: underline;
-  }
-  .footer__bottom {
-    margin-top: var(--sp-6);
-    color: var(--grey-500);
-    font-size: var(--fs-1);
   }
 </style>

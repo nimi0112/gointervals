@@ -15,7 +15,7 @@ A study timer and a Pomodoro timer do the same arithmetic and solve different pr
 
 **Sustaining.** You can start fine but you drift at minute 12, open a tab, and resurface at minute 40 having read about something unrelated. This is what Pomodoro is built for. The rule that a broken pomodoro does not count is the actual mechanism, not the length.
 
-**Stopping.** You study for four hours straight, retain very little of hours three and four, and are useless the next day. Here you want a plain [countdown](/timer) with a hard stop and no automatic next block, because the system that keeps offering you another round is the problem.
+**Stopping.** You study for four hours straight, retain very little of hours three and four, and are useless the next day. Here you want a plain block with a hard stop and no automatic next block, such as the [interval timer](/interval) with one round and no rest, because the system that keeps offering you another round is the problem.
 
 Matching the tool to the problem matters more than the number of minutes.
 
@@ -48,7 +48,7 @@ Ultradian rhythms, the roughly 90 to 120 minute alertness cycles Nathaniel Kleit
 A workable default for exam revision:
 
 1. Decide what you are studying before the timer starts. "Study biology" is not a task. "Do the 20 questions at the end of chapter 6 without notes" is.
-2. Set 45 minutes on the [pomodoro timer](/pomodoro), or a flat [25 minute countdown](/timer/25-minutes) if you want the simpler version.
+2. Set 45 minutes on the [pomodoro timer](/pomodoro), or one focus session with no breaks if you want the simpler version.
 3. Phone in a different room. Not face down. A different room.
 4. When it ends, stand up and leave the desk for the full break. Not your phone.
 5. After three blocks, stop for at least an hour.

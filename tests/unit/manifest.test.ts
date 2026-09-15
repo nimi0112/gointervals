@@ -63,9 +63,9 @@ describe('web app manifest', () => {
     expect(sizes).toContain('512x512');
   });
 
-  it('keeps the light theme AGENTS.md mandates', () => {
-    expect(manifest.theme_color).toBe('#ffffff');
-    expect(manifest.background_color).toBe('#ffffff');
+  it('uses the paper colour as the app chrome', () => {
+    expect(manifest.theme_color).toBe('#F7F8F5');
+    expect(manifest.background_color).toBe('#F7F8F5');
   });
 
   it('points every shortcut at a route the service worker precaches', () => {
@@ -84,22 +84,25 @@ describe('service worker', () => {
   });
 
   it('precaches every timer route', () => {
-    for (const route of [
-      '/',
-      '/interval',
-      '/timer',
-      '/stopwatch',
-      '/tabata',
-      '/emom',
-      '/pomodoro',
-    ]) {
+    for (const route of ['/', '/interval', '/meditation', '/tabata', '/emom', '/pomodoro']) {
       expect(sw).toContain(`'${route}'`);
     }
   });
 
   it('precaches the fonts the digits depend on', () => {
-    expect(sw).toContain('/fonts/bricolage-latin.woff2');
-    expect(sw).toContain('/fonts/jetbrains-mono-latin.woff2');
+    expect(sw).toContain('/fonts/dm-sans-latin.woff2');
+    expect(sw).toContain('/fonts/azeret-mono-latin.woff2');
+  });
+
+  it('never activates an update on its own: no skipWaiting in the install handler', () => {
+    const install = sw.match(/addEventListener\('install'[\s\S]*?\n\}\);/)?.[0] ?? '';
+    expect(install).not.toContain('skipWaiting');
+    expect(sw).toContain("event.data.type === 'SKIP_WAITING'");
+  });
+
+  it('does not precache anything that no longer exists', () => {
+    expect(sw).not.toContain("'/timer'");
+    expect(sw).not.toContain("'/stopwatch'");
   });
 
   it('ignores non-GET and cross-origin requests', () => {

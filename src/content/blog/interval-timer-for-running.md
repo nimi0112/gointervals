@@ -64,6 +64,6 @@ This is the part that decides whether the whole thing works outdoors.
 
 **Vibrate.** Turn on the vibrate option if you are running without headphones in a loud place, or in a quiet one where you would rather not beep at strangers. A phone against your leg is easy to feel and impossible for anyone else to hear. It is less precise than audio in the sense that you notice it slightly later, but for a 90-second interval that does not matter.
 
-The screen stays awake while the timer runs, so an accidental glance is possible, and the remaining time also appears in the tab title. If you want raw splits instead of prescribed intervals, the [stopwatch](/stopwatch) records laps and flags the fastest one.
+The screen stays awake while the timer runs, so an accidental glance is possible, and the remaining time also appears in the tab title. If you want raw splits instead of prescribed intervals, a watch does that job; the notes on [running splits](/blog/stopwatch-running-splits-lap-times) cover what to record.
 
 Try it: [run 1:1 running intervals](/interval/running-intervals-1-1).

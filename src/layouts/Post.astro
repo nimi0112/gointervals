@@ -20,8 +20,7 @@ const { slug, title, description, pubDate, updatedDate, tags, timer, words, minu
 const path = `/blog/${slug}`;
 const crumbs = [
   { name: 'Home', path: '/' },
-  { name: 'Blog', path: '/blog' },
-  { name: title, path },
+  { name: 'Article', path },
 ];
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -38,7 +37,11 @@ const ld = [
     image: `${SITE.url}/og/${ogSlug(path)}.png`,
     wordCount: words,
   }),
-  breadcrumbList(crumbs),
+  breadcrumbList([
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/blog' },
+    { name: title, path },
+  ]),
 ];
 ---
 
@@ -51,72 +54,153 @@ const ld = [
   publishedTime={pubDate.toISOString()}
   modifiedTime={(updatedDate ?? pubDate).toISOString()}
 >
-  <Breadcrumbs {crumbs} />
   <main id="main" class="wrap">
     <article class="post">
       <header class="post__head">
-        <p class="post__meta mono">
+        <Breadcrumbs {crumbs} />
+        <h1>{title}</h1>
+        <p class="post__meta">
+          <span class="post__by">By</span>
+          <a href={SITE.authorUrl} rel="author noopener">
+            {SITE.author}
+          </a>
+          <span class="post__dot" aria-hidden="true">
+            ·
+          </span>
           <time datetime={pubDate.toISOString()}>{fmt(pubDate)}</time>
           {updatedDate && <span> · updated {fmt(updatedDate)}</span>}
           <span> · {minutes} min read</span>
         </p>
-        <h1>{title}</h1>
-        <p class="post__lede">{description}</p>
-        <p class="post__tags">
-          {tags.map((t) => (
-            <a class="tag" href={`/blog/tag/${t}`}>
-              {t}
-            </a>
-          ))}
+        <p class="post__open">
+          <a href={timer}>Open the {timerName.toLowerCase()}</a>
         </p>
       </header>
       <div class="prose post__body">
         <slot />
       </div>
-      <aside class="post__cta">
-        <p class="section__num">Try it</p>
-        <a class="btn btn--primary" href={timer}>
-          Open the {timerName.toLowerCase()}
-        </a>
-      </aside>
+      <footer class="post__foot" data-read-end={slug}>
+        <ul class="links post__tags" aria-label="Tags">
+          {tags.map((t) => (
+            <li>
+              <a href={`/blog/tag/${t}`}>{t}</a>
+            </li>
+          ))}
+        </ul>
+        <p>
+          <a href="/blog">All articles</a>
+        </p>
+      </footer>
     </article>
   </main>
 </Base>
 
 <style>
+  /* Canvas 375: gutter 24, main pad 24/24/48, column gap 32, intro gap 16, H1 34/600/1.12,
+     H2 24/600/1.25, body 17/1.65. Canvas 1280: main pad 40/0/72, 680 column, gap 40, H1 48, H2 28, body 18. */
   .post {
     max-width: var(--measure);
-    padding-block: var(--sp-5) 0;
+    margin-inline: auto;
+    padding-block: var(--sp-5) var(--sp-7);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-6);
   }
   .post__head {
-    margin-bottom: var(--sp-6);
-    padding-bottom: var(--sp-5);
-    border-bottom: 1px solid var(--grey-300);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+  .post__head h1 {
+    margin: 0;
+    font-size: 2.125rem;
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: 0;
   }
   .post__meta {
-    color: var(--grey-500);
-    font-size: var(--fs-1);
-    margin-bottom: var(--sp-3);
-  }
-  .post__lede {
-    font-size: var(--fs-3);
-    color: var(--grey-700);
-  }
-  .post__tags {
+    margin: 0;
     display: flex;
-    gap: var(--sp-2);
     flex-wrap: wrap;
+    align-items: center;
+    gap: 0 4px;
+    min-height: 44px;
+    font-size: var(--fs-small);
+    line-height: 1.4;
+    color: var(--muted);
+  }
+  .post__meta a {
+    color: var(--ink);
+  }
+  .post__by {
+    font-size: 0.75rem;
+  }
+  .post__dot {
+    margin-inline: 6px;
+  }
+  .post__open {
+    margin: 0;
+    font-size: var(--fs-lead);
+    line-height: 1.4;
+  }
+  .post__open a {
+    display: inline-flex;
+    align-items: center;
+    height: 44px;
+    color: var(--ink);
+  }
+  :global(body:has(.post)) {
+    --gutter: 24px;
+  }
+  .post__body {
+    font-size: var(--fs-lead);
+    line-height: 1.65;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+  .post__body :global(p),
+  .post__body :global(ul),
+  .post__body :global(ol),
+  .post__body :global(table) {
     margin: 0;
   }
   .post__body :global(h2) {
-    margin-top: var(--sp-7);
+    margin: var(--sp-4) 0 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.25;
   }
   .post__body :global(h2:first-child) {
     margin-top: 0;
   }
-  .post__cta {
-    margin-top: var(--sp-7);
+  .post__body :global(a) {
+    color: var(--ink);
+  }
+  .post__foot {
     padding-top: var(--sp-5);
-    border-top: 1px solid var(--grey-300);
+    border-top: 1px solid var(--line);
+    font-size: var(--fs-small);
+  }
+  .post__tags {
+    margin-bottom: var(--sp-3);
+  }
+  @media (min-width: 720px) {
+    :global(body:has(.post)) {
+      --gutter: 64px;
+    }
+    .post {
+      padding-block: 40px 72px;
+      gap: 40px;
+    }
+    .post__head h1 {
+      font-size: var(--fs-display);
+    }
+    .post__body {
+      font-size: var(--fs-body);
+    }
+    .post__body :global(h2) {
+      margin-top: var(--sp-5);
+      font-size: var(--fs-sub);
+    }
   }
 </style>

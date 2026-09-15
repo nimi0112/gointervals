@@ -15,7 +15,7 @@ const fmt = (d: Date) =>
     const rt = readingTime(p.body ?? '');
     return (
       <li class="posts__item">
-        <p class="posts__meta mono">
+        <p class="posts__meta num">
           <time datetime={p.data.pubDate.toISOString()}>{fmt(p.data.pubDate)}</time> · {rt.minutes}{' '}
           min read
         </p>
@@ -23,13 +23,13 @@ const fmt = (d: Date) =>
           <a href={`/blog/${p.id}`}>{p.data.title}</a>
         </h2>
         <p class="posts__desc">{p.data.description}</p>
-        <p class="posts__tags">
+        <ul class="links posts__tags">
           {p.data.tags.map((t) => (
-            <a class="tag" href={`/blog/tag/${t}`}>
-              {t}
-            </a>
+            <li>
+              <a href={`/blog/tag/${t}`}>{t}</a>
+            </li>
           ))}
-        </p>
+        </ul>
       </li>
     );
   })}
@@ -41,37 +41,25 @@ const fmt = (d: Date) =>
     padding: 0;
     margin: 0;
     max-width: var(--measure);
-    border-top: 1px solid var(--grey-300);
   }
   .posts__item {
     padding-block: var(--sp-5);
-    border-bottom: 1px solid var(--grey-300);
+    border-top: 1px solid var(--line);
   }
   .posts__meta {
-    color: var(--grey-500);
-    font-size: var(--fs-1);
+    color: var(--muted);
+    font-size: var(--fs-label);
     margin-bottom: var(--sp-2);
   }
   .posts__title {
-    font-size: var(--fs-4);
+    font-size: var(--fs-section);
     margin-bottom: var(--sp-2);
   }
-  .posts__title a {
-    text-decoration: none;
-  }
-  .posts__title a:hover {
-    text-decoration: underline;
-    text-decoration-color: var(--accent);
-    text-decoration-thickness: 2px;
-  }
   .posts__desc {
-    color: var(--grey-700);
-    margin-bottom: var(--sp-3);
+    color: var(--muted);
+    margin-bottom: var(--sp-2);
   }
   .posts__tags {
-    display: flex;
-    gap: var(--sp-2);
-    flex-wrap: wrap;
-    margin: 0;
+    font-size: var(--fs-small);
   }
 </style>

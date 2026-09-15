@@ -1,4 +1,4 @@
-/* Go Intervals service worker. Cache-first for hashed assets, network-first for pages.
+/* gointervals service worker. Cache-first for hashed assets, network-first for pages.
    Every timer route is precached so it works offline even if never visited. */
 /* __BUILD_VERSION__ is replaced at build time by scripts/stamp-sw.mjs so every
    deploy gets a fresh cache and the previous one is deleted on activate. */
@@ -6,27 +6,28 @@ const VERSION = '__BUILD_VERSION__';
 const PRECACHE = [
   '/',
   '/interval',
-  '/timer',
-  '/stopwatch',
+  '/meditation',
   '/tabata',
   '/emom',
   '/pomodoro',
-  '/meditation',
   '/about',
   '/404',
   '/manifest.webmanifest',
-  '/fonts/bricolage-latin.woff2',
-  '/fonts/jetbrains-mono-latin.woff2',
+  '/fonts/dm-sans-latin.woff2',
+  '/fonts/azeret-mono-latin.woff2',
   '/favicon.svg',
 ];
 
+/* An update never interrupts a session: this worker waits until the page says the
+   timer is idle (Base.astro posts SKIP_WAITING then) or until every tab has closed. */
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches
-      .open(VERSION)
-      .then((c) => Promise.allSettled(PRECACHE.map((u) => c.add(u))))
-      .then(() => self.skipWaiting()),
+    caches.open(VERSION).then((c) => Promise.allSettled(PRECACHE.map((u) => c.add(u)))),
   );
+});
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {

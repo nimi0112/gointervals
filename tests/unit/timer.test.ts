@@ -13,7 +13,7 @@ describe('createTimer', () => {
     expect(s.status).toBe('idle');
     expect(s.segmentIndex).toBe(0);
     expect(s.remainingMs).toBe(5000);
-    expect(s.totalMs).toBe((5 + 60 + 20) * 1000);
+    expect(s.totalMs).toBe((5 + 60 + 30) * 1000);
   });
 
   it('counts down from timestamps, not ticks', () => {
@@ -91,7 +91,7 @@ describe('createTimer', () => {
     const r = t.tick();
     expect(r.snapshot.status).toBe('done');
     expect(r.snapshot.remainingMs).toBe(0);
-    expect(r.snapshot.totalElapsedMs).toBe(85_000);
+    expect(r.snapshot.totalElapsedMs).toBe(95_000);
     expect(r.events.at(-1)?.type).toBe('complete');
     clock.advance(1000);
     expect(t.tick().events).toEqual([]);

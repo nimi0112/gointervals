@@ -1,0 +1,100 @@
+---
+/** Content-page shell header: wordmark, Timers, About. Timer pages do not render it. */
+const path =
+  Astro.url.pathname
+    .replace(/\.html$/, '')
+    .replace(/\/index$/, '')
+    .replace(/\/$/, '') || '/';
+const timersCurrent = path === '/';
+const aboutCurrent = path === '/about';
+---
+
+<header class="hdr wrap">
+  <div class="hdr__inner">
+    <a class="hdr__brand" href="/" aria-label="gointervals home">
+      gointervals
+    </a>
+    <nav class="hdr__nav" aria-label="Site">
+      <a class="hdr__timers" href="/" aria-current={timersCurrent ? 'page' : undefined}>
+        Timers
+      </a>
+      <a class="hdr__about" href="/about" aria-current={aboutCurrent ? 'page' : undefined}>
+        About
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* Canvas: 375 → y16, 48 high, gap 12, wordmark 21; 1280 → y24, 56 high, gap 32, wordmark 24. */
+  .hdr {
+    padding-top: var(--sp-4);
+  }
+  .hdr__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    height: 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hdr__brand {
+    flex: 1;
+    font-size: 1.3125rem;
+    line-height: 1.35;
+    color: var(--accent);
+    text-decoration: none;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .hdr__nav {
+    display: flex;
+    gap: var(--sp-3);
+  }
+  .hdr__nav a {
+    display: inline-flex;
+    align-items: center;
+    height: 44px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: var(--fs-small);
+    line-height: 1.35;
+    border-bottom: 2px solid transparent;
+    box-sizing: border-box;
+  }
+  .hdr__timers {
+    width: 64px;
+  }
+  .hdr__about {
+    width: 44px;
+  }
+  .hdr__nav a:hover {
+    color: var(--accent);
+  }
+  .hdr__nav a[aria-current='page'] {
+    border-bottom-color: var(--accent);
+  }
+  @media (min-width: 720px) {
+    .hdr {
+      padding-top: var(--sp-5);
+    }
+    .hdr__inner {
+      height: 56px;
+      gap: var(--sp-6);
+    }
+    .hdr__brand {
+      font-size: 1.5rem;
+    }
+    .hdr__nav {
+      gap: var(--sp-6);
+    }
+    .hdr__nav a {
+      font-size: 0.9375rem;
+      justify-content: center;
+    }
+    .hdr__timers,
+    .hdr__about {
+      width: 76px;
+    }
+  }
+</style>

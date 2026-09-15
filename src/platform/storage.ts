@@ -77,9 +77,7 @@ export const storage: AppStorage = createStorage(() => window.localStorage);
 
 export const KEYS = {
   settings: (mode: string) => `settings:${mode}`,
-  presets: 'presets:interval',
   history: 'history',
-  pomodoroSessions: 'pomodoro:sessions',
   muted: 'muted',
   vibrate: 'vibrate',
 } as const;

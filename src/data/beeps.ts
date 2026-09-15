@@ -37,13 +37,7 @@ export const beeps: ProgrammaticPage[] = [
         a: 'Not separately. At a 30 second cadence the ticks act as a warning that the marker is coming, which most people want. Muting the tab silences everything if you only want the visual countdown.',
       },
     ],
-    related: [
-      '/interval/beep-every-minute',
-      '/interval/beep-every-2-minutes',
-      '/interval',
-      '/timer/30-seconds',
-      '/timer/plank-timer',
-    ],
+    related: ['/interval/beep-every-minute', '/interval/beep-every-2-minutes', '/interval'],
   },
   {
     path: '/interval/beep-every-minute',
@@ -78,7 +72,7 @@ export const beeps: ProgrammaticPage[] = [
       },
       {
         q: 'Is there a get-ready countdown?',
-        a: 'Not on this preset, because a minute marker usually needs to line up with something. Add one by setting Get ready to 10 in the settings if you want a moment to put the phone down.',
+        a: 'No. A minute marker usually needs to line up with something, so Start is the first marker. Press it on the settings if you want a moment to put the phone down.',
       },
     ],
     related: [
@@ -111,7 +105,7 @@ export const beeps: ProgrammaticPage[] = [
     faq: [
       {
         q: 'Can I have just one two-minute beep?',
-        a: 'Set Rounds to 1 and it beeps once at the end. If that is all you ever want, the plain two-minute countdown page is the simpler tool.',
+        a: 'Set Rounds to 1 and it beeps once at the end, which turns it into a plain two-minute countdown. Set Rounds to 30 for an hour of two-minute tool.',
       },
       {
         q: 'Why is rest set to 0?',
@@ -126,12 +120,7 @@ export const beeps: ProgrammaticPage[] = [
         a: 'After the first visit, yes. The page and the fonts are cached, and the tones are generated rather than loaded from audio files, so nothing has to be fetched to make a sound.',
       },
     ],
-    related: [
-      '/interval/beep-every-3-minutes',
-      '/interval/beep-every-minute',
-      '/timer/2-minutes',
-      '/interval',
-    ],
+    related: ['/interval/beep-every-3-minutes', '/interval/beep-every-minute', '/interval'],
   },
   {
     path: '/interval/beep-every-3-minutes',
@@ -165,16 +154,11 @@ export const beeps: ProgrammaticPage[] = [
         a: 'The timing is derived from timestamps, so it is accurate the moment you look again, and it plays a single catch-up tone rather than a burst. Real-time beeps need the tab open and in front, and the wake lock holds the screen on only while the page is visible.',
       },
       {
-        q: 'Can I run it fullscreen across the room?',
-        a: 'Yes. The fullscreen button under the timer scales the digits to the screen, which is readable from the other side of a gym. Space still starts and pauses, and Esc leaves fullscreen.',
+        q: 'Can I read it from across the room?',
+        a: 'The digits are the largest thing on the page and scale with the screen, so a laptop on a bench is readable from the other side of a gym. Space still starts and pauses, and Esc asks before it stops.',
       },
     ],
-    related: [
-      '/interval/beep-every-2-minutes',
-      '/interval/beep-every-5-minutes',
-      '/timer/3-minutes',
-      '/interval',
-    ],
+    related: ['/interval/beep-every-2-minutes', '/interval/beep-every-5-minutes', '/interval'],
   },
   {
     path: '/interval/beep-every-5-minutes',
@@ -210,13 +194,12 @@ export const beeps: ProgrammaticPage[] = [
       },
       {
         q: 'Do I need to leave it running to keep my settings?',
-        a: 'No. Changed values and saved presets live in your browser, so the page opens with your numbers next time. There is no account and nothing is sent anywhere.',
+        a: 'No. This page always opens with these numbers; the main interval timer keeps your own settings in your browser. There is no account and nothing is sent anywhere.',
       },
     ],
     related: [
       '/interval/beep-every-10-minutes',
       '/interval/beep-every-3-minutes',
-      '/timer/5-minutes',
       '/interval',
       '/blog/timer-that-beeps-every-10-minutes',
     ],
@@ -253,17 +236,15 @@ export const beeps: ProgrammaticPage[] = [
         a: 'A rising pair of tones marks the start of a work block, a falling pair marks a rest, and the last three seconds tick. With rest at 0 you only ever hear the rising pair and the ticks, plus a three-note finish when the last round ends.',
       },
       {
-        q: 'Is there a way to save this as my own preset?',
-        a: 'Yes. Adjust the numbers and use "Save current as preset". It is stored in your browser only, so it is there on this device and nowhere else.',
+        q: 'Does it remember my numbers?',
+        a: 'This page always opens with 10 minutes and 6 rounds. Change the numbers on the main interval timer instead and it keeps them in your browser, with no account and nothing sent anywhere.',
       },
     ],
     related: [
       '/interval/beep-every-15-minutes',
       '/interval/beep-every-5-minutes',
-      '/timer/10-minutes',
       '/interval',
       '/blog/timer-that-beeps-every-10-minutes',
-      '/timer/sauna-timer',
     ],
   },
   {
@@ -299,15 +280,10 @@ export const beeps: ProgrammaticPage[] = [
       },
       {
         q: 'Can I use the keyboard?',
-        a: 'Space starts and pauses, R resets, Esc pauses and leaves fullscreen. They are ignored while you are typing in a settings field.',
+        a: 'Space starts and pauses, R asks to reset, Esc asks to stop. They are ignored while you are typing in a field.',
       },
     ],
-    related: [
-      '/interval/beep-every-20-minutes',
-      '/interval/beep-every-10-minutes',
-      '/pomodoro',
-      '/timer/15-minutes',
-    ],
+    related: ['/interval/beep-every-20-minutes', '/interval/beep-every-10-minutes', '/pomodoro'],
   },
   {
     path: '/interval/beep-every-20-minutes',
@@ -348,9 +324,8 @@ export const beeps: ProgrammaticPage[] = [
     related: [
       '/interval/beep-every-30-minutes',
       '/interval/beep-every-15-minutes',
-      '/timer/20-minutes',
       '/interval',
-      '/timer/nap-timer',
+      '/meditation/20-minutes',
     ],
   },
   {
@@ -392,8 +367,7 @@ export const beeps: ProgrammaticPage[] = [
     related: [
       '/interval/beep-every-hour',
       '/interval/beep-every-20-minutes',
-      '/timer/30-minutes',
-      '/timer',
+      '/meditation/30-minutes',
     ],
   },
   {
@@ -436,7 +410,7 @@ export const beeps: ProgrammaticPage[] = [
     related: [
       '/interval/beep-every-30-minutes',
       '/interval/beep-every-15-minutes',
-      '/timer/60-minutes',
+      '/meditation/1-hour',
       '/interval',
     ],
   },

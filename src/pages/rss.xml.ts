@@ -9,7 +9,8 @@ export async function GET(context: APIContext) {
   );
   return rss({
     title: `${SITE.name} blog`,
-    description: 'Short, specific guides to Tabata, HIIT, EMOM, Pomodoro and stopwatch training.',
+    description:
+      'Short, specific guides to Tabata, HIIT, EMOM, Pomodoro and meditation with interval bells.',
     site: context.site ?? SITE.url,
     items: posts.map((p) => ({
       title: p.data.title,

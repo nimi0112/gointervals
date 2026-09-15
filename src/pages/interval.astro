@@ -9,44 +9,43 @@ import { workouts } from '@/data/workouts';
 ---
 
 <TimerPage
-  title="Interval Timer – Free HIIT Timer with Rounds and Sets"
-  description="Free online interval timer for HIIT and circuits. Set work, rest, rounds and sets, save presets, beep every N minutes. No login, works offline, screen stays on."
+  title="Interval Timer – Free Work, Rest and Rounds Timer"
+  description="Free online interval timer for HIIT, circuits and repeating reminders. Set work, rest and rounds, get a beep at every change. No login, works offline."
   path="/interval"
   h1="Interval timer"
-  lede="Work, rest, rounds, sets. Save your own presets. Beeps at every change so you can put the phone down."
+  lede="Work, rest, rounds. A beep at every change so you can put the phone down and get on with it."
   config={defaultConfigs.interval}
-  presets
   faq={faqs['/interval']}
   related={relatedTimers['/interval']!}
   posts={relatedPosts['/interval']}
   crumbName="Interval timer"
 >
-  <Section num="01" title="Set it up" flush>
+  <Section title="Set it up" flush>
     <p>
-      Work is the hard bit, Rest is the easy bit, Rounds is how many times you repeat the pair. Sets
-      group rounds together with a longer break between them. Get ready is a short countdown before
-      round one so you are not starting mid-fumble.
+      Work is the hard bit, Rest is the easy bit, Rounds is how many times you repeat the pair. Type
+      a number or tap − and +. Start goes straight into the first work block; the rest after the
+      last round is included, so the session ends on a breath rather than a sprint.
     </p>
     <p>
-      Set Rest to 0 for a timer that just beeps every N minutes. Ten minute blocks, three rounds,
-      and you have a 30 minute timer with a beep at 10 and 20. That is the first preset.
-    </p>
-  </Section>
-  <Section num="02" title="Run it">
-    <p>
-      Press Start or hit Space. Digits go green on work, grey on rest, and the sounds are different
-      too: a rising pair to go, a falling pair to stop, a tick for the last three seconds, a
-      three-note finish. Skip jumps to the next block if you need to bail on a set.
-    </p>
-    <p>
-      The tab title counts down. Fullscreen gives you digits big enough to see from the other end of
-      the garage. The timer holds a screen wake lock while it runs, so the phone does not go dark
-      halfway through round six.
+      Set Rest to 0 for a timer that just beeps every N minutes. Thirty minute blocks, eight rounds,
+      and you have a four hour timer with a beep every half hour. That is the default.
     </p>
   </Section>
-  <Section num="03" title="Ready-made">
+  <Section title="Run it">
+    <p>
+      Press Start or hit Space. Work shows a pulse icon, Rest shows a breath. The sounds are
+      different too: a rising pair to go, a falling pair to stop, a tick for the last three seconds,
+      a three-note finish. Pause keeps the clock exactly where it was.
+    </p>
+    <p>
+      Esc or End session asks before it stops anything. The timer holds a screen wake lock while it
+      runs, so the phone does not go dark halfway through round six, and the tab title counts down
+      when the page is in the background on a desktop.
+    </p>
+  </Section>
+  <Section title="Ready-made">
     <p>Named workouts and repeating beeps, each on its own page with the timer already set.</p>
-    <ul class="two">
+    <ul class="links">
       {workouts.map((w) => (
         <li>
           <a href={w.path}>{w.h1}</a>
@@ -59,24 +58,4 @@ import { workouts } from '@/data/workouts';
       ))}
     </ul>
   </Section>
-  <Section num="04" title="Save it">
-    <p>
-      Save current as preset stores your setup in this browser with a name. It sits at the top of
-      the list next time you open the page. Nothing leaves your device. Delete presets with the ×
-      next to them, or wipe everything from the About page.
-    </p>
-  </Section>
 </TimerPage>
-
-<style>
-  .two {
-    columns: 2;
-    column-gap: var(--sp-5);
-    padding-left: 1.2em;
-  }
-  @media (max-width: 519px) {
-    .two {
-      columns: 1;
-    }
-  }
-</style>

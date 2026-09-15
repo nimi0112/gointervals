@@ -1,236 +1,95 @@
 import type { ModeConfig } from '@/engine/schedule';
-import { DurationField, NumberField } from './DurationField';
-import { describeConfig } from '@/engine/describe';
+import { Stepper } from './Stepper';
+import { Icon } from './Icon';
+import { bounds, type Draft, type FieldDef } from '../fields';
 
-interface Props {
+export interface SettingsProps {
   config: ModeConfig;
-  onChange(c: ModeConfig): void;
+  defs: FieldDef[];
+  /** the summary line; meditation places it between the chips and the preview */
+  summary?: preact.ComponentChildren;
+  draft: Draft;
+  errors: Draft;
   disabled: boolean;
+  onText(key: string, text: string): void;
+  onStep(key: string, delta: 1 | -1): void;
+  /** meditation chips */
+  onToggle(key: 'intervalBell' | 'startBell' | 'endBell'): void;
+  onPreview(): void;
 }
 
-const COUNTDOWN_PRESETS = [1, 3, 5, 10, 15, 20, 30, 45, 60];
+const LABEL: Record<string, string> = {
+  work: 'Work',
+  rest: 'Rest',
+  rounds: 'Rounds',
+  interval: 'Interval length',
+  minutes: 'Total minutes',
+  focus: 'Focus',
+  shortBreak: 'Short break',
+  longBreak: 'Long break',
+  sessions: 'Focus sessions',
+  total: 'Session length',
+  bell: 'Bell every',
+};
 
-function Fields({ config, onChange, disabled }: Props) {
-  switch (config.mode) {
-    case 'countdown':
-      return (
-        <div class="settings">
-          <div class="chips" role="group" aria-label="Quick durations">
-            {COUNTDOWN_PRESETS.map((m) => (
+/** The setup fields for a mode. Tabata has none: it is deliberately the fewest-settings path. */
+export function Settings(p: SettingsProps) {
+  const med = p.config.mode === 'meditation' ? p.config : null;
+  if (!p.defs.length && !med) return null;
+  return (
+    <div class={`settings settings--${p.config.mode}`} data-count={p.defs.length}>
+      <div class="settings__fields">
+        {p.defs.map((f) => {
+          const b = bounds(p.config, p.draft, f.key, p.defs);
+          const off = p.disabled || (med !== null && f.key === 'bell' && !med.intervalBell);
+          return (
+            <Stepper
+              key={f.key}
+              id={`f-${f.key}`}
+              label={
+                off && med && f.key === 'bell' ? `${LABEL[f.key]} · unavailable` : LABEL[f.key]!
+              }
+              unit={f.unit}
+              text={p.draft[f.key] ?? ''}
+              error={p.errors[f.key]}
+              atMin={b.atMin}
+              atMax={b.atMax}
+              disabled={off}
+              onText={(t) => p.onText(f.key, t)}
+              onStep={(d) => p.onStep(f.key, d)}
+            />
+          );
+        })}
+      </div>
+      {med && (
+        <>
+          <div class="settings__chips" role="group" aria-label="Bells">
+            {(
+              [
+                ['intervalBell', 'Interval bell'],
+                ['startBell', 'Start bell'],
+                ['endBell', 'End bell'],
+              ] as const
+            ).map(([key, label]) => (
               <button
-                key={m}
+                key={key}
                 type="button"
-                class={`chip${config.seconds === m * 60 ? ' is-active' : ''}`}
-                disabled={disabled}
-                aria-pressed={config.seconds === m * 60}
-                onClick={() => onChange({ mode: 'countdown', seconds: m * 60 })}
+                class="chip"
+                aria-pressed={med[key] ? 'true' : 'false'}
+                disabled={p.disabled}
+                onClick={() => p.onToggle(key)}
               >
-                {m} min
+                {label} · {med[key] ? 'On' : 'Off'}
               </button>
             ))}
           </div>
-          <div class="fields">
-            <DurationField
-              label="Custom"
-              value={config.seconds}
-              min={1}
-              disabled={disabled}
-              onChange={(seconds) => onChange({ mode: 'countdown', seconds: Math.max(1, seconds) })}
-            />
-          </div>
-        </div>
-      );
-    case 'interval':
-      return (
-        <div class="settings">
-          <div class="fields">
-            <DurationField
-              label="Work"
-              value={config.work}
-              min={1}
-              disabled={disabled}
-              onChange={(work) => onChange({ ...config, work: Math.max(1, work) })}
-            />
-            <DurationField
-              label="Rest"
-              value={config.rest}
-              hint="0 for none"
-              disabled={disabled}
-              onChange={(rest) => onChange({ ...config, rest })}
-            />
-            <NumberField
-              label="Rounds"
-              unit="rounds"
-              value={config.rounds}
-              disabled={disabled}
-              onChange={(rounds) => onChange({ ...config, rounds })}
-            />
-            <NumberField
-              label="Sets"
-              unit="sets"
-              value={config.sets}
-              max={99}
-              disabled={disabled}
-              onChange={(sets) => onChange({ ...config, sets })}
-            />
-            <DurationField
-              label="Rest between sets"
-              value={config.setRest}
-              disabled={disabled || config.sets < 2}
-              onChange={(setRest) => onChange({ ...config, setRest })}
-            />
-            <DurationField
-              label="Get ready"
-              value={config.prep}
-              hint="countdown before round 1"
-              disabled={disabled}
-              onChange={(prep) => onChange({ ...config, prep })}
-            />
-          </div>
-        </div>
-      );
-    case 'tabata':
-      return (
-        <div class="settings">
-          <div class="fields">
-            <DurationField
-              label="Work"
-              value={config.work}
-              min={1}
-              disabled={disabled}
-              onChange={(work) => onChange({ ...config, work: Math.max(1, work) })}
-            />
-            <DurationField
-              label="Rest"
-              value={config.rest}
-              disabled={disabled}
-              onChange={(rest) => onChange({ ...config, rest })}
-            />
-            <NumberField
-              label="Rounds"
-              unit="rounds"
-              value={config.rounds}
-              disabled={disabled}
-              onChange={(rounds) => onChange({ ...config, rounds })}
-            />
-            <DurationField
-              label="Get ready"
-              value={config.prep}
-              disabled={disabled}
-              onChange={(prep) => onChange({ ...config, prep })}
-            />
-          </div>
-        </div>
-      );
-    case 'emom':
-      return (
-        <div class="settings">
-          <div class="fields">
-            <NumberField
-              label="Total"
-              unit="min"
-              value={config.minutes}
-              max={180}
-              disabled={disabled}
-              onChange={(minutes) => onChange({ ...config, minutes })}
-            />
-            <DurationField
-              label="Every"
-              value={config.interval}
-              min={5}
-              hint="60 = on the minute"
-              disabled={disabled}
-              onChange={(interval) => onChange({ ...config, interval: Math.max(5, interval) })}
-            />
-            <DurationField
-              label="Get ready"
-              value={config.prep}
-              disabled={disabled}
-              onChange={(prep) => onChange({ ...config, prep })}
-            />
-          </div>
-        </div>
-      );
-    case 'pomodoro':
-      return (
-        <div class="settings">
-          <div class="fields">
-            <NumberField
-              label="Focus"
-              unit="min"
-              value={config.focus}
-              max={180}
-              disabled={disabled}
-              onChange={(focus) => onChange({ ...config, focus })}
-            />
-            <NumberField
-              label="Short break"
-              unit="min"
-              value={config.shortBreak}
-              max={60}
-              disabled={disabled}
-              onChange={(shortBreak) => onChange({ ...config, shortBreak })}
-            />
-            <NumberField
-              label="Long break"
-              unit="min"
-              value={config.longBreak}
-              max={120}
-              disabled={disabled}
-              onChange={(longBreak) => onChange({ ...config, longBreak })}
-            />
-            <NumberField
-              label="Long break after"
-              unit="sessions"
-              value={config.sessionsBeforeLong}
-              max={12}
-              disabled={disabled}
-              onChange={(sessionsBeforeLong) => onChange({ ...config, sessionsBeforeLong })}
-            />
-          </div>
-        </div>
-      );
-    case 'meditation':
-      return (
-        <div class="settings">
-          <div class="fields">
-            <DurationField
-              label="Bell every"
-              value={config.bell}
-              min={30}
-              disabled={disabled}
-              onChange={(bell) => onChange({ ...config, bell: Math.max(30, bell) })}
-            />
-            <DurationField
-              label="Total"
-              value={config.total}
-              min={30}
-              disabled={disabled}
-              onChange={(total) => onChange({ ...config, total: Math.max(30, total) })}
-            />
-            <DurationField
-              label="Settle in"
-              value={config.prep}
-              hint="before the first bell"
-              disabled={disabled}
-              onChange={(prep) => onChange({ ...config, prep })}
-            />
-          </div>
-        </div>
-      );
-    case 'stopwatch':
-      return null;
-  }
-}
-
-export function Settings(props: Props) {
-  if (props.config.mode === 'stopwatch') return null;
-  return (
-    <>
-      <p class="settings__summary" aria-live="polite">
-        {describeConfig(props.config)}
-      </p>
-      <Fields {...props} />
-    </>
+          {p.summary}
+          <button type="button" class="btn btn--quiet settings__preview" onClick={p.onPreview}>
+            <Icon name="volume-2" size={18} />
+            <span>Preview bell</span>
+          </button>
+        </>
+      )}
+    </div>
   );
 }

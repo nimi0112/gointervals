@@ -9,8 +9,8 @@ export const workouts: ProgrammaticPage[] = [
       'Timer for the scientific 7 minute workout: 12 exercises, 30 seconds each, 10 seconds rest, beeps between stations. Runs in the browser, no app, no login.',
     intro: [
       'The 7 minute workout is the 2013 ACSM circuit by Chris Jordan: 12 bodyweight exercises, 30 seconds each, 10 seconds to move between them. Jumping jacks, wall sit, push-ups, crunches, step-ups, squats, triceps dips, plank, high knees, lunges, push-up with rotation, side plank. In that order, on purpose, so big muscle groups alternate.',
-      'This timer is set to exactly that: 12 rounds of 30 on, 10 off, with a 10 second get-ready count. It beeps when a station ends and ticks through the last three seconds so you can set up for the next one.',
-      'The paper suggests repeating the circuit two or three times if you have the time. Change Sets to 2 or 3 in the settings and add a minute of rest between them.',
+      'This timer is set to exactly that: 12 rounds of 30 on, 10 off, straight in from Start. It beeps when a station ends and ticks through the last three seconds so you can set up for the next one.',
+      'The paper suggests repeating the circuit two or three times if you have the time. Press Run again when it finishes, or set Rounds to 24 or 36 on the interval timer for one continuous session.',
     ],
     uses: [
       'Hotel-room workouts with a chair and a wall',
@@ -18,7 +18,7 @@ export const workouts: ProgrammaticPage[] = [
       'Repeat 2-3 times for a 15-25 minute workout',
       'Following the exercise list while the timer calls the switches',
     ],
-    config: { mode: 'interval', prep: 10, work: 30, rest: 10, rounds: 12, sets: 1, setRest: 60 },
+    config: { mode: 'interval', prep: 0, work: 30, rest: 10, rounds: 12, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'What are the 12 exercises in order?',
@@ -34,20 +34,20 @@ export const workouts: ProgrammaticPage[] = [
       },
       {
         q: 'Can I make the rest longer?',
-        a: 'Open Settings and change Rest from 10 to 15 or 20 seconds. The timer saves that in your browser so it is there next time.',
+        a: 'Change Rest from 10 to 15 or 20 seconds above the Start button. This page always opens with 10; the interval timer remembers your own numbers.',
       },
     ],
-    related: ['/blog/7-minute-workout-timer', '/interval', '/tabata/45-15-10', '/timer/7-minutes'],
+    related: ['/blog/7-minute-workout-timer', '/interval', '/tabata/45-15-10', '/tabata'],
   },
   {
     path: '/interval/boxing-rounds-3-1',
     h1: 'Boxing round timer: 3 minute rounds, 1 minute rest',
     title: 'Boxing Round Timer – 3 Min Rounds, 1 Min Rest',
     description:
-      'Boxing round timer preset to 3 minute rounds with 1 minute rest, 12 rounds, a 10 second warning tick. Bell-style beeps, screen stays on, free.',
+      'Boxing round timer preset to 3 minute rounds with 1 minute rest, 12 rounds, ticks before each bell. Bell-style beeps, screen stays on, free.',
     intro: [
       'Three minutes on, one minute off is the professional standard: 12 rounds for a title fight, fewer for club shows. Amateurs box 3 x 3 minutes. This timer is set to 12 rounds and you can stop whenever you like.',
-      'Use it for bag work, pads, shadow boxing or sparring. The work beep is a rising pair, the rest beep is a falling pair, and the last three seconds of every round tick. Turn on fullscreen and prop the phone against the mirror.',
+      'Use it for bag work, pads, shadow boxing or sparring. The work beep is a rising pair, the rest beep is a falling pair, and the last three seconds of every round tick. Prop the phone against the mirror; the digits are the biggest thing on the page.',
       'For a 10 second warning before the bell, the way gyms use a clapper, that is on the list. For now the last-3-second ticks do the job.',
     ],
     uses: [
@@ -56,15 +56,15 @@ export const workouts: ProgrammaticPage[] = [
       'Shadow boxing warm-ups, 3 rounds',
       'Sparring at full pro round length',
     ],
-    config: { mode: 'interval', prep: 10, work: 180, rest: 60, rounds: 12, sets: 1, setRest: 0 },
+    config: { mode: 'interval', prep: 0, work: 180, rest: 60, rounds: 12, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'How many rounds should I do?',
-        a: 'Beginners: 3 to 6 rounds of bag work. Amateur fight prep: 6 to 8. Pro-style sessions: 10 to 12. Set Rounds in the settings, or leave it at 12 and stop when you are done.',
+        a: 'Beginners: 3 to 6 rounds of bag work. Amateur fight prep: 6 to 8. Pro-style sessions: 10 to 12. Set Rounds above the Start button, or leave it at 12 and stop when you are done.',
       },
       {
         q: 'Can I do 2 minute rounds?',
-        a: 'Yes. Change Work to 2:00. Women’s pro boxing and many amateur formats use 2 minute rounds with 1 minute rest.',
+        a: 'Yes. Set Work to 120 seconds. Women’s pro boxing and many amateur formats use 2 minute rounds with 1 minute rest.',
       },
       {
         q: 'Does it sound like a bell?',
@@ -78,7 +78,7 @@ export const workouts: ProgrammaticPage[] = [
     related: [
       '/blog/boxing-round-timer-3-minute-rounds',
       '/interval',
-      '/timer/3-minutes',
+      '/interval/beep-every-3-minutes',
       '/emom',
       '/blog/how-many-rounds-in-a-boxing-match',
     ],
@@ -100,7 +100,7 @@ export const workouts: ProgrammaticPage[] = [
       'Easy aerobic days without watching pace',
       'Walking clients into running',
     ],
-    config: { mode: 'interval', prep: 10, work: 60, rest: 60, rounds: 10, sets: 1, setRest: 0 },
+    config: { mode: 'interval', prep: 0, work: 60, rest: 60, rounds: 10, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'Will I hear the beeps with the phone in my pocket?',
@@ -112,13 +112,12 @@ export const workouts: ProgrammaticPage[] = [
       },
       {
         q: 'How do I do 2 minutes run, 1 minute walk?',
-        a: 'Settings, set Work to 2:00, leave Rest at 1:00. The change is saved in your browser.',
+        a: 'Set Work to 120 above the Start button and leave Rest at 60.',
       },
     ],
     related: [
       '/interval/sprint-30-90',
       '/interval',
-      '/stopwatch',
       '/blog/stopwatch-running-splits-lap-times',
       '/blog/interval-timer-for-running',
     ],
@@ -140,7 +139,7 @@ export const workouts: ProgrammaticPage[] = [
       'Hill repeats',
       'Rowing 30 second max efforts',
     ],
-    config: { mode: 'interval', prep: 15, work: 30, rest: 90, rounds: 8, sets: 1, setRest: 0 },
+    config: { mode: 'interval', prep: 0, work: 30, rest: 90, rounds: 8, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'Why 90 seconds of rest?',
@@ -151,16 +150,11 @@ export const workouts: ProgrammaticPage[] = [
         a: 'Four. Set Rounds to 4 and add one each week. The default of 8 assumes you have done this before.',
       },
       {
-        q: 'Is there a longer get-ready count?',
-        a: 'This preset uses 15 seconds so you can get to the start line. Change it in the settings.',
+        q: 'Is there a get-ready count?',
+        a: 'No. Start goes straight into the first sprint, so press it at the line. Set Work to a longer first effort if you want a lead-in.',
       },
     ],
-    related: [
-      '/interval/running-intervals-1-1',
-      '/tabata/20-10-8',
-      '/interval',
-      '/timer/90-seconds',
-    ],
+    related: ['/interval/running-intervals-1-1', '/tabata/20-10-8', '/interval'],
   },
   {
     path: '/interval/kettlebell-emom-10',
@@ -179,7 +173,7 @@ export const workouts: ProgrammaticPage[] = [
       'Simple and Sinister style swing blocks',
       'A finisher after lifting',
     ],
-    config: { mode: 'interval', prep: 10, work: 60, rest: 0, rounds: 10, sets: 1, setRest: 0 },
+    config: { mode: 'interval', prep: 0, work: 60, rest: 0, rounds: 10, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'Is this the same as the EMOM timer page?',
@@ -194,6 +188,6 @@ export const workouts: ProgrammaticPage[] = [
         a: 'Change Rounds to 20 in the settings. Each round is one minute.',
       },
     ],
-    related: ['/emom', '/blog/emom-workouts-explained', '/interval', '/timer/10-minutes'],
+    related: ['/emom', '/blog/emom-workouts-explained', '/interval', '/interval/beep-every-minute'],
   },
 ];
