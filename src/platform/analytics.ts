@@ -6,12 +6,18 @@ export type EventName =
   | 'timer_start'
   | 'timer_pause'
   | 'timer_resume'
-  | 'timer_reset'
+  | 'timer_stop_confirmed'
+  | 'timer_reset_confirmed'
   | 'timer_complete'
-  | 'preset_saved'
-  | 'preset_loaded'
-  | 'fullscreen_enter'
-  | 'mute_toggle'
+  | 'timer_run_again'
+  | 'timer_change_settings'
+  | 'invalid_input'
+  | 'audio_toggle'
+  | 'audio_unavailable'
+  | 'wakelock_failed'
+  | 'nav_away_during_session'
+  | 'blog_read'
+  | 'outbound_click'
   | 'pwa_prompt_shown'
   | 'pwa_prompt_accepted'
   | 'pwa_prompt_dismissed'
@@ -20,10 +26,28 @@ export type EventName =
 
 export interface EventParams {
   mode?: string;
-  duration_seconds?: number;
+  /** configured values, in the unit the field uses */
+  work?: number;
+  rest?: number;
   rounds?: number;
+  interval?: number;
+  minutes?: number;
+  focus?: number;
+  short_break?: number;
+  long_break?: number;
+  sessions?: number;
+  bell?: number;
+  interval_bell?: boolean;
+  start_bell?: boolean;
+  end_bell?: boolean;
+  total_seconds?: number;
+  /** what phase or field the event concerns */
+  phase?: string;
+  field?: string;
+  reason?: string;
   muted?: boolean;
-  preset?: string;
+  href?: string;
+  slug?: string;
   /** install prompt: which surface asked, and what the user chose */
   platform?: string;
   outcome?: string;

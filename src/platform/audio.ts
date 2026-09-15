@@ -20,21 +20,31 @@ function getCtx(): AudioContext | null {
   return ctx;
 }
 
-/** Call from any pointer/keyboard handler. Safe to call repeatedly. */
-export function unlockAudio(): void {
+/** True when this browser can make sound at all. */
+export function audioAvailable(): boolean {
+  return getCtx() !== null;
+}
+
+/**
+ * Call from any pointer/keyboard handler. Safe to call repeatedly. Resolves true when the
+ * context is running afterwards, false when audio is missing or the browser refused to
+ * resume it; the caller shows a quiet notice and the timer carries on.
+ */
+export async function unlockAudio(): Promise<boolean> {
   const c = getCtx();
-  if (!c) return;
-  if (c.state === 'suspended') void c.resume();
-  // iOS also wants an actual (silent) buffer played once.
+  if (!c) return false;
   try {
+    if (c.state !== 'running') await c.resume();
+    // iOS also wants an actual (silent) buffer played once.
     const buf = c.createBuffer(1, 1, 22050);
     const src = c.createBufferSource();
     src.buffer = buf;
     src.connect(c.destination);
     src.start(0);
   } catch {
-    /* ignore */
+    /* fall through to the state check */
   }
+  return c.state === 'running';
 }
 
 function tone(
