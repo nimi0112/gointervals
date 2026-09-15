@@ -1,0 +1,72 @@
+src/islands/parts/Settings.tsx
+  s_073c48a871cfe8::t_92aede44eb6e2a 38,40
+  s_073c48a871cfe8::t_7825d03f2bda5b 4,8-10,42-43,86
+src/components/Footer.astro
+  s_073c48a871cfe8::t_60ea1312ddccb0 5-6,13,15-16,21-22,27-31,33-43
+tests/e2e/timer.spec.ts
+  s_073c48a871cfe8::t_514c94fbb03dc1 13-14,17,31-33,35-36,43-49,51-53,57-58,61-62,66,74,81,88,92,98,106,113-114,120,124,138,143,147-148,177-181,203,218,225-228,234-237,239,243,245,249,287,291,295,299,301,305
+src/components/Header.astro
+  s_073c48a871cfe8::t_60ea1312ddccb0 29,57,61,63-69,78-80,82
+  s_073c48a871cfe8::t_805d1665573295 12-13,18,21,31,37-38,46,93-97
+src/engine/validate.ts
+  s_073c48a871cfe8::t_7825d03f2bda5b 28-29
+src/islands/parts/Stepper.tsx
+  s_073c48a871cfe8::t_7825d03f2bda5b 84
+src/islands/fields.ts
+  s_073c48a871cfe8::t_7825d03f2bda5b 13-14,19-26,29-31,35-36,39-42,45-56,60-63,66,68,81-85,88-91,101-108,112,122,124
+src/layouts/Post.astro
+  s_073c48a871cfe8::t_4c4d532b8844f3 98-99,103-106,115,118,128,143,149,153-176,187,191-204
+  s_073c48a871cfe8::t_78d6d73c987261 122-126,148,150-152,188-190
+  s_073c48a871cfe8::t_41eda4ae24d4b6 205
+src/pages/index.astro
+  s_073c48a871cfe8::t_4c4d532b8844f3 31,60,105,118,144,151-164,167,172,181-196,206-217,220-224,229,231-238
+  s_073c48a871cfe8::t_c095940f6c6689 146,150,225-228
+  s_073c48a871cfe8::t_78d6d73c987261 34-38,138-139,143,199-204,230
+  s_073c48a871cfe8::t_ebeae4c334a3e3 137,141-142
+  s_073c48a871cfe8::t_19e49d636f0f1c 32-33,39-48,50-59,61-64,104,117,119-120,125,136,145,205,239
+src/pages/404.astro
+  s_073c48a871cfe8::t_4c4d532b8844f3 20,22,24-26,29-36,41-43
+src/content/blog/meditation-timer-interval-bells.md
+  s_073c48a871cfe8::t_c095940f6c6689 13
+  s_073c48a871cfe8::t_bc60d2469a17ae 14
+tests/unit/fields.test.ts
+  s_073c48a871cfe8::t_7825d03f2bda5b 58
+  s_073c48a871cfe8::t_636acb55222e90 1,7-8,22-27,40-50,81-89
+src/styles/base.css
+  s_073c48a871cfe8::t_3158cc28e2a4a0 15-16,51-52,198-199,202,206-210,302,314,321-322
+  s_073c48a871cfe8::t_ebeae4c334a3e3 197
+src/pages/about.astro
+  s_073c48a871cfe8::t_78d6d73c987261 129-130
+  s_073c48a871cfe8::t_4c4d532b8844f3 78-79,81,89-90,92,98,108-109,127-128,131-134
+  s_073c48a871cfe8::t_a2ae13ba786fc7 135
+tests/e2e/install.spec.ts
+  s_073c48a871cfe8::t_514c94fbb03dc1 8,10,69,78,89,103,113,122,146
+src/styles/timer.css
+  s_073c48a871cfe8::t_c095940f6c6689 101-103,106-109,257
+  s_073c48a871cfe8::t_78d6d73c987261 76-77,97,126,137,144,253,328
+  s_073c48a871cfe8::t_b53c7001f4ca32 1-2,8,21-23,25,40-42,47,54,57,60-61,64-68,82-83,129,132,134-136,140,148,167,209,223,227-228,241,251,255-256,262-267,273,291,297,319,325,327,339,345,348,353,357-363,369,371,376,381,387,390,424,427-431,434-435,441
+  s_073c48a871cfe8::t_ebeae4c334a3e3 94
+src/components/Faq.astro
+  s_073c48a871cfe8::t_3158cc28e2a4a0 26,29,34,36
+src/islands/Timer.tsx
+  s_073c48a871cfe8::t_92aede44eb6e2a 476
+  s_073c48a871cfe8::t_97d76a72a2796c 16,91,93,118,137,142,147,289-291,324,391,454-456,458,461-465,493,501,503
+AGENTS.md
+  s_073c48a871cfe8::t_55edc01b0060e0 72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2786bfb55eb21f8bd30e49c11eeb251cd26a71a0",
+  "prompts": {},
+  "sessions": {
+    "s_073c48a871cfe8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35446b01-851d-46f7-8ef0-95cc6a3e40d4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
