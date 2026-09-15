@@ -1,20 +1,19 @@
-import { formatClock, formatTenths, formatDuration, describeSeconds } from '@/engine/format';
+import { formatClock, formatDuration, describeSeconds, formatTitle } from '@/engine/format';
 
 describe('format', () => {
-  it('formats mm:ss and h:mm:ss, ceiling remaining seconds', () => {
+  it('formats mm:ss with ceiling, never truncating past 59 minutes', () => {
     expect(formatClock(0)).toBe('00:00');
     expect(formatClock(1)).toBe('00:01');
+    expect(formatClock(400)).toBe('00:01');
     expect(formatClock(59_999)).toBe('01:00');
     expect(formatClock(60_000)).toBe('01:00');
-    expect(formatClock(3_600_000)).toBe('1:00:00');
-    expect(formatClock(5_400_000)).toBe('1:30:00');
+    expect(formatClock(93 * 60_000 + 32_000)).toBe('93:32');
+    expect(formatClock(130 * 60_000)).toBe('130:00');
   });
 
-  it('formats stopwatch tenths by flooring', () => {
-    expect(formatTenths(0)).toBe('00:00.0');
-    expect(formatTenths(1234)).toBe('00:01.2');
-    expect(formatTenths(61_950)).toBe('01:01.9');
-    expect(formatTenths(3_661_000)).toBe('1:01:01.0');
+  it('formats a compact title', () => {
+    expect(formatTitle(5 * 60_000)).toBe('5:00');
+    expect(formatTitle(130 * 60_000)).toBe('130:00');
   });
 
   it('formats human durations', () => {
