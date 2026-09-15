@@ -23,11 +23,11 @@ const f = (key: string, limit: Limit, unit: string, scale = 1): FieldDef => ({
   scale,
 });
 
-/** The main timer pages. Work is edited in minutes; everything else as the canvas shows it. */
+/** The main timer pages. Interval work and rest are edited in minutes by owner request. */
 export const FIELDS: Record<Mode, FieldDef[]> = {
   interval: [
     f('work', LIMITS.interval.workMinutes, 'min', 60),
-    f('rest', LIMITS.interval.rest, 'seconds'),
+    f('rest', LIMITS.interval.restMinutes, 'min', 60),
     f('rounds', LIMITS.interval.rounds, 'rounds'),
   ],
   tabata: [],

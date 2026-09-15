@@ -27,6 +27,7 @@ export const LIMITS = {
     work: lim('Work', 'seconds', 1, 3600),
     /** the main interval page edits work in whole minutes */
     workMinutes: lim('Work', 'minutes', 1, 60),
+    restMinutes: lim('Rest', 'minutes', 0, 60),
     rest: lim('Rest', 'seconds', 0, 3600),
     rounds: lim('Rounds', 'rounds', 1, 99),
   },
