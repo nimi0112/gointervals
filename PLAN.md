@@ -110,6 +110,8 @@ TimerPage.astro (no site header)
 
 Dev: `typescript`, `vitest`, `@playwright/test`, `eslint` + `typescript-eslint` + `eslint-plugin-astro`, `prettier` + `prettier-plugin-astro`, `node-html-parser` (check-build), `@astrojs/check`.
 
+`@emnapi/runtime` and `@emnapi/core` are listed explicitly (dev) only so the lock file carries a top-level copy: the wasm fallbacks of `sharp` and `satteri` need them, npm on macOS never writes those platform-skipped entries, and `npm ci` on Linux then refuses the lock.
+
 Not used, on purpose: Tailwind, Partytown, vite-plugin-pwa, any icon library (lucide paths are inlined), any animation library.
 
 ## 5. Design tokens
