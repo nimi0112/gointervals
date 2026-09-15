@@ -1,0 +1,21 @@
+tests/unit/fields.test.ts
+  s_073c48a871cfe8::t_5410d3f9b5a364 1-54
+src/islands/fields.ts
+  s_073c48a871cfe8::t_b9aa1f53eb066f 1-95
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "a059d7122c44fbe127ab0056ac3d6ada97b8b22b",
+  "prompts": {},
+  "sessions": {
+    "s_073c48a871cfe8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35446b01-851d-46f7-8ef0-95cc6a3e40d4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
