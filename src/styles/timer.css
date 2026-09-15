@@ -2,14 +2,13 @@
 .timer {
   display: flex;
   flex-direction: column;
-  min-height: calc(100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
-  padding-top: var(--sp-5);
+  padding-top: var(--sp-3);
 }
 .timer__stage {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sp-2);
+  gap: var(--sp-1);
   text-align: center;
 }
 .timer__digits {
@@ -17,7 +16,7 @@
   font-variant-numeric: tabular-nums;
   font-weight: 500;
   font-size: clamp(4.5rem, 26vw, 6.125rem); /* 98px at 375 */
-  line-height: 1;
+  line-height: 0.95;
   letter-spacing: -0.02em;
   color: var(--ink);
   display: inline-flex;
@@ -49,8 +48,8 @@
 .timer__body {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-4);
-  margin-top: var(--sp-5);
+  gap: var(--sp-3);
+  margin-top: var(--sp-3);
 }
 .timer__summary {
   margin: 0;
@@ -66,8 +65,10 @@
   align-items: center;
   justify-content: center;
   gap: var(--sp-4);
-  min-height: 96px;
-  padding-block: var(--sp-5);
+  padding-block: var(--sp-2);
+}
+.timer[data-status='idle'] .timer__quiet:empty {
+  padding: 0;
 }
 .timer__guidance {
   margin: 0;
@@ -106,7 +107,7 @@
   align-items: center;
   gap: var(--sp-2);
   width: 100%;
-  margin-top: var(--sp-4);
+  margin-top: var(--sp-3);
 }
 .timer__primary {
   width: 100%;
@@ -129,12 +130,12 @@
 .settings {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-4);
+  gap: var(--sp-3);
 }
 .settings__fields {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-4);
+  gap: var(--sp-3);
 }
 .field {
   display: flex;
@@ -223,7 +224,7 @@
 .settings__chips {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-2);
+  gap: var(--sp-1);
 }
 .settings__chips .chip {
   width: 100%;
@@ -290,8 +291,8 @@
 
 /* Subordinate navigation */
 .shellnav {
-  margin-top: var(--sp-5);
-  padding-top: var(--sp-3);
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-2);
   border-top: 1px solid var(--line);
   display: flex;
   flex-direction: column;
@@ -382,10 +383,11 @@
 /* Desktop */
 @media (min-width: 720px) {
   .timer {
-    padding-top: var(--sp-7);
+    padding-top: var(--sp-5);
   }
   .timer__digits {
     font-size: clamp(6.125rem, 16vw, 13rem); /* 208px at 1280 */
+    line-height: 0.9;
     letter-spacing: -0.03em;
   }
   .timer__phase {

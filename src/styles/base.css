@@ -314,10 +314,6 @@ th {
 .rows li + li {
   margin-top: var(--sp-2);
 }
-.rows li:first-child .row {
-  background: var(--soft);
-  border-color: var(--soft);
-}
 .row__index {
   font-family: var(--font-digits);
   font-size: var(--fs-label);
