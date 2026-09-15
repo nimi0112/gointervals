@@ -1,0 +1,37 @@
+src/islands/fields.ts
+  s_073c48a871cfe8::t_ab57d5ded5c4aa 89-90,119-122
+  s_073c48a871cfe8::t_8085a048e186aa 123-124
+PLAN.md
+  s_073c48a871cfe8::t_3a9fa2367000c8 5
+tests/e2e/timer.spec.ts
+  s_073c48a871cfe8::t_f03f4aa15cb578 190-219,535-551
+AGENTS.md
+  s_073c48a871cfe8::t_e7a6d24ae005bc 3,144
+src/islands/parts/Stepper.tsx
+  s_073c48a871cfe8::t_3a9fa2367000c8 28-30,40,43
+src/islands/Timer.tsx
+  s_073c48a871cfe8::t_3a9fa2367000c8 16-24,153,431-446
+  s_073c48a871cfe8::t_dc2b627615162a 447
+tests/unit/fields.test.ts
+  s_073c48a871cfe8::t_ab57d5ded5c4aa 1-8,73-82
+  s_073c48a871cfe8::t_db7de8e8f9d003 83-84
+  s_073c48a871cfe8::t_999fce04d6beaf 85-86
+.gitignore
+  s_073c48a871cfe8::t_e7a6d24ae005bc 12-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ead5625ac25417f7ad6a5f984b72ec61d6185831",
+  "prompts": {},
+  "sessions": {
+    "s_073c48a871cfe8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35446b01-851d-46f7-8ef0-95cc6a3e40d4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
