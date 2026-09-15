@@ -1,0 +1,54 @@
+src/engine/describe.ts
+  s_073c48a871cfe8::t_8adebfd17fbb70 28-31
+src/engine/validate.ts
+  s_073c48a871cfe8::t_eef2c1bc352df4 142-144
+src/islands/fields.ts
+  s_073c48a871cfe8::t_eef2c1bc352df4 119-130
+src/data/beeps.ts
+  s_073c48a871cfe8::t_8adebfd17fbb70 158,197
+src/data/tabatas.ts
+  s_073c48a871cfe8::t_8adebfd17fbb70 96,113,190,224,364
+src/layouts/Base.astro
+  s_073c48a871cfe8::t_8adebfd17fbb70 63,67-73
+src/pages/rss.xml.ts
+  s_073c48a871cfe8::t_8adebfd17fbb70 12-13
+tests/unit/copy.test.ts
+  s_073c48a871cfe8::t_8adebfd17fbb70 155-162,183,185,191-193,196,202
+tests/e2e/timer.spec.ts
+  s_073c48a871cfe8::t_bad56b7435c8cf 261-296,588-593
+  s_073c48a871cfe8::t_641fe4da059137 565,567-571,597-600
+src/islands/copy.ts
+  s_073c48a871cfe8::t_8adebfd17fbb70 6,128-129,137,177,201
+tests/unit/describe.test.ts
+  s_073c48a871cfe8::t_8adebfd17fbb70 55-57
+src/pages/index.astro
+  s_073c48a871cfe8::t_641fe4da059137 45
+tests/unit/fields.test.ts
+  s_073c48a871cfe8::t_8adebfd17fbb70 91-95
+  s_073c48a871cfe8::t_eef2c1bc352df4 5,88-90,96-97
+  s_073c48a871cfe8::t_20894a3d87e8a5 98-99
+tests/unit/validate.test.ts
+  s_073c48a871cfe8::t_eef2c1bc352df4 78-81
+src/data/pomodoros.ts
+  s_073c48a871cfe8::t_8adebfd17fbb70 92
+src/data/workouts.ts
+  s_073c48a871cfe8::t_8adebfd17fbb70 13,50,67
+src/islands/Timer.tsx
+  s_073c48a871cfe8::t_8adebfd17fbb70 21,126-130,388-423,458-460
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0429c702a5568d9db6be888f0c9d5e94fd99902e",
+  "prompts": {},
+  "sessions": {
+    "s_073c48a871cfe8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35446b01-851d-46f7-8ef0-95cc6a3e40d4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
