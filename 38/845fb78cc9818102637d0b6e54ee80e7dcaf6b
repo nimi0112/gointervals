@@ -1,0 +1,153 @@
+src/pages/emom.astro
+  s_073c48a871cfe8::t_dcf82188e9a48d 11
+  s_073c48a871cfe8::t_7665145f40b16a 14,21,23-25,28-30,33,35-36
+src/data/tabatas.ts
+  s_073c48a871cfe8::t_b1278838e73adc 154
+  s_073c48a871cfe8::t_827404e6356877 2,22,66,105,139,173,207,247,287,327,367
+  s_073c48a871cfe8::t_dcf82188e9a48d 275
+  s_073c48a871cfe8::t_48a17031be3ac2 14,33-34,54,78,127,150-151,199
+src/islands/parts/Stepper.tsx
+  s_073c48a871cfe8::t_5587d7b46877e6 1-3,5,7-15,18-31,33-68,71-72,74-76,78-80,82-87,89-91,93,95-99
+src/pages/meditation.astro
+  s_073c48a871cfe8::t_dcf82188e9a48d 12
+  s_073c48a871cfe8::t_7665145f40b16a 11,14-15,22,24-27,30-32,35,37,45,47-50,53-54
+src/content/blog/keep-phone-screen-on-workout-timer.md
+  s_073c48a871cfe8::t_24ee564240147b 59,63
+src/data/meditations.ts
+  s_073c48a871cfe8::t_0669821b450f78 33,99,228
+  s_073c48a871cfe8::t_827404e6356877 21,64,107,150,193,236
+  s_073c48a871cfe8::t_b1278838e73adc 9,13,52,76,119,162,205,248
+  s_073c48a871cfe8::t_48a17031be3ac2 43,86
+src/content/blog/plank-timer-how-long-to-hold.md
+  s_073c48a871cfe8::t_24ee564240147b 5-6,61,69,75
+src/islands/parts/Settings.tsx
+  s_073c48a871cfe8::t_5587d7b46877e6 2-4,6,8-9,11-15,18-30,32-36,38-69,71,73-76,78,82-88
+  s_8cce7e005b2c02::t_d4e45137bc6225 37
+public/humans.txt
+  s_073c48a871cfe8::t_0cf9c8e8d30c88 3-4,10-12
+src/data/beeps.ts
+  s_073c48a871cfe8::t_48a17031be3ac2 79,112,165-166,344,386,429
+  s_073c48a871cfe8::t_b1278838e73adc 251-252,295
+src/pages/tabata.astro
+  s_073c48a871cfe8::t_dcf82188e9a48d 12
+  s_073c48a871cfe8::t_7665145f40b16a 15,22,26-32,35-36,44,46-48
+src/islands/parts/Progress.tsx
+  s_073c48a871cfe8::t_5587d7b46877e6 1-22
+src/data/faqs.ts
+  s_073c48a871cfe8::t_d5a16ec30ebbc6 6-7,10-11,14-15,18-19,22-23,28-29,32-33,36-37,47,51,55,65,79,82-83,89-93,101
+src/lib/og.ts
+  s_073c48a871cfe8::t_0cf9c8e8d30c88 7-9,13-17,19,23-31,33,44-47,53-54,60,65-81,87-97,106,108-109,120-122,126
+public/llms.txt
+  s_073c48a871cfe8::t_ffda176e1ab75e 1,3,11-16,20,29-30,32,34-35,38,41-43,45-46,50-52
+src/lib/seo.ts
+  s_073c48a871cfe8::t_d5a16ec30ebbc6 26-55,73,75-76,155,171,173-174,208,214
+public/sw.js
+  s_073c48a871cfe8::t_0cf9c8e8d30c88 1,9,16-17,21-22,25,29-30
+  s_073c48a871cfe8::t_63fd1279128d44 31-32
+src/layouts/Base.astro
+  s_073c48a871cfe8::t_96a6cb29f43091 63,83-84,94,99,101-106
+src/data/pomodoros.ts
+  s_073c48a871cfe8::t_b2c7fe8d0a10b6 26,75,124,174
+  s_073c48a871cfe8::t_48a17031be3ac2 147,197
+src/layouts/TimerPage.astro
+  s_073c48a871cfe8::t_7665145f40b16a 17,42,46,51,53,59-68
+src/pages/index.astro
+  s_073c48a871cfe8::t_6bf629fc1b1c98 2-3,6-7,9-12,14-21,24-25,28,30-44,46-52,58-73,75-90,92-93,96-97,99-103,105-106,108-113,115-119,121-122,124-127,129-134,136-137,139-143,145-158
+src/pages/pomodoro.astro
+  s_073c48a871cfe8::t_7665145f40b16a 12,15,22,30,33-35,37,39,41
+src/lib/pages.ts
+  s_073c48a871cfe8::t_d5a16ec30ebbc6 18-19,24,40-41,43
+src/content/blog/boxing-round-timer-3-minute-rounds.md
+  s_073c48a871cfe8::t_24ee564240147b 58
+src/pages/blog/tag/[tag].astro
+  s_073c48a871cfe8::t_6bf629fc1b1c98 33,39,49
+src/islands/parts/ShellNav.tsx
+  s_073c48a871cfe8::t_5587d7b46877e6 1-9,12-17,19,22-37,40-43,45-46,49-51
+  s_073c48a871cfe8::t_b575d5a0fed429 18,20-21,48
+src/content/blog/meditation-timer-interval-bells.md
+  s_073c48a871cfe8::t_fbc16ef7d88ad4 1-47
+src/content/blog/study-timer-vs-pomodoro.md
+  s_073c48a871cfe8::t_24ee564240147b 18,51
+src/platform/keyboard.ts
+  s_073c48a871cfe8::t_8d0a6b03c1a17a 27-29,40-41
+scripts/gen-icons.mjs
+  s_073c48a871cfe8::t_0cf9c8e8d30c88 22
+src/data/related.ts
+  s_073c48a871cfe8::t_d5a16ec30ebbc6 14,17-19,28
+src/content/blog/how-many-rounds-in-a-boxing-match.md
+  s_073c48a871cfe8::t_24ee564240147b 59
+src/components/ProgrammaticTimer.astro
+  s_073c48a871cfe8::t_7665145f40b16a 16,33,38,45-47,49-51,55-57,61-62
+tests/unit/manifest.test.ts
+  s_073c48a871cfe8::t_83b4603d792d6e 66-68,87,93-105
+src/content/blog/stopwatch-running-splits-lap-times.md
+  s_073c48a871cfe8::t_2b4ac2ad62e016 2
+  s_073c48a871cfe8::t_24ee564240147b 3,5-7,10,19,49,51,59,63,65
+src/pages/404.astro
+  s_073c48a871cfe8::t_6bf629fc1b1c98 7,12-13,19-20,22-23,25-30
+src/layouts/Post.astro
+  s_073c48a871cfe8::t_6bf629fc1b1c98 23,40-44,60-65,70-71,77-86,94-95,98-107,110-112,114-115,117-118,120-121,123-131,133,136-140
+public/manifest.webmanifest
+  s_073c48a871cfe8::t_0cf9c8e8d30c88 3,5,10-11,25,27-28
+src/content/blog/free-online-timer-that-works-offline.md
+  s_073c48a871cfe8::t_24ee564240147b 6,20,33,68,71,73
+  s_073c48a871cfe8::t_0c14420fa3acc1 55
+src/islands/Timer.tsx
+  s_073c48a871cfe8::t_87779e45dabedd 2-3,5-6,9,13,15-17,19-20,24-25,35-42,54-57,60-86,89,91,93-98,102-106,110-121,123,125,128-129,131,134-159,162,166,168-172,175,177,181,185-186,190,194-196,204,207-216,220,225-228,230,233,243-246,250-253,256-359,366-379,381-383,388-400,402-406,409-446,448-456,458-460,462-536
+src/pages/about.astro
+  s_073c48a871cfe8::t_6bf629fc1b1c98 3-4,12,15,17-41,55,57,64-96,98-102,105
+  s_073c48a871cfe8::t_dcf82188e9a48d 13
+public/favicon.svg
+  s_073c48a871cfe8::t_0cf9c8e8d30c88 1-4
+src/pages/blog/index.astro
+  s_073c48a871cfe8::t_6bf629fc1b1c98 26,28-29,31-33,35,43-50,53-55,58
+  s_073c48a871cfe8::t_dcf82188e9a48d 20
+src/data/workouts.ts
+  s_073c48a871cfe8::t_48a17031be3ac2 12,37,40,47,81,115,153-154,195
+  s_073c48a871cfe8::t_827404e6356877 21,59,103,142,180
+  s_073c48a871cfe8::t_b1278838e73adc 63
+tests/unit/keyboard.test.ts
+  s_073c48a871cfe8::t_62be53f81dacd8 54-64
+src/platform/audio.ts
+  s_073c48a871cfe8::t_87779e45dabedd 23,25-29
+src/islands/parts/Icon.tsx
+  s_073c48a871cfe8::t_5587d7b46877e6 1-24
+src/content.config.ts
+  s_073c48a871cfe8::t_0cf9c8e8d30c88 16-17
+src/content/blog/pomodoro-technique-25-5.md
+  s_073c48a871cfe8::t_24ee564240147b 37
+src/pages/interval.astro
+  s_073c48a871cfe8::t_7665145f40b16a 12,16,23,25-27,30-31,34,36-38,41-43,46,48
+  s_073c48a871cfe8::t_dcf82188e9a48d 13
+src/content/blog/interval-timer-for-running.md
+  s_073c48a871cfe8::t_24ee564240147b 67
+src/styles/timer.css
+  s_073c48a871cfe8::t_393dc14894b8a3 1,5-6,9-12,16,18-19,21-24,27,29-30,32,34-38,40-41,43-47,49,52-53,55-60,62,65,68-70,72-76,78-82,84,86-96,99,103,106,108-109,111-116,118-120,122,124,134,137,142,145,149-152,154,156-161,163-167,172,175,178-179,181-183,185-186,189,191-195,197-209,211-214,216-217,219-223,225,228-229,231-235,237-256,259-260,263-264,266-270,272-283,285-295,300,302-303,305,307-308,310,312-316,318-320,322-323,325-335,339-340,342-355,357,359-361,363-365,367-370,372-376,378-379,382-407,409-414,416-417,419-422,424-426,428-430
+  s_8cce7e005b2c02::t_5c6909adc64384 135-136,146,168,170-171,173-174,176,190
+public/_redirects
+  s_073c48a871cfe8::t_0cf9c8e8d30c88 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "38845fb78cc9818102637d0b6e54ee80e7dcaf6b",
+  "prompts": {},
+  "sessions": {
+    "s_073c48a871cfe8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35446b01-851d-46f7-8ef0-95cc6a3e40d4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    },
+    "s_8cce7e005b2c02": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "166c5573-6001-4f8c-ba62-1bdb88b335e0",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
