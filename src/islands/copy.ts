@@ -153,13 +153,18 @@ export function doneCopy(cfg: ModeConfig): DoneCopy {
 function totalOf(cfg: ModeConfig): number {
   switch (cfg.mode) {
     case 'interval':
-      return (cfg.prep + (cfg.work + cfg.rest) * cfg.rounds * cfg.sets + cfg.setRest * (cfg.sets - 1)) * 1000;
+      return (
+        (cfg.prep + (cfg.work + cfg.rest) * cfg.rounds * cfg.sets + cfg.setRest * (cfg.sets - 1)) *
+        1000
+      );
     case 'tabata':
       return 240_000;
     case 'emom':
       return cfg.minutes * 60_000;
     case 'pomodoro':
-      return (cfg.focus * cfg.sessions + cfg.shortBreak * (cfg.sessions - 1) + cfg.longBreak) * 60_000;
+      return (
+        (cfg.focus * cfg.sessions + cfg.shortBreak * (cfg.sessions - 1) + cfg.longBreak) * 60_000
+      );
     case 'meditation':
       return cfg.total * 1000;
   }

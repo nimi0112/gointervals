@@ -61,8 +61,12 @@ const ld = [
         <h1>{title}</h1>
         <p class="post__meta">
           <span class="post__by">By</span>
-          <a href={SITE.authorUrl} rel="author noopener">{SITE.author}</a>
-          <span class="post__dot" aria-hidden="true">·</span>
+          <a href={SITE.authorUrl} rel="author noopener">
+            {SITE.author}
+          </a>
+          <span class="post__dot" aria-hidden="true">
+            ·
+          </span>
           <time datetime={pubDate.toISOString()}>{fmt(pubDate)}</time>
           {updatedDate && <span> · updated {fmt(updatedDate)}</span>}
           <span> · {minutes} min read</span>
@@ -82,7 +86,9 @@ const ld = [
             </li>
           ))}
         </ul>
-        <p><a href="/blog">All articles</a></p>
+        <p>
+          <a href="/blog">All articles</a>
+        </p>
       </footer>
     </article>
   </main>

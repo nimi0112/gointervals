@@ -22,21 +22,34 @@ const crumbs = [
     </p>
     <p>
       No accounts. No ads. No cookies of our own; only anonymous usage stats so I can see which
-      timers get used. After your first visit, it works offline once your browser has saved the
-      app.
+      timers get used. After your first visit, it works offline once your browser has saved the app.
     </p>
     <p>
-      Built by Nimish Nandwana. The code is open source. You can read it, suggest a change, or
-      make it your own.
+      Built by Nimish Nandwana. The code is open source. You can read it, suggest a change, or make
+      it your own.
     </p>
     <ul class="about__links">
-      <li><a href={SITE.repo} rel="noopener">Source on GitHub</a></li>
-      <li><a href={SITE.authorUrl} rel="noopener author">Nimish Nandwana</a></li>
-      <li><a href={SITE.authorX} rel="noopener">Nimish on X</a></li>
+      <li>
+        <a href={SITE.repo} rel="noopener">
+          Source on GitHub
+        </a>
+      </li>
+      <li>
+        <a href={SITE.authorUrl} rel="noopener author">
+          Nimish Nandwana
+        </a>
+      </li>
+      <li>
+        <a href={SITE.authorX} rel="noopener">
+          Nimish on X
+        </a>
+      </li>
     </ul>
     <p class="about__data">
       Your settings stay in this browser.
-      <button type="button" class="btn btn--quiet about__clear" id="clear-data">Clear my data</button>
+      <button type="button" class="btn btn--quiet about__clear" id="clear-data">
+        Clear my data
+      </button>
       <span id="clear-status" role="status"></span>
     </p>
   </main>
@@ -52,7 +65,8 @@ const crumbs = [
           if (k && k.startsWith('gi:')) keys.push(k);
         }
         keys.forEach((k) => localStorage.removeItem(k));
-        if (status) status.textContent = `Cleared ${keys.length} item${keys.length === 1 ? '' : 's'}.`;
+        if (status)
+          status.textContent = `Cleared ${keys.length} item${keys.length === 1 ? '' : 's'}.`;
       } catch {
         if (status) status.textContent = 'Nothing to clear, or storage is blocked.';
       }

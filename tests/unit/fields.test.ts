@@ -6,7 +6,12 @@ describe('fields', () => {
     expect(FIELDS.interval.map((f) => f.key)).toEqual(['work', 'rest', 'rounds']);
     expect(FIELDS.tabata).toEqual([]);
     expect(FIELDS.emom.map((f) => f.key)).toEqual(['interval', 'minutes']);
-    expect(FIELDS.pomodoro.map((f) => f.key)).toEqual(['focus', 'shortBreak', 'longBreak', 'sessions']);
+    expect(FIELDS.pomodoro.map((f) => f.key)).toEqual([
+      'focus',
+      'shortBreak',
+      'longBreak',
+      'sessions',
+    ]);
     expect(FIELDS.meditation.map((f) => f.key)).toEqual(['total', 'bell']);
   });
 
@@ -45,10 +50,18 @@ describe('fields', () => {
   });
 
   it('stepField moves by one and clamps, starting from the last valid value when the text is bad', () => {
-    expect(stepField(defaultConfigs.interval, { work: '40', rest: '20', rounds: '8' }, 'rounds', 1)).toBe('9');
-    expect(stepField(defaultConfigs.interval, { work: '40', rest: '20', rounds: '99' }, 'rounds', 1)).toBe('99');
-    expect(stepField(defaultConfigs.interval, { work: '40', rest: '0', rounds: '8' }, 'rest', -1)).toBe('0');
-    expect(stepField(defaultConfigs.interval, { work: 'abc', rest: '20', rounds: '8' }, 'work', 1)).toBe('1801');
+    expect(
+      stepField(defaultConfigs.interval, { work: '40', rest: '20', rounds: '8' }, 'rounds', 1),
+    ).toBe('9');
+    expect(
+      stepField(defaultConfigs.interval, { work: '40', rest: '20', rounds: '99' }, 'rounds', 1),
+    ).toBe('99');
+    expect(
+      stepField(defaultConfigs.interval, { work: '40', rest: '0', rounds: '8' }, 'rest', -1),
+    ).toBe('0');
+    expect(
+      stepField(defaultConfigs.interval, { work: 'abc', rest: '20', rounds: '8' }, 'work', 1),
+    ).toBe('1801');
     expect(stepField(defaultConfigs.meditation, { total: '30', bell: '30' }, 'bell', 1)).toBe('30');
   });
 });

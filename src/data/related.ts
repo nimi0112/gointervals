@@ -14,9 +14,21 @@ export const relatedTimers: Record<string, string[]> = {
     '/interval',
     '/pomodoro',
   ],
-  '/tabata': ['/tabata/20-10-8', '/tabata/30-15-8', '/tabata/20-10-4', '/tabata/30-30-8', '/interval'],
+  '/tabata': [
+    '/tabata/20-10-8',
+    '/tabata/30-15-8',
+    '/tabata/20-10-4',
+    '/tabata/30-30-8',
+    '/interval',
+  ],
   '/emom': ['/interval/kettlebell-emom-10', '/interval/beep-every-minute', '/interval', '/tabata'],
-  '/pomodoro': ['/pomodoro/50-10', '/pomodoro/52-17', '/pomodoro/90-20', '/meditation', '/interval'],
+  '/pomodoro': [
+    '/pomodoro/50-10',
+    '/pomodoro/52-17',
+    '/pomodoro/90-20',
+    '/meditation',
+    '/interval',
+  ],
 };
 
 export const relatedPosts: Record<string, string[]> = {

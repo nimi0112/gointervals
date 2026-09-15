@@ -76,7 +76,9 @@ describe('coerceStored', () => {
     expect(coerceStored('pomodoro', defaultConfigs.pomodoro)).toEqual(defaultConfigs.pomodoro);
     expect(coerceStored('meditation', { ...defaultConfigs.meditation, bell: 2400 })).toBeNull();
     expect(coerceStored('meditation', { ...defaultConfigs.meditation, bell: 90 })).toBeNull();
-    expect(coerceStored('meditation', { ...defaultConfigs.meditation, startBell: 'yes' })).toBeNull();
+    expect(
+      coerceStored('meditation', { ...defaultConfigs.meditation, startBell: 'yes' }),
+    ).toBeNull();
     expect(coerceStored('meditation', defaultConfigs.meditation)).toEqual(
       defaultConfigs.meditation,
     );

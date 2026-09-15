@@ -44,7 +44,9 @@ export function Settings(p: SettingsProps) {
             <Stepper
               key={f.key}
               id={`f-${f.key}`}
-              label={off && med && f.key === 'bell' ? `${LABEL[f.key]} · unavailable` : LABEL[f.key]!}
+              label={
+                off && med && f.key === 'bell' ? `${LABEL[f.key]} · unavailable` : LABEL[f.key]!
+              }
               unit={f.unit}
               text={p.draft[f.key] ?? ''}
               error={p.errors[f.key]}

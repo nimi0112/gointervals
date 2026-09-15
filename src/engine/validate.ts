@@ -65,7 +65,10 @@ export function parseField(text: string, limit: Limit, maxOverride?: number): Pa
       error: `${limit.label} must be at least ${num(limit.min)} ${unitWord(limit.min, limit.unit)}.`,
     };
   if (n > max)
-    return { ok: false, error: `${limit.label} must be ${num(max)} ${unitWord(max, limit.unit)} or less.` };
+    return {
+      ok: false,
+      error: `${limit.label} must be ${num(max)} ${unitWord(max, limit.unit)} or less.`,
+    };
   return { ok: true, value: n === 0 ? 0 : n };
 }
 
@@ -85,7 +88,11 @@ export function coerceStored(mode: Mode, raw: unknown): ModeConfig | null {
   switch (mode) {
     case 'interval': {
       const L = LIMITS.interval;
-      if (!inLimit(o['work'], L.work) || !inLimit(o['rest'], L.rest) || !inLimit(o['rounds'], L.rounds))
+      if (
+        !inLimit(o['work'], L.work) ||
+        !inLimit(o['rest'], L.rest) ||
+        !inLimit(o['rounds'], L.rounds)
+      )
         return null;
       if (o['prep'] !== 0 || o['sets'] !== 1 || o['setRest'] !== 0) return null;
       return {

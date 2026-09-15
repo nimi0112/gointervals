@@ -1,112 +1,108 @@
 # AGENTS.md
 
-Rules for anyone (human or agent) changing gointervals.com. Read fully before touching code. `PLAN.md` explains why things are the way they are; this file says what to keep.
+Rules for anyone (human or agent) changing gointervals.com. Read fully before touching code. `PLAN.md` explains why things are the way they are; this file says what to keep. The design source of truth is `goIntervals.pen` (Pencil): read it through the Pencil MCP tools, never with Read or Grep, and never modify it.
 
 ## What this is
 
-A static Astro site of browser timers. No server, no auth, no dark mode. Timer UI is one Preact island; every other page ships zero client JavaScript beyond the GA4 loader.
+A static Astro site of five browser timers: Interval, Meditation, Tabata, EMOM, Pomodoro. No server, no auth, no dark mode. Each timer page hydrates one Preact island; every other page ships zero client JavaScript beyond the GA4 loader and the small inline script in `Base.astro`.
 
-## Design system
+## Design system: Porcelain & Ink
 
 ### Palette
 
-| Token           | Hex       | Use                                                                       |
-| --------------- | --------- | ------------------------------------------------------------------------- |
-| `--ink`         | `#0a0a0a` | Text, primary button, borders that matter                                 |
-| `--grey-900`    | `#262626` | Primary button hover                                                      |
-| `--grey-700`    | `#525252` | Secondary text, rest-phase digits                                         |
-| `--grey-500`    | `#6a6a6a` | Meta text, paused digits, placeholders                                    |
-| `--grey-300`    | `#d4d4d4` | Rules, input borders                                                      |
-| `--grey-100`    | `#f4f4f4` | Hover backgrounds, progress track                                         |
-| `--paper`       | `#ffffff` | Background. The only background.                                          |
-| `--accent`      | `#0f7a4f` | "Pitch green". See below.                                                 |
-| `--accent-soft` | `#e6f2ec` | Tag backgrounds, active chip background, heading underline. Nothing else. |
+| Token        | Hex       | Use                                                                          |
+| ------------ | --------- | ---------------------------------------------------------------------------- |
+| `--paper`    | `#F7F8F5` | The only background                                                          |
+| `--ink`      | `#202722` | Text, control boundaries (1px strokes on steppers, secondary buttons, chips) |
+| `--muted`    | `#58615A` | Secondary text, context lines, units                                         |
+| `--line`     | `#D6DDD5` | Dividers, progress track. Grouping only                                      |
+| `--accent`   | `#355B46` | Forest: primary button, focus ring, wordmark, links, progress fill           |
+| `--soft`     | `#EBEFE9` | Selected surface: chip fill, stepper buttons, the first home row             |
+| `--disabled` | `#E1E5DE` | Unavailable controls. Ink text on it, never opacity                          |
 
-**The accent may be used for:** running-timer digits during a work phase, the progress bar fill, focus rings, the active chip border/text, tag text, the heading underline (`.u`), the brand dot, section numbers, the fastest lap. **It may not be used for:** backgrounds larger than a tag, buttons at rest, body text, gradients, illustrations. If the accent covers more than a few percent of a screen, it is wrong.
+The accent is the one coloured surface. It may cover the primary button and the progress fill and nothing larger. No gradients, no shadows, no second accent.
 
 ### Type
 
-- Display and body: Bricolage Grotesque, variable, self-hosted latin subset at `public/fonts/bricolage-latin.woff2`, `font-display: swap`, metric-matched fallback in `tokens.css`.
-- Digits, section numbers, kbd, meta: JetBrains Mono, same files treatment but `font-display: optional`. The digits are the LCP element on every timer page, so they must paint once and never re-fire; on a slow first visit they may render in the metric-matched Menlo/Consolas fallback, and the service worker caches the file for every later view. Always `font-variant-numeric: tabular-nums`.
-- Scale (rem): 0.875, 1, 1.125, 1.375, 1.75, 2.25, 3, 4. Timer digits `clamp(4.5rem, 22vw, 15rem)`, scaled down automatically for 7 and 9 character displays.
-- Headings: weight 600-700, letter-spacing -0.02 to -0.035em, `text-wrap: balance`. Sentence case. No all-caps labels. No single-word colour accents inside headlines.
-- Measure: 68ch for prose. Left aligned. The timer column is centred and capped at 560px.
+- UI: DM Sans, variable, self-hosted latin subset at `public/fonts/dm-sans-latin.woff2`, `font-display: swap`, metric-matched fallback in `tokens.css`.
+- Every number: Azeret Mono, `public/fonts/azeret-mono-latin.woff2`, `font-display: optional` (the digits are the LCP element on timer pages; they paint once and never re-fire), always `font-variant-numeric: tabular-nums`.
+- Scale: T1 timer 98px at 375 / 208px at 1280, weight 500; T2 heading 36/1.2; T3 section 22/1.3; T4 UI 16/1.4; T5 label 13/1.4. Phase word 24/28, weight 500. Blog H1 48/600, H2 28/600, body 18/1.65.
+- Headings weight 500 (blog 600), sentence case. No all-caps labels except the one home eyebrow in the digits face.
+- Static TTF instances for satori live in `src/assets/fonts/` (build time only; satori cannot parse variable fonts).
 
-### Spacing, radius, motion
+### Spacing, shape, motion
 
-- Spacing scale (px): 4, 8, 12, 16, 24, 32, 48, 64, 96. Use the tokens.
-- Radius: 4px on controls and inputs. 0 on layout blocks. 999px only on the brand dot. Nothing else is rounded.
-- Motion: colour transitions and the progress bar only, 150ms ease-out. No entrance animations, no hover lifts, no parallax. Everything is disabled under `prefers-reduced-motion`.
-- Structure over decoration: 1px rules and numbered sections carry hierarchy. Sections are numbered only where the content is a sequence.
+- Space: 4, 8, 12, 16, 24, 32, 48, 64. Gutters 20px at 375, 64px at 1280, content max 1152px.
+- Radius: 0 on structure, 8px on controls and rows. Targets at least 44×44.
+- Focus: 2px accent outline with a 2px paper gap. Never hidden.
+- Motion: feedback 120ms ease-out, progress 200ms linear, everything 0ms under `prefers-reduced-motion`. No pulsing, ticking, entrance or digit animation.
 
-### Banned patterns
+### Components (canvas → code)
 
-Gradient blobs, glassmorphism, purple-to-blue or any gradients, floating cards with drop shadows, three-column icon-in-circle feature grids, stock illustrations, sparkle icons, emoji in UI, rounded-everything, "Powered by AI" badges, tracked-out all-caps eyebrow labels, arrows appended to link text, dark mode, `prefers-color-scheme` handling of any kind, hero copy like "The ultimate timer for everything".
+Primary button `.btn--primary` (72px on the timer, 60px elsewhere), secondary `.btn`, quiet `.btn--quiet`, chip `.chip` with explicit "· On / · Off" text and `aria-pressed`, `Stepper` (− / editable number / +), `Progress` (6px track, details row), `ShellNav` (← Timers · About · Sound, utility line), home rows `.row`, content header `Header.astro`, footer Timers / About only. Icons are inline lucide paths in `src/lib/icons.ts`; no icon library.
+
+### Banned
+
+Dark mode or any `prefers-color-scheme` rule, gradients, glassmorphism, drop shadows, hero cards, feature grids, illustrations, emoji in UI, marketing copy on timer pages, hidden SEO copy, modal overlays, fullscreen mode, a stopwatch or countdown mode.
+
+## Timer page order
+
+DOM and visual order at every width, nothing above the digits except the safe-area inset:
+
+1. Digits (`role="timer"`)
+2. Phase word + icon
+3. Context line
+4. Settings (setup) or progress (running, paused, done)
+5. Quiet space with state guidance
+6. Desktop keyboard hints (≥720px with hover)
+7. Primary action, then the quiet secondary
+8. Subordinate nav: ← Timers · About · Sound chip; utility footer line
+9. The guide: the page's single `<h1>`, lede, sections, FAQ, related links
+10. Site footer
+
+The island (`src/islands/Timer.tsx`) owns 1–8, including the nav, so it can ask before you leave a running session. Timer pages render no site header.
+
+## Timer behaviour invariants
+
+Live in `src/engine` (pure TypeScript, injected clock) and `src/islands`. Changing any of these needs a test change first (`tests/unit`, `tests/e2e`).
+
+1. Position is derived from `clock.now() - startedAt - pausedTotal`. Nothing counts ticks. `requestAnimationFrame` and `setInterval` only trigger re-reads of the clock; `visibilitychange` to visible ticks at once.
+2. Every mode compiles to a `Segment[]`; zero-length segments are dropped. Interval includes the rest after the last round. Tabata is the fixed 20/10/8 (04:00) and only that; stored values that differ are discarded. EMOM has ceil(total/interval) blocks with the last one capped. Pomodoro is one finite cycle: F SB F SB … F LB Done, never restarting. Meditation's clock is the whole session; interval bells split it and the remainder is the last block.
+3. `tick()` returns every boundary crossed since the last tick, in order. More than one boundary plays a single catch-up tone, never a burst. Meditation plays one soft bell for everything, no warning ticks, and a bell coinciding with the end plays only the end cue.
+4. Limits: interval work 1–3600 s, rest 0–3600 s, rounds 1–99; EMOM interval 15–300 s, minutes 1–99; Pomodoro minutes 1–180, sessions 1–12; meditation session 1–180 min, bell 1 min to the session length. Typed input is never coerced: invalid text stays visible with a specific inline error, `aria-describedby`, and a disabled Start. Steppers move by 1, clamp, disable at a bound and repeat after a 400ms hold.
+5. Keyboard: Space start/pause/resume, Esc stop, R reset. Space and R are ignored inside fields and with modifiers; Space yields to a focused button. Stop, reset and navigating away during a running or paused session go through the shared full-panel confirmation (not a modal: announce, move focus to Keep going, restore focus on cancel). Confirming returns to setup with values kept. No confirmation from setup or Done. R in setup restores the preview to the last valid settings.
+6. Done shows 00:00, the check icon, the completion count, full progress and the total, with exactly two actions: Run again and Change settings.
+7. Audio needs a start gesture. A blocked or missing context shows "Sound blocked. Tap On to retry." in the utility line and the timer keeps running. Beeps are oscillators; no audio files. The sound chip persists.
+8. Wake lock is requested when status becomes `running` and released otherwise, with re-acquisition on `visibilitychange`. `src/platform/wakelock.ts` is frozen; do not edit it.
+9. Settings persist per mode in `gi:settings:<mode>` and are validated on load; anything malformed falls back to the defaults with a quiet notice.
+10. `document.title` shows the remaining time and phase while running or paused and is restored on reset.
 
 ## Installable app
 
 The site is a PWA and must stay one. `public/manifest.webmanifest`, `public/sw.js`, the icons in `public/icons/`, and the registration in `Base.astro` are the whole of it.
 
-- The service worker's `VERSION` is the literal `__BUILD_VERSION__` in `public/sw.js`. `scripts/stamp-sw.mjs` replaces it in `dist/` during `npm run build`. Never hardcode a version, and never edit `dist/sw.js` by hand.
-- Add a route to `PRECACHE` when it is a timer people would open offline. `check-build` fails if a precached route is not built, so a rename cannot silently break offline support.
-- Icons come from `npm run icons` (`scripts/gen-icons.mjs`), which derives everything from `public/favicon.svg`. The maskable icon is a separate padded file: adaptive launchers crop to a circle, so `any` and `maskable` must never be the same image or share one `"any maskable"` entry.
-- `manifest.id` is stable. Changing it orphans every installed copy into a second app.
-
-### The install prompt
-
-`src/platform/install.ts` decides when to ask; `src/islands/parts/InstallPrompt.tsx` renders it. The decision module is pure and DOM-free so the rules are unit-testable — keep it that way.
-
-The prompt is earned, never automatic. It shows only after a timer has run to completion, and never when the visitor is already in the installed app, has installed it, has dismissed it twice, is inside a 30-day snooze, or is on a browser that cannot install. iOS Safari is the one platform shown without a native event, because Share -> Add to Home Screen is the only route there.
-
-`beforeinstallprompt` fires once and usually before the island hydrates, so `Base.astro` catches it and stashes it on `window.__giInstallEvent`. Do not move that capture into the island.
-
-Do not add a second install surface, a sticky bar, or a prompt on page load.
+- The service worker's `VERSION` is the literal `__BUILD_VERSION__`; `scripts/stamp-sw.mjs` replaces it during `npm run build`. Never edit `dist/sw.js` by hand.
+- The worker never calls `skipWaiting()` on its own. `Base.astro` posts `SKIP_WAITING` only when `window.__giSessionActive` is false (the island sets it and dispatches `gi:session-idle`). An update must never interrupt a running or paused session.
+- `PRECACHE` lists the five timers, home, about and 404; `check:build` fails if a precached route is not built.
+- Icons come from `npm run icons` (`scripts/gen-icons.mjs`) from `public/favicon.svg`, which is the ring mark from the canvas icon master. The maskable icon is a separately padded file.
+- `manifest.id` is stable. Changing it orphans every installed copy.
+- The install prompt is earned: it appears only after a completed session (`src/platform/install.ts`). Do not add a second surface or a prompt on load.
 
 ## Voice
 
-Dry, direct, short sentences, written by a person who uses the thing. Gen Z indie-app, not a content farm, not a corporation. Sentence case everywhere. No exclamation marks. Say what it does.
-
-Good:
-
-- "Beeps when it matters. Keeps the screen on. Works on the plane."
-- "Thirty seconds is about as long as an actual sprint lasts before it becomes a hard run."
-- "Set Rest to 0 for a timer that just beeps every N minutes."
-
-Bad:
-
-- "Unleash your full potential with the ultimate interval timer!"
-- "Whether you're a beginner or a seasoned athlete, we've got you covered."
-- "Our cutting-edge, AI-powered solution revolutionises the way you train."
-
-Buttons say what happens: "Start", "Pause", "Resume", "Save current as preset", "Clear my data". Errors explain and point to a fix. Empty states invite an action.
-
-## Timer engine invariants
-
-Live in `src/engine`. Pure TypeScript, no DOM, fully unit tested with an injected clock.
-
-1. Position is derived from `clock.now() - startedAt - pausedTotal`. Nothing counts ticks. `requestAnimationFrame` and `setInterval` only trigger re-reads of the clock.
-2. Every mode except stopwatch compiles to a `Segment[]`. Zero-length segments are dropped at build time. "Beep every N minutes" is an interval with `rest: 0`, not a mode. Meditation is its own mode only because its sound design differs: one soft bell for every event, no warning ticks, no catch-up tone.
-3. `tick()` returns every boundary crossed since the last tick, in order. The UI plays one catch-up tone when more than one segment boundary was crossed, so a phone that slept never fires a burst of beeps.
-4. `visibilitychange` to visible triggers an immediate `tick()`.
-5. Wake lock is requested when status becomes `running` and released otherwise, with re-acquisition on `visibilitychange`. The video fallback is inline, no dependency.
-6. `unlockAudio()` is called from every start/toggle gesture. Beeps are oscillators. No audio files.
-7. `document.title` shows the remaining time while running or paused and is restored on reset.
-8. Keyboard: Space toggle, R reset, L lap, Esc pause/stop and leave fullscreen. Ignored while typing in a field.
-
-Changing any of these needs a test change in `tests/unit` first.
+Dry, direct, short sentences, written by a person who uses the thing. Sentence case. No exclamation marks. Buttons say what happens: Start, Pause, Resume, End session, Keep going, Run again, Change settings. Errors say what is wrong and the bound: "Work must be at least 1 second."
 
 ## SEO checklist for every new page
 
-- [ ] Unique `<title>` under 70 characters (with the site suffix) and a description of 120-155 characters, passed to `Base`/`TimerPage` via props.
-- [ ] Canonical, OG and Twitter tags come from `Head.astro`; do not hand-write them.
-- [ ] The page is listed in `src/lib/pages.ts` so it gets an OG image, or is a blog post / data entry (those are picked up automatically).
-- [ ] Exactly one `<h1>`, containing the primary keyword. Keyword in the first paragraph.
-- [ ] JSON-LD: `SoftwareApplication` for timers, `Article` for posts, `FAQPage` where a FAQ exists, `BreadcrumbList` on every non-home page. Use the builders in `src/lib/seo.ts`.
-- [ ] Breadcrumbs rendered on every non-home page.
-- [ ] Links to at least two related timers and, where one exists, the relevant blog post. Add the reverse link too.
-- [ ] Copy is specific to the page. If it could be swapped with another page by changing a number, rewrite it.
-- [ ] `npm run build && npm run check:build` passes: it fails on missing title/description/canonical/JSON-LD/h1, dead internal links and images without dimensions.
-- [ ] No new client JS on a content page.
+- [ ] Unique `<title>` under 70 characters with the suffix and a description of 120–160 characters, passed to `Base`/`TimerPage`.
+- [ ] Canonical, OG and Twitter tags come from `Head.astro`. The OG image is rendered by `src/lib/og.ts` in the social-card layout; list the page in `src/lib/pages.ts` unless it is a post or a data entry.
+- [ ] Exactly one visible `<h1>` with the primary keyword. On timer pages it lives in the guide below the shell.
+- [ ] JSON-LD: `SoftwareApplication` for timers, `Article` (Person author) for posts, `FAQPage` only where visible Q&As exist, `BreadcrumbList` on every non-home page, `HowTo` on preset pages. Builders in `src/lib/seo.ts`.
+- [ ] Links to at least two related timers and, where one exists, the relevant post. Add the reverse link.
+- [ ] Copy is specific to the page. No templated copy with a number swapped in.
+- [ ] `npm run build && npm run check:build` passes: missing metadata, dead internal links and images without dimensions fail it.
+- [ ] No new client JS on a content page. Header and footer stay Timers / About.
+- [ ] Removed URLs get a 301 in `public/_redirects`.
 
 ## Commands
 
@@ -119,30 +115,29 @@ Changing any of these needs a test change in `tests/unit` first.
 | `npm run test:e2e`                | Playwright against `astro preview`               |
 | `npm run lint` / `npm run format` | ESLint / Prettier                                |
 | `npm run typecheck`               | `astro check`                                    |
-| `npm run check:build`             | SEO and dead-link audit of `dist/`               |
-| `node scripts/gen-icons.mjs`      | Regenerate PNG icons from `public/favicon.svg`   |
+| `npm run check:build`             | SEO, dead-link and PWA audit of `dist/`          |
+| `npm run icons`                   | Regenerate PNG icons from `public/favicon.svg`   |
 
-### Adding a programmatic page
+### Adding a preset page
 
-1. Add an entry to the right file in `src/data/`: `countdowns.ts` (lengths), `uses.ts` (purpose pages under `/timer/`), `tabatas.ts`, `workouts.ts`, `beeps.ts` (repeating beeps under `/interval/`), `pomodoros.ts`, or `meditations.ts`. Every field is required, including hand-written intro paragraphs and 3-4 FAQs. `src/data/index.ts` concatenates them all for lookups and OG images.
-2. Add it to `related` on two or three neighbouring entries.
-3. Build. The route, OG image and sitemap entry are generated. `check:build` will tell you if a link is dead.
-4. If it is a new _kind_ of page, add a `[slug].astro` under `src/pages/<kind>/` using `ProgrammaticTimer.astro`, and add the paths to `src/lib/pages.ts`.
+1. Add an entry to `src/data/tabatas.ts`, `workouts.ts`, `beeps.ts`, `pomodoros.ts` or `meditations.ts` with hand-written intro paragraphs and 3–4 FAQs. Configs use the engine types in `src/engine/schedule.ts`; Tabata variants other than 20/10/8 are `interval` configs.
+2. Add it to `related` on two or three neighbours. Build; the route, OG image and sitemap entry follow.
 
 ### Adding a blog post
 
-1. Create `src/content/blog/<slug>.md` with the frontmatter in `src/content.config.ts` (`title`, `description`, `pubDate`, `tags`, `timer`, `keyword`).
-2. Body: 500-900 words, no leading H1 (the layout renders it), keyword in the first sentence, link the timer at least twice, end with a "Try it" line.
-3. Add the post path to `relatedPosts` in `src/data/related.ts` or to a data entry's `related` so a timer page links back.
+1. Create `src/content/blog/<slug>.md` with the frontmatter in `src/content.config.ts`. The author defaults to the site author.
+2. Body 500–900 words, no leading H1, keyword in the first sentence, link the timer at least twice, end with a "Try it" line. Every link is a real anchor with a visible underline.
+3. Add it to `relatedPosts` in `src/data/related.ts` or to a data entry's `related`.
 
 ## Do not
 
 - Do not add dark mode, a theme toggle, or any `prefers-color-scheme` rule.
 - Do not add auth, accounts, server endpoints, or `output: 'server'`.
 - Do not use cookies. `localStorage` only, through `src/platform/storage.ts`.
-- Do not add a dependency without a one-line reason in `PLAN.md` under Dependencies. The current list is intentionally short.
-- Do not add client JS to content pages. Blog, about and 404 must stay JS-free.
-- Do not add third-party scripts other than GA4 and Cloudflare Web Analytics (injected by Pages, allowed in the CSP).
+- Do not add a dependency without a one-line reason in `PLAN.md` under Dependencies.
+- Do not add client JS to content pages. Home, blog, about and 404 are JS-free.
+- Do not add third-party scripts other than GA4 and Cloudflare Web Analytics.
 - Do not ship audio files, icon fonts, or an animation library.
 - Do not count ticks in anything time-related.
-- Do not write templated copy with a number swapped in.
+- Do not put anything above the digits on a timer page, or a header on one.
+- Do not bring back the stopwatch, the countdown, laps, fullscreen, presets or the Pomodoro session counter.

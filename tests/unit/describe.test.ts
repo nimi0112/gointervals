@@ -7,7 +7,15 @@ describe('summaryFor (the setup summary line on the canvas)', () => {
       summaryFor({ mode: 'interval', prep: 0, work: 40, rest: 20, rounds: 8, sets: 1, setRest: 0 }),
     ).toBe('8 rounds · 08:00 total');
     expect(
-      summaryFor({ mode: 'interval', prep: 0, work: 1800, rest: 300, rounds: 8, sets: 1, setRest: 0 }),
+      summaryFor({
+        mode: 'interval',
+        prep: 0,
+        work: 1800,
+        rest: 300,
+        rounds: 8,
+        sets: 1,
+        setRest: 0,
+      }),
     ).toBe('8 rounds · 280:00 total');
     expect(
       summaryFor({ mode: 'interval', prep: 0, work: 600, rest: 0, rounds: 1, sets: 1, setRest: 0 }),
@@ -50,13 +58,29 @@ describe('summaryFor (the setup summary line on the canvas)', () => {
 describe('describeConfig (prose for programmatic pages)', () => {
   it('reads a no-rest interval as "beep every"', () => {
     expect(
-      describeConfig({ mode: 'interval', prep: 0, work: 600, rest: 0, rounds: 3, sets: 1, setRest: 0 }),
+      describeConfig({
+        mode: 'interval',
+        prep: 0,
+        work: 600,
+        rest: 0,
+        rounds: 3,
+        sets: 1,
+        setRest: 0,
+      }),
     ).toBe('Beep every 10 min for 30 min.');
   });
 
   it('reads work/rest intervals including the final rest in the total', () => {
     expect(
-      describeConfig({ mode: 'interval', prep: 10, work: 40, rest: 20, rounds: 8, sets: 2, setRest: 60 }),
+      describeConfig({
+        mode: 'interval',
+        prep: 10,
+        work: 40,
+        rest: 20,
+        rounds: 8,
+        sets: 2,
+        setRest: 60,
+      }),
     ).toBe(
       '40 sec work, 20 sec rest, 8 rounds, 2 sets with 1 min between sets. 17 min 10 sec total. Starts with a 10 sec get-ready count.',
     );
@@ -69,15 +93,31 @@ describe('describeConfig (prose for programmatic pages)', () => {
     );
     expect(
       describeConfig({ mode: 'pomodoro', focus: 25, shortBreak: 5, longBreak: 15, sessions: 4 }),
-    ).toBe('25 min focus, 5 min break, then a 15 min long break after 4 sessions. 2 hr 10 min total.');
+    ).toBe(
+      '25 min focus, 5 min break, then a 15 min long break after 4 sessions. 2 hr 10 min total.',
+    );
   });
 
   it('reads meditation bells', () => {
     expect(
-      describeConfig({ mode: 'meditation', total: 1800, bell: 600, intervalBell: true, startBell: false, endBell: true }),
+      describeConfig({
+        mode: 'meditation',
+        total: 1800,
+        bell: 600,
+        intervalBell: true,
+        startBell: false,
+        endBell: true,
+      }),
     ).toBe('A soft bell every 10 min for 30 min, then one to finish.');
     expect(
-      describeConfig({ mode: 'meditation', total: 600, bell: 600, intervalBell: false, startBell: false, endBell: true }),
+      describeConfig({
+        mode: 'meditation',
+        total: 600,
+        bell: 600,
+        intervalBell: false,
+        startBell: false,
+        endBell: true,
+      }),
     ).toBe('One soft bell after 10 min.');
   });
 });

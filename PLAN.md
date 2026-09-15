@@ -1,242 +1,166 @@
-# Go Intervals — build plan
+# gointervals — build plan
 
-Static Astro site, deployed to Cloudflare Pages. Free browser timers, no login, no server.
-This document is the contract for the build. Sections: routes, architecture, components,
-data files, dependencies, design tokens, decisions, build order.
+Static Astro site, deployed to Cloudflare Pages. Five free browser timers, no login, no server.
+This document is the contract for the build and the record of why things are the way they are.
+The design source of truth is `goIntervals.pen`; the redesign spec is
+`docs/superpowers/specs/2026-09-15-gointervals-redesign-design.md`.
 
 ## 1. Routes
 
 ### Timer pages (each hydrates one island)
 
-| Route        | Mode                                                                                                                                                                | Island config     |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| `/`          | Home. Interval timer is the hero, then a section per mode, then "why this one", then FAQ                                                                            | `mode: interval`  |
-| `/stopwatch` | Stopwatch with laps (split + total)                                                                                                                                 | `mode: stopwatch` |
-| `/timer`     | Countdown with presets 1/3/5/10/15/20/30/45/60 min + custom                                                                                                         | `mode: countdown` |
-| `/interval`  | Interval / HIIT. Work, rest, rounds, sets, rest between sets, prep. Named presets saved locally. Built-in presets include long "beep every N minutes" ones (see §7) | `mode: interval`  |
-| `/tabata`    | Tabata, prefilled 20/10 × 8                                                                                                                                         | `mode: tabata`    |
-| `/emom`      | EMOM, configurable total minutes and interval length                                                                                                                | `mode: emom`      |
-| `/pomodoro`  | Pomodoro 25/5, long break every 4, editable. Session count persists                                                                                                 | `mode: pomodoro`  |
+| Route         | Mode         | Setup fields                                                    |
+| ------------- | ------------ | --------------------------------------------------------------- |
+| `/interval`   | `interval`   | Work (s), Rest (s), Rounds. Default 1800 / 300 / 8              |
+| `/meditation` | `meditation` | Session length (min), Bell every (min), three bell chips        |
+| `/tabata`     | `tabata`     | None. Fixed 20 / 10 / 8, 04:00                                  |
+| `/emom`       | `emom`       | Interval length (s), Total minutes. Default 60 / 10             |
+| `/pomodoro`   | `pomodoro`   | Focus, Short break, Long break (min), Focus sessions. 25/5/15/4 |
 
-### Programmatic pages (generated from `src/data/*.ts` via `getStaticPaths`)
+### Preset pages (generated from `src/data/*.ts` via `getStaticPaths`)
 
-| Pattern                          | Count                                                                                            | Source                   |
-| -------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------ |
-| `/timer/[n]-minutes`             | 20 (1,2,3,4,5,6,7,8,9,10,12,15,20,25,30,40,45,50,60,90)                                          | `src/data/countdowns.ts` |
-| `/timer/[n]-seconds`             | 7 (10,15,20,30,45,60,90)                                                                         | `src/data/countdowns.ts` |
-| `/tabata/[work]-[rest]-[rounds]` | 5 (20-10-8, 30-15-8, 40-20-8, 45-15-10, 60-30-6)                                                 | `src/data/tabatas.ts`    |
-| `/interval/[slug]`               | 5 (7-minute-workout, boxing-rounds-3-1, running-intervals-1-1, sprint-30-90, kettlebell-emom-10) | `src/data/workouts.ts`   |
+| Pattern              | Source                    | Notes                                                            |
+| -------------------- | ------------------------- | ---------------------------------------------------------------- |
+| `/tabata/[w-r-n]`    | `src/data/tabatas.ts`     | 20-10-8 is `tabata`; every other variant is an `interval` config |
+| `/interval/[slug]`   | `workouts.ts`, `beeps.ts` | Named workouts and "beep every N" (rest 0)                       |
+| `/pomodoro/[slug]`   | `pomodoros.ts`            | 50-10, 52-17, 90-20, 15-5                                        |
+| `/meditation/[slug]` | `meditations.ts`          | 5, 10, 20, 30, 45 minutes and 1 hour                             |
 
-Every data entry carries: slug, H1, title, description, hand-written intro (2–3 paragraphs, specific to that duration/workout), timer config, 3–4 FAQ pairs, related slugs. No templated copy with numbers swapped in.
+Every entry carries slug, H1, title, description, hand-written intro, config, 3–4 FAQs and related paths. Preset pages open with the page's config and do not read or write saved settings.
 
 ### Content and utility pages
 
-| Route                                                                                     | Notes                                                                                                                |
-| ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `/blog`                                                                                   | Index with tags, dates, reading time                                                                                 |
-| `/blog/[slug]`                                                                            | 10 posts, Content Collections, Article + BreadcrumbList JSON-LD                                                      |
-| `/blog/tag/[tag]`                                                                         | Tag archives                                                                                                         |
-| `/rss.xml`                                                                                | `@astrojs/rss`                                                                                                       |
-| `/about`                                                                                  | Who made it, why, no tracking beyond GA4, "Clear my data" button (tiny inline script)                                |
-| `/404`                                                                                    | Real page, links to every timer                                                                                      |
-| `/og/[...slug].png`                                                                       | Build-time OG image per page (satori + resvg)                                                                        |
-| `/sitemap-index.xml`                                                                      | `@astrojs/sitemap` with `lastmod`                                                                                    |
-| `/robots.txt`, `/llms.txt`, `/humans.txt`, `/manifest.webmanifest`, `/sw.js`, `/_headers` | Static in `public/` (`sw.js` is copied as-is; precache list is route-based, not hash-based, so no build step needed) |
+| Route                                                                                                                          | Notes                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| `/`                                                                                                                            | Header, intro, five timer rows, guide, FAQ, ready-made links, article link. No island |
+| `/about`                                                                                                                       | Under 150 words, source/author/X links, Clear my data                                 |
+| `/blog`, `/blog/[slug]`, `/blog/tag/[tag]`, `/rss.xml`                                                                         | Content Collections, Article (Person author) + BreadcrumbList JSON-LD                 |
+| `/404`                                                                                                                         | One line and a home link, real 404, noindex                                           |
+| `/og/[...slug].png`                                                                                                            | Build-time social card per page (satori + resvg)                                      |
+| `/sitemap-index.xml`, `/robots.txt`, `/llms.txt`, `/humans.txt`, `/manifest.webmanifest`, `/sw.js`, `/_headers`, `/_redirects` | Static or generated                                                                   |
+
+Removed on 2026-09-15 with 301s in `public/_redirects`: `/stopwatch`, `/timer`, `/timer/*`, and the old article slug `/blog/meditation-timer-with-interval-bells`.
 
 ## 2. Architecture
 
 ```
 src/
-  engine/                 pure TS, zero DOM, 100% unit-tested
-    clock.ts              Clock interface { now(): number } + real + fake
-    schedule.ts           mode config -> Segment[] (interval, tabata, emom, pomodoro, countdown)
-    timer.ts              createTimer(schedule, clock): state machine driven by timestamps
-    stopwatch.ts          createStopwatch(clock) with laps
-    presets.ts            serialise/parse preset objects, slug helpers
-    format.ts             ms -> "mm:ss", "h:mm:ss", tabular strings
-  platform/               browser adapters, thin, each guarded with feature detection
-    storage.ts            localStorage wrapper, try/catch, namespaced keys, clearAll()
-    audio.ts              Web Audio beeps (work/rest/last3/done), unlock on gesture, mute persisted
-    wakelock.ts           navigator.wakeLock + NoSleep video fallback, re-request on visibilitychange
-    fullscreen.ts         request/exit, Esc handling
-    analytics.ts          gtag wrapper, no-op if PUBLIC_GA_MEASUREMENT_ID missing
-    title.ts              document.title updater
-    keyboard.ts           Space / R / L / Esc bindings
-  islands/                Preact, only loaded on timer pages
-    Timer.tsx             one island, takes { mode, initialConfig, presets }
-    parts/                Digits, Ring, Controls, Settings*, LapList, PresetBar, PhaseBadge
-  components/             Astro, zero JS
-    Head.astro            title/description/canonical/OG/Twitter/JSON-LD
-    Nav.astro, Footer.astro, Breadcrumbs.astro, Faq.astro, Section.astro (numbered), RelatedTimers.astro, PostCard.astro
-  layouts/                Base.astro, TimerPage.astro, Post.astro
-  pages/                  routes above
-  data/                   countdowns.ts, tabatas.ts, workouts.ts, faqs.ts, related.ts
-  content/blog/*.md       10 posts
-  styles/                 tokens.css, base.css, timer.css
-  lib/                    seo.ts (JSON-LD builders), og.ts (satori template), readingTime.ts
-scripts/
-  check-build.mjs         walks dist/, fails on missing title/description/canonical/JSON-LD or dead internal link
-tests/
-  unit/                   Vitest against src/engine and src/platform/storage
-  e2e/                    Playwright
+  engine/                 pure TS, zero DOM, unit-tested with an injected clock
+    clock.ts              Clock interface + real + fake
+    schedule.ts           config -> Segment[] for interval, tabata, emom, pomodoro, meditation
+    timer.ts              createTimer(segments, clock): timestamp-driven state machine
+    validate.ts           field limits, parseField (never coerces), coerceStored
+    format.ts             mm:ss with ceiling (130:00, never hours), human durations
+    describe.ts           summaryFor (setup line), describeConfig (prose)
+    presets.ts            defaultConfigs, TABATA
+  platform/               browser adapters, feature-detected
+    storage.ts            localStorage wrapper, gi: prefix, clearAll()
+    audio.ts              oscillator beeps and one soft bell; unlockAudio() reports success
+    wakelock.ts           navigator.wakeLock + inline video fallback (frozen)
+    install.ts            earned install prompt decision matrix
+    analytics.ts          gtag wrapper, no-op without PUBLIC_GA_MEASUREMENT_ID
+    title.ts, keyboard.ts (Space / R / Esc)
+  islands/                Preact, loaded on timer pages only
+    Timer.tsx             the one island: settings, confirmations, progress, nav
+    copy.ts               every on-screen string from config + snapshot (pure, tested)
+    fields.ts             text drafts <-> config, stepping, bounds (pure, tested)
+    useEngine.ts          rAF + interval + visibilitychange ticking
+    parts/                Icon, Stepper, Progress, Settings, ShellNav, InstallPrompt
+  components/             Astro, zero JS: Header, Footer, Breadcrumbs, Section, Faq, Related, PostList, ProgrammaticTimer, Head, Analytics
+  layouts/                Base (header optional), TimerPage (island first, guide after), Post
+  lib/                    seo.ts (JSON-LD), og.ts (social card), pages.ts, site.ts, icons.ts, readingTime.ts
+  data/, content/blog/, styles/ (tokens, base, timer)
+scripts/                  check-build.mjs, stamp-sw.mjs, gen-icons.mjs
+tests/unit, tests/e2e
 ```
 
 ### Timer engine, in one paragraph
 
-Every mode except stopwatch compiles to a `Segment[]` (`{ phase: 'prep'|'work'|'rest'|'setrest'|'focus'|'break'|'longbreak', ms, round, set, label }`). The timer stores `startedAt`, `pausedAt`, `accumulatedPausedMs`, and derives everything else from `clock.now()`. `tick(now)` returns `{ segmentIndex, remainingMs, elapsedMs, events[] }` where `events` is every boundary crossed since the last tick, so a phone that slept through three phase changes returns three events and the audio layer plays the missed beeps (collapsed into one "catch-up" sound so it isn't a machine gun). Nothing counts ticks; `requestAnimationFrame` only drives rendering, and a 250ms `setInterval` fallback keeps the title updating when the tab is in the background.
+Every mode compiles to a `Segment[]` (`{ phase, ms, round, rounds, set, sets, label }`). The timer stores `startedAt`, `pausedAt`, `accumulatedPausedMs` and derives everything from `clock.now()`. `tick()` returns every boundary crossed since the last tick, so a phone that slept through three phase changes lands on the right one and the island plays one catch-up tone. Nothing counts ticks. The island keeps the last valid config, a text draft per field, and a `confirm` state for the shared stop/reset/leave question.
 
 ### Persistence keys (`gi:` prefix)
 
-`gi:settings:<mode>` last config per mode, `gi:presets:interval` named presets, `gi:history` last 50 completed sessions, `gi:pomodoro:sessions`, `gi:muted`, `gi:vibrate`. "Clear my data" removes every `gi:*` key.
+`gi:settings:<mode>` last valid config per mode (validated on load, Tabata must be exactly 20/10/8), `gi:history` last 50 completed sessions, `gi:muted`, `gi:vibrate`, `gi:pwa` install prompt state. Clear my data removes every `gi:*` key.
 
 ## 3. Component tree (timer page)
 
 ```
-TimerPage.astro
-├─ Head.astro (SEO)
-├─ Nav.astro
-├─ Breadcrumbs.astro
+TimerPage.astro (no site header)
 ├─ <main>
-│  ├─ h1 + one-line intro (server rendered, above the island so LCP is text)
-│  ├─ <Timer client:load mode=… config=…/>          ← the only JS on the page
-│  │  ├─ PhaseBadge   (live region, aria-live="polite")
-│  │  ├─ Digits       (monospace, tabular-nums, scales with viewport)
-│  │  ├─ Ring         (SVG progress, respects reduced motion)
-│  │  ├─ Controls     (Start/Pause dominant, Reset, Lap, Fullscreen, Mute)
-│  │  ├─ Settings     (mode-specific form; collapses while running)
-│  │  ├─ PresetBar    (built-in + saved presets; interval only)
-│  │  └─ LapList      (stopwatch only)
-│  ├─ Section 01…0n   (numbered SEO copy, "how to use", "when to use")
-│  ├─ Faq.astro       (+ FAQPage JSON-LD)
-│  └─ RelatedTimers.astro + related posts
-└─ Footer.astro (Clear my data lives in /about, footer links there)
+│  ├─ <Timer client:load config=…/>            ← the only JS on the page
+│  │  ├─ digits (role=timer) → phase icon + word → context → live region
+│  │  ├─ Settings (idle) | Progress (running, paused, done)
+│  │  ├─ quiet space: guidance, InstallPrompt after completion
+│  │  ├─ keyboard hints (desktop) → primary → quiet secondary
+│  │  └─ ShellNav: ← Timers · About · Sound, utility line
+│  └─ .guide: Breadcrumbs, h1, lede, sections, Faq, Related
+└─ Footer (Timers / About)
 ```
-
-Content pages (blog, about, 404) use `Base.astro` and ship zero client JS beyond the deferred GA4 snippet.
 
 ## 4. Dependencies
 
-Runtime / build:
+| Package                            | Why                                                         |
+| ---------------------------------- | ----------------------------------------------------------- |
+| `astro`                            | The framework. `output: 'static'`.                          |
+| `@astrojs/preact` + `preact`       | Smallest island runtime; only loaded on timer routes.       |
+| `@astrojs/sitemap`, `@astrojs/rss` | Sitemap with lastmod, blog RSS.                             |
+| `satori` + `@resvg/resvg-js`       | Build-time social cards. Nothing ships to the client.       |
+| `@fontsource-variable/dm-sans`     | UI face, self-hosted latin woff2 copied to `public/fonts/`. |
+| `@fontsource-variable/azeret-mono` | Digits face, tabular numerals, self-hosted.                 |
 
-| Package                                    | Why                                                                                                                                                                                            |
-| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `astro`                                    | The framework. `output: 'static'`.                                                                                                                                                             |
-| `@astrojs/preact` + `preact`               | Smallest island runtime (~4 kB). Only loaded on the 7 timer routes + programmatic pages. Vanilla DOM would work but settings forms, presets and lap lists get messy without a component model. |
-| `@astrojs/sitemap`                         | Sitemap with lastmod, required by brief.                                                                                                                                                       |
-| `@astrojs/rss`                             | Blog RSS, required by brief.                                                                                                                                                                   |
-| `satori` + `@resvg/resvg-js`               | Build-time per-page OG PNGs. Runs only in `getStaticPaths` endpoints, nothing ships to client.                                                                                                 |
-| `@fontsource-variable/bricolage-grotesque` | Display/sans, self-hosted, latin subset, woff2.                                                                                                                                                |
-| `@fontsource-variable/jetbrains-mono`      | Digits and mono accents, tabular figures.                                                                                                                                                      |
+Dev: `typescript`, `vitest`, `@playwright/test`, `eslint` + `typescript-eslint` + `eslint-plugin-astro`, `prettier` + `prettier-plugin-astro`, `node-html-parser` (check-build), `@astrojs/check`.
 
-Dev only:
-
-| Package                                              | Why                                            |
-| ---------------------------------------------------- | ---------------------------------------------- |
-| `typescript` (strict)                                | Required.                                      |
-| `vitest`                                             | Unit tests for engine + storage.               |
-| `@playwright/test`                                   | E2E.                                           |
-| `eslint`, `typescript-eslint`, `eslint-plugin-astro` | Lint.                                          |
-| `prettier`, `prettier-plugin-astro`                  | Format.                                        |
-| `node-html-parser`                                   | For `scripts/check-build.mjs` to read `dist/`. |
-
-Not used, on purpose: Tailwind (design system is ~40 tokens, plain CSS custom properties are tighter and smaller), Partytown (a deferred `gtag` script is enough and simpler), `vite-plugin-pwa` (a 60-line hand-written service worker does the job), any icon library (the six icons needed are inline SVG), any animation library.
+Not used, on purpose: Tailwind, Partytown, vite-plugin-pwa, any icon library (lucide paths are inlined), any animation library.
 
 ## 5. Design tokens
 
-**Accent: `#0f7a4f`, "pitch green".** Reason: it reads as sport (turf, pitch, track infield) without being a gym-brand neon, it is nowhere near default Tailwind blue/purple or the warm terracotta that generated sites default to, and it passes AA on white for text (≈5.5:1) so the running-timer state and focus rings can use it un-tinted. Allowed uses: running-timer digits and ring, heading underline, tags, focus rings, the one primary button while running. Never as a background wash, never a gradient, never more than a few percent of a screen.
-
-| Token                                | Value                                                                                             |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| `--ink`                              | `#0a0a0a`                                                                                         |
-| `--grey-900 / 700 / 500 / 300 / 100` | `#262626 / #525252 / #6a6a6a / #d4d4d4 / #f4f4f4`                                                 |
-| `--paper`                            | `#ffffff`                                                                                         |
-| `--accent`                           | `#0f7a4f`                                                                                         |
-| `--accent-soft`                      | `#e6f2ec` (only for tag backgrounds and the ring track)                                           |
-| Type                                 | Bricolage Grotesque (display + body), JetBrains Mono (digits, section numbers, kbd hints)         |
-| Scale                                | 14 / 16 / 18 / 22 / 28 / 36 / 48 / 64, timer digits `clamp(72px, 22vw, 240px)`                    |
-| Spacing                              | 4-based: 4 8 12 16 24 32 48 64 96                                                                 |
-| Radius                               | 4px on controls, 0 on layout blocks, `999px` only on the phase badge. Nothing else rounded.       |
-| Motion                               | Ring progress and phase colour only. 150ms ease-out. All disabled under `prefers-reduced-motion`. |
-
-Layout: left-aligned, max-width 68ch for prose, timer column centred. Section headers are numbered in mono (`01`, `02`) because the SEO sections on each page are an actual sequence (set up → run → what happens after).
-
-Voice: dry, direct, short. "Beeps when it matters. Keeps the screen on. Works on the plane." Not "Unleash your best workout."
+Porcelain & Ink: paper `#F7F8F5`, ink `#202722`, muted `#58615A`, line `#D6DDD5`, accent `#355B46` (forest), soft `#EBEFE9`, disabled `#E1E5DE`. DM Sans for UI, Azeret Mono for every number. Timer digits 98px at 375 and 208px at 1280; radius 8 on controls; 1px ink control boundaries; 2px accent focus ring with a 2px paper gap; 120ms feedback, 200ms progress, 0ms under reduced motion. Full detail in `AGENTS.md`.
 
 ## 6. SEO plan
 
-- `Head.astro` takes `{ title, description, path, type, jsonLd[] }`; every page passes all four. Canonical from `PUBLIC_SITE_URL`.
-- OG image per page at `/og/<slug>.png`: page title in Bricolage on white, accent underline, mono "gointervals.com".
-- JSON-LD: `WebSite` + `Organization` on home; `WebApplication` sitewide; `SoftwareApplication` on each timer page; `FAQPage` where an FAQ exists; `Article` + `BreadcrumbList` on posts; `BreadcrumbList` on every non-home page.
-- `robots.txt`: `Allow: /` for `*`, plus explicit blocks for GPTBot, ClaudeBot, Claude-Web, anthropic-ai, PerplexityBot, Google-Extended, CCBot, Bytespider, Applebot-Extended, all allowed.
-- `llms.txt` lists every route with one line each.
-- `_headers`: CSP allowing self + googletagmanager + google-analytics, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, long cache on `/_astro/*`, no-cache on `sw.js`.
-- Fonts preloaded, `font-display: swap`, size-adjust fallback metrics to keep CLS at 0.
-- Internal links: `src/data/related.ts` maps every timer route to related timers and posts; every post frontmatter names its `timer` route.
+- `Head.astro` takes `{ title, description, path, type, jsonLd[] }`. Canonical from `PUBLIC_SITE_URL`. Title suffix ` · gointervals` when it fits 65 characters.
+- Social card per page at `/og/<slug>.png` in the canvas layout: wordmark, title, kicker, a clock reading, domain line.
+- JSON-LD: `WebSite` + `Organization` + `FAQPage` + `ItemList` on home; `WebApplication` sitewide with a Person author; `SoftwareApplication` on each timer page; `HowTo` on preset pages; `Article` (Person author) + `BreadcrumbList` on posts; `BreadcrumbList` on every non-home page; `Person` on About.
+- `robots.txt` allows everyone including AI crawlers. `llms.txt` lists every route and the limits of each timer.
+- `_headers`: CSP allowing self + GA + Cloudflare Insights, long cache on `/_astro/*` and `/fonts/*`, no-cache on `sw.js`.
+- Fonts preloaded, metric-matched fallbacks for CLS 0.
+- Internal links: `src/data/related.ts` maps every timer route to related timers and posts; every post names its `timer`; home links to ready-made pages and the meditation guide.
 
-## 7. Interval presets (top feature)
+## 7. Analytics
 
-Built-in presets shown on `/interval` and the home hero, ahead of the user's saved ones:
+`PUBLIC_GA_MEASUREMENT_ID` and `PUBLIC_SITE_URL` in `.env`. GA4 loaded deferred after first paint, only if the ID is set. Events: `timer_start`, `timer_pause`, `timer_resume`, `timer_stop_confirmed`, `timer_reset_confirmed`, `timer_complete`, `timer_run_again`, `timer_change_settings`, `invalid_input`, `audio_toggle`, `audio_unavailable`, `wakelock_failed` (only the unsupported case is observable), `nav_away_during_session`, `blog_read` (end of article scrolled into view), `outbound_click`, and the `pwa_*` install funnel. Timer events carry `mode` and the configured values. No cookies of our own; About says so honestly.
 
-| Name                         | Config                          |
-| ---------------------------- | ------------------------------- |
-| Beep every 10 min for 30 min | work 10:00, rest 0, rounds 3    |
-| Beep every 5 min for 30 min  | work 5:00, rest 0, rounds 6     |
-| Beep every 15 min for 60 min | work 15:00, rest 0, rounds 4    |
-| Beep every 1 min for 20 min  | work 1:00, rest 0, rounds 20    |
-| Classic HIIT 40/20 × 10      | work 40s, rest 20s, rounds 10   |
-| Run/walk 1:1 × 10            | work 1:00, rest 1:00, rounds 10 |
-| Boxing 3/1 × 12              | work 3:00, rest 1:00, rounds 12 |
+## 8. Tests and CI
 
-Engine supports `rest: 0` (segments with 0ms are skipped) so "beep every N minutes" is a normal interval, no special mode.
+- Vitest: schedule building for every mode (final rest, fixed Tabata, capped EMOM, finite Pomodoro, meditation remainder and bell counts), timer position after a simulated sleep, missed-boundary events, pause/resume maths, validation and stored-config coercion, field drafts and stepping, on-screen copy per state, keyboard handling, storage with a throwing `localStorage`, install prompt matrix, manifest and service worker rules.
+- Playwright (desktop Chrome and Pixel 7): every route returns 200 with one h1; interval, Tabata, EMOM, Pomodoro and meditation flows with `page.clock`; pause/resume; stop and reset confirmations; navigation-away confirmation; invalid input; steppers and bounds; keys ignored in fields; persistence and corrupt-storage fallback; blocked audio notice; long-sleep catch-up; 93+ minute display; sound chip; install prompt; 404; redirects file; no framework JS on content pages; JS-disabled blog.
+- `scripts/check-build.mjs` after build: metadata, dead links, images, PWA integrity.
 
-## 8. Analytics
+## 9. Decisions
 
-`PUBLIC_GA_MEASUREMENT_ID` and `PUBLIC_SITE_URL` in `.env`. GA4 loaded as `<script defer>` after first paint, only if the ID is set; otherwise one `console.warn` in dev. Events: `timer_start`, `timer_pause`, `timer_resume`, `timer_reset`, `timer_complete`, `preset_saved`, `preset_loaded`, `fullscreen_enter`, `mute_toggle`, `pwa_install` with `mode`, `duration_seconds`, `rounds`. No view transitions, so no SPA pageview handling needed.
+- **Five timers, no stopwatch or countdown.** A stopwatch is a different product; a countdown is an interval with one round and no rest. Their URLs 301 to the closest survivor.
+- **Guide below the shell, not above.** Nothing may sit above the digits, and a page still needs one visible H1 and its SEO copy, so the H1-led guide follows the subordinate nav and precedes the site footer.
+- **The island owns the subordinate nav.** It is the only way to ask before you leave a running session, and the sound chip lives in that row.
+- **Final rest is included.** A session ends on a rest, so the last sound is the finish, not a work beep, and the total matches the summary.
+- **Tabata is fixed.** It is the fewest-settings path; variants are interval configs on their own pages.
+- **Pomodoro is one finite cycle** with no persistent session counter. Run again starts a fresh cycle.
+- **Meditation clock is the whole session.** Interval bells never restart the clock or turn a sit into rounds. Interval, start and end bells are independent; global mute overrides all.
+- **Typed input is never coerced.** Errors say the bound. Start goes unavailable until fixed.
+- **Confirmations are full-panel, not modals.** The digits stay, the question replaces the phase word, focus moves and is restored.
+- **Service worker never activates under a session.** `skipWaiting` only on a message the page sends when idle.
+- **Static TTFs for social cards.** Satori cannot parse the variable fonts, so static DM Sans 500/600 and Azeret Mono 500 instances live in `src/assets/fonts/` for build time only.
+- **Space yields to a focused button.** The system focus rule says Space activates buttons; the global shortcut only acts when nothing focusable would.
+- **Article author is a Person.** Nimish Nandwana, linked to https://nimishnandwana.com, on every post.
 
-`.env` content you need to fill in (I will create the file with these keys):
+## 10. Build order (2026-09-15 redesign)
 
-```
-PUBLIC_SITE_URL=https://gointervals.com
-PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX   # your GA4 measurement ID from admin → data streams
-```
-
-## 9. Tests and CI
-
-- Vitest: schedule building for all modes, elapsed after simulated 40-minute sleep, missed-boundary events, pause/resume maths, lap split/total, preset round-trip, storage with a throwing `localStorage`, format helpers.
-- Playwright: every route returns 200 and has an h1; countdown counts down with `page.clock`; Space/R/Esc shortcuts; saved interval preset survives reload; 404; robots/sitemap/llms served; JS-disabled render of a blog post still shows content.
-- `scripts/check-build.mjs` runs after build in CI.
-- GitHub Actions: lint → typecheck → unit → build → check-build → Playwright.
-
-## 10. Decisions
-
-- **Preact over vanilla DOM for the island.** Cost is 4 kB on timer pages only. Content pages ship no framework.
-- **Plain CSS over Tailwind.** Fewer deps, no purge config, tokens live in one file.
-- **Deferred gtag over Partytown.** Simpler, and a deferred script after first paint does not affect LCP.
-- **Hand-written service worker.** Cache-first for `/_astro/*` (hashed), network-first with cache fallback for HTML. All timer routes precached on install so they work offline even if not visited.
-- **No view transitions.** They would add the Astro client router to every page, which violates "no JS on content pages".
-- **One `Timer` island for all modes** rather than seven components. Modes differ only in the schedule builder and the settings form.
-- **"Beep every N minutes" is an interval preset with rest 0**, not a separate mode. Keeps the engine small and the URL structure flat.
-- **Pomodoro long break every 4 is a `set` of 4 rounds with `setrest` = long break.** Same engine path as interval sets.
-- **`/timer/[n]-seconds` and `-minutes` reuse the countdown island** with `autoStart: false`; the user still taps Start (autoplaying audio without a gesture is blocked on iOS anyway).
-- **OG font.** Satori needs TTF/OTF, fontsource ships woff2, so a single static Bricolage TTF lives in `src/assets/fonts/` for build-time use only.
-- **Lighthouse audit** runs with the `lighthouse` CLI via `npx` against `astro preview`, not added as a dependency.
-- **Blog post lengths** 500–900 words each; primary keyword in slug, H1 and first sentence.
-
-- **`/timer/1-minute` is singular.** The brief's pattern is `[n]-minutes`, but "1 minutes timer" is not a phrase anyone searches. Every other n is plural.
-- **Progress is a thin bar, not a ring.** A 3px accent line under the digits reads better at 360px than a ring around 22vw digits, and it keeps the accent under a few percent of the screen.
-- **"Clear my data" lives on `/about`**, linked from every footer, rather than in the timer chrome.
-- **Long `<title>`s drop the site suffix.** Blog and workout titles keep their full keyword phrase; the " – Go Intervals" suffix is only appended when the result stays within 65 characters.
-- **Static TTFs for OG images.** Satori's font parser fails on the variable Bricolage/JetBrains files, so `src/assets/fonts/` holds static 700/500 instances from Google Fonts, used at build time only.
-
-## 11. Build order
-
-1. Scaffold, tokens, lint/format/tsconfig, AGENTS.md skeleton
-2. Engine + platform storage with Vitest (tests first)
-3. Timer island, styles, all seven timer pages
-4. Programmatic pages + data files + related links
-5. Blog (10 posts, index, tags, RSS)
-6. SEO: Head, JSON-LD, OG images, robots/llms/humans/_headers/sitemap, check-build script
-7. Analytics
-8. PWA (manifest, SW, icons)
-9. Playwright, GitHub Actions
-10. Lighthouse audit, handoff, `npm run preview` left running for review
+1. Fonts and tokens
+2. Engine schedule, format, validation (tests first)
+3. Platform: audio unlock result, keyboard, analytics, storage
+4. Base styles, header, footer, shared components
+5. Island: copy, fields, parts, state machine, timer CSS
+6. Pages: timer layout, home, about, 404, blog, post
+7. Content: article, retargeted posts, redirects, service worker, manifest, icons, social card
+8. Preset data on the new engine types
+9. Unit and e2e tests, screenshot comparison against the canvas at 375 and 1280
+10. AGENTS.md and PLAN.md

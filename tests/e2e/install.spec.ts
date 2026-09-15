@@ -5,6 +5,17 @@ async function open(page: Page, path: string): Promise<void> {
   await page.locator('astro-island:not([ssr])').first().waitFor();
 }
 
+/** A ten second interval: the shortest run that earns the prompt. */
+async function fillShort(page: Page): Promise<void> {
+  await page.fill('#f-work', '10');
+  await page.fill('#f-rest', '0');
+  await page.fill('#f-rounds', '1');
+}
+async function openShort(page: Page): Promise<void> {
+  await open(page, '/interval');
+  await fillShort(page);
+}
+
 /**
  * Chromium does not fire beforeinstallprompt under automation, so we dispatch a
  * stand-in with the same shape. Everything downstream is the real code path.
@@ -46,13 +57,13 @@ const prompt = (page: Page) => page.getByText('Add it to the home screen.');
 test.describe('install prompt', () => {
   test('stays hidden until a timer has actually been completed', async ({ page }) => {
     await page.clock.install();
-    await open(page, '/timer/10-seconds');
+    await openShort(page);
     await offerInstall(page);
 
     // Installable, but nothing earned yet.
     await expect(prompt(page)).toBeHidden();
 
-    await page.getByRole('button', { name: 'Start' }).click();
+    await page.getByRole('button', { name: 'Start', exact: true }).click();
     await expect(prompt(page)).toBeHidden();
 
     await page.clock.fastForward(11_000);
@@ -61,9 +72,9 @@ test.describe('install prompt', () => {
 
   test('dismissing hides it and it stays gone on the next visit', async ({ page }) => {
     await page.clock.install();
-    await open(page, '/timer/10-seconds');
+    await openShort(page);
     await offerInstall(page);
-    await page.getByRole('button', { name: 'Start' }).click();
+    await page.getByRole('button', { name: 'Start', exact: true }).click();
     await page.clock.fastForward(11_000);
     await expect(prompt(page)).toBeVisible();
 
@@ -71,9 +82,9 @@ test.describe('install prompt', () => {
     await expect(prompt(page)).toBeHidden();
 
     // Reload, complete another timer: the snooze still holds.
-    await open(page, '/timer/10-seconds');
+    await openShort(page);
     await offerInstall(page);
-    await page.getByRole('button', { name: 'Start' }).click();
+    await page.getByRole('button', { name: 'Start', exact: true }).click();
     await expect(page.getByRole('button', { name: 'Pause' })).toBeVisible();
     await page.clock.fastForward(11_000);
     await expect(page.getByRole('timer')).toHaveText('00:00');
@@ -86,8 +97,9 @@ test.describe('install prompt', () => {
 
   test('survives beforeinstallprompt firing before the island hydrates', async ({ page }) => {
     await page.clock.install();
-    await offerInstallBeforeHydration(page, '/timer/10-seconds');
-    await page.getByRole('button', { name: 'Start' }).click();
+    await offerInstallBeforeHydration(page, '/interval');
+    await fillShort(page);
+    await page.getByRole('button', { name: 'Start', exact: true }).click();
     await page.clock.fastForward(11_000);
     // The event fired long before the island mounted; it must still be offered.
     await expect(prompt(page)).toBeVisible();
@@ -95,18 +107,18 @@ test.describe('install prompt', () => {
 
   test('never appears when the browser cannot install', async ({ page }) => {
     await page.clock.install();
-    await open(page, '/timer/10-seconds');
+    await openShort(page);
     // No beforeinstallprompt offered at all.
-    await page.getByRole('button', { name: 'Start' }).click();
+    await page.getByRole('button', { name: 'Start', exact: true }).click();
     await page.clock.fastForward(11_000);
     await expect(prompt(page)).toBeHidden();
   });
 
   test('accepting removes it permanently', async ({ page }) => {
     await page.clock.install();
-    await open(page, '/timer/10-seconds');
+    await openShort(page);
     await offerInstall(page);
-    await page.getByRole('button', { name: 'Start' }).click();
+    await page.getByRole('button', { name: 'Start', exact: true }).click();
     await page.clock.fastForward(11_000);
     await page.getByRole('button', { name: 'Add' }).click();
     await expect(prompt(page)).toBeHidden();
@@ -127,10 +139,10 @@ test.describe('install prompt on iOS', () => {
 
   test('shows manual steps and no Add button, without any install event', async ({ page }) => {
     await page.clock.install();
-    await open(page, '/timer/10-seconds');
+    await openShort(page);
     await expect(prompt(page)).toBeHidden();
 
-    await page.getByRole('button', { name: 'Start' }).click();
+    await page.getByRole('button', { name: 'Start', exact: true }).click();
     await page.clock.fastForward(11_000);
 
     await expect(prompt(page)).toBeVisible();

@@ -154,11 +154,7 @@ export const workouts: ProgrammaticPage[] = [
         a: 'No. Start goes straight into the first sprint, so press it at the line. Set Work to a longer first effort if you want a lead-in.',
       },
     ],
-    related: [
-      '/interval/running-intervals-1-1',
-      '/tabata/20-10-8',
-      '/interval',
-    ],
+    related: ['/interval/running-intervals-1-1', '/tabata/20-10-8', '/interval'],
   },
   {
     path: '/interval/kettlebell-emom-10',

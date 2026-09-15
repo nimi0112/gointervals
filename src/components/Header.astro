@@ -1,16 +1,26 @@
 ---
 /** Content-page shell header: wordmark, Timers, About. Timer pages do not render it. */
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const path =
+  Astro.url.pathname
+    .replace(/\.html$/, '')
+    .replace(/\/index$/, '')
+    .replace(/\/$/, '') || '/';
 const timersCurrent = path === '/';
 const aboutCurrent = path === '/about';
 ---
 
 <header class="hdr">
   <div class="wrap hdr__inner">
-    <a class="hdr__brand" href="/" aria-label="gointervals home">gointervals</a>
+    <a class="hdr__brand" href="/" aria-label="gointervals home">
+      gointervals
+    </a>
     <nav class="hdr__nav" aria-label="Site">
-      <a href="/" aria-current={timersCurrent ? 'page' : undefined}>Timers</a>
-      <a href="/about" aria-current={aboutCurrent ? 'page' : undefined}>About</a>
+      <a href="/" aria-current={timersCurrent ? 'page' : undefined}>
+        Timers
+      </a>
+      <a href="/about" aria-current={aboutCurrent ? 'page' : undefined}>
+        About
+      </a>
     </nav>
   </div>
 </header>

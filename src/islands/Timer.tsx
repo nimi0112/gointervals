@@ -12,7 +12,7 @@ import { setTitle } from '@/platform/title';
 import { bindKeys } from '@/platform/keyboard';
 import { track, type EventParams } from '@/platform/analytics';
 import { useEngine } from './useEngine';
-import { screenCopy, timerShort } from './copy';
+import { screenCopy } from './copy';
 import { draftFrom, resolveDraft, stepField, FIELDS, type Draft } from './fields';
 import { Icon } from './parts/Icon';
 import { Settings } from './parts/Settings';
@@ -88,7 +88,6 @@ function paramsOf(cfg: ModeConfig): EventParams {
 
 export default function Timer({ config: initial, fixed = false }: Props) {
   const mode = initial.mode;
-  const short = timerShort(mode);
   const [config, setConfigState] = useState<ModeConfig>(() => initial);
   const [draft, setDraft] = useState<Draft>(() => draftFrom(initial));
   const [errors, setErrors] = useState<Draft>({});
@@ -138,7 +137,8 @@ export default function Timer({ config: initial, fixed = false }: Props) {
     if (r.ok) commit(r.config);
     else setErrors(r.errors);
   };
-  const onStep = (key: string, delta: 1 | -1): void => onText(key, stepField(config, draft, key, delta));
+  const onStep = (key: string, delta: 1 | -1): void =>
+    onText(key, stepField(config, draft, key, delta));
   const onToggle = (key: 'intervalBell' | 'startBell' | 'endBell'): void => {
     if (config.mode !== 'meditation') return;
     const next = { ...config, [key]: !config[key] };
@@ -174,7 +174,11 @@ export default function Timer({ config: initial, fixed = false }: Props) {
           doneRef.current = true;
           track('timer_complete', paramsOf(cfg));
           setCompletions(recordCompletion(storage).completions);
-          const item: HistoryItem = { mode, seconds: Math.round(snap.totalMs / 1000), at: Date.now() };
+          const item: HistoryItem = {
+            mode,
+            seconds: Math.round(snap.totalMs / 1000),
+            at: Date.now(),
+          };
           const hist = storage.get<HistoryItem[]>(KEYS.history, []);
           storage.set(KEYS.history, [item, ...hist].slice(0, 50));
         }
@@ -204,7 +208,11 @@ export default function Timer({ config: initial, fixed = false }: Props) {
       const cfg = configRef.current;
       if (status === 'running') {
         keepAwake();
-        if (!wakeReported.current && typeof navigator !== 'undefined' && !('wakeLock' in navigator)) {
+        if (
+          !wakeReported.current &&
+          typeof navigator !== 'undefined' &&
+          !('wakeLock' in navigator)
+        ) {
           wakeReported.current = true;
           track('wakelock_failed', { mode, reason: 'unsupported' });
         }
@@ -274,7 +282,11 @@ export default function Timer({ config: initial, fixed = false }: Props) {
     const returnTo = document.activeElement as HTMLElement | null;
     setConfirm({ kind, wasRunning, returnTo, ...(href ? { href } : {}) });
     if (kind === 'leave') track('nav_away_during_session', { mode, href: href ?? '' });
-    setAnnounce(kind === 'reset' ? 'Reset timer? This clears your progress.' : 'Stop session? Your timer is paused.');
+    setAnnounce(
+      kind === 'reset'
+        ? 'Reset timer? This clears your progress.'
+        : 'Stop session? Your timer is paused.',
+    );
   };
   const keepGoing = (): void => {
     if (!confirm) return;
@@ -359,30 +371,29 @@ export default function Timer({ config: initial, fixed = false }: Props) {
   };
 
   // keyboard
-  useEffect(
-    () =>
-      bindKeys({
-        toggle: () => {
-          if (confirm || status === 'done') return;
-          primary();
-        },
-        reset: () => {
-          if (confirm) return;
-          if (active) openConfirm('reset');
-          else if (status === 'done') {
-            engine.reset();
-            track('timer_change_settings', { mode });
-          } else {
-            // setup: restore the preview to the last valid settings
-            setDraft(draftFrom(config));
-            setErrors({});
-          }
-        },
-        escape: () => {
-          if (confirm) keepGoing();
-          else if (active) openConfirm('stop');
-        },
-      }),
+  useEffect(() =>
+    bindKeys({
+      toggle: () => {
+        if (confirm || status === 'done') return;
+        primary();
+      },
+      reset: () => {
+        if (confirm) return;
+        if (active) openConfirm('reset');
+        else if (status === 'done') {
+          engine.reset();
+          track('timer_change_settings', { mode });
+        } else {
+          // setup: restore the preview to the last valid settings
+          setDraft(draftFrom(config));
+          setErrors({});
+        }
+      },
+      escape: () => {
+        if (confirm) keepGoing();
+        else if (active) openConfirm('stop');
+      },
+    }),
   );
 
   const toggleSound = (): void => {
@@ -445,7 +456,12 @@ export default function Timer({ config: initial, fixed = false }: Props) {
   const groups = copy.digits.split(':');
 
   return (
-    <div class="timer" data-status={status} data-mode={mode} data-confirm={confirm?.kind ?? undefined}>
+    <div
+      class="timer"
+      data-status={status}
+      data-mode={mode}
+      data-confirm={confirm?.kind ?? undefined}
+    >
       <div class="timer__stage">
         <div class="timer__digits" role="timer" aria-label={`${copy.digits} remaining`}>
           {groups.map((g, i) => (
@@ -532,7 +548,6 @@ export default function Timer({ config: initial, fixed = false }: Props) {
         onToggleSound={toggleSound}
         onNavigate={onNavigate}
       />
-      <span class="sr-only">{short}</span>
     </div>
   );
 }

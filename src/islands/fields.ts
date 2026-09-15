@@ -85,7 +85,11 @@ export function stepField(base: ModeConfig, draft: Draft, key: string, delta: 1 
 }
 
 /** Which stepper buttons are at their bound, for aria-disabled. */
-export function bounds(base: ModeConfig, draft: Draft, key: string): { atMin: boolean; atMax: boolean } {
+export function bounds(
+  base: ModeConfig,
+  draft: Draft,
+  key: string,
+): { atMin: boolean; atMax: boolean } {
   const def = FIELDS[base.mode].find((f) => f.key === key);
   if (!def) return { atMin: false, atMax: false };
   const max = Math.min(def.limit.max, maxFor(base, key, draft) ?? def.limit.max);

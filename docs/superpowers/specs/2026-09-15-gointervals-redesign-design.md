@@ -39,15 +39,15 @@ countdown go away with 301s. SEO surface is extended, never trimmed.
 
 Tokens (CSS custom properties in `src/styles/tokens.css`):
 
-| Token        | Value     | Role                          |
-| ------------ | --------- | ----------------------------- |
-| `--paper`    | `#F7F8F5` | Porcelain canvas, only background |
-| `--ink`      | `#202722` | Text, control boundaries      |
-| `--muted`    | `#58615A` | Secondary text                |
-| `--line`     | `#D6DDD5` | Dividers and progress track   |
-| `--accent`   | `#355B46` | Forest: primary action, focus ring, wordmark, progress fill |
+| Token        | Value     | Role                                                           |
+| ------------ | --------- | -------------------------------------------------------------- |
+| `--paper`    | `#F7F8F5` | Porcelain canvas, only background                              |
+| `--ink`      | `#202722` | Text, control boundaries                                       |
+| `--muted`    | `#58615A` | Secondary text                                                 |
+| `--line`     | `#D6DDD5` | Dividers and progress track                                    |
+| `--accent`   | `#355B46` | Forest: primary action, focus ring, wordmark, progress fill    |
 | `--soft`     | `#EBEFE9` | Selected surface, chip and stepper button fill, first home row |
-| `--disabled` | `#E1E5DE` | Unavailable control fill (ink text on it, no opacity) |
+| `--disabled` | `#E1E5DE` | Unavailable control fill (ink text on it, no opacity)          |
 
 Type: DM Sans for UI (`--font-sans`), Azeret Mono for every number (`--font-digits`,
 `font-variant-numeric: tabular-nums`). Scale: T1 timer 98px (375) / 208px (1280) weight 500;
@@ -68,17 +68,17 @@ Bricolage and JetBrains Mono are removed everywhere.
 
 ### Component mapping (canvas component → code)
 
-| Canvas component        | Code                                                           |
-| ----------------------- | -------------------------------------------------------------- |
-| Primary button          | `.btn.btn--primary`: accent fill, paper text, 60px (72px for the timer control, icon 24 + 20/500 label), radius 8; disabled = `--disabled` fill, ink text, label "Start · unavailable" |
-| Secondary button        | `.btn`: paper fill, 1px ink stroke, radius 8, 60px             |
-| Quiet button            | `.btn--quiet`: no border, ink or muted text, 44px              |
-| Chip (aria-pressed)     | `.chip`: soft fill, 1px ink stroke, radius 8, 44px, explicit "· On / · Off" text |
-| Duration stepper        | `Stepper` part: 56px row, 1px ink stroke, radius 8; − and + are 56×56 soft-fill buttons with lucide minus/plus; centre is an editable text input (24px digits) plus 12px muted unit |
-| Progress                | `Progress` part: 6px `--line` track, accent fill, 13px muted details row ("Next · Rest 00:20" left, "05:48 left" right); `aria-hidden`, not a tab stop |
-| Navigation              | Timer subordinate nav: "← Timers" (arrow-left 18 + 14px), "About" centred, sound chip right (volume-2/volume-x 18 + "On"/"Off"), 1px line above, 12px muted utility footer under it |
-| Timer list item / link  | Home rows: index 13px digits muted, name 21px, description 14px muted, arrow-up-right 24 accent; first row soft fill, others paper + 1px line; radius 8; whole row is the link |
-| Shell mobile / desktop header | Content-page header: "gointervals" wordmark in accent (21/24px), "Timers" and "About" links (14/15px) with 2px accent underline on the current page, 1px line below |
+| Canvas component              | Code                                                                                                                                                                                   |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Primary button                | `.btn.btn--primary`: accent fill, paper text, 60px (72px for the timer control, icon 24 + 20/500 label), radius 8; disabled = `--disabled` fill, ink text, label "Start · unavailable" |
+| Secondary button              | `.btn`: paper fill, 1px ink stroke, radius 8, 60px                                                                                                                                     |
+| Quiet button                  | `.btn--quiet`: no border, ink or muted text, 44px                                                                                                                                      |
+| Chip (aria-pressed)           | `.chip`: soft fill, 1px ink stroke, radius 8, 44px, explicit "· On / · Off" text                                                                                                       |
+| Duration stepper              | `Stepper` part: 56px row, 1px ink stroke, radius 8; − and + are 56×56 soft-fill buttons with lucide minus/plus; centre is an editable text input (24px digits) plus 12px muted unit    |
+| Progress                      | `Progress` part: 6px `--line` track, accent fill, 13px muted details row ("Next · Rest 00:20" left, "05:48 left" right); `aria-hidden`, not a tab stop                                 |
+| Navigation                    | Timer subordinate nav: "← Timers" (arrow-left 18 + 14px), "About" centred, sound chip right (volume-2/volume-x 18 + "On"/"Off"), 1px line above, 12px muted utility footer under it    |
+| Timer list item / link        | Home rows: index 13px digits muted, name 21px, description 14px muted, arrow-up-right 24 accent; first row soft fill, others paper + 1px line; radius 8; whole row is the link         |
+| Shell mobile / desktop header | Content-page header: "gointervals" wordmark in accent (21/24px), "Timers" and "About" links (14/15px) with 2px accent underline on the current page, 1px line below                    |
 
 Icons are inline SVG paths copied from lucide (activity, wind, coffee, check, pause, play,
 rotate-ccw, sliders-horizontal, bell, volume-2, volume-x, arrow-left, arrow-up-right, minus,

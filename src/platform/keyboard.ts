@@ -24,8 +24,7 @@ const isTyping = (t: EventTarget | null): boolean => {
   return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || el.isContentEditable;
 };
 
-const isButton = (t: EventTarget | null): boolean =>
-  !!t && (t as HTMLElement).tagName === 'BUTTON';
+const isButton = (t: EventTarget | null): boolean => !!t && (t as HTMLElement).tagName === 'BUTTON';
 
 /** Space start/pause/resume, R reset, Esc stop. Space and R are ignored while typing in a field. */
 export function handleKey(e: KeyLike, h: KeyHandlers): void {

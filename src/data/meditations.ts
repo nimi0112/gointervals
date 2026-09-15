@@ -18,7 +18,14 @@ export const meditations: ProgrammaticPage[] = [
       'Resetting between meetings without lying down',
       'Days when the honest choice is five minutes or nothing',
     ],
-    config: { mode: 'meditation', total: 300, bell: 300, intervalBell: false, startBell: false, endBell: true },
+    config: {
+      mode: 'meditation',
+      total: 300,
+      bell: 300,
+      intervalBell: false,
+      startBell: false,
+      endBell: true,
+    },
     faq: [
       {
         q: 'What does the bell sound like?',
@@ -61,7 +68,14 @@ export const meditations: ProgrammaticPage[] = [
       'Winding down at the end of the working day',
       'Building from five minutes without a big jump',
     ],
-    config: { mode: 'meditation', total: 600, bell: 600, intervalBell: false, startBell: false, endBell: true },
+    config: {
+      mode: 'meditation',
+      total: 600,
+      bell: 600,
+      intervalBell: false,
+      startBell: false,
+      endBell: true,
+    },
     faq: [
       {
         q: 'What does the bell sound like?',
@@ -104,7 +118,14 @@ export const meditations: ProgrammaticPage[] = [
       'Morning and evening sits, twice a day',
       'A sit long enough to need a posture correction halfway',
     ],
-    config: { mode: 'meditation', total: 1200, bell: 600, intervalBell: true, startBell: false, endBell: true },
+    config: {
+      mode: 'meditation',
+      total: 1200,
+      bell: 600,
+      intervalBell: true,
+      startBell: false,
+      endBell: true,
+    },
     faq: [
       {
         q: 'What does the bell sound like?',
@@ -147,7 +168,14 @@ export const meditations: ProgrammaticPage[] = [
       'A weekend sit when there is more time than on a weekday',
       'Practising with a re-anchor rather than one unbroken stretch',
     ],
-    config: { mode: 'meditation', total: 1800, bell: 600, intervalBell: true, startBell: false, endBell: true },
+    config: {
+      mode: 'meditation',
+      total: 1800,
+      bell: 600,
+      intervalBell: true,
+      startBell: false,
+      endBell: true,
+    },
     faq: [
       {
         q: 'What does the bell sound like?',
@@ -190,7 +218,14 @@ export const meditations: ProgrammaticPage[] = [
       'A retreat-style session at home on a free morning',
       'Sitting with a group where a bell marks the changes',
     ],
-    config: { mode: 'meditation', total: 2700, bell: 900, intervalBell: true, startBell: false, endBell: true },
+    config: {
+      mode: 'meditation',
+      total: 2700,
+      bell: 900,
+      intervalBell: true,
+      startBell: false,
+      endBell: true,
+    },
     faq: [
       {
         q: 'What does the bell sound like?',
@@ -233,7 +268,14 @@ export const meditations: ProgrammaticPage[] = [
       'Practising at the length an intensive schedule would use',
       'Sitting with legs that need permission to move at a marked point',
     ],
-    config: { mode: 'meditation', total: 3600, bell: 1200, intervalBell: true, startBell: false, endBell: true },
+    config: {
+      mode: 'meditation',
+      total: 3600,
+      bell: 1200,
+      intervalBell: true,
+      startBell: false,
+      endBell: true,
+    },
     faq: [
       {
         q: 'What does the bell sound like?',

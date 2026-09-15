@@ -17,7 +17,15 @@ function at(cfg: ModeConfig, elapsedS: number, paused = false) {
   return { snap: t.snapshot(), segments };
 }
 
-const interval: ModeConfig = { mode: 'interval', prep: 0, work: 40, rest: 20, rounds: 8, sets: 1, setRest: 0 };
+const interval: ModeConfig = {
+  mode: 'interval',
+  prep: 0,
+  work: 40,
+  rest: 20,
+  rounds: 8,
+  sets: 1,
+  setRest: 0,
+};
 
 describe('screenCopy for the interval timer', () => {
   it('idle: timer name, prompt and summary', () => {
@@ -189,9 +197,9 @@ describe('doneCopy', () => {
 describe('footer line', () => {
   it('depends on status', () => {
     const segments = buildSchedule(interval);
-    expect(screenCopy(interval, createTimer(segments).snapshot(), segments, { muted: false }).footer).toBe(
-      'Works offline. No account needed.',
-    );
+    expect(
+      screenCopy(interval, createTimer(segments).snapshot(), segments, { muted: false }).footer,
+    ).toBe('Works offline. No account needed.');
     expect(screenCopy(interval, at(interval, 5).snap, segments, { muted: false }).footer).toBe(
       'Interval · Screen stays on while running',
     );

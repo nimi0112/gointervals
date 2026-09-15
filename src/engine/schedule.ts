@@ -57,11 +57,7 @@ export interface MeditationConfig {
 }
 
 export type ModeConfig =
-  | IntervalConfig
-  | TabataConfig
-  | EmomConfig
-  | PomodoroConfig
-  | MeditationConfig;
+  IntervalConfig | TabataConfig | EmomConfig | PomodoroConfig | MeditationConfig;
 export type Mode = ModeConfig['mode'];
 
 export const TABATA: TabataConfig = { mode: 'tabata', work: 20, rest: 10, rounds: 8 };

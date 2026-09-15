@@ -151,7 +151,12 @@ export const tabatas: ProgrammaticPage[] = [
         a: 'No. Start goes straight into the first 45 seconds, so press it when you are in position. Ten rounds with the final rest included is exactly ten minutes.',
       },
     ],
-    related: ['/tabata/40-20-8', '/interval/7-minute-workout', '/tabata', '/interval/beep-every-minute'],
+    related: [
+      '/tabata/40-20-8',
+      '/interval/7-minute-workout',
+      '/tabata',
+      '/interval/beep-every-minute',
+    ],
   },
   {
     path: '/tabata/60-30-6',

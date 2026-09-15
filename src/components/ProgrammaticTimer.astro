@@ -43,7 +43,10 @@ const med = page.config.mode === 'meditation';
     </ul>
   </Section>
   <Section title="How it runs">
-    <p>{setup} Press Start, or hit Space. The phase word and icon above the progress bar tell you where you are.</p>
+    <p>
+      {setup} Press Start, or hit Space. The phase word and icon above the progress bar tell you
+      where you are.
+    </p>
     {med ? (
       <p>
         The only sound is one soft bell at each interval and one at the end, and each of those is a
@@ -52,9 +55,9 @@ const med = page.config.mode === 'meditation';
       </p>
     ) : (
       <p>
-        Sound is on by default and needs a tap on Start to unlock: a rising pair for work, a
-        falling pair for rest, a tick through the last three seconds and a three-note finish. The
-        screen stays on while the timer runs and the tab title shows the time left.
+        Sound is on by default and needs a tap on Start to unlock: a rising pair for work, a falling
+        pair for rest, a tick through the last three seconds and a three-note finish. The screen
+        stays on while the timer runs and the tab title shows the time left.
       </p>
     )}
     <p>

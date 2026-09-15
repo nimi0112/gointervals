@@ -27,7 +27,9 @@ const { jsonLd = [], header = true, ...head } = Astro.props;
     <Analytics />
   </head>
   <body>
-    <a class="skip" href="#main">Skip to content</a>
+    <a class="skip" href="#main">
+      Skip to content
+    </a>
     {header && <Header />}
     <slot />
     <Footer />
@@ -99,11 +101,15 @@ const { jsonLd = [], header = true, ...head } = Astro.props;
       const end = document.querySelector('[data-read-end]');
       if (end && 'IntersectionObserver' in window) {
         const io = new IntersectionObserver(function (entries) {
-    if (entries.some(function (x) { return x.isIntersecting; })) {
-      io.disconnect();
-      send('blog_read', { slug: end.getAttribute('data-read-end') });
-    }
-  });
+          if (
+            entries.some(function (x) {
+              return x.isIntersecting;
+            })
+          ) {
+            io.disconnect();
+            send('blog_read', { slug: end.getAttribute('data-read-end') });
+          }
+        });
         io.observe(end);
       }
     </script>

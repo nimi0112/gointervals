@@ -37,11 +37,7 @@ export const beeps: ProgrammaticPage[] = [
         a: 'Not separately. At a 30 second cadence the ticks act as a warning that the marker is coming, which most people want. Muting the tab silences everything if you only want the visual countdown.',
       },
     ],
-    related: [
-      '/interval/beep-every-minute',
-      '/interval/beep-every-2-minutes',
-      '/interval',
-    ],
+    related: ['/interval/beep-every-minute', '/interval/beep-every-2-minutes', '/interval'],
   },
   {
     path: '/interval/beep-every-minute',
@@ -124,11 +120,7 @@ export const beeps: ProgrammaticPage[] = [
         a: 'After the first visit, yes. The page and the fonts are cached, and the tones are generated rather than loaded from audio files, so nothing has to be fetched to make a sound.',
       },
     ],
-    related: [
-      '/interval/beep-every-3-minutes',
-      '/interval/beep-every-minute',
-      '/interval',
-    ],
+    related: ['/interval/beep-every-3-minutes', '/interval/beep-every-minute', '/interval'],
   },
   {
     path: '/interval/beep-every-3-minutes',
@@ -166,11 +158,7 @@ export const beeps: ProgrammaticPage[] = [
         a: 'The digits are the largest thing on the page and scale with the screen, so a laptop on a bench is readable from the other side of a gym. Space still starts and pauses, and Esc leaves fullscreen.',
       },
     ],
-    related: [
-      '/interval/beep-every-2-minutes',
-      '/interval/beep-every-5-minutes',
-      '/interval',
-    ],
+    related: ['/interval/beep-every-2-minutes', '/interval/beep-every-5-minutes', '/interval'],
   },
   {
     path: '/interval/beep-every-5-minutes',
@@ -295,11 +283,7 @@ export const beeps: ProgrammaticPage[] = [
         a: 'Space starts and pauses, R asks to reset, Esc asks to stop. They are ignored while you are typing in a field.',
       },
     ],
-    related: [
-      '/interval/beep-every-20-minutes',
-      '/interval/beep-every-10-minutes',
-      '/pomodoro',
-    ],
+    related: ['/interval/beep-every-20-minutes', '/interval/beep-every-10-minutes', '/pomodoro'],
   },
   {
     path: '/interval/beep-every-20-minutes',

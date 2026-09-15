@@ -6,7 +6,8 @@ import { SITE } from './site';
 
 let fonts: { medium: ArrayBuffer; semi: ArrayBuffer; digits: ArrayBuffer } | null = null;
 
-const buf = (b: Buffer): ArrayBuffer => b.buffer.slice(b.byteOffset, b.byteOffset + b.byteLength);
+const buf = (b: Buffer): ArrayBuffer =>
+  b.buffer.slice(b.byteOffset, b.byteOffset + b.byteLength) as ArrayBuffer;
 
 async function loadFonts() {
   if (fonts) return fonts;
@@ -28,7 +29,11 @@ const MUTED = '#58615A';
  * 1200x630 PNG in the social card layout (canvas r5UgD3): wordmark top-left, title and
  * kicker on the left, a clock reading on the right, domain line at the bottom.
  */
-export async function renderOg(title: string, kicker: string, clock = '00:40'): Promise<Uint8Array> {
+export async function renderOg(
+  title: string,
+  kicker: string,
+  clock = '00:40',
+): Promise<Uint8Array> {
   const f = await loadFonts();
   const size = title.length > 48 ? 52 : title.length > 28 ? 64 : 76;
   const svg = await satori(
@@ -57,24 +62,44 @@ export async function renderOg(title: string, kicker: string, clock = '00:40'): 
           {
             type: 'div',
             props: {
-              style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '48px' },
+              style: {
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '48px',
+              },
               children: [
                 {
                   type: 'div',
                   props: {
-                    style: { display: 'flex', flexDirection: 'column', gap: '22px', maxWidth: '640px' },
+                    style: {
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '22px',
+                      maxWidth: '640px',
+                    },
                     children: [
                       {
                         type: 'div',
                         props: {
-                          style: { fontSize: `${size}px`, fontWeight: 600, lineHeight: 1.1, letterSpacing: '-0.01em' },
+                          style: {
+                            fontSize: `${size}px`,
+                            fontWeight: 600,
+                            lineHeight: 1.1,
+                            letterSpacing: '-0.01em',
+                          },
                           children: title,
                         },
                       },
                       {
                         type: 'div',
                         props: {
-                          style: { fontSize: '26px', lineHeight: 1.35, color: MUTED, maxWidth: '520px' },
+                          style: {
+                            fontSize: '26px',
+                            lineHeight: 1.35,
+                            color: MUTED,
+                            maxWidth: '520px',
+                          },
                           children: kicker,
                         },
                       },
@@ -84,16 +109,33 @@ export async function renderOg(title: string, kicker: string, clock = '00:40'): 
                 {
                   type: 'div',
                   props: {
-                    style: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px', flexShrink: 0 },
+                    style: {
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      gap: '24px',
+                      flexShrink: 0,
+                    },
                     children: [
                       {
                         type: 'div',
                         props: {
-                          style: { fontFamily: 'Azeret Mono', fontSize: '112px', fontWeight: 500, letterSpacing: '-0.02em' },
+                          style: {
+                            fontFamily: 'Azeret Mono',
+                            fontSize: '112px',
+                            fontWeight: 500,
+                            letterSpacing: '-0.02em',
+                          },
                           children: clock,
                         },
                       },
-                      { type: 'div', props: { style: { fontSize: '20px', color: MUTED }, children: 'Your pace. Your time.' } },
+                      {
+                        type: 'div',
+                        props: {
+                          style: { fontSize: '20px', color: MUTED },
+                          children: 'Your pace. Your time.',
+                        },
+                      },
                     ],
                   },
                 },

@@ -47,7 +47,13 @@ export const TIMERS: readonly TimerRoute[] = [
     blurb: 'Short bursts. Well-earned breaks.',
     mode: 'tabata',
   },
-  { path: '/emom', name: 'EMOM timer', short: 'EMOM', blurb: 'A fresh start, every minute.', mode: 'emom' },
+  {
+    path: '/emom',
+    name: 'EMOM timer',
+    short: 'EMOM',
+    blurb: 'A fresh start, every minute.',
+    mode: 'emom',
+  },
   {
     path: '/pomodoro',
     name: 'Pomodoro timer',
