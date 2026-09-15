@@ -81,6 +81,7 @@ export function Stepper(p: Props) {
             inputMode="numeric"
             autocomplete="off"
             value={p.text}
+            style={{ width: `${Math.max(1, p.text.length) + 0.35}ch` }}
             disabled={p.disabled}
             aria-invalid={invalid ? 'true' : undefined}
             aria-describedby={invalid ? errorId : undefined}

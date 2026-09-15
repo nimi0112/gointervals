@@ -10,42 +10,62 @@ export interface FieldDef {
   limit: Limit;
   /** caption after the number: "seconds", "rounds", "min", "sets" */
   unit: string;
+  /** seconds per edited unit: 60 when the person types minutes but the config stores seconds */
+  scale: number;
 }
 
 export type Draft = Record<string, string>;
 
+const f = (key: string, limit: Limit, unit: string, scale = 1): FieldDef => ({
+  key,
+  limit,
+  unit,
+  scale,
+});
+
+/** The main timer pages. Work is edited in minutes; everything else as the canvas shows it. */
 export const FIELDS: Record<Mode, FieldDef[]> = {
   interval: [
-    { key: 'work', limit: LIMITS.interval.work, unit: 'seconds' },
-    { key: 'rest', limit: LIMITS.interval.rest, unit: 'seconds' },
-    { key: 'rounds', limit: LIMITS.interval.rounds, unit: 'rounds' },
+    f('work', LIMITS.interval.workMinutes, 'min', 60),
+    f('rest', LIMITS.interval.rest, 'seconds'),
+    f('rounds', LIMITS.interval.rounds, 'rounds'),
   ],
   tabata: [],
   emom: [
-    { key: 'interval', limit: LIMITS.emom.interval, unit: 'seconds' },
-    { key: 'minutes', limit: LIMITS.emom.minutes, unit: 'minutes' },
+    f('interval', LIMITS.emom.interval, 'seconds'),
+    f('minutes', LIMITS.emom.minutes, 'minutes'),
   ],
   pomodoro: [
-    { key: 'focus', limit: LIMITS.pomodoro.focus, unit: 'min' },
-    { key: 'shortBreak', limit: LIMITS.pomodoro.shortBreak, unit: 'min' },
-    { key: 'longBreak', limit: LIMITS.pomodoro.longBreak, unit: 'min' },
-    { key: 'sessions', limit: LIMITS.pomodoro.sessions, unit: 'sets' },
+    f('focus', LIMITS.pomodoro.focus, 'min'),
+    f('shortBreak', LIMITS.pomodoro.shortBreak, 'min'),
+    f('longBreak', LIMITS.pomodoro.longBreak, 'min'),
+    f('sessions', LIMITS.pomodoro.sessions, 'sets'),
   ],
   meditation: [
-    { key: 'total', limit: LIMITS.meditation.total, unit: 'min' },
-    { key: 'bell', limit: LIMITS.meditation.bell, unit: 'min' },
+    f('total', LIMITS.meditation.total, 'min', 60),
+    f('bell', LIMITS.meditation.bell, 'min', 60),
   ],
 };
 
-/** Field value in the unit the person edits (meditation stores seconds, edits minutes). */
-function fieldValue(cfg: ModeConfig, key: string): number {
-  const v = (cfg as unknown as Record<string, number>)[key] ?? 0;
-  return cfg.mode === 'meditation' ? Math.round(v / 60) : v;
+/** Preset pages carry second-level work values (30 s sprints), so they edit work in seconds. */
+export const PRESET_FIELDS: Record<Mode, FieldDef[]> = {
+  ...FIELDS,
+  interval: [
+    f('work', LIMITS.interval.work, 'seconds'),
+    f('rest', LIMITS.interval.rest, 'seconds'),
+    f('rounds', LIMITS.interval.rounds, 'rounds'),
+  ],
+};
+
+/** Field value in the unit the person edits. */
+function fieldValue(cfg: ModeConfig, def: FieldDef): number {
+  const v = (cfg as unknown as Record<string, number>)[def.key] ?? 0;
+  return Math.round(v / def.scale);
 }
 
-export function draftFrom(cfg: ModeConfig): Draft {
+export function draftFrom(cfg: ModeConfig, defs: FieldDef[] = FIELDS[cfg.mode]): Draft {
   const out: Draft = {};
-  for (const f of FIELDS[cfg.mode]) out[f.key] = String(fieldValue(cfg, f.key));
+  for (const d of defs) out[d.key] = String(fieldValue(cfg, d));
   return out;
 }
 
@@ -58,13 +78,17 @@ function maxFor(cfg: ModeConfig, key: string, draft: Draft): number | undefined 
 
 export type Resolved = { ok: true; config: ModeConfig } | { ok: false; errors: Draft };
 
-export function resolveDraft(base: ModeConfig, draft: Draft): Resolved {
+export function resolveDraft(
+  base: ModeConfig,
+  draft: Draft,
+  defs: FieldDef[] = FIELDS[base.mode],
+): Resolved {
   const errors: Draft = {};
   const values: Record<string, number> = {};
-  for (const f of FIELDS[base.mode]) {
-    const r = parseField(draft[f.key] ?? '', f.limit, maxFor(base, f.key, draft));
-    if (r.ok) values[f.key] = base.mode === 'meditation' ? r.value * 60 : r.value;
-    else errors[f.key] = r.error;
+  for (const d of defs) {
+    const r = parseField(draft[d.key] ?? '', d.limit, maxFor(base, d.key, draft));
+    if (r.ok) values[d.key] = r.value * d.scale;
+    else errors[d.key] = r.error;
   }
   if (Object.keys(errors).length) return { ok: false, errors };
   return { ok: true, config: { ...base, ...values } as ModeConfig };
@@ -74,12 +98,18 @@ export function resolveDraft(base: ModeConfig, draft: Draft): Resolved {
  * Step one field by `delta`, clamped to its limits. When the current text does not parse,
  * step from the last valid value instead, so a stray keystroke never strands the stepper.
  */
-export function stepField(base: ModeConfig, draft: Draft, key: string, delta: 1 | -1): string {
-  const def = FIELDS[base.mode].find((f) => f.key === key);
+export function stepField(
+  base: ModeConfig,
+  draft: Draft,
+  key: string,
+  delta: 1 | -1,
+  defs: FieldDef[] = FIELDS[base.mode],
+): string {
+  const def = defs.find((d) => d.key === key);
   if (!def) return draft[key] ?? '';
   const max = Math.min(def.limit.max, maxFor(base, key, draft) ?? def.limit.max);
   const current = parseField(draft[key] ?? '', def.limit, max);
-  const from = current.ok ? current.value : fieldValue(base, key);
+  const from = current.ok ? current.value : fieldValue(base, def);
   const next = Math.min(max, Math.max(def.limit.min, from + delta));
   return String(next);
 }
@@ -89,8 +119,9 @@ export function bounds(
   base: ModeConfig,
   draft: Draft,
   key: string,
+  defs: FieldDef[] = FIELDS[base.mode],
 ): { atMin: boolean; atMax: boolean } {
-  const def = FIELDS[base.mode].find((f) => f.key === key);
+  const def = defs.find((d) => d.key === key);
   if (!def) return { atMin: false, atMax: false };
   const max = Math.min(def.limit.max, maxFor(base, key, draft) ?? def.limit.max);
   const current = parseField(draft[key] ?? '', def.limit, max);

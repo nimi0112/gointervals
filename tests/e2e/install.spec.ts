@@ -5,9 +5,9 @@ async function open(page: Page, path: string): Promise<void> {
   await page.locator('astro-island:not([ssr])').first().waitFor();
 }
 
-/** A ten second interval: the shortest run that earns the prompt. */
+/** A one minute interval: the shortest run that earns the prompt. */
 async function fillShort(page: Page): Promise<void> {
-  await page.fill('#f-work', '10');
+  await page.fill('#f-work', '1');
   await page.fill('#f-rest', '0');
   await page.fill('#f-rounds', '1');
 }
@@ -66,7 +66,7 @@ test.describe('install prompt', () => {
     await page.getByRole('button', { name: 'Start', exact: true }).click();
     await expect(prompt(page)).toBeHidden();
 
-    await page.clock.fastForward(11_000);
+    await page.clock.fastForward(61_000);
     await expect(prompt(page)).toBeVisible();
   });
 
@@ -75,7 +75,7 @@ test.describe('install prompt', () => {
     await openShort(page);
     await offerInstall(page);
     await page.getByRole('button', { name: 'Start', exact: true }).click();
-    await page.clock.fastForward(11_000);
+    await page.clock.fastForward(61_000);
     await expect(prompt(page)).toBeVisible();
 
     await page.getByRole('button', { name: 'Not now' }).click();
@@ -86,7 +86,7 @@ test.describe('install prompt', () => {
     await offerInstall(page);
     await page.getByRole('button', { name: 'Start', exact: true }).click();
     await expect(page.getByRole('button', { name: 'Pause' })).toBeVisible();
-    await page.clock.fastForward(11_000);
+    await page.clock.fastForward(61_000);
     await expect(page.getByRole('timer')).toHaveText('00:00');
     await expect(prompt(page)).toBeHidden();
 
@@ -100,7 +100,7 @@ test.describe('install prompt', () => {
     await offerInstallBeforeHydration(page, '/interval');
     await fillShort(page);
     await page.getByRole('button', { name: 'Start', exact: true }).click();
-    await page.clock.fastForward(11_000);
+    await page.clock.fastForward(61_000);
     // The event fired long before the island mounted; it must still be offered.
     await expect(prompt(page)).toBeVisible();
   });
@@ -110,7 +110,7 @@ test.describe('install prompt', () => {
     await openShort(page);
     // No beforeinstallprompt offered at all.
     await page.getByRole('button', { name: 'Start', exact: true }).click();
-    await page.clock.fastForward(11_000);
+    await page.clock.fastForward(61_000);
     await expect(prompt(page)).toBeHidden();
   });
 
@@ -119,7 +119,7 @@ test.describe('install prompt', () => {
     await openShort(page);
     await offerInstall(page);
     await page.getByRole('button', { name: 'Start', exact: true }).click();
-    await page.clock.fastForward(11_000);
+    await page.clock.fastForward(61_000);
     await page.getByRole('button', { name: 'Add' }).click();
     await expect(prompt(page)).toBeHidden();
 
@@ -143,7 +143,7 @@ test.describe('install prompt on iOS', () => {
     await expect(prompt(page)).toBeHidden();
 
     await page.getByRole('button', { name: 'Start', exact: true }).click();
-    await page.clock.fastForward(11_000);
+    await page.clock.fastForward(61_000);
 
     await expect(prompt(page)).toBeVisible();
     await expect(page.getByText('Add to Home Screen')).toBeVisible();

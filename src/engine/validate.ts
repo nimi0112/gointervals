@@ -25,6 +25,8 @@ const lim = (label: string, unit: Unit, min: number, max: number): Limit => ({
 export const LIMITS = {
   interval: {
     work: lim('Work', 'seconds', 1, 3600),
+    /** the main interval page edits work in whole minutes */
+    workMinutes: lim('Work', 'minutes', 1, 60),
     rest: lim('Rest', 'seconds', 0, 3600),
     rounds: lim('Rounds', 'rounds', 1, 99),
   },

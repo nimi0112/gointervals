@@ -1,10 +1,13 @@
 import type { ModeConfig } from '@/engine/schedule';
 import { Stepper } from './Stepper';
 import { Icon } from './Icon';
-import { FIELDS, bounds, type Draft } from '../fields';
+import { bounds, type Draft, type FieldDef } from '../fields';
 
 export interface SettingsProps {
   config: ModeConfig;
+  defs: FieldDef[];
+  /** the summary line; meditation places it between the chips and the preview */
+  summary?: preact.ComponentChildren;
   draft: Draft;
   errors: Draft;
   disabled: boolean;
@@ -31,14 +34,13 @@ const LABEL: Record<string, string> = {
 
 /** The setup fields for a mode. Tabata has none: it is deliberately the fewest-settings path. */
 export function Settings(p: SettingsProps) {
-  const defs = FIELDS[p.config.mode];
   const med = p.config.mode === 'meditation' ? p.config : null;
-  if (!defs.length && !med) return null;
+  if (!p.defs.length && !med) return null;
   return (
-    <div class={`settings settings--${p.config.mode}`} data-count={defs.length}>
+    <div class={`settings settings--${p.config.mode}`} data-count={p.defs.length}>
       <div class="settings__fields">
-        {defs.map((f) => {
-          const b = bounds(p.config, p.draft, f.key);
+        {p.defs.map((f) => {
+          const b = bounds(p.config, p.draft, f.key, p.defs);
           const off = p.disabled || (med !== null && f.key === 'bell' && !med.intervalBell);
           return (
             <Stepper
@@ -81,6 +83,7 @@ export function Settings(p: SettingsProps) {
               </button>
             ))}
           </div>
+          {p.summary}
           <button type="button" class="btn btn--quiet settings__preview" onClick={p.onPreview}>
             <Icon name="volume-2" size={18} />
             <span>Preview bell</span>

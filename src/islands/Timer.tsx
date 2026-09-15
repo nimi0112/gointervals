@@ -13,7 +13,7 @@ import { bindKeys } from '@/platform/keyboard';
 import { track, type EventParams } from '@/platform/analytics';
 import { useEngine } from './useEngine';
 import { screenCopy } from './copy';
-import { draftFrom, resolveDraft, stepField, FIELDS, type Draft } from './fields';
+import { draftFrom, resolveDraft, stepField, FIELDS, PRESET_FIELDS, type Draft } from './fields';
 import { Icon } from './parts/Icon';
 import { Settings } from './parts/Settings';
 import { Progress } from './parts/Progress';
@@ -88,8 +88,9 @@ function paramsOf(cfg: ModeConfig): EventParams {
 
 export default function Timer({ config: initial, fixed = false }: Props) {
   const mode = initial.mode;
+  const defs = (fixed ? PRESET_FIELDS : FIELDS)[mode];
   const [config, setConfigState] = useState<ModeConfig>(() => initial);
-  const [draft, setDraft] = useState<Draft>(() => draftFrom(initial));
+  const [draft, setDraft] = useState<Draft>(() => draftFrom(initial, defs));
   const [errors, setErrors] = useState<Draft>({});
   const [confirm, setConfirm] = useState<Confirm | null>(null);
   const [muted, setMutedState] = useState(false);
@@ -114,7 +115,7 @@ export default function Timer({ config: initial, fixed = false }: Props) {
     const stored = coerceStored(mode, raw);
     if (stored) {
       setConfigState(stored);
-      setDraft(draftFrom(stored));
+      setDraft(draftFrom(stored, (fixed ? PRESET_FIELDS : FIELDS)[mode]));
     } else {
       storage.remove(KEYS.settings(mode));
       setNotice('Saved settings were reset to the defaults.');
@@ -133,17 +134,17 @@ export default function Timer({ config: initial, fixed = false }: Props) {
   const onText = (key: string, text: string): void => {
     const next = { ...draft, [key]: text };
     setDraft(next);
-    const r = resolveDraft(config, next);
+    const r = resolveDraft(config, next, defs);
     if (r.ok) commit(r.config);
     else setErrors(r.errors);
   };
   const onStep = (key: string, delta: 1 | -1): void =>
-    onText(key, stepField(config, draft, key, delta));
+    onText(key, stepField(config, draft, key, delta, defs));
   const onToggle = (key: 'intervalBell' | 'startBell' | 'endBell'): void => {
     if (config.mode !== 'meditation') return;
     const next = { ...config, [key]: !config[key] };
     commit(next);
-    if (key === 'intervalBell') setDraft(draftFrom(next));
+    if (key === 'intervalBell') setDraft(draftFrom(next, defs));
   };
 
   const unlock = (): void => {
@@ -285,7 +286,9 @@ export default function Timer({ config: initial, fixed = false }: Props) {
     setAnnounce(
       kind === 'reset'
         ? 'Reset timer? This clears your progress.'
-        : 'Stop session? Your timer is paused.',
+        : kind === 'leave'
+          ? 'Stop session? Your timer is paused. Stop it to leave this page.'
+          : 'Stop session? Your timer is paused.',
     );
   };
   const keepGoing = (): void => {
@@ -318,7 +321,7 @@ export default function Timer({ config: initial, fixed = false }: Props) {
 
   const hasErrors = Object.keys(errors).length > 0;
   const focusFirstInvalid = (): void => {
-    const first = FIELDS[mode].find((f) => errors[f.key]);
+    const first = defs.find((f) => errors[f.key]);
     if (first) {
       document.getElementById(`f-${first.key}`)?.focus();
       track('invalid_input', { mode, field: first.key, reason: errors[first.key] ?? '' });
@@ -385,7 +388,7 @@ export default function Timer({ config: initial, fixed = false }: Props) {
           track('timer_change_settings', { mode });
         } else {
           // setup: restore the preview to the last valid settings
-          setDraft(draftFrom(config));
+          setDraft(draftFrom(config, defs));
           setErrors({});
         }
       },
@@ -448,12 +451,18 @@ export default function Timer({ config: initial, fixed = false }: Props) {
   const context = confirm
     ? confirm.kind === 'reset'
       ? 'This clears your progress.'
-      : 'Your timer is paused.'
+      : confirm.kind === 'leave'
+        ? 'Your timer is paused. Stop it to leave this page.'
+        : 'Your timer is paused.'
     : copy.context;
-  const firstError = FIELDS[mode].map((f) => errors[f.key]).find(Boolean);
+  const firstError = defs.map((f) => errors[f.key]).find(Boolean);
   const footer = audioBlocked ? 'Sound blocked. Tap On to retry.' : (notice ?? copy.footer);
   const ratio = snap.totalMs > 0 ? snap.totalElapsedMs / snap.totalMs : 0;
-  const groups = copy.digits.split(':');
+  const summaryLine = (
+    <p class="timer__summary" aria-live="polite">
+      {firstError ?? copy.summary}
+    </p>
+  );
 
   return (
     <div
@@ -464,16 +473,7 @@ export default function Timer({ config: initial, fixed = false }: Props) {
     >
       <div class="timer__stage">
         <div class="timer__digits" role="timer" aria-label={`${copy.digits} remaining`}>
-          {groups.map((g, i) => (
-            <>
-              {i > 0 && (
-                <span class="timer__sep" aria-hidden="true">
-                  :
-                </span>
-              )}
-              <span>{g}</span>
-            </>
-          ))}
+          {copy.digits}
         </div>
         <p class="timer__phase">
           <Icon name={phase.icon} size={22} />
@@ -490,6 +490,7 @@ export default function Timer({ config: initial, fixed = false }: Props) {
           <>
             <Settings
               config={config}
+              defs={defs}
               draft={draft}
               errors={errors}
               disabled={false}
@@ -497,10 +498,9 @@ export default function Timer({ config: initial, fixed = false }: Props) {
               onStep={onStep}
               onToggle={onToggle}
               onPreview={onPreview}
+              summary={mode === 'meditation' ? summaryLine : undefined}
             />
-            <p class="timer__summary" aria-live="polite">
-              {firstError ?? copy.summary}
-            </p>
+            {mode !== 'meditation' && summaryLine}
           </>
         ) : (
           <Progress ratio={status === 'done' ? 1 : ratio} left={copy.next} right={copy.left} />

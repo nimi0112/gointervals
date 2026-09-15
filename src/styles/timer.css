@@ -1,9 +1,11 @@
-/* Timer island. Digits first, then phase, context, settings or progress, controls, nav. */
+/* Timer island. Digits first, then phase, context, settings or progress, controls, nav.
+   Every dimension below is read from the canvas (375 and 1280 frames, 900 tall). */
 .timer {
   display: flex;
   flex-direction: column;
   min-height: calc(100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
   padding-top: var(--sp-5);
+  padding-bottom: 20px;
 }
 .timer__stage {
   display: flex;
@@ -16,18 +18,13 @@
   font-family: var(--font-digits);
   font-variant-numeric: tabular-nums;
   font-weight: 500;
-  font-size: clamp(4.5rem, 26vw, 6.125rem); /* 98px at 375 */
-  line-height: 1;
-  letter-spacing: -0.02em;
+  font-size: clamp(4.5rem, 26.134vw, 6.125rem); /* 98px at 375 */
+  line-height: 1.15;
+  letter-spacing: -0.061em;
   color: var(--ink);
-  display: inline-flex;
-  align-items: baseline;
+  white-space: nowrap;
   user-select: none;
   -webkit-user-select: none;
-  padding-inline: 0.05em;
-}
-.timer__sep {
-  padding-inline: 0.12em;
 }
 .timer__phase {
   display: inline-flex;
@@ -40,24 +37,34 @@
   line-height: 1.3;
   min-height: 39px;
 }
+.timer__phase svg {
+  color: var(--accent);
+}
 .timer__context {
   margin: 0;
   color: var(--muted);
   font-size: var(--fs-ui);
+  line-height: 1.3;
   max-width: none;
 }
 .timer__body {
   display: flex;
   flex-direction: column;
   gap: var(--sp-4);
-  margin-top: var(--sp-5);
+  margin-top: 20px;
 }
 .timer__summary {
-  margin: 0;
+  margin: var(--sp-1) 0 0;
   text-align: center;
   color: var(--muted);
-  font-size: var(--fs-label);
+  font-size: var(--fs-small);
+  line-height: 1.3;
   max-width: none;
+}
+.settings--meditation .timer__summary {
+  margin: 0;
+  font-size: var(--fs-label);
+  line-height: 1.5;
 }
 .timer__quiet {
   flex: 1;
@@ -66,13 +73,14 @@
   align-items: center;
   justify-content: center;
   gap: var(--sp-4);
-  min-height: 96px;
-  padding-block: var(--sp-5);
+  min-height: 20px;
+  padding: 0;
 }
 .timer__guidance {
   margin: 0;
   color: var(--muted);
-  font-size: var(--fs-ui);
+  font-size: 1.25rem;
+  line-height: 1.3;
   text-align: center;
 }
 .timer__notice {
@@ -83,14 +91,22 @@
 }
 .timer__hints {
   display: none;
-  margin: 0 0 var(--sp-3);
+  margin: 0 0 var(--sp-2);
   color: var(--muted);
   font-size: 0.75rem;
+  line-height: 16px;
   text-align: center;
   font-family: var(--font-sans);
 }
+.timer__hints {
+  height: 16px;
+}
 .timer__hints kbd {
   margin-right: 4px;
+  font-size: 0.6875rem;
+  line-height: 14px;
+  padding: 0 4px;
+  vertical-align: top;
 }
 .timer__hints span + span {
   margin-left: var(--sp-5);
@@ -106,26 +122,30 @@
   align-items: center;
   gap: var(--sp-2);
   width: 100%;
-  margin-top: var(--sp-4);
 }
-.timer__primary {
+.timer .btn.timer__primary {
   width: 100%;
   max-width: 432px;
-  min-height: 72px;
+  height: 72px;
   font-size: 1.25rem;
   font-weight: 500;
+  line-height: 1.3;
 }
-.timer__secondary {
+.timer__primary svg {
+  color: currentColor;
+}
+.timer .btn.timer__secondary {
   color: var(--muted);
   font-size: var(--fs-small);
+  height: 44px;
   min-height: 44px;
   padding-inline: var(--sp-4);
 }
-.timer__secondary:hover {
+.timer .btn.timer__secondary:hover {
   color: var(--ink);
 }
 
-/* Settings */
+/* Settings: label 14/500 (18 high), 8 gap, 56 stepper; fields 16 apart. */
 .settings {
   display: flex;
   flex-direction: column;
@@ -144,7 +164,7 @@
 .field__label {
   font-size: var(--fs-small);
   font-weight: 500;
-  line-height: 1.3;
+  line-height: 18px;
 }
 .field__error {
   margin: 0;
@@ -186,6 +206,7 @@
   outline-offset: -4px;
   border-radius: var(--radius);
 }
+/* The number and its unit sit together, centred, like "40 seconds" on the canvas. */
 .stepper__value {
   flex: 1;
   display: inline-flex;
@@ -195,17 +216,16 @@
   min-width: 0;
 }
 .stepper__input {
-  width: 4.5ch;
   min-width: 0;
   border: 0;
   padding: 0;
   background: transparent;
-  text-align: right;
+  text-align: center;
   font-family: var(--font-digits);
   font-variant-numeric: tabular-nums;
   font-size: 1.5rem;
-  line-height: 56px;
-  height: 56px;
+  line-height: 54px;
+  height: 54px;
   color: var(--ink);
 }
 .stepper__input:focus-visible {
@@ -218,6 +238,7 @@
 }
 .stepper__unit {
   font-size: 0.75rem;
+  line-height: 16px;
   color: var(--muted);
 }
 .settings__chips {
@@ -227,18 +248,29 @@
 }
 .settings__chips .chip {
   width: 100%;
+  height: 44px;
 }
-.settings__preview {
+.timer .btn.settings__preview {
   align-self: center;
+  height: 48px;
+  min-height: 48px;
+  margin-top: 14px;
   color: var(--muted);
   font-size: var(--fs-small);
   gap: var(--sp-2);
+}
+.settings--meditation {
+  gap: var(--sp-4);
+}
+.settings--meditation .timer__summary {
+  margin-top: -2px;
 }
 @media (min-width: 720px) {
   .settings__fields {
     flex-direction: row;
     justify-content: center;
     gap: var(--sp-5);
+    padding-block: var(--sp-2);
   }
   .settings__fields .field {
     flex: 0 1 288px;
@@ -256,12 +288,13 @@
   }
 }
 
-/* Progress */
+/* Progress: padding 10/0, 6px track, 10 gap, 13px details. */
 .progress {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding-block: 10px;
+  margin-top: 4px;
 }
 .progress__track {
   height: 6px;
@@ -283,15 +316,16 @@
   gap: var(--sp-4);
   margin: 0;
   font-size: var(--fs-label);
+  line-height: 17px;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
   max-width: none;
 }
 
-/* Subordinate navigation */
+/* Subordinate navigation: 20 above, 1px line, 12 padding, 44 row, 8 gap, 16 footer line. */
 .shellnav {
-  margin-top: var(--sp-5);
-  padding-top: var(--sp-3);
+  margin-top: 20px;
+  padding-top: 11px;
   border-top: 1px solid var(--line);
   display: flex;
   flex-direction: column;
@@ -302,50 +336,58 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--sp-2);
-  min-height: 44px;
+  height: 44px;
 }
 .shellnav__link {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-2);
-  min-height: 44px;
-  padding-inline: var(--sp-2);
+  height: 44px;
   color: var(--ink);
   font-size: var(--fs-small);
+  line-height: 18px;
   text-decoration: none;
   border-radius: var(--radius);
 }
 .shellnav__link:hover {
-  background: var(--soft);
+  color: var(--accent);
   text-decoration: none;
 }
 .shellnav__about {
-  padding-inline: var(--sp-4);
+  width: 88px;
+  justify-content: center;
+  padding: var(--sp-1) var(--sp-4);
+}
+.shellnav__about:hover {
+  background: var(--soft);
+  color: var(--ink);
 }
 .shellnav__sound {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  min-height: 44px;
+  height: 44px;
   min-width: 44px;
-  padding-inline: var(--sp-2);
+  padding: 0;
   border: 0;
   background: transparent;
   color: var(--ink);
   font-size: var(--fs-small);
+  line-height: 18px;
   border-radius: var(--radius);
   cursor: pointer;
 }
 .shellnav__sound:hover {
-  background: var(--soft);
+  color: var(--accent);
 }
 .shellnav__footer {
   margin: 0;
   text-align: center;
   font-size: 0.75rem;
+  line-height: 16px;
   color: var(--muted);
   max-width: none;
-  min-height: 1.4em;
+  min-height: 16px;
 }
 
 /* Install prompt (after completion only). A plain block in normal flow. */
@@ -379,31 +421,27 @@
   min-height: 44px;
 }
 
-/* Desktop */
+/* Desktop: digits 208 at y40, phase 28, fields 288 wide 24 apart, 432 button, 28 bottom. */
 @media (min-width: 720px) {
   .timer {
-    padding-top: var(--sp-7);
+    padding-top: 40px;
+    padding-bottom: 28px;
+  }
+  .timer__stage {
+    gap: var(--sp-1);
   }
   .timer__digits {
-    font-size: clamp(6.125rem, 16vw, 13rem); /* 208px at 1280 */
-    letter-spacing: -0.03em;
+    font-size: clamp(6.125rem, 16.25vw, 13rem); /* 208px at 1280 */
+    letter-spacing: -0.058em;
   }
   .timer__phase {
     font-size: 1.75rem;
     min-height: 44px;
   }
-  .timer__body {
-    max-width: 936px;
-    width: 100%;
-    margin-inline: auto;
-  }
+  .timer__body,
   .progress {
-    max-width: 936px;
     width: 100%;
     margin-inline: auto;
-  }
-  .shellnav__row {
-    justify-content: space-between;
   }
 }
 

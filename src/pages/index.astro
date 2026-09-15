@@ -28,32 +28,40 @@ const ready = [
   jsonLd={[webSite(), organization(), faqPage(faq), itemList(TIMERS)]}
 >
   <main id="main" class="wrap home">
-    <header class="home__intro">
-      <p class="home__eyebrow num">Five tools. One thing at a time.</p>
-      <h1>Make time for your next thing.</h1>
-      <p class="home__lede">
-        A little structure for work, rest and everything in between. Choose a timer to get going.
-      </p>
-      <p class="home__index">
-        <span class="num">01—05</span>
-        <span>Pick a timer. Find your rhythm.</span>
-      </p>
-    </header>
+    <div class="home__top">
+      <header class="home__intro">
+        <p class="home__eyebrow num">Five tools. One thing at a time.</p>
+        <h1>
+          Make time
+          <br class="home__br-d" /> for
+          <br class="home__br-m" /> your next
+          <br class="home__br-d" /> thing.
+        </h1>
+        <p class="home__lede home__lede--m">Choose a timer. Find your rhythm.</p>
+        <p class="home__lede home__lede--d">
+          A little structure for work, rest and everything in between. Choose a timer to get going.
+        </p>
+        <p class="home__index">
+          <span class="num">01—05</span>
+          <span>Pick a timer. Find your rhythm.</span>
+        </p>
+      </header>
 
-    <ul class="rows home__timers" aria-label="Timers">
-      {TIMERS.map((t, i) => (
-        <li>
-          <a class="row" href={t.path}>
-            <span class="row__index">{String(i + 1).padStart(2, '0')}</span>
-            <span class="row__text">
-              <span class="row__name">{t.short}</span>
-              <span class="row__desc">{t.blurb}</span>
-            </span>
-            <span class="row__icon" set:html={iconSvg('arrow-up-right', 24)} />
-          </a>
-        </li>
-      ))}
-    </ul>
+      <ul class="rows home__timers" aria-label="Timers">
+        {TIMERS.map((t, i) => (
+          <li>
+            <a class="row" href={t.path}>
+              <span class="row__index">{String(i + 1).padStart(2, '0')}</span>
+              <span class="row__text">
+                <span class="row__name">{t.short}</span>
+                <span class="row__desc">{t.blurb}</span>
+              </span>
+              <span class="row__icon" set:html={iconSvg('arrow-up-right', 24)} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
 
     <section class="section home__guide">
       <h2>Online interval and meditation timers</h2>
@@ -93,6 +101,8 @@ const ready = [
 </Base>
 
 <style>
+  /* Canvas 375: page gap 24, intro gap 10 (eyebrow 11, H1 36/1.2, lede 15/1.35), rows 76 high,
+     guide pad 24/0/8 gap 18. Canvas 1280: two columns 400 + 72 + 680, intro pad 32, H1 56/1.15. */
   .home {
     padding-top: var(--sp-5);
   }
@@ -104,10 +114,15 @@ const ready = [
   }
   .home__intro h1 {
     margin: 0;
+    font-size: 2.25rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0;
   }
   .home__eyebrow {
     margin: 0;
     font-size: 0.6875rem;
+    line-height: 1.35;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent);
@@ -118,28 +133,43 @@ const ready = [
     font-size: 0.9375rem;
     line-height: 1.35;
   }
-  .home__index {
-    margin: var(--sp-2) 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    color: var(--muted);
-    font-size: var(--fs-label);
+  .home__index,
+  .home__lede--d,
+  .home__br-d {
+    display: none;
   }
-  .home__index .num {
-    font-size: var(--fs-section);
-    color: var(--ink);
+  .home :global(#faq) {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .home :global(#faq h2) {
+    margin-bottom: 18px;
   }
   .home__guide {
     margin-top: var(--sp-5);
+    padding: var(--sp-5) 0 0;
+  }
+  .home__guide .prose > :last-child {
+    margin-bottom: 18px;
+  }
+  .home__guide h2,
+  .home .section h2 {
+    font-size: var(--fs-section);
+    margin-bottom: 18px;
+  }
+  .home .section {
+    padding-block: var(--sp-5) var(--sp-2);
+  }
+  .home .section .prose p {
+    margin-bottom: 18px;
   }
   .home__article {
-    margin: var(--sp-4) 0 0;
+    margin: 18px 0 0;
   }
   .home__article a {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
+    height: 44px;
     font-size: 0.9375rem;
   }
   @media (min-width: 720px) {
@@ -148,13 +178,65 @@ const ready = [
     }
     .home__top {
       display: grid;
+      grid-template-columns: 400px minmax(0, 1fr);
+      gap: 72px;
+      align-items: start;
+    }
+    .home__intro {
+      padding-block: var(--sp-6);
+      gap: var(--sp-5);
+      margin-bottom: 0;
+    }
+    .home__eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+    }
+    .home__intro h1 {
+      font-size: 3.5rem;
+      line-height: 1.15;
     }
     .home__lede {
-      font-size: var(--fs-lead);
-      max-width: 36ch;
+      font-size: 1.1875rem;
+      line-height: 1.35;
+    }
+    .home__lede--m,
+    .home__br-m {
+      display: none;
+    }
+    .home__lede--d,
+    .home__br-d {
+      display: initial;
+    }
+    .home__index {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: var(--fs-small);
+      line-height: 1.35;
     }
     .home__index .num {
-      font-size: var(--fs-sub);
+      font-size: 2rem;
+      line-height: 1.35;
+      color: var(--accent);
+    }
+    .home__timers .row {
+      min-height: 84px;
+    }
+    .home__guide {
+      margin-top: var(--sp-7);
+      padding: var(--sp-6) 0 0;
+    }
+    .home__guide .prose > :last-child {
+      margin-bottom: 20px;
+    }
+    .home .home__guide h2 {
+      font-size: 1.625rem;
+      margin-bottom: 20px;
+    }
+    .home .section .prose p {
+      margin-bottom: 20px;
     }
   }
 </style>

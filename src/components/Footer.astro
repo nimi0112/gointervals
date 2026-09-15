@@ -2,28 +2,44 @@
 /** Footer navigation is Timers / About only, by design. It follows all content. */
 ---
 
-<footer class="ftr">
-  <nav class="wrap ftr__inner" aria-label="Footer">
+<footer class="ftr wrap">
+  <nav class="ftr__inner" aria-label="Footer">
     <a href="/">Timers</a>
     <a href="/about">About</a>
   </nav>
 </footer>
 
 <style>
+  /* Canvas: 1px line, padding 16/0, two 88×44 links with a 16 gap, page bottom padding 20 / 28. */
   .ftr {
-    border-top: 1px solid var(--line);
-    margin-top: var(--sp-8);
+    margin-top: var(--sp-5);
+    padding-bottom: 20px;
   }
   .ftr__inner {
     display: flex;
     gap: var(--sp-4);
-    padding-block: var(--sp-5);
+    padding-block: var(--sp-4);
+    border-top: 1px solid var(--line);
   }
   .ftr a {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
-    padding-inline: var(--sp-4);
+    justify-content: center;
+    width: 88px;
+    height: 44px;
+    padding: var(--sp-1) var(--sp-4);
+    border-radius: var(--radius);
     font-size: var(--fs-ui);
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .ftr a:hover {
+    background: var(--soft);
+  }
+  @media (min-width: 720px) {
+    .ftr {
+      margin-top: var(--sp-7);
+      padding-bottom: 28px;
+    }
   }
 </style>

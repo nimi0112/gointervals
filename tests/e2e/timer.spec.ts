@@ -10,10 +10,11 @@ const digits = (page: Page) => page.getByRole('timer');
 const phase = (page: Page) => page.locator('.timer__phase');
 const context = (page: Page) => page.locator('.timer__context');
 
-async function interval(page: Page, work: number, rest: number, rounds: number): Promise<void> {
+/** Main interval page: Work is typed in minutes, Rest in seconds. */
+async function interval(page: Page, workMin: number, rest: number, rounds: number): Promise<void> {
   await page.clock.install({ time: new Date('2026-09-15T10:00:00Z') });
   await open(page, '/interval');
-  await page.fill('#f-work', String(work));
+  await page.fill('#f-work', String(workMin));
   await page.fill('#f-rest', String(rest));
   await page.fill('#f-rounds', String(rounds));
 }
@@ -27,31 +28,42 @@ test.describe('interval', () => {
     await expect(page.locator('h1')).toHaveText('Interval timer');
   });
 
-  test('defaults to 30 min work, 5 min rest, 8 rounds', async ({ page }) => {
+  test('defaults to 30 min work, 5 min rest, 8 rounds; work is edited in minutes', async ({
+    page,
+  }) => {
     await open(page, '/interval');
-    await expect(page.locator('#f-work')).toHaveValue('1800');
+    await expect(page.locator('#f-work')).toHaveValue('30');
+    await expect(page.locator('#f-work + .stepper__unit')).toHaveText('min');
     await expect(page.locator('#f-rest')).toHaveValue('300');
     await expect(page.locator('#f-rounds')).toHaveValue('8');
     await expect(digits(page)).toHaveText('30:00');
     await expect(page.locator('.timer__summary')).toHaveText('8 rounds · 280:00 total');
   });
 
+  test('preset pages edit work in seconds', async ({ page }) => {
+    await open(page, '/interval/sprint-30-90');
+    await expect(page.locator('#f-work')).toHaveValue('30');
+    await expect(page.locator('#f-work + .stepper__unit')).toHaveText('seconds');
+    await expect(digits(page)).toHaveText('00:30');
+  });
+
   test('starts straight into work and includes the final rest', async ({ page }) => {
-    await interval(page, 40, 20, 8);
-    await expect(page.locator('.timer__summary')).toHaveText('8 rounds · 08:00 total');
+    // 1 min work, 20 s rest, 8 rounds: each round is 80 s, 10:40 in all
+    await interval(page, 1, 20, 8);
+    await expect(page.locator('.timer__summary')).toHaveText('8 rounds · 10:40 total');
     await start(page).click();
     await expect(phase(page)).toHaveText('Work');
     await expect(context(page)).toHaveText('Round 1 of 8');
-    await page.clock.fastForward(132_000);
-    await expect(digits(page)).toHaveText('00:28');
+    await page.clock.fastForward(172_000);
+    await expect(digits(page)).toHaveText('00:48');
     await expect(context(page)).toHaveText('Round 3 of 8');
     await expect(page.locator('.progress__details span').nth(0)).toHaveText('Next · Rest 00:20');
-    await expect(page.locator('.progress__details span').nth(1)).toHaveText('05:48 left');
-    await page.clock.fastForward(30_000);
+    await expect(page.locator('.progress__details span').nth(1)).toHaveText('07:48 left');
+    await page.clock.fastForward(50_000);
     await expect(phase(page)).toHaveText('Rest');
     await expect(page.locator('.timer__guidance')).toHaveText('Take a breath.');
     // the rest after round 8 is the last thing that runs
-    await page.clock.fastForward(300_000);
+    await page.clock.fastForward(400_000);
     await expect(phase(page)).toHaveText('Rest');
     await expect(context(page)).toHaveText('Round 8 of 8');
     await expect(page.locator('.progress__details span').nth(0)).toHaveText('Next · Done');
@@ -59,31 +71,31 @@ test.describe('interval', () => {
     await expect(phase(page)).toHaveText('Done');
     await expect(digits(page)).toHaveText('00:00');
     await expect(context(page)).toHaveText('8 of 8 rounds complete');
-    await expect(page.locator('.progress__details span').nth(1)).toHaveText('08:00 total');
+    await expect(page.locator('.progress__details span').nth(1)).toHaveText('10:40 total');
     await expect(page.getByRole('button', { name: 'Run again' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Change settings' })).toBeVisible();
     await expect(page.locator('.timer__controls button')).toHaveCount(2);
   });
 
   test('space pauses and resumes; pause freezes the clock', async ({ page }) => {
-    await interval(page, 40, 20, 8);
+    await interval(page, 1, 20, 8);
     await start(page).click();
     await page.clock.fastForward(12_000);
     await page.locator('body').press('Space');
     await expect(phase(page)).toHaveText('Paused · Work');
     await expect(page.getByRole('button', { name: 'Resume' })).toBeVisible();
     await page.clock.fastForward(60_000);
-    await expect(digits(page)).toHaveText('00:28');
+    await expect(digits(page)).toHaveText('00:48');
     await page.locator('body').press('Space');
     await expect(phase(page)).toHaveText('Work');
     await page.clock.fastForward(1_000);
-    await expect(digits(page)).toHaveText('00:27');
+    await expect(digits(page)).toHaveText('00:47');
   });
 
   test('esc asks before stopping; keep going restores the exact state; confirm returns to setup', async ({
     page,
   }) => {
-    await interval(page, 40, 20, 8);
+    await interval(page, 1, 20, 8);
     await start(page).click();
     await page.clock.fastForward(12_000);
     await page.locator('body').press('Escape');
@@ -91,25 +103,25 @@ test.describe('interval', () => {
     await expect(context(page)).toHaveText('Your timer is paused.');
     await expect(page.getByRole('button', { name: 'Keep going' })).toBeFocused();
     await page.clock.fastForward(5_000);
-    await expect(digits(page)).toHaveText('00:28');
+    await expect(digits(page)).toHaveText('00:48');
     await page.locator('body').press('Escape');
     await expect(phase(page)).toHaveText('Work');
     await expect(page.getByRole('button', { name: 'Pause' })).toBeVisible();
     await page.getByRole('button', { name: 'End session' }).click();
     await page.getByRole('button', { name: 'Stop session' }).click();
     await expect(phase(page)).toHaveText('Interval');
-    await expect(page.locator('#f-work')).toHaveValue('40');
-    await expect(digits(page)).toHaveText('00:40');
+    await expect(page.locator('#f-work')).toHaveValue('1');
+    await expect(digits(page)).toHaveText('01:00');
   });
 
   test('R asks before resetting while running, and just restores the preview in setup', async ({
     page,
   }) => {
-    await interval(page, 40, 20, 8);
+    await interval(page, 1, 20, 8);
     await page.fill('#f-work', 'abc');
     await page.locator('#f-work').blur();
     await page.keyboard.press('r');
-    await expect(page.locator('#f-work')).toHaveValue('40');
+    await expect(page.locator('#f-work')).toHaveValue('1');
     await start(page).click();
     await page.clock.fastForward(5_000);
     await page.locator('body').press('r');
@@ -123,15 +135,17 @@ test.describe('interval', () => {
   test('invalid typed input stays visible with an inline error and disables Start', async ({
     page,
   }) => {
-    await interval(page, 40, 20, 8);
+    await interval(page, 1, 20, 8);
     await page.fill('#f-work', '0');
     await expect(page.locator('#f-work')).toHaveValue('0');
     await expect(page.locator('#f-work')).toHaveAttribute('aria-invalid', 'true');
     const err = page.locator('#f-work-error');
-    await expect(err).toHaveText('Work must be at least 1 second.');
+    await expect(err).toHaveText('Work must be at least 1 minute.');
     await expect(page.locator('#f-work')).toHaveAttribute('aria-describedby', 'f-work-error');
     const btn = page.getByRole('button', { name: 'Start · unavailable' });
     await expect(btn).toBeDisabled();
+    await page.fill('#f-work', '61');
+    await expect(err).toHaveText('Work must be 60 minutes or less.');
     await page.fill('#f-rounds', '1.5');
     await expect(page.locator('#f-rounds-error')).toHaveText('Use a whole number.');
     await page.fill('#f-rounds', '100');
@@ -160,6 +174,11 @@ test.describe('interval', () => {
     );
     await page.getByRole('button', { name: 'Decrease Rounds' }).click();
     await expect(page.locator('#f-rounds')).toHaveValue('98');
+    await page.fill('#f-work', '60');
+    await expect(page.getByRole('button', { name: 'Increase Work' })).toHaveAttribute(
+      'aria-disabled',
+      'true',
+    );
   });
 
   test('keys are ignored while typing in a field', async ({ page }) => {
@@ -181,6 +200,7 @@ test.describe('interval', () => {
     await page.locator('astro-island:not([ssr])').first().waitFor();
     await expect(page.locator('#f-work')).toHaveValue('45');
     await expect(page.locator('#f-rounds')).toHaveValue('6');
+    await expect(digits(page)).toHaveText('45:00');
   });
 
   test('corrupt saved settings fall back to defaults with a quiet notice', async ({ page }) => {
@@ -195,32 +215,38 @@ test.describe('interval', () => {
       }
     });
     await open(page, '/interval');
-    await expect(page.locator('#f-work')).toHaveValue('1800');
+    await expect(page.locator('#f-work')).toHaveValue('30');
     await expect(page.locator('.shellnav__footer')).toHaveText(
       'Saved settings were reset to the defaults.',
     );
     expect(await page.evaluate(() => localStorage.getItem('gi:settings:interval'))).toBeNull();
   });
 
-  test('navigating away during a session asks first and continues on confirm', async ({ page }) => {
-    await interval(page, 40, 20, 8);
+  test('navigating away during a session asks first, says why, and continues on confirm', async ({
+    page,
+  }) => {
+    await interval(page, 1, 20, 8);
     await start(page).click();
     await page.clock.fastForward(3_000);
     await page.locator('.shellnav__about').click();
     await expect(page).toHaveURL(/\/interval$/);
     await expect(phase(page)).toHaveText('Stop session?');
+    await expect(context(page)).toHaveText('Your timer is paused. Stop it to leave this page.');
+    await page.getByRole('button', { name: 'Keep going' }).click();
+    await expect(phase(page)).toHaveText('Work');
+    await page.locator('.shellnav__back').click();
     await page.getByRole('button', { name: 'Stop session' }).click();
-    await expect(page).toHaveURL(/\/about$/);
+    await expect(page).toHaveURL(/\/$/);
   });
 
   test('run again starts a fresh session with the same settings', async ({ page }) => {
-    await interval(page, 5, 0, 1);
+    await interval(page, 1, 0, 1);
     await start(page).click();
-    await page.clock.fastForward(6_000);
+    await page.clock.fastForward(61_000);
     await expect(phase(page)).toHaveText('Done');
     await page.getByRole('button', { name: 'Run again' }).click();
     await expect(phase(page)).toHaveText('Work');
-    await expect(digits(page)).toHaveText('00:05');
+    await expect(digits(page)).toHaveText('01:00');
   });
 
   test('sound chip has explicit On/Off text and aria-pressed, and mute persists', async ({
@@ -258,25 +284,25 @@ test.describe('interval', () => {
       // @ts-expect-error test double
       window.webkitAudioContext = Blocked;
     });
-    await interval(page, 40, 20, 8);
+    await interval(page, 1, 20, 8);
     await start(page).click();
     await expect(page.locator('.shellnav__footer')).toHaveText('Sound blocked. Tap On to retry.');
     await page.clock.fastForward(2_000);
-    await expect(digits(page)).toHaveText('00:38');
+    await expect(digits(page)).toHaveText('00:58');
   });
 
   test('a long sleep lands on the right round without a burst of sound', async ({ page }) => {
-    await interval(page, 40, 20, 8);
+    await interval(page, 1, 20, 8);
     await start(page).click();
     await page.clock.fastForward(1_000);
     // jump three boundaries at once
-    await page.clock.fastForward(130_000);
+    await page.clock.fastForward(170_000);
     await expect(context(page)).toHaveText('Round 3 of 8');
-    await expect(digits(page)).toHaveText('00:29');
+    await expect(digits(page)).toHaveText('00:49');
   });
 
   test('a long session shows minutes past 59 without truncation', async ({ page }) => {
-    await interval(page, 3600, 3600, 2);
+    await interval(page, 60, 3600, 2);
     await expect(digits(page)).toHaveText('60:00');
     await expect(page.locator('.timer__summary')).toHaveText('2 rounds · 240:00 total');
   });

@@ -8,9 +8,9 @@ keyword: 'meditation timer with interval bells'
 author: Nimish Nandwana
 ---
 
-A meditation timer with interval bells lets you choose when sound interrupts the silence. You can use a bell as a quiet marker, or leave the whole session silent until the end. There is no need to follow every available cue. Start with the simplest arrangement you will actually use.
-
 ## Begin with fewer bells
+
+A meditation timer with interval bells lets you choose when sound interrupts the silence. You can use a bell as a quiet marker, or leave the whole session silent until the end. There is no need to follow every available cue. Start with the simplest arrangement you will actually use.
 
 If you are beginning, choose a 10-minute session with one end bell. Turn interval bells off, leave the start bell off, and keep the end bell on. Press Start when you are ready. You do not need a sound at the beginning to know that the timer has started.
 

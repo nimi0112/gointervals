@@ -75,21 +75,27 @@ const crumbs = [
 </Base>
 
 <style>
+  /* Canvas 375: content pad 32/0, gap 24, heading 36/500/1.15, paragraphs 16/1.5 muted,
+     links 44 high pad 4/16. Canvas 1280: content pad 64/240, heading 48. Footer 32 below. */
   .about {
+    flex: 1;
     padding-block: var(--sp-6);
     display: flex;
     flex-direction: column;
     gap: var(--sp-5);
-    max-width: calc(var(--measure) + 2 * var(--gutter));
   }
   .about h1 {
     margin: 0;
+    font-size: 2.25rem;
+    font-weight: 500;
     line-height: 1.15;
+    letter-spacing: 0;
   }
   .about p {
     margin: 0;
     color: var(--muted);
     line-height: 1.5;
+    max-width: none;
   }
   .about__links {
     list-style: none;
@@ -99,8 +105,8 @@ const crumbs = [
   .about__links a {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
-    padding-inline: var(--sp-4);
+    height: 44px;
+    padding: var(--sp-1) var(--sp-4);
   }
   .about__data {
     display: flex;
@@ -117,5 +123,14 @@ const crumbs = [
   }
   #clear-status {
     font-size: var(--fs-label);
+  }
+  @media (min-width: 720px) {
+    .about {
+      padding-block: var(--sp-8);
+      padding-inline: calc(var(--gutter) + 240px);
+    }
+    .about h1 {
+      font-size: 3rem;
+    }
   }
 </style>
