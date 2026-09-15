@@ -184,19 +184,22 @@ test.describe('interval', () => {
   });
 
   test('corrupt saved settings fall back to defaults with a quiet notice', async ({ page }) => {
+    // Seed storage before any page script runs, so the island reads it on this load.
+    await page.addInitScript(() => {
+      if (!sessionStorage.getItem('seeded')) {
+        sessionStorage.setItem('seeded', '1');
+        localStorage.setItem(
+          'gi:settings:interval',
+          JSON.stringify({ mode: 'interval', work: 99999 }),
+        );
+      }
+    });
     await open(page, '/interval');
-    await page.evaluate(() =>
-      localStorage.setItem(
-        'gi:settings:interval',
-        JSON.stringify({ mode: 'interval', work: 99999 }),
-      ),
-    );
-    await page.reload();
-    await page.locator('astro-island:not([ssr])').first().waitFor();
     await expect(page.locator('#f-work')).toHaveValue('1800');
     await expect(page.locator('.shellnav__footer')).toHaveText(
       'Saved settings were reset to the defaults.',
     );
+    expect(await page.evaluate(() => localStorage.getItem('gi:settings:interval'))).toBeNull();
   });
 
   test('navigating away during a session asks first and continues on confirm', async ({ page }) => {
@@ -303,16 +306,20 @@ test.describe('tabata', () => {
   });
 
   test('a stale custom tabata in storage is replaced by the classic preset', async ({ page }) => {
+    await page.addInitScript(() => {
+      if (!sessionStorage.getItem('seeded')) {
+        sessionStorage.setItem('seeded', '1');
+        localStorage.setItem(
+          'gi:settings:tabata',
+          JSON.stringify({ mode: 'tabata', work: 30, rest: 15, rounds: 8 }),
+        );
+      }
+    });
     await open(page, '/tabata');
-    await page.evaluate(() =>
-      localStorage.setItem(
-        'gi:settings:tabata',
-        JSON.stringify({ mode: 'tabata', work: 30, rest: 15, rounds: 8 }),
-      ),
-    );
-    await page.reload();
-    await page.locator('astro-island:not([ssr])').first().waitFor();
     await expect(digits(page)).toHaveText('00:20');
+    await expect(page.locator('.shellnav__footer')).toHaveText(
+      'Saved settings were reset to the defaults.',
+    );
   });
 });
 
