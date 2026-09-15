@@ -8,34 +8,33 @@ import { meditations } from '@/data/meditations';
 ---
 
 <TimerPage
-  title="Meditation Timer – One Soft Bell, Screen Stays On"
-  description="Free meditation timer: one soft bell every 10 minutes for 30 minutes, or any interval you set. No ticks, no alarm. Screen stays awake, works offline."
+  title="Meditation Timer – Interval Bells, Screen Stays On"
+  description="Free meditation timer with optional interval bells: 30 minutes with a soft bell every 10 by default, or any length you set. No ticks, no alarm, works offline."
   path="/meditation"
-  h1="Meditation timer"
-  lede="One soft bell every 10 minutes for 30 minutes, then one to finish. Change the interval or the length. Nothing else makes a sound."
+  h1="Meditation timer with interval bells"
+  lede="One clock for the whole session, a soft bell every 10 minutes if you want one, and one at the end. Nothing else makes a sound."
   config={defaultConfigs.meditation}
   faq={faqs['/meditation']}
   related={relatedTimers['/meditation']!}
   posts={relatedPosts['/meditation']}
   crumbName="Meditation timer"
 >
-  <Section num="01" title="How it is different" flush>
+  <Section title="How it is different" flush>
     <p>
-      The other timers on this site are built to be noticed: a rising pair for work, a falling pair
-      for rest, ticks for the last three seconds. This one is built to be forgotten. There is one
-      bell. It rings once when the sit begins after a short settle-in, once at each interval, and
-      once at the end. Between bells the page is silent and the digits are the only thing that
-      moves.
+      The other timers on this site are built to be noticed. This one is built to be forgotten.
+      The big number is the time left in the whole session; the quiet line under the bar is the
+      time to the next bell. Interval bells, the start bell and the end bell are three separate
+      switches, so you can have a single bell at the end and silence until then.
     </p>
     <p>
-      The default is a 30 minute sit with a bell every 10 minutes. That gives three blocks, which is
-      enough structure for a body scan, then breath, then open awareness, or simply three reminders
-      to come back. Set Bell every equal to Total for a single bell at the end.
+      The default is a 30 minute sit with a bell at 10 and 20 minutes and one to finish. That
+      gives three stretches of silence, which is enough structure for a body scan, then breath,
+      then open awareness, or simply two reminders to come back.
     </p>
   </Section>
-  <Section num="02" title="Presets">
+  <Section title="Presets">
     <p>Each length has its own page with the bells already placed.</p>
-    <ul>
+    <ul class="links">
       {meditations.map((m) => (
         <li>
           <a href={m.path}>{m.h1}</a>
@@ -43,17 +42,16 @@ import { meditations } from '@/data/meditations';
       ))}
     </ul>
   </Section>
-  <Section num="03" title="Screen, sound, silence">
+  <Section title="Screen, sound, silence">
     <p>
-      The timer asks the phone or laptop to keep the screen awake while it runs, so the display does
-      not go dark and the sit does not end with a locked phone. Turn the brightness down by hand if
-      you want a dim room. The bell is generated in the browser, so there is nothing to download and
-      it works with no connection after the first visit.
+      The timer asks the phone or laptop to keep the screen awake while it runs, so the sit does
+      not end with a locked phone. Turn the brightness down by hand if you want a dim room. The
+      bell is generated in the browser, so there is nothing to download and it works with no
+      connection after the first visit.
     </p>
     <p>
-      If you would rather sit in the dark with the phone face down, that works too: the timing is
-      based on timestamps, so the bell lands on the right second as long as the page stays open.
-      Mute is available for a fully silent sit where you only glance at the digits.
+      Browsers only play sound from a page that is open, so keep the tab in front rather than
+      switching away. Sound Off gives you a fully silent sit where you only glance at the digits.
     </p>
   </Section>
 </TimerPage>

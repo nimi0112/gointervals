@@ -1,4 +1,5 @@
 import type { ProgrammaticPage } from './types';
+import { TABATA } from '@/engine/schedule';
 
 export const tabatas: ProgrammaticPage[] = [
   {
@@ -10,7 +11,7 @@ export const tabatas: ProgrammaticPage[] = [
     intro: [
       'This is the Tabata timer as Izumi Tabata actually ran it: 20 seconds flat out, 10 seconds off, eight times, four minutes total. The 1996 study used speed skaters on bikes at 170 percent of VO2 max, which is the part everyone forgets when they call a leisurely circuit "Tabata".',
       'Pick one movement you can go hard on for 20 seconds without technique falling apart. Burpees, air bike, kettlebell swings, sprints on a hill. The rest is too short to recover, so round 6 onwards is where the protocol earns its reputation.',
-      'The timer gives you a 10 second get-ready count, beeps on every switch, ticks for the last 3 seconds of each block, and keeps your screen on. Space starts and pauses it.',
+      'The timer starts straight into round one, beeps on every switch, ticks for the last 3 seconds of each block, and keeps your screen on. Space starts and pauses it.',
     ],
     uses: [
       'Air bike or rower finishers',
@@ -18,7 +19,7 @@ export const tabatas: ProgrammaticPage[] = [
       'Hill sprints with a walk-back that fits in 10 seconds',
       'A single-movement kettlebell swing block',
     ],
-    config: { mode: 'tabata', prep: 10, work: 20, rest: 10, rounds: 8 },
+    config: TABATA,
     faq: [
       {
         q: 'Is one 4 minute Tabata enough?',
@@ -29,8 +30,8 @@ export const tabatas: ProgrammaticPage[] = [
         a: 'You can, and lots of people do, but it is closer to a HIIT circuit than the original protocol. Alternating lets you go harder per rep because each muscle group gets 40 seconds off. Both are fine. Just be honest about which one you did.',
       },
       {
-        q: 'What is the 10 second countdown at the start?',
-        a: 'A get-ready phase so you are not fumbling for the phone when round one starts. Set it to 0 in the settings if you do not want it.',
+        q: 'Is there a countdown before it starts?',
+        a: 'No. Start goes straight into round one, so press it when you are already in position. The 10 second rest after round eight is included, so the session ends on a rest, not it.',
       },
       {
         q: 'Does the timer work with the screen locked?',
@@ -50,7 +51,7 @@ export const tabatas: ProgrammaticPage[] = [
     h1: 'Tabata timer 30/15 x 8',
     title: 'Tabata Timer 30/15 x 8 – 6 Minute Interval Preset',
     description:
-      'Tabata-style timer preset to 30 seconds on, 15 seconds off, 8 rounds. Six minutes total with beeps and a get-ready countdown. Free, no signup.',
+      'Tabata-style timer preset to 30 seconds on, 15 seconds off, 8 rounds. Six minutes total with distinct work and rest beeps. Free, no signup.',
     intro: [
       'Thirty on, fifteen off keeps the 2:1 ratio of classic Tabata but gives you a long enough work block to get real reps in. Six minutes total, which is about the point where a single exercise starts to feel like a decision you regret.',
       'It suits movements where 20 seconds is over before you find a rhythm: rowing, skipping, kettlebell swings, shadow boxing. Fifteen seconds is enough to shake out your arms and not much more.',
@@ -62,7 +63,7 @@ export const tabatas: ProgrammaticPage[] = [
       'Bodyweight circuits with one move per round',
       'Shadow boxing rounds with a short breather',
     ],
-    config: { mode: 'tabata', prep: 10, work: 30, rest: 15, rounds: 8 },
+    config: { mode: 'interval', prep: 0, work: 30, rest: 15, rounds: 8, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'Is 30/15 still Tabata?',
@@ -74,7 +75,7 @@ export const tabatas: ProgrammaticPage[] = [
       },
       {
         q: 'How do I change it to 30/15 x 12?',
-        a: 'Open Settings under the timer and change Rounds to 12. The change is saved in your browser for next time.',
+        a: 'Change Rounds to 12 above the Start button. This page always opens with 8; the interval timer remembers your own numbers.',
       },
     ],
     related: [
@@ -101,7 +102,7 @@ export const tabatas: ProgrammaticPage[] = [
       'Bike or treadmill sprints with a real recovery',
       'Beginners who find 20/10 too frantic',
     ],
-    config: { mode: 'tabata', prep: 10, work: 40, rest: 20, rounds: 8 },
+    config: { mode: 'interval', prep: 0, work: 40, rest: 20, rounds: 8, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'Why 40/20 instead of 20/10?',
@@ -123,7 +124,7 @@ export const tabatas: ProgrammaticPage[] = [
     h1: 'Tabata timer 45/15 x 10',
     title: 'Tabata Timer 45/15 x 10 – 10 Minute Circuit Preset',
     description:
-      '45 seconds on, 15 seconds off, 10 rounds. A 10 minute circuit timer with distinct work and rest beeps, a get-ready count and no signup.',
+      '45 seconds on, 15 seconds off, 10 rounds. A 10 minute circuit timer with distinct work and rest beeps, no signup.',
     intro: [
       'Ten stations, 45 seconds each, 15 seconds to move between them. This is the layout of most bootcamp circuits and nearly every "10 minute workout" video, minus the person shouting at you.',
       'Fifteen seconds is not really rest. It is a transition. Plan your ten movements so that you are not running across the room, and stack hard and easy ones so you are not doing burpees straight into mountain climbers.',
@@ -135,7 +136,7 @@ export const tabatas: ProgrammaticPage[] = [
       'Core circuits: plank, side plank, dead bug, and so on',
       'Warm-ups before a lifting session',
     ],
-    config: { mode: 'tabata', prep: 10, work: 45, rest: 15, rounds: 10 },
+    config: { mode: 'interval', prep: 0, work: 45, rest: 15, rounds: 10, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'What ten exercises should I use?',
@@ -146,11 +147,11 @@ export const tabatas: ProgrammaticPage[] = [
         a: 'For a circuit where each station uses different muscles, yes. For repeating the same movement ten times, probably not. Bump rest to 30 seconds in the settings if you are doing that.',
       },
       {
-        q: 'Can I get a longer countdown before it starts?',
-        a: 'Yes, the "Get ready" field in the settings controls it. Ten seconds is the default, set it to whatever you like.',
+        q: 'Is there a countdown before it starts?',
+        a: 'No. Start goes straight into the first 45 seconds, so press it when you are in position. Ten rounds with the final rest included is exactly ten minutes.',
       },
     ],
-    related: ['/tabata/40-20-8', '/interval/7-minute-workout', '/tabata', '/timer/10-minutes'],
+    related: ['/tabata/40-20-8', '/interval/7-minute-workout', '/tabata', '/interval/beep-every-minute'],
   },
   {
     path: '/tabata/60-30-6',
@@ -169,7 +170,7 @@ export const tabatas: ProgrammaticPage[] = [
       'Loaded carries and sled pushes',
       'Track intervals when you do not want to count laps',
     ],
-    config: { mode: 'tabata', prep: 10, work: 60, rest: 30, rounds: 6 },
+    config: { mode: 'interval', prep: 0, work: 60, rest: 30, rounds: 6, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'Why six rounds?',
@@ -195,7 +196,7 @@ export const tabatas: ProgrammaticPage[] = [
     intro: [
       'Four rounds of 20/10 is half the original protocol and it lands in two minutes. There are two honest reasons to run it. The first is that you are new to this and the last two rounds of a full Tabata are where technique falls apart, so cutting the block in half lets you learn the pace before you learn the pain. The second is that you have already trained for an hour and have exactly two minutes of effort left in you.',
       'Because it is short, the intensity has to be real. Four rounds of a movement you are pacing is a warm-up, not a finisher. Pick something you can throw yourself at from the first rep: bike sprints, swings, squat jumps, a rower you have already set up.',
-      'Ten seconds of get-ready, then straight into it. When you can hold the same output across all four rounds, go to six, then to the full eight.',
+      'Start goes straight into it. When you can hold the same output across all four rounds, go to six, then to the full eight.',
     ],
     uses: [
       'First week of Tabata work, learning the pacing',
@@ -203,7 +204,7 @@ export const tabatas: ProgrammaticPage[] = [
       'Squeezing in something when there is genuinely no time',
       'Testing a new movement at Tabata intensity before committing to eight rounds',
     ],
-    config: { mode: 'tabata', prep: 10, work: 20, rest: 10, rounds: 4 },
+    config: { mode: 'interval', prep: 0, work: 20, rest: 10, rounds: 4, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'Is four rounds worth doing at all?',
@@ -243,7 +244,7 @@ export const tabatas: ProgrammaticPage[] = [
       'Returning to conditioning after time off',
       'Older or deconditioned clients who need the rest to be longer than the work',
     ],
-    config: { mode: 'tabata', prep: 10, work: 10, rest: 20, rounds: 8 },
+    config: { mode: 'interval', prep: 0, work: 10, rest: 20, rounds: 8, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'Is this really a Tabata?',
@@ -271,7 +272,7 @@ export const tabatas: ProgrammaticPage[] = [
     h1: 'Tabata timer 30/10 x 8',
     title: 'Tabata Timer 30/10 x 8 – Harder Than Classic',
     description:
-      '30 seconds work, 10 seconds rest, 8 rounds. A 3:1 ratio that is harder than the original Tabata. Beeps, ticks and a get-ready count. Free.',
+      '30 seconds work, 10 seconds rest, 8 rounds. A 3:1 ratio that is harder than the original Tabata. Beeps, ticks and a screen that stays on. No account. Free.',
     intro: [
       'Thirty on, ten off is a 3:1 ratio, which makes it harder than the protocol everyone calls hard. Five minutes and twenty seconds total, and the ten seconds is genuinely only enough to put something down and pick it up again. Do not come here first.',
       'The reason to run it is pacing discipline. With this little rest you cannot sprint round one and survive; you have to pick an output you can repeat eight times, which is a more useful skill than one heroic round followed by seven bad ones. Rowers, cyclists and anyone with a race pace to find will recognise the lesson.',
@@ -283,7 +284,7 @@ export const tabatas: ProgrammaticPage[] = [
       'Skipping rope blocks where the rest is just a rest of the wrists',
       'Progressing on from 30/15 once that stops being hard',
     ],
-    config: { mode: 'tabata', prep: 10, work: 30, rest: 10, rounds: 8 },
+    config: { mode: 'interval', prep: 0, work: 30, rest: 10, rounds: 8, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'Why is this harder than 20/10?',
@@ -323,7 +324,7 @@ export const tabatas: ProgrammaticPage[] = [
       'Kettlebell or dumbbell work where 10 seconds of rest is not enough',
       'A first proper HIIT block for someone who already trains',
     ],
-    config: { mode: 'tabata', prep: 10, work: 30, rest: 30, rounds: 8 },
+    config: { mode: 'interval', prep: 0, work: 30, rest: 30, rounds: 8, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'How hard should the 30 seconds be?',
@@ -363,7 +364,7 @@ export const tabatas: ProgrammaticPage[] = [
       'Dumbbell circuits: press, row, squat, lunge, and so on',
       'A tidy eight-minute block at the end of a strength session',
     ],
-    config: { mode: 'tabata', prep: 10, work: 45, rest: 15, rounds: 8 },
+    config: { mode: 'interval', prep: 0, work: 45, rest: 15, rounds: 8, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'How is this different from 45/15 x 10?',

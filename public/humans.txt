@@ -1,11 +1,12 @@
 /* TEAM */
 Maker: Nimish Nandwana
-Site: https://gointervals.com
+Site: https://nimishnandwana.com
+X: https://x.com/nimish_nandwana
 Source: https://github.com/nimi0112/gointervals
 
 /* SITE */
 Standards: HTML5, CSS custom properties, Web Audio, Screen Wake Lock, Service Worker
 Built with: Astro, Preact, satori
-Fonts: Bricolage Grotesque, JetBrains Mono
-Accent: #0f7a4f (pitch green)
-Last update: 2026-09-11
+Fonts: DM Sans, Azeret Mono
+Design: Porcelain & Ink. Paper #F7F8F5, ink #202722, forest accent #355B46
+Last update: 2026-09-15

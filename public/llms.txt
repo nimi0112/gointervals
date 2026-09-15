@@ -1,6 +1,6 @@
-# Go Intervals
+# gointervals
 
-> Free browser timers: stopwatch, countdown, interval/HIIT, Tabata, EMOM and Pomodoro. No login, no ads, no server. Timing is timestamp-based so it does not drift when a tab is throttled or a phone sleeps. Keeps the screen on, beeps with generated tones, works offline after the first visit.
+> Free browser timers: interval (work, rest, rounds), meditation with interval bells, Tabata, EMOM and Pomodoro. No account, no ads, no server. Timing is timestamp-based so it does not drift when a tab is throttled or a phone sleeps. Keeps the screen on, beeps with generated tones, works offline after the first visit. Built by Nimish Nandwana (https://nimishnandwana.com).
 
 Site: https://gointervals.com
 Source: https://github.com/nimi0112/gointervals
@@ -8,22 +8,16 @@ License: MIT, open source. Content may be quoted with attribution. Issues and co
 
 ## Timers
 
-- [Home / interval timer](https://gointervals.com/): the interval timer with presets, including "beep every 10 minutes for 30 minutes".
-- [Interval timer](https://gointervals.com/interval): work, rest, rounds, sets, rest between sets, saved presets.
-- [Countdown timer](https://gointervals.com/timer): presets 1 to 60 minutes plus custom.
-- [Stopwatch](https://gointervals.com/stopwatch): laps with split and total.
-- [Tabata timer](https://gointervals.com/tabata): 20/10 x 8, editable.
-- [EMOM timer](https://gointervals.com/emom): every minute on the minute, configurable interval.
-- [Pomodoro timer](https://gointervals.com/pomodoro): 25/5, long break every 4, session counter.
-- [Meditation timer](https://gointervals.com/meditation): one soft bell every 10 minutes for 30 minutes by default, interval and length editable, no ticks, screen stays awake.
+- [Home](https://gointervals.com/): the five timers, a short guide and common questions.
+- [Interval timer](https://gointervals.com/interval): work 1–3600 s, rest 0–3600 s, rounds 1–99; default 30 min work, 5 min rest, 8 rounds; rest 0 makes a "beep every N minutes" timer.
+- [Meditation timer](https://gointervals.com/meditation): one clock for the whole session, optional interval bells (default every 10 minutes of 30), optional start and end bells, no ticks.
+- [Tabata timer](https://gointervals.com/tabata): fixed 20 s work, 10 s rest, 8 rounds, 4 minutes.
+- [EMOM timer](https://gointervals.com/emom): interval 15–300 s (default 60), total 1–99 minutes (default 10).
+- [Pomodoro timer](https://gointervals.com/pomodoro): 25/5/15 with 4 focus sessions, one finite cycle, all editable.
 
 ## Preset pages
 
-- Countdowns: https://gointervals.com/timer/1-minute and https://gointervals.com/timer/{n}-minutes for n in 2,3,4,5,6,7,8,9,10,12,15,20,25,30,40,45,50,60,90 and https://gointervals.com/timer/{n}-seconds for n in 10,15,20,30,45,60,90.
-- Tabata variants: https://gointervals.com/tabata/20-10-8, /tabata/30-15-8, /tabata/40-20-8, /tabata/45-15-10, /tabata/60-30-6
-- Also: /timer/{n}-minutes for n in 11,13,14,16,17,18,22,35,55, /timer/{n}-hours for n in 2,3,4,5,8, /timer/{n}-seconds for n in 5,7,8,25,40,75.
-- By purpose: https://gointervals.com/timer/kitchen-timer, /timer/classroom-timer, /timer/plank-timer, /timer/sauna-timer, /timer/nap-timer, /timer/study-timer, /timer/rest-timer, /timer/loud-timer
-- More Tabata: /tabata/20-10-4, /tabata/10-20-8, /tabata/30-10-8, /tabata/30-30-8, /tabata/45-15-8
+- Tabata variants: https://gointervals.com/tabata/20-10-8, /tabata/30-15-8, /tabata/40-20-8, /tabata/45-15-10, /tabata/60-30-6, /tabata/20-10-4, /tabata/10-20-8, /tabata/30-10-8, /tabata/30-30-8, /tabata/45-15-8
 - Workouts: https://gointervals.com/interval/7-minute-workout, /interval/boxing-rounds-3-1, /interval/running-intervals-1-1, /interval/sprint-30-90, /interval/kettlebell-emom-10
 - Repeating beeps: https://gointervals.com/interval/beep-every-30-seconds, /interval/beep-every-minute, /interval/beep-every-2-minutes, /interval/beep-every-3-minutes, /interval/beep-every-5-minutes, /interval/beep-every-10-minutes, /interval/beep-every-15-minutes, /interval/beep-every-20-minutes, /interval/beep-every-30-minutes, /interval/beep-every-hour
 - Meditation lengths: https://gointervals.com/meditation/5-minutes, /meditation/10-minutes, /meditation/20-minutes, /meditation/30-minutes, /meditation/45-minutes, /meditation/1-hour
@@ -32,26 +26,27 @@ License: MIT, open source. Content may be quoted with attribution. Issues and co
 ## Blog
 
 - [Blog index](https://gointervals.com/blog) and [RSS](https://gointervals.com/rss.xml)
+- How to use a meditation timer with interval bells: https://gointervals.com/blog/meditation-timer-interval-bells
+- How long to meditate: https://gointervals.com/blog/how-long-to-meditate
 - What is a Tabata timer: https://gointervals.com/blog/what-is-a-tabata-timer
+- How long is a Tabata workout: https://gointervals.com/blog/how-long-is-a-tabata-workout
 - HIIT interval timer for beginners: https://gointervals.com/blog/hiit-interval-timer-beginners
+- Interval timer for running: https://gointervals.com/blog/interval-timer-for-running
+- Running splits and lap times: https://gointervals.com/blog/stopwatch-running-splits-lap-times
 - EMOM workouts explained: https://gointervals.com/blog/emom-workouts-explained
 - Pomodoro technique 25/5: https://gointervals.com/blog/pomodoro-technique-25-5
-- Stopwatch for running splits: https://gointervals.com/blog/stopwatch-running-splits-lap-times
+- Best Pomodoro length: https://gointervals.com/blog/best-pomodoro-length
+- Study timer vs Pomodoro: https://gointervals.com/blog/study-timer-vs-pomodoro
+- Timer that beeps every 10 minutes: https://gointervals.com/blog/timer-that-beeps-every-10-minutes
+- Boxing round timer: https://gointervals.com/blog/boxing-round-timer-3-minute-rounds
+- How many rounds in a boxing match: https://gointervals.com/blog/how-many-rounds-in-a-boxing-match
+- 7 minute workout timer: https://gointervals.com/blog/7-minute-workout-timer
+- How long to hold a plank: https://gointervals.com/blog/plank-timer-how-long-to-hold
 - Keep your phone screen on: https://gointervals.com/blog/keep-phone-screen-on-workout-timer
 - Online timer that works offline: https://gointervals.com/blog/free-online-timer-that-works-offline
-- Boxing round timer: https://gointervals.com/blog/boxing-round-timer-3-minute-rounds
-- 7 minute workout timer: https://gointervals.com/blog/7-minute-workout-timer
-- Study timer vs Pomodoro: https://gointervals.com/blog/study-timer-vs-pomodoro
-- How long is a Tabata workout: https://gointervals.com/blog/how-long-is-a-tabata-workout
-- How many rounds in a boxing match: https://gointervals.com/blog/how-many-rounds-in-a-boxing-match
-- Timer that beeps every 10 minutes: https://gointervals.com/blog/timer-that-beeps-every-10-minutes
-- Interval timer for running: https://gointervals.com/blog/interval-timer-for-running
-- Best Pomodoro length: https://gointervals.com/blog/best-pomodoro-length
-- How long to hold a plank: https://gointervals.com/blog/plank-timer-how-long-to-hold
-- Meditation timer with interval bells: https://gointervals.com/blog/meditation-timer-with-interval-bells
-- How long to meditate: https://gointervals.com/blog/how-long-to-meditate
 
 ## Other
 
-- [About and data](https://gointervals.com/about): what is stored in the browser and how to clear it.
-- Keyboard: Space start/pause, R reset, L lap, Esc stop.
+- [About](https://gointervals.com/about): who built it, source and author links, what is stored in the browser and how to clear it.
+- Keyboard: Space start/pause/resume, Esc stop (asks first), R reset (asks first).
+- Removed routes /stopwatch, /timer and /timer/* redirect to the closest surviving timer.

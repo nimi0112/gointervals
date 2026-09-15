@@ -1,164 +1,160 @@
 ---
-import TimerPage from '@/layouts/TimerPage.astro';
-import Section from '@/components/Section.astro';
+import Base from '@/layouts/Base.astro';
+import Faq from '@/components/Faq.astro';
 import { TIMERS, SITE } from '@/lib/site';
 import { faqs } from '@/data/faqs';
-import { relatedTimers, relatedPosts } from '@/data/related';
-import { webSite, organization } from '@/lib/seo';
-import { defaultConfigs } from '@/engine/presets';
+import { webSite, organization, faqPage, itemList } from '@/lib/seo';
+import { iconSvg } from '@/lib/icons';
 import { beeps } from '@/data/beeps';
-import { uses } from '@/data/uses';
+import { meditations } from '@/data/meditations';
+import { tabatas } from '@/data/tabatas';
+import { pomodoros } from '@/data/pomodoros';
+import { workouts } from '@/data/workouts';
 
-const blurbs: Record<string, string> = {
-  '/interval':
-    'Work, rest, rounds, sets. Presets for HIIT, boxing, run/walk and "beep every 10 minutes".',
-  '/meditation': 'One soft bell every 10 minutes for 30. No ticks, no alarm, screen stays on.',
-  '/timer': 'One number, one beep. Presets from 1 to 60 minutes, or type your own.',
-  '/stopwatch': 'Laps with split and total. Fastest and slowest marked.',
-  '/tabata': '20 on, 10 off, 8 rounds. The real one, or edit it.',
-  '/emom': 'Every minute on the minute. Or every 90 seconds, or every two.',
-  '/pomodoro': '25/5 with a long break every four. Session count survives reloads.',
-};
-const modes = TIMERS.map((t) => ({ ...t, blurb: blurbs[t.path] ?? '' }));
+const faq = faqs['/']!;
+const ready = [
+  ...beeps.slice(0, 4),
+  ...meditations.slice(1, 4),
+  ...tabatas.slice(0, 3),
+  ...workouts.slice(0, 3),
+  ...pomodoros.slice(0, 2),
+];
 ---
 
-<TimerPage
-  title={SITE.tagline}
+<Base
+  title="Free interval, meditation, Tabata, EMOM and Pomodoro timers"
   description={SITE.description}
   path="/"
-  h1="Interval timer that beeps when it should"
-  lede="Free, no login, keeps your screen on, works offline. Pick a preset or set your own work and rest."
-  config={defaultConfigs.interval}
-  presets
-  faq={faqs['/']}
-  related={relatedTimers['/']!}
-  posts={relatedPosts['/']}
-  jsonLd={[webSite(), organization()]}
+  jsonLd={[webSite(), organization(), faqPage(faq), itemList(TIMERS)]}
 >
-  <Section num="01" title="Every timer, one place" flush>
-    <ul class="modes">
-      {modes.map((m) => (
+  <main id="main" class="wrap home">
+    <header class="home__intro">
+      <p class="home__eyebrow num">Five tools. One thing at a time.</p>
+      <h1>Make time for your next thing.</h1>
+      <p class="home__lede">
+        A little structure for work, rest and everything in between. Choose a timer to get going.
+      </p>
+      <p class="home__index">
+        <span class="num">01—05</span>
+        <span>Pick a timer. Find your rhythm.</span>
+      </p>
+    </header>
+
+    <ul class="rows home__timers" aria-label="Timers">
+      {TIMERS.map((t, i) => (
         <li>
-          <a href={m.path}>
-            <span class="modes__name">{m.name}</span>
-            <span class="modes__blurb">{m.blurb}</span>
+          <a class="row" href={t.path}>
+            <span class="row__index">{String(i + 1).padStart(2, '0')}</span>
+            <span class="row__text">
+              <span class="row__name">{t.short}</span>
+              <span class="row__desc">{t.blurb}</span>
+            </span>
+            <span class="row__icon" set:html={iconSvg('arrow-up-right', 24)} />
           </a>
         </li>
       ))}
     </ul>
-  </Section>
 
-  <Section num="02" title="Why this one">
-    <p>
-      Most timer sites drift. They count ticks, the tab gets throttled, and your 20 minute EMOM ends
-      40 seconds late. This one reads the clock. Sleep the phone, switch apps, come back: it is on
-      the right second and plays anything you missed.
-    </p>
-    <ul>
-      <li>
-        Keeps the screen on while running, using the Wake Lock API with a fallback for older phones.
-      </li>
-      <li>Beeps are generated on the spot, so nothing to download and nothing to buffer.</li>
-      <li>Works offline after the first visit. Airplane mode is fine.</li>
-      <li>No account. Presets and history stay in your browser. There is a button to wipe them.</li>
-      <li>
-        Space to start, R to reset, Esc to stop. Fullscreen digits you can read from across the
-        room.
-      </li>
-      <li>
-        Open source under the MIT licence. Read the engine, run it yourself, or send a fix on
-        <a href="https://github.com/nimi0112/gointervals" rel="noopener">
-          GitHub
-        </a>
-        .
-      </li>
-    </ul>
-  </Section>
+    <section class="section home__guide">
+      <h2>Online interval and meditation timers</h2>
+      <div class="prose">
+        <p>
+          Use Interval to alternate exercise and recovery, Tabata for short work–rest rounds, or
+          EMOM to begin a new effort each minute.
+        </p>
+        <p>
+          For study, Pomodoro separates focused work from breaks. For meditation, periodic gentle
+          beeps mark time without needing to watch the screen. Try a 30-minute session with a beep
+          every 10 minutes.
+        </p>
+      </div>
+    </section>
 
-  <Section num="03" title="Beep every N minutes">
-    <p>
-      A surprising number of people want a 30 minute timer that beeps every 10 minutes: for study
-      blocks, sauna rounds, tattoo sessions, saline soaks, checking the oven. That is an interval
-      timer with no rest. The first preset above does exactly that, and each cadence has its own
-      page with the timer already set.
+    <Faq items={faq} />
+
+    <section class="section">
+      <h2>Ready-made timers</h2>
+      <div class="prose">
+        <p>The same timers, already set for a specific job, each on its own page.</p>
+      </div>
+      <ul class="links">
+        {ready.map((p) => (
+          <li>
+            <a href={p.path}>{p.h1}</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <p class="home__article">
+      <a href="/blog/meditation-timer-interval-bells">Read the meditation timer guide</a>
     </p>
-    <ul class="links">
-      {beeps.map((b) => (
-        <li>
-          <a href={b.path}>{b.h1.replace('Timer that beeps ', 'Beep ')}</a>
-        </li>
-      ))}
-    </ul>
-  </Section>
-  <Section num="04" title="Timers by what you are doing">
-    <p>The same countdown, set up and written for a specific job.</p>
-    <ul class="links">
-      {uses.map((u) => (
-        <li>
-          <a href={u.path}>{u.h1}</a>
-        </li>
-      ))}
-    </ul>
-  </Section>
-</TimerPage>
+  </main>
+</Base>
 
 <style>
-  .modes {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border-top: 1px solid var(--grey-300);
-    max-width: none;
+  .home {
+    padding-top: var(--sp-5);
   }
-  .modes li {
-    border-bottom: 1px solid var(--grey-300);
+  .home__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: var(--sp-5);
+  }
+  .home__intro h1 {
     margin: 0;
   }
-  .modes a {
-    display: grid;
-    gap: var(--sp-1);
-    padding: var(--sp-4) 0;
-    text-decoration: none;
+  .home__eyebrow {
+    margin: 0;
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .home__lede {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9375rem;
+    line-height: 1.35;
+  }
+  .home__index {
+    margin: var(--sp-2) 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--muted);
+    font-size: var(--fs-label);
+  }
+  .home__index .num {
+    font-size: var(--fs-section);
+    color: var(--ink);
+  }
+  .home__guide {
+    margin-top: var(--sp-5);
+  }
+  .home__article {
+    margin: var(--sp-4) 0 0;
+  }
+  .home__article a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 0.9375rem;
   }
   @media (min-width: 720px) {
-    .modes a {
-      grid-template-columns: 220px 1fr;
-      gap: var(--sp-5);
-      align-items: baseline;
+    .home {
+      padding-top: var(--sp-7);
     }
-  }
-  .modes__name {
-    font-weight: 600;
-    font-size: var(--fs-3);
-  }
-  .modes a:hover .modes__name {
-    text-decoration: underline;
-    text-decoration-color: var(--accent);
-    text-decoration-thickness: 2px;
-  }
-  .links {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--sp-2);
-    max-width: none;
-  }
-  .links li {
-    margin: 0;
-  }
-  .links a {
-    display: inline-block;
-    padding: 8px 12px;
-    border: 1px solid var(--grey-300);
-    border-radius: var(--radius);
-    text-decoration: none;
-    font-size: var(--fs-1);
-  }
-  .links a:hover {
-    border-color: var(--ink);
-  }
-  .modes__blurb {
-    color: var(--grey-700);
+    .home__top {
+      display: grid;
+    }
+    .home__lede {
+      font-size: var(--fs-lead);
+      max-width: 36ch;
+    }
+    .home__index .num {
+      font-size: var(--fs-sub);
+    }
   }
 </style>

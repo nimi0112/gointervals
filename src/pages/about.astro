@@ -1,8 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro';
-import Breadcrumbs from '@/components/Breadcrumbs.astro';
-import Section from '@/components/Section.astro';
-import { breadcrumbList } from '@/lib/seo';
+import { breadcrumbList, person } from '@/lib/seo';
+import { SITE } from '@/lib/site';
 const crumbs = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
@@ -10,71 +9,36 @@ const crumbs = [
 ---
 
 <Base
-  title="About Go Intervals and Your Data"
-  description="What Go Intervals is, what is stored in your browser with a button to delete it, and where the open source code lives. No accounts, no cookies, no ads."
+  title="About gointervals"
+  description="A free online timer for movement, focus and quiet moments, built by Nimish Nandwana. No accounts, no ads, open source, works offline after the first visit."
   path="/about"
-  jsonLd={[breadcrumbList(crumbs)]}
+  jsonLd={[breadcrumbList(crumbs), person()]}
 >
-  <Breadcrumbs {crumbs} />
-  <main id="main" class="wrap">
-    <header class="ah">
-      <h1>About</h1>
-      <p class="ah__lede">
-        A timer site that does not drift, does not nag, and does not need an account.
-      </p>
-    </header>
-
-    <Section num="01" title="What it is" flush>
-      <p>
-        Go Intervals is a set of browser timers: stopwatch, countdown, interval, Tabata, EMOM and
-        Pomodoro. It exists because every other timer site either drifts when the tab is
-        backgrounded, covers the screen in ads, or wants you to sign up to save a preset.
-      </p>
-      <p>
-        Timing is derived from the system clock, so a phone that sleeps through three rounds wakes
-        up on the right one. Sounds are generated in the browser. The site is static, hosted on
-        Cloudflare Pages, and works offline after the first visit.
-      </p>
-    </Section>
-
-    <Section num="02" title="What is stored, and where">
-      <p>
-        Everything lives in your browser's local storage, on your device. Nothing is sent to a
-        server.
-      </p>
-      <ul>
-        <li>The last settings you used on each timer</li>
-        <li>Interval presets you saved</li>
-        <li>Your last 50 completed sessions and the Pomodoro session count</li>
-        <li>Whether sound and vibration are muted</li>
-      </ul>
-      <p>
-        There are no cookies. The only third-party scripts are Google Analytics 4 with IP
-        anonymisation and Cloudflare's cookieless Web Analytics, both used to see which timers get
-        used. If your browser blocks them, nothing on the site changes.
-      </p>
-      <p>
-        <button type="button" class="btn" id="clear-data">
-          Clear my data
-        </button>
-        <span id="clear-status" class="mono" role="status"></span>
-      </p>
-    </Section>
-
-    <Section num="03" title="Open source">
-      <p>
-        Built by one person who got tired of a 20 minute EMOM ending 40 seconds late. The whole
-        thing, timer engine included, is MIT licensed on{' '}
-        <a href="https://github.com/nimi0112/gointervals" rel="noopener">
-          GitHub
-        </a>
-        . Read how the timing works, run your own copy, or send a fix.
-      </p>
-      <p>
-        Found a bug or want a preset page for a workout you do? Open an issue. There are templates
-        for both, and the contributing guide explains what gets merged.
-      </p>
-    </Section>
+  <main id="main" class="wrap about">
+    <h1>A little room for your time.</h1>
+    <p>
+      gointervals is a free online timer for movement, focus and quiet moments. Pick Interval,
+      Tabata, EMOM, Pomodoro or Meditation. Set your time and settle in.
+    </p>
+    <p>
+      No accounts. No ads. No cookies of our own; only anonymous usage stats so I can see which
+      timers get used. After your first visit, it works offline once your browser has saved the
+      app.
+    </p>
+    <p>
+      Built by Nimish Nandwana. The code is open source. You can read it, suggest a change, or
+      make it your own.
+    </p>
+    <ul class="about__links">
+      <li><a href={SITE.repo} rel="noopener">Source on GitHub</a></li>
+      <li><a href={SITE.authorUrl} rel="noopener author">Nimish Nandwana</a></li>
+      <li><a href={SITE.authorX} rel="noopener">Nimish on X</a></li>
+    </ul>
+    <p class="about__data">
+      Your settings stay in this browser.
+      <button type="button" class="btn btn--quiet about__clear" id="clear-data">Clear my data</button>
+      <span id="clear-status" role="status"></span>
+    </p>
   </main>
 
   <script>
@@ -88,26 +52,56 @@ const crumbs = [
           if (k && k.startsWith('gi:')) keys.push(k);
         }
         keys.forEach((k) => localStorage.removeItem(k));
-        if (status)
-          status.textContent = ` Cleared ${keys.length} item${keys.length === 1 ? '' : 's'}.`;
+        if (status) status.textContent = `Cleared ${keys.length} item${keys.length === 1 ? '' : 's'}.`;
       } catch {
-        if (status) status.textContent = ' Nothing to clear, or storage is blocked.';
+        if (status) status.textContent = 'Nothing to clear, or storage is blocked.';
       }
     });
   </script>
 </Base>
 
 <style>
-  .ah {
-    padding-block: var(--sp-5) var(--sp-2);
+  .about {
+    padding-block: var(--sp-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    max-width: calc(var(--measure) + 2 * var(--gutter));
   }
-  .ah__lede {
-    color: var(--grey-700);
-    font-size: var(--fs-3);
+  .about h1 {
+    margin: 0;
+    line-height: 1.15;
+  }
+  .about p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .about__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .about__links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: var(--sp-4);
+  }
+  .about__data {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-2) var(--sp-3);
+    font-size: var(--fs-small);
+  }
+  .about__clear {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    padding-inline: var(--sp-3);
   }
   #clear-status {
-    color: var(--grey-700);
-    font-size: var(--fs-1);
-    margin-left: var(--sp-3);
+    font-size: var(--fs-label);
   }
 </style>

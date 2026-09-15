@@ -17,24 +17,22 @@ const crumbs = [
 
 <Base
   title="Blog – Timers, Intervals and Focus, Explained"
-  description="Short, specific guides to Tabata, HIIT, EMOM, Pomodoro, stopwatch splits and keeping your phone awake during a workout. Written by people who use the timers."
+  description="Short, specific guides to interval bells, Tabata, HIIT, EMOM, Pomodoro and keeping your phone awake during a workout, by the person who built the timers."
   path="/blog"
   jsonLd={[breadcrumbList(crumbs)]}
 >
-  <Breadcrumbs {crumbs} />
   <main id="main" class="wrap">
     <header class="bh">
+      <Breadcrumbs {crumbs} />
       <h1>Blog</h1>
-      <p class="bh__lede">
-        How the protocols work and how to run them with a timer. No fluff intros.
-      </p>
-      <p class="bh__tags">
+      <p class="bh__lede">How the protocols work and how to run them with a timer. No fluff intros.</p>
+      <ul class="links bh__tags" aria-label="Tags">
         {tags.map((t) => (
-          <a class="tag" href={`/blog/tag/${t}`}>
-            {t}
-          </a>
+          <li>
+            <a href={`/blog/tag/${t}`}>{t}</a>
+          </li>
         ))}
-      </p>
+      </ul>
     </header>
     <PostList {posts} />
   </main>
@@ -42,16 +40,21 @@ const crumbs = [
 
 <style>
   .bh {
-    padding-block: var(--sp-5) var(--sp-6);
+    padding-block: var(--sp-6) var(--sp-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    max-width: var(--measure);
+  }
+  .bh h1 {
+    margin: 0;
   }
   .bh__lede {
-    color: var(--grey-700);
-    font-size: var(--fs-3);
+    margin: 0;
+    color: var(--muted);
+    font-size: var(--fs-lead);
   }
   .bh__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--sp-2);
-    margin: 0;
+    font-size: var(--fs-small);
   }
 </style>

@@ -51,6 +51,17 @@ describe('handleKey', () => {
     expect(h.calls).toEqual(['escape']);
   });
 
+  it('leaves Space to a focused button, which activates natively, but still takes R and Escape', () => {
+    const h = spy();
+    const button = { tagName: 'BUTTON', isContentEditable: false } as unknown as EventTarget;
+    const e = ev(' ', { target: button });
+    handleKey(e, h);
+    expect(e.prevented).toBe(false);
+    handleKey(ev('r', { target: button }), h);
+    handleKey(ev('Escape', { target: button }), h);
+    expect(h.calls).toEqual(['reset', 'escape']);
+  });
+
   it('ignores modifier combinations', () => {
     const h = spy();
     handleKey(ev(' ', { metaKey: true }), h);

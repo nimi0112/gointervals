@@ -23,8 +23,7 @@ export const pomodoros: ProgrammaticPage[] = [
       focus: 50,
       shortBreak: 10,
       longBreak: 30,
-      sessionsBeforeLong: 3,
-      cycles: 1,
+      sessions: 3,
     },
     faq: [
       {
@@ -47,9 +46,7 @@ export const pomodoros: ProgrammaticPage[] = [
     related: [
       '/pomodoro',
       '/pomodoro/52-17',
-      '/timer/50-minutes',
       '/blog/pomodoro-technique-25-5',
-      '/timer/study-timer',
       '/blog/best-pomodoro-length',
     ],
   },
@@ -75,8 +72,7 @@ export const pomodoros: ProgrammaticPage[] = [
       focus: 52,
       shortBreak: 17,
       longBreak: 17,
-      sessionsBeforeLong: 4,
-      cycles: 1,
+      sessions: 4,
     },
     faq: [
       {
@@ -100,8 +96,6 @@ export const pomodoros: ProgrammaticPage[] = [
       '/pomodoro/50-10',
       '/pomodoro',
       '/blog/study-timer-vs-pomodoro',
-      '/timer/50-minutes',
-      '/timer/study-timer',
       '/blog/best-pomodoro-length',
     ],
   },
@@ -127,8 +121,7 @@ export const pomodoros: ProgrammaticPage[] = [
       focus: 90,
       shortBreak: 20,
       longBreak: 30,
-      sessionsBeforeLong: 2,
-      cycles: 1,
+      sessions: 2,
     },
     faq: [
       {
@@ -151,7 +144,7 @@ export const pomodoros: ProgrammaticPage[] = [
     related: [
       '/pomodoro/50-10',
       '/pomodoro',
-      '/timer/90-minutes',
+      '/meditation/1-hour',
       '/blog/study-timer-vs-pomodoro',
       '/blog/best-pomodoro-length',
     ],
@@ -178,8 +171,7 @@ export const pomodoros: ProgrammaticPage[] = [
       focus: 15,
       shortBreak: 5,
       longBreak: 15,
-      sessionsBeforeLong: 4,
-      cycles: 1,
+      sessions: 4,
     },
     faq: [
       {
@@ -202,7 +194,7 @@ export const pomodoros: ProgrammaticPage[] = [
     related: [
       '/pomodoro',
       '/pomodoro/50-10',
-      '/timer/15-minutes',
+      '/meditation/10-minutes',
       '/blog/pomodoro-technique-25-5',
       '/blog/best-pomodoro-length',
     ],

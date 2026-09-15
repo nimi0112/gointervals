@@ -60,7 +60,7 @@ const { jsonLd = [], header = true, ...head } = Astro.props;
               }
               if (reg.waiting) whenIdle();
               reg.addEventListener('updatefound', function () {
-                var w = reg.installing;
+                const w = reg.installing;
                 if (!w) return;
                 w.addEventListener('statechange', function () {
                   if (w.state === 'installed' && navigator.serviceWorker.controller) whenIdle();
@@ -80,8 +80,8 @@ const { jsonLd = [], header = true, ...head } = Astro.props;
       }
       // Report once per session when we are running as an installed app.
       try {
-        var ios = window.navigator.standalone === true;
-        var standalone = window.matchMedia('(display-mode: standalone)').matches || ios;
+        const ios = window.navigator.standalone === true;
+        const standalone = window.matchMedia('(display-mode: standalone)').matches || ios;
         if (standalone && !sessionStorage.getItem('gi:launched')) {
           sessionStorage.setItem('gi:launched', '1');
           send('pwa_launch', { platform: ios ? 'ios' : 'native' });
@@ -91,19 +91,19 @@ const { jsonLd = [], header = true, ...head } = Astro.props;
       }
       // Outbound links, on every page.
       document.addEventListener('click', function (e) {
-        var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+        const a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
         if (!a) return;
         if (a.origin && a.origin !== location.origin) send('outbound_click', { href: a.href });
       });
       // Articles: a read is the end of the body scrolled into view.
-      var end = document.querySelector('[data-read-end]');
+      const end = document.querySelector('[data-read-end]');
       if (end && 'IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-          if (entries.some(function (x) { return x.isIntersecting; })) {
-            io.disconnect();
-            send('blog_read', { slug: end.getAttribute('data-read-end') });
-          }
-        });
+        const io = new IntersectionObserver(function (entries) {
+    if (entries.some(function (x) { return x.isIntersecting; })) {
+      io.disconnect();
+      send('blog_read', { slug: end.getAttribute('data-read-end') });
+    }
+  });
         io.observe(end);
       }
     </script>

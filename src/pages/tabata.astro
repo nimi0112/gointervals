@@ -9,39 +9,43 @@ import { tabatas } from '@/data/tabatas';
 
 <TimerPage
   title="Tabata Timer – Free 20/10 x 8 Timer with Beeps"
-  description="Free Tabata timer preset to 20 seconds work, 10 seconds rest, 8 rounds. Editable, with distinct work and rest beeps, screen wake lock and no login."
+  description="Free Tabata timer fixed to the classic 20 seconds work, 10 seconds rest, 8 rounds, 4 minutes. Distinct work and rest beeps, screen stays on, works offline."
   path="/tabata"
   h1="Tabata timer"
-  lede="20 seconds on, 10 seconds off, 8 rounds, 4 minutes. Preset to the original protocol and editable."
+  lede="20 seconds on, 10 seconds off, 8 rounds, 4 minutes. The original protocol, nothing to set."
   config={defaultConfigs.tabata}
   faq={faqs['/tabata']}
   related={relatedTimers['/tabata']!}
   posts={relatedPosts['/tabata']}
   crumbName="Tabata timer"
 >
-  <Section num="01" title="The protocol" flush>
+  <Section title="The protocol" flush>
     <p>
       Izumi Tabata's 1996 study had speed skaters do 20 seconds at 170 percent of VO2 max, 10
       seconds rest, eight times. Four minutes. It improved both aerobic and anaerobic capacity,
-      which is why the name stuck. The catch is the intensity: if you can talk during the 20 seconds
-      you are not doing Tabata, you are doing intervals with a Tabata timer. Both are fine.
+      which is why the name stuck. The catch is the intensity: if you can talk during the 20
+      seconds you are not doing Tabata, you are doing intervals with a Tabata timer. Both are fine.
+    </p>
+    <p>
+      This page is deliberately the fewest-settings timer on the site. Press Start and it goes
+      straight into work round one. For other work and rest lengths, use a variant below or the
+      interval timer.
     </p>
   </Section>
-  <Section num="02" title="Common variants">
-    <ul>
+  <Section title="Common variants">
+    <ul class="links">
       {tabatas.map((t) => (
         <li>
           <a href={t.path}>{t.h1}</a>
         </li>
       ))}
     </ul>
-    <p>Or edit the numbers under the timer. The last setup you used is remembered.</p>
   </Section>
-  <Section num="03" title="Sounds">
+  <Section title="Sounds">
     <p>
-      A 10 second get-ready count, then a rising pair for work, a falling pair for rest, ticks for
-      the last three seconds of each, and a three-note finish. The digits change colour too, for
-      when the music is loud.
+      A rising pair for work, a falling pair for rest, ticks for the last three seconds of each,
+      and a three-note finish after the final rest. The phase word and icon change too, for when
+      the music is loud.
     </p>
   </Section>
 </TimerPage>

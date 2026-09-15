@@ -3,7 +3,7 @@ title: Free online timer that works offline (and how PWAs work)
 description: An online timer that works offline sounds like a contradiction. Here is how service workers cache a page so it runs with no connection at all.
 pubDate: 2026-09-01
 tags: [offline, pwa, how-to, focus]
-timer: '/timer'
+timer: '/meditation'
 keyword: 'online timer that works offline'
 ---
 
@@ -17,7 +17,7 @@ That is the entire trick. There is no app store, no install, no background proce
 
 The practical sequence:
 
-1. You open the [timer](/timer) once with a connection.
+1. You open the [meditation timer](/meditation) once with a connection.
 2. The service worker installs and caches the pages, the styles, and the code.
 3. You close the tab, get on a plane, open the same URL.
 4. The browser hands the request to the service worker, which serves the cached copy.
@@ -30,7 +30,7 @@ Most web pages need the network because the content lives on a server. A timer d
 
 This is also why there is no account. There is nothing to sync. Presets and history are stored in the browser, on your device, which means they survive going offline and they never travel anywhere.
 
-The tradeoff is real and worth stating: clear your browser data or switch devices and your presets are gone. That is the cost of not having a login.
+The tradeoff is real and worth stating: clear your browser data or switch devices and your settings are gone. That is the cost of not having a login.
 
 ## PWA, translated
 
@@ -52,7 +52,7 @@ Offline is only half the problem. The other half is that browsers throttle backg
 
 If a timer counts down by decrementing a number every tick, and the ticks stop, the timer stops. You unlock the phone and it is stuck showing what it showed when the screen went dark.
 
-The fix is to work from timestamps. Record when the timer started, and every time the page is drawn, compute how much time has passed against the system clock. Then a sleeping phone loses nothing except frames. Every timer here does it this way, so a [countdown](/timer) is still correct when you come back to it.
+The fix is to work from timestamps. Record when the timer started, and every time the page is drawn, compute how much time has passed against the system clock. Then a sleeping phone loses nothing except frames. Every timer here does it this way, so a [meditation timer](/meditation) is still correct when you come back to it.
 
 The screen staying on is handled separately with the Screen Wake Lock API, plus a silent looping video as a fallback on older browsers. [Keeping your phone screen on during a workout](/blog/keep-phone-screen-on-workout-timer) covers that in more detail.
 
@@ -65,9 +65,9 @@ Beeps are generated rather than loaded from audio files, using the browser's own
 - Loads with no connection after the first visit
 - No account, nothing sent anywhere
 - Accurate through sleep and backgrounded tabs
-- Space to start and stop, R to reset, Esc to exit fullscreen
+- Space to start and pause, R to reset, Esc to stop
 - Remaining time in the tab title, so a background tab still tells you where you are
 
-Fixed durations are preset if you do not want to type anything: [3 minutes](/timer/3-minutes), [20 seconds](/timer/20-seconds), [25 minutes](/timer/25-minutes). For repeating work and rest, the [interval timer](/interval) is the one you want, and it caches the same way.
+Fixed lengths are preset if you do not want to type anything: [10 minutes](/meditation/10-minutes), [20 minutes](/meditation/20-minutes), [30 minutes with bells every 10](/meditation/30-minutes). For repeating work and rest, the [interval timer](/interval) is the one you want, and it caches the same way.
 
-Try it: [open the countdown timer once, then turn off your wifi](/timer).
+Try it: [open the meditation timer once, then turn off your wifi](/meditation).

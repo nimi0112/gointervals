@@ -13,6 +13,7 @@ interface Props {
 const { page, posts = [] } = Astro.props;
 const setup = describeConfig(page.config);
 const total = configSeconds(page.config);
+const med = page.config.mode === 'meditation';
 ---
 
 <TimerPage
@@ -23,46 +24,42 @@ const total = configSeconds(page.config);
   lede={setup}
   config={page.config}
   fixed
-  presets={page.config.mode === 'interval'}
   faq={page.faq}
   related={page.related.filter((r) => !r.startsWith('/blog/'))}
   posts={[...page.related.filter((r) => r.startsWith('/blog/')), ...posts]}
   crumbName={page.h1}
   jsonLd={[howTo(page.h1, page.path, setup, total)]}
 >
-  <Section num="01" title="What this one is for" flush>
+  <Section title="What this one is for" flush>
     {page.intro.map((p) => (
       <p>{p}</p>
     ))}
   </Section>
-  <Section num="02" title="Good for">
+  <Section title="Good for">
     <ul>
       {page.uses.map((u) => (
         <li>{u}</li>
       ))}
     </ul>
   </Section>
-  <Section num="03" title="How it runs">
-    <p>
-      {setup} Press Start, or hit Space. The digits turn green while a work block runs and grey on
-      rest.
-    </p>
-    {page.config.mode === 'meditation' ? (
+  <Section title="How it runs">
+    <p>{setup} Press Start, or hit Space. The phase word and icon above the progress bar tell you where you are.</p>
+    {med ? (
       <p>
-        The only sound is one soft bell: at the start, at each interval, and at the end. No ticks
-        before it. Mute with the speaker button for a silent sit. The screen stays on while the
-        timer runs.
+        The only sound is one soft bell at each interval and one at the end, and each of those is a
+        switch you can turn off. Sound On/Off under the timer silences everything. The screen stays
+        on while the session runs.
       </p>
     ) : (
       <p>
-        Sound is on by default: a rising pair for work, a falling pair for rest, a tick for the last
-        three seconds and a three-note finish. Mute with the speaker button. The screen stays on
-        while the timer runs and the tab title shows the time left.
+        Sound is on by default and needs a tap on Start to unlock: a rising pair for work, a
+        falling pair for rest, a tick through the last three seconds and a three-note finish. The
+        screen stays on while the timer runs and the tab title shows the time left.
       </p>
     )}
     <p>
-      Change anything in Settings under the timer. The last setup you used on this page is
-      remembered in your browser.
+      Change the numbers above the Start button before you begin. This page always opens with the
+      preset shown here; the main {med ? 'meditation' : 'timer'} page remembers your own settings.
     </p>
   </Section>
 </TimerPage>

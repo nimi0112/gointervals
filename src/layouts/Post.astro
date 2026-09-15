@@ -20,8 +20,7 @@ const { slug, title, description, pubDate, updatedDate, tags, timer, words, minu
 const path = `/blog/${slug}`;
 const crumbs = [
   { name: 'Home', path: '/' },
-  { name: 'Blog', path: '/blog' },
-  { name: title, path },
+  { name: 'Article', path },
 ];
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -38,7 +37,11 @@ const ld = [
     image: `${SITE.url}/og/${ogSlug(path)}.png`,
     wordCount: words,
   }),
-  breadcrumbList(crumbs),
+  breadcrumbList([
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/blog' },
+    { name: title, path },
+  ]),
 ];
 ---
 
@@ -51,34 +54,36 @@ const ld = [
   publishedTime={pubDate.toISOString()}
   modifiedTime={(updatedDate ?? pubDate).toISOString()}
 >
-  <Breadcrumbs {crumbs} />
   <main id="main" class="wrap">
     <article class="post">
       <header class="post__head">
-        <p class="post__meta mono">
+        <Breadcrumbs {crumbs} />
+        <h1>{title}</h1>
+        <p class="post__meta">
+          <span class="post__by">By</span>
+          <a href={SITE.authorUrl} rel="author noopener">{SITE.author}</a>
+          <span class="post__dot" aria-hidden="true">·</span>
           <time datetime={pubDate.toISOString()}>{fmt(pubDate)}</time>
           {updatedDate && <span> · updated {fmt(updatedDate)}</span>}
           <span> · {minutes} min read</span>
         </p>
-        <h1>{title}</h1>
-        <p class="post__lede">{description}</p>
-        <p class="post__tags">
-          {tags.map((t) => (
-            <a class="tag" href={`/blog/tag/${t}`}>
-              {t}
-            </a>
-          ))}
+        <p class="post__open">
+          <a href={timer}>Open the {timerName.toLowerCase()}</a>
         </p>
       </header>
       <div class="prose post__body">
         <slot />
       </div>
-      <aside class="post__cta">
-        <p class="section__num">Try it</p>
-        <a class="btn btn--primary" href={timer}>
-          Open the {timerName.toLowerCase()}
-        </a>
-      </aside>
+      <footer class="post__foot" data-read-end={slug}>
+        <ul class="links post__tags" aria-label="Tags">
+          {tags.map((t) => (
+            <li>
+              <a href={`/blog/tag/${t}`}>{t}</a>
+            </li>
+          ))}
+        </ul>
+        <p><a href="/blog">All articles</a></p>
+      </footer>
     </article>
   </main>
 </Base>
@@ -86,37 +91,52 @@ const ld = [
 <style>
   .post {
     max-width: var(--measure);
-    padding-block: var(--sp-5) 0;
+    margin-inline: auto;
+    padding-block: var(--sp-6) 0;
   }
   .post__head {
-    margin-bottom: var(--sp-6);
-    padding-bottom: var(--sp-5);
-    border-bottom: 1px solid var(--grey-300);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-7);
+  }
+  .post__head h1 {
+    margin: 0;
+    font-size: clamp(2rem, 6vw, var(--fs-display));
+    font-weight: 600;
+    line-height: 1.12;
   }
   .post__meta {
-    color: var(--grey-500);
-    font-size: var(--fs-1);
-    margin-bottom: var(--sp-3);
-  }
-  .post__lede {
-    font-size: var(--fs-3);
-    color: var(--grey-700);
-  }
-  .post__tags {
-    display: flex;
-    gap: var(--sp-2);
-    flex-wrap: wrap;
     margin: 0;
+    font-size: var(--fs-small);
+    color: var(--muted);
   }
-  .post__body :global(h2) {
-    margin-top: var(--sp-7);
+  .post__meta a {
+    color: var(--ink);
   }
-  .post__body :global(h2:first-child) {
-    margin-top: 0;
+  .post__by {
+    font-size: 0.75rem;
   }
-  .post__cta {
+  .post__dot {
+    margin-inline: 6px;
+  }
+  .post__open {
+    margin: 0;
+    font-size: var(--fs-lead);
+  }
+  .post__open a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--ink);
+  }
+  .post__foot {
     margin-top: var(--sp-7);
     padding-top: var(--sp-5);
-    border-top: 1px solid var(--grey-300);
+    border-top: 1px solid var(--line);
+    font-size: var(--fs-small);
+  }
+  .post__tags {
+    margin-bottom: var(--sp-3);
   }
 </style>

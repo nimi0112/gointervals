@@ -23,7 +23,36 @@ export function organization(): JsonLd {
     name: SITE.name,
     url: SITE.url,
     logo: `${SITE.url}/icons/icon-512.png`,
-    sameAs: [SITE.repo],
+    sameAs: [SITE.repo, SITE.authorX],
+    founder: personRef(),
+  };
+}
+
+/** The author as a Person node, without @context, for embedding. */
+export function personRef(): JsonLd {
+  return {
+    '@type': 'Person',
+    name: SITE.author,
+    url: SITE.authorUrl,
+    sameAs: [SITE.authorX, SITE.repo],
+  };
+}
+
+export function person(): JsonLd {
+  return { '@context': 'https://schema.org', ...personRef() };
+}
+
+/** The five timers as an ordered list, for the home page. */
+export function itemList(items: readonly { path: string; name: string }[]): JsonLd {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: items.map((t, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: t.name,
+      url: abs(t.path),
+    })),
   };
 }
 
@@ -41,14 +70,13 @@ export function webApplication(): JsonLd {
     isAccessibleForFree: true,
     license: 'https://opensource.org/licenses/MIT',
     codeRepository: SITE.repo,
+    author: personRef(),
     featureList: [
-      'Stopwatch with laps',
-      'Countdown timer',
-      'Interval and HIIT timer with presets',
+      'Interval timer with work, rest and rounds',
+      'Meditation timer with interval bells',
       'Tabata timer',
       'EMOM timer',
       'Pomodoro timer',
-      'Meditation timer with interval bells',
       'Works offline',
       'Keeps the screen on',
     ],
@@ -124,7 +152,7 @@ export function article(opts: {
     wordCount: opts.wordCount,
     image: opts.image,
     inLanguage: 'en',
-    author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+    author: personRef(),
     publisher: {
       '@type': 'Organization',
       name: SITE.name,
@@ -139,9 +167,11 @@ export function crumbsFor(path: string, leafName: string): Crumb[] {
   const out: Crumb[] = [{ name: 'Home', path: '/' }];
   const parts = path.split('/').filter(Boolean);
   const names: Record<string, string> = {
-    timer: 'Countdown timer',
     interval: 'Interval timer',
+    meditation: 'Meditation timer',
     tabata: 'Tabata timer',
+    emom: 'EMOM timer',
+    pomodoro: 'Pomodoro timer',
     blog: 'Blog',
     tag: 'Tags',
   };
@@ -175,13 +205,13 @@ export function howTo(name: string, path: string, setup: string, totalSeconds: n
         '@type': 'HowToStep',
         position: 2,
         name: 'Adjust if needed',
-        text: 'Open Settings under the timer to change any value. The summary line describes the result in plain words.',
+        text: 'Change any value above the Start button. The summary line describes the result in plain words.',
       },
       {
         '@type': 'HowToStep',
         position: 3,
         name: 'Start and listen',
-        text: 'Press Start or the Space bar. Distinct tones mark each change, the last three seconds tick, and the screen stays on until it finishes.',
+        text: 'Press Start or the Space bar. Distinct tones mark each change and the screen stays on until it finishes.',
       },
     ],
   };

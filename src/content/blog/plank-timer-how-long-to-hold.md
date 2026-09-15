@@ -2,8 +2,8 @@
 title: 'Plank timer: how long to hold a plank, and why 2 min is plenty'
 description: 'How long to hold a plank: 20-30s to start, 60s as a target, 2 minutes is strong. Past that, add difficulty instead of time. Plus plank interval sets.'
 pubDate: 2026-09-17
-tags: [workouts, how-to, stopwatch]
-timer: '/timer/plank-timer'
+tags: [workouts, how-to]
+timer: '/interval'
 keyword: 'how long to hold a plank'
 ---
 
@@ -58,7 +58,7 @@ Side planks deserve particular attention because they train the lateral trunk, w
 
 ## Running plank intervals
 
-Repeated short holds need a timer that beeps twice, not once, and the [plank timer](/timer/plank-timer) handles the single hold. For the interval version, build it on [interval](/interval):
+Repeated short holds need a timer that beeps twice, not once. A single hold is the [interval timer](/interval) with Rounds set to 1 and Rest to 0; for the interval version, build it on the same page:
 
 **McGill-style endurance set:** work 10s, rest 5s, 8 rounds. Two minutes total, eight quality holds.
 
@@ -66,10 +66,10 @@ Repeated short holds need a timer that beeps twice, not once, and the [plank tim
 
 **Front and side circuit:** work 30s, rest 15s, 6 rounds, alternating front, left side, right side, twice through.
 
-Set rest to 0 and you get one continuous hold with a beep at each boundary, which is a way to break a long hold into countable chunks without stopping. For a plain single hold, [60 seconds](/timer/60-seconds) and [2 minutes](/timer/2-minutes) are there too, and the [plank timer](/timer/plank-timer) keeps the screen on so it does not go dark on the floor beside you.
+Set rest to 0 and you get one continuous hold with a beep at each boundary, which is a way to break a long hold into countable chunks without stopping. For a plain single hold, set Work to 60 or 120, Rest to 0 and Rounds to 1. The screen stays on while it runs, so it does not go dark on the floor beside you.
 
 ## A realistic weekly dose
 
 Two or three sessions a week, three to five sets, mixing a front variation with a side variation. Total time under tension per session of somewhere between one and three minutes is plenty. If you have five minutes for core work, spending all of it on one long front plank is the least productive way to use it.
 
-Try it: [hold a plank on the plank timer](/timer/plank-timer).
+Try it: [hold a plank on the interval timer](/interval).

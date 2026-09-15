@@ -1,48 +1,32 @@
 ---
 import Base from '@/layouts/Base.astro';
-import { TIMERS } from '@/lib/site';
 ---
 
 <Base
   title="Page not found"
-  description="That page does not exist on Go Intervals. The timers are all still here: stopwatch, countdown, interval, Tabata, EMOM and Pomodoro."
+  description="That page does not exist on gointervals. The timers are all still here: interval, meditation, Tabata, EMOM and Pomodoro."
   path="/404"
   noindex
 >
   <main id="main" class="wrap nf">
-    <p class="nf__code mono">404</p>
-    <h1>Nothing here</h1>
-    <p class="nf__lede">The timer you wanted is probably one of these.</p>
-    <ul class="list">
-      {TIMERS.map((t) => (
-        <li>
-          <a href={t.path}>
-            <span class="list__title">{t.name}</span>
-            <span class="list__meta">{t.path}</span>
-          </a>
-        </li>
-      ))}
-      <li>
-        <a href="/blog">
-          <span class="list__title">Blog</span>
-          <span class="list__meta">/blog</span>
-        </a>
-      </li>
-    </ul>
+    <h1>This page drifted away.</h1>
+    <p><a href="/">Back to timers</a></p>
   </main>
 </Base>
 
 <style>
   .nf {
-    padding-block: var(--sp-7);
-    max-width: var(--measure);
+    padding-block: var(--sp-6);
+    min-height: 60dvh;
   }
-  .nf__code {
-    color: var(--accent);
-    margin-bottom: var(--sp-2);
+  .nf h1 {
+    margin-bottom: var(--sp-4);
   }
-  .nf__lede {
-    color: var(--grey-700);
-    margin-bottom: var(--sp-6);
+  .nf a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: var(--sp-4);
+    font-size: var(--fs-small);
   }
 </style>

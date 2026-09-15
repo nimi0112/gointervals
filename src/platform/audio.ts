@@ -20,9 +20,13 @@ function getCtx(): AudioContext | null {
   return ctx;
 }
 
-/** True when this browser can make sound at all. */
+/** True when this browser has Web Audio at all. Does not create a context (that needs a gesture). */
 export function audioAvailable(): boolean {
-  return getCtx() !== null;
+  if (typeof window === 'undefined') return false;
+  return (
+    'AudioContext' in window ||
+    'webkitAudioContext' in (window as unknown as Record<string, unknown>)
+  );
 }
 
 /**

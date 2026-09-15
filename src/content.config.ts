@@ -13,6 +13,8 @@ const blog = defineCollection({
     timer: z.string().startsWith('/'),
     /** primary keyword, used in copy checks */
     keyword: z.string(),
+    /** defaults to the site author */
+    author: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });

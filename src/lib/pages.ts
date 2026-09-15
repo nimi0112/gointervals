@@ -15,13 +15,13 @@ export async function allOgPages(): Promise<OgPage[]> {
   return [
     {
       path: '/',
-      title: 'Free timers that just run',
-      kicker: 'Interval · Countdown · Stopwatch · Tabata · EMOM · Pomodoro',
+      title: 'Time for one thing.',
+      kicker: 'Free timers for focus, movement and a little quiet.',
     },
     ...TIMERS.map((t) => ({
       path: t.path,
       title: t.name,
-      kicker: 'Free, no login, works offline',
+      kicker: t.blurb,
     })),
     ...timerPages.map((p) => ({
       path: p.path,
@@ -37,9 +37,9 @@ export async function allOgPages(): Promise<OgPage[]> {
     ...tags.map((t) => ({ path: `/blog/tag/${t}`, title: `Posts tagged ${t}`, kicker: 'Blog' })),
     {
       path: '/about',
-      title: 'About Go Intervals',
-      kicker: 'Open source · No accounts · No cookies',
+      title: 'A little room for your time.',
+      kicker: 'Open source · No accounts · No ads',
     },
-    { path: '/404', title: 'Nothing here', kicker: '404' },
+    { path: '/404', title: 'This page drifted away.', kicker: 'Back to timers' },
   ];
 }

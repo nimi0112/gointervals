@@ -9,17 +9,17 @@ import { pomodoros } from '@/data/pomodoros';
 
 <TimerPage
   title="Pomodoro Timer – Free 25/5 Focus Timer, No Login"
-  description="Free online Pomodoro timer: 25 minutes focus, 5 minute break, long break after four. Editable, session counter saved in your browser, tab title countdown."
+  description="Free online Pomodoro timer: 25 minutes focus, 5 minute break, a 15 minute long break after four. One finite cycle, editable, tab title countdown, works offline."
   path="/pomodoro"
   h1="Pomodoro timer"
-  lede="25 minutes on, 5 off, a long break after four. Editable. The session count survives a reload."
+  lede="25 minutes on, 5 off, a long break after four. One finite cycle, then it stops."
   config={defaultConfigs.pomodoro}
   faq={faqs['/pomodoro']}
   related={relatedTimers['/pomodoro']!}
   posts={relatedPosts['/pomodoro']}
   crumbName="Pomodoro timer"
 >
-  <Section num="01" title="The technique" flush>
+  <Section title="The technique" flush>
     <p>
       Francesco Cirillo, a tomato-shaped kitchen timer, late 1980s. Work for 25 minutes on one
       thing, take a 5 minute break, and after four of those take 15 to 30 minutes off. The numbers
@@ -27,17 +27,18 @@ import { pomodoros } from '@/data/pomodoros';
       does not count.
     </p>
   </Section>
-  <Section num="02" title="Using this one">
+  <Section title="Using this one">
     <p>
       Press Start and leave the tab open. The title shows the minutes left, so you can see it from
-      another tab. A rising pair means focus, a falling pair means break. The counter under the
-      timer adds one each time a focus block finishes and is stored in your browser.
+      another tab. A rising pair means focus, a falling pair means break. The cycle runs Focus 1,
+      short break, Focus 2, short break, Focus 3, short break, Focus 4, long break, Done. It does
+      not start again on its own.
     </p>
-    <p>Prefer 50/10? Change Focus and Short break in the settings. The change sticks.</p>
+    <p>Prefer 50/10? Change Focus and Short break above the Start button. The change sticks.</p>
   </Section>
-  <Section num="03" title="Other rhythms">
+  <Section title="Other rhythms">
     <p>Preset pages for the common alternatives, each with its own reasoning.</p>
-    <ul>
+    <ul class="links">
       {pomodoros.map((p) => (
         <li>
           <a href={p.path}>{p.h1}</a>

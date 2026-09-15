@@ -34,7 +34,7 @@ The 90-minute version leans on ultradian rhythms, the roughly 90 to 120 minute c
 
 The 10-minute version is the most underrated. If a task has been on your list for a week, the problem is starting, not sustaining. Ten minutes is small enough that the excuse collapses.
 
-Set whichever length you want on the [pomodoro timer](/pomodoro), or just run a flat [25 minute countdown](/timer/25-minutes) if you do not want break tracking.
+Set whichever length you want on the [pomodoro timer](/pomodoro), or set Focus sessions to 1 for a single 25 minute block if you do not want break tracking.
 
 ## The break is not optional and not your phone
 

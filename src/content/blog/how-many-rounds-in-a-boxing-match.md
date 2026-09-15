@@ -56,7 +56,7 @@ Two adjustments worth knowing about.
 
 **Longer rounds for pacing.** Some coaches run four-minute rounds so that three minutes feels short on the night. Fine occasionally, bad as a default, because your output over four minutes is not your output over three and you will train yourself into a pace that loses rounds.
 
-For everything other than sparring, a plain [interval timer](/interval) with your own numbers does the job, and a [stopwatch](/stopwatch) is better for pad work where you want to time a specific drill rather than a round.
+For everything other than sparring, a plain [interval timer](/interval) with your own numbers does the job, and Rest set to 0 turns it into a plain marker for pad work where you want to time a specific drill rather than a round.
 
 ## Why audio matters more here than anywhere
 

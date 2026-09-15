@@ -6,11 +6,11 @@ export const meditations: ProgrammaticPage[] = [
     h1: '5 minute meditation timer',
     title: '5 Minute Meditation Timer – One Soft Bell',
     description:
-      'A 5 minute meditation timer with a bell to start and a bell at the end. Ten seconds to settle first. Free, runs in the browser, no account.',
+      'A 5 minute meditation timer with one soft bell at the end and nothing before it. Free, runs in the browser, no account.',
     intro: [
       'A 5 minute meditation timer is the length to use for a first sit, and the length to come back to on the days you have already decided you do not have time. Five minutes is short enough that the excuse does not survive contact with it, and long enough that you will notice your attention moving.',
       'If you want something to do rather than nothing, count breaths. One on the out-breath, up to ten, then start again at one. You will lose the count somewhere around four. Losing it is not the failure; noticing that you lost it is the entire exercise, and five minutes gives you several goes at that.',
-      'The other instruction, which sounds unhelpful until it is not, is to just sit. No counting, no technique, nothing to get right. Ten seconds of settle-in, one bell, five minutes, one bell. Nothing in between asks anything of you.',
+      'The other instruction, which sounds unhelpful until it is not, is to just sit. No counting, no technique, nothing to get right. Press Start, five minutes of silence, one bell. Nothing in between asks anything of you.',
     ],
     uses: [
       'A first attempt at sitting, before committing to anything longer',
@@ -18,7 +18,7 @@ export const meditations: ProgrammaticPage[] = [
       'Resetting between meetings without lying down',
       'Days when the honest choice is five minutes or nothing',
     ],
-    config: { mode: 'meditation', prep: 10, bell: 300, total: 300 },
+    config: { mode: 'meditation', total: 300, bell: 300, intervalBell: false, startBell: false, endBell: true },
     faq: [
       {
         q: 'What does the bell sound like?',
@@ -30,7 +30,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'Can I change the interval?',
-        a: 'Yes. The bell interval and the total length are both editable in Settings under the timer. At five minutes they are the same number, so there is one bell at the start and one at the end.',
+        a: 'Yes. The bell interval and the session length are both editable above the Start button. At five minutes there are no interval bells, just the one at the end. Turn the start bell on if you want an audible opening too.',
       },
       {
         q: 'Will it sound if the phone locks?',
@@ -40,7 +40,7 @@ export const meditations: ProgrammaticPage[] = [
     related: [
       '/meditation',
       '/meditation/10-minutes',
-      '/timer/5-minutes',
+      '/interval/beep-every-5-minutes',
       '/blog/how-long-to-meditate',
     ],
   },
@@ -49,7 +49,7 @@ export const meditations: ProgrammaticPage[] = [
     h1: '10 minute meditation timer',
     title: '10 Minute Meditation Timer – Bell, No App',
     description:
-      'A 10 minute meditation timer with one soft bell to start and one at the end. Ten seconds to settle in. Free in the browser, nothing to install.',
+      'A 10 minute meditation timer with one soft bell at the end and silence until then. Free in the browser, nothing to install.',
     intro: [
       'A 10 minute meditation timer is the length most apps open on, and the reason is less mystical than it looks: ten minutes is the shortest sit that does not feel like a token gesture, and it still fits in a day without negotiation.',
       'What ten minutes buys you over five is time to get past the first settling. The first two or three minutes tend to be admin — shifting position, noticing the room, running through the day. The interesting part starts after that, when the mind has nothing new to file and begins wandering off on its own. Watching that happen, and coming back, is the thing you are practising.',
@@ -61,7 +61,7 @@ export const meditations: ProgrammaticPage[] = [
       'Winding down at the end of the working day',
       'Building from five minutes without a big jump',
     ],
-    config: { mode: 'meditation', prep: 10, bell: 600, total: 600 },
+    config: { mode: 'meditation', total: 600, bell: 600, intervalBell: false, startBell: false, endBell: true },
     faq: [
       {
         q: 'What does the bell sound like?',
@@ -73,7 +73,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'Can I change the interval?',
-        a: 'Yes, in Settings. Set the bell interval to 5 minutes and the total to 10 if you want a mid-point bell, or leave them equal for start and end only.',
+        a: 'Yes, above the Start button. Set the bell interval to 5 minutes and the total to 10 if you want a mid-point bell, or leave them equal for start and end only.',
       },
       {
         q: 'Will it sound if the phone locks?',
@@ -83,7 +83,7 @@ export const meditations: ProgrammaticPage[] = [
     related: [
       '/meditation',
       '/meditation/20-minutes',
-      '/timer/10-minutes',
+      '/interval/beep-every-10-minutes',
       '/blog/how-long-to-meditate',
     ],
   },
@@ -96,7 +96,7 @@ export const meditations: ProgrammaticPage[] = [
     intro: [
       'A 20 minute meditation timer matches the length that turns up again and again in practice instructions. Transcendental Meditation teaches twenty minutes twice a day as a standard, and twenty to twenty-five minutes is a common sitting period in many Zen and Vipassana settings, though the specifics vary a great deal between teachers and lineages. Nobody arrived at twenty by measurement; it seems to be roughly where a sit stops being brief and stays comfortable without training.',
       'This preset rings at ten minutes as well as at the end. The middle bell is a posture check, not an instruction to do something new. Notice where you have slumped, let the spine come back up, unclench the jaw, drop the shoulders, then carry on with whatever you were doing. Ten minutes in is about when the body starts giving way.',
-      'If twenty feels like a stretch, it probably is at first, and the second half is where the restlessness shows up. That is the part worth sitting through rather than shortening. Ten seconds to settle, a bell, ten minutes, a bell, ten more, a bell.',
+      'If twenty feels like a stretch, it probably is at first, and the second half is where the restlessness shows up. That is the part worth sitting through rather than shortening. Press Start, ten minutes, a bell, ten more, a bell, ten more, the end bell.',
     ],
     uses: [
       'A full-length daily sit once ten minutes feels short',
@@ -104,7 +104,7 @@ export const meditations: ProgrammaticPage[] = [
       'Morning and evening sits, twice a day',
       'A sit long enough to need a posture correction halfway',
     ],
-    config: { mode: 'meditation', prep: 10, bell: 600, total: 1200 },
+    config: { mode: 'meditation', total: 1200, bell: 600, intervalBell: true, startBell: false, endBell: true },
     faq: [
       {
         q: 'What does the bell sound like?',
@@ -116,7 +116,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'Can I change the interval?',
-        a: 'Yes, in Settings. Set the bell interval to 20 minutes for start and end only, or to 5 for a bell every five. The total stays at twenty unless you change that too.',
+        a: 'Yes, above the Start button. Set the bell interval to 20 minutes for start and end only, or to 5 for a bell every five. The total stays at twenty unless you change that too.',
       },
       {
         q: 'Will it sound if the phone locks?',
@@ -147,7 +147,7 @@ export const meditations: ProgrammaticPage[] = [
       'A weekend sit when there is more time than on a weekday',
       'Practising with a re-anchor rather than one unbroken stretch',
     ],
-    config: { mode: 'meditation', prep: 10, bell: 600, total: 1800 },
+    config: { mode: 'meditation', total: 1800, bell: 600, intervalBell: true, startBell: false, endBell: true },
     faq: [
       {
         q: 'What does the bell sound like?',
@@ -159,7 +159,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'Can I change the interval?',
-        a: 'Yes, in Settings. Fifteen minutes gives you two halves instead of three thirds, and setting the interval equal to the total gives you start and end bells only.',
+        a: 'Yes, above the Start button. Fifteen minutes gives you two halves instead of three thirds, and setting the interval equal to the total gives you start and end bells only.',
       },
       {
         q: 'Will it sound if the phone locks?',
@@ -190,7 +190,7 @@ export const meditations: ProgrammaticPage[] = [
       'A retreat-style session at home on a free morning',
       'Sitting with a group where a bell marks the changes',
     ],
-    config: { mode: 'meditation', prep: 10, bell: 900, total: 2700 },
+    config: { mode: 'meditation', total: 2700, bell: 900, intervalBell: true, startBell: false, endBell: true },
     faq: [
       {
         q: 'What does the bell sound like?',
@@ -202,7 +202,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'Can I change the interval?',
-        a: 'Yes, in Settings. Twenty-two and a half minutes is not a round number, so if you want two halves instead of three thirds, set the total to 45 and the interval to 22 and accept the extra minute at the end.',
+        a: 'Yes, above the Start button. Twenty-two and a half minutes is not a round number, so if you want two halves instead of three thirds, set the total to 45 and the interval to 22 and accept the extra minute at the end.',
       },
       {
         q: 'Will it sound if the phone locks?',
@@ -225,7 +225,7 @@ export const meditations: ProgrammaticPage[] = [
     intro: [
       'A 1 hour meditation timer is retreat territory. An hour on a cushion is not a longer version of ten minutes; it is a different problem, and most of the difficulty is physical rather than mental. Longer sits of roughly this length are common in intensive retreat schedules, though what a given tradition asks for varies widely.',
       'Get the posture sorted before you start, because you will not fix it at minute forty. Hips above knees on a cushion or bench, spine stacked rather than held, hands somewhere they can rest without pulling the shoulders forward. A chair is fine. Legs go numb; numb is usually tolerable and passes when you move, while sharp or shooting pain is a reason to shift position rather than something to sit through.',
-      'The bells at twenty and forty minutes split the hour into three, which is enough structure to keep it from becoming featureless. Use them as posture checks, as permission to change legs, or as boundaries between practices. Ten seconds to settle, then one bell at a time.',
+      'The bells at twenty and forty minutes split the hour into three, which is enough structure to keep it from becoming featureless. Use them as posture checks, as permission to change legs, or as boundaries between practices. Press Start, then one bell at a time.',
     ],
     uses: [
       'Retreat-style sitting at home',
@@ -233,7 +233,7 @@ export const meditations: ProgrammaticPage[] = [
       'Practising at the length an intensive schedule would use',
       'Sitting with legs that need permission to move at a marked point',
     ],
-    config: { mode: 'meditation', prep: 10, bell: 1200, total: 3600 },
+    config: { mode: 'meditation', total: 3600, bell: 1200, intervalBell: true, startBell: false, endBell: true },
     faq: [
       {
         q: 'What does the bell sound like?',
@@ -245,7 +245,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'Can I change the interval?',
-        a: 'Yes, in Settings. Thirty minutes gives two halves, fifteen gives four quarters, and setting the interval to 60 gives you an hour with nothing but a start and an end bell.',
+        a: 'Yes, above the Start button. Thirty minutes gives two halves, fifteen gives four quarters, and setting the interval to 60 gives you an hour with nothing but a start and an end bell.',
       },
       {
         q: 'Will it sound if the phone locks?',

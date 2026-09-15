@@ -5,7 +5,6 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import Faq from '@/components/Faq.astro';
 import Related from '@/components/Related.astro';
 import Timer from '@/islands/Timer';
-import Stopwatch from '@/islands/Stopwatch';
 import type { ModeConfig } from '@/engine/schedule';
 import type { Faq as FaqItem } from '@/data/types';
 import { softwareApplication, faqPage, breadcrumbList, crumbsFor } from '@/lib/seo';
@@ -15,11 +14,10 @@ interface Props {
   description: string;
   path: string;
   h1: string;
-  /** one or two sentences under the H1, server rendered */
+  /** one or two sentences under the H1, server rendered in the guide */
   lede: string;
   config: ModeConfig;
   fixed?: boolean | undefined;
-  presets?: boolean | undefined;
   faq?: FaqItem[] | undefined;
   related: string[];
   posts?: string[] | undefined;
@@ -34,7 +32,6 @@ const {
   lede,
   config,
   fixed = false,
-  presets = false,
   faq = [],
   related,
   posts = [],
@@ -42,56 +39,32 @@ const {
   jsonLd = [],
 } = Astro.props;
 
-const crumbs = path === '/' ? [] : crumbsFor(path, crumbName ?? h1);
+const crumbs = crumbsFor(path, crumbName ?? h1);
 const ld = [
   softwareApplication(h1, path, description),
   ...(faq.length ? [faqPage(faq)] : []),
-  ...(crumbs.length ? [breadcrumbList(crumbs)] : []),
+  breadcrumbList(crumbs),
   ...jsonLd,
 ];
 ---
 
-<Base {title} {description} {path} jsonLd={ld}>
-  {crumbs.length > 0 && <Breadcrumbs {crumbs} />}
+<Base {title} {description} {path} jsonLd={ld} header={false}>
   <main id="main" class="wrap">
-    <header class="tp-head">
-      <h1>{h1}</h1>
-      <p class="tp-lede">{lede}</p>
-    </header>
-
-    {config.mode === 'stopwatch' ? (
-      <Stopwatch client:load />
-    ) : (
-      <Timer client:load config={config} {fixed} {presets} />
-    )}
+    <Timer client:load config={config} {fixed} />
 
     <noscript>
       <p class="tp-noscript">The timer needs JavaScript. Everything below reads fine without it.</p>
     </noscript>
 
-    <slot />
-
-    {faq.length > 0 && <Faq items={faq} />}
-    <Related timers={related} posts={posts} />
+    <div class="guide">
+      <Breadcrumbs {crumbs} />
+      <header class="guide__head">
+        <h1>{h1}</h1>
+        <p class="guide__lede">{lede}</p>
+      </header>
+      <slot />
+      {faq.length > 0 && <Faq items={faq} />}
+      <Related timers={related} posts={posts} />
+    </div>
   </main>
 </Base>
-
-<style>
-  .tp-head {
-    padding-block: var(--sp-5) var(--sp-2);
-  }
-  .tp-head h1 {
-    margin-bottom: var(--sp-2);
-  }
-  .tp-lede {
-    color: var(--grey-700);
-    font-size: var(--fs-3);
-    margin: 0;
-  }
-  .tp-noscript {
-    text-align: center;
-    color: var(--grey-700);
-    padding: var(--sp-6);
-    border: 1px dashed var(--grey-300);
-  }
-</style>

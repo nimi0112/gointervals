@@ -1,13 +1,13 @@
 ---
-title: Best way to use a stopwatch for running splits and lap times
-description: Using a stopwatch for running is about laps, not the total. How to take splits, what to record, and which numbers actually tell you something.
+title: 'Running splits and lap times: what to record and why'
+description: Running splits are about laps, not the total. How to take them, what to record, and how a repeating interval timer keeps the reps honest.
 pubDate: 2026-08-28
-tags: [stopwatch, running, how-to]
-timer: '/stopwatch'
-keyword: 'stopwatch for running'
+tags: [running, how-to]
+timer: '/interval'
+keyword: 'running splits'
 ---
 
-A stopwatch for running is only useful if you take laps, because the total time tells you what happened and the splits tell you why. Anyone can run 5K in 24 minutes. The interesting question is whether that was five even kilometres or a fast first one and four apologies.
+Running splits are the whole point of timing a run, because the total time tells you what happened and the splits tell you why. Anyone can run 5K in 24 minutes. The interesting question is whether that was five even kilometres or a fast first one and four apologies.
 
 ## Split vs lap, since everyone mixes them up
 
@@ -16,7 +16,7 @@ A stopwatch for running is only useful if you take laps, because the total time 
 
 Most stopwatches show both when you hit the lap key: the running total and the segment. Both matter. Lap times tell you about pacing consistency; splits tell you whether you are on target for a goal time.
 
-The [stopwatch](/stopwatch) records laps with the L key so you can take one without looking down, which matters on a track where looking down is how you end up in lane four.
+Any watch records laps. What a watch does not do is tell you when the next rep starts, which is where a [repeating interval timer](/interval) earns its place: set Work to the rep length, Rest to the recovery, and it beeps for you so you can look up instead of down, which matters on a track where looking down is how you end up in lane four.
 
 ## What to actually record
 
@@ -46,9 +46,9 @@ Check this with the split, not with feel. Feel at kilometre one is a liar and sa
 
 ## Running the session
 
-Start the [stopwatch](/stopwatch) at the beginning of the warm-up or at the first rep, but pick one and stick to it, because comparing sessions across weeks only works if you measured the same thing.
+Start the watch at the beginning of the warm-up or at the first rep, but pick one and stick to it, because comparing sessions across weeks only works if you measured the same thing.
 
-Keyboard shortcuts cover it: Space starts and stops, L takes a lap, R resets. Fullscreen mode makes the digits large enough to read from arm's length on a phone propped against a bag.
+For the reps themselves, an [interval timer](/interval) with Work set to the target and Rest set to the recovery beeps at every change, and Rest set to 0 gives a plain marker every N seconds. Keyboard shortcuts cover it: Space starts and pauses, R asks to reset, Esc asks to stop. The digits are large enough to read from arm's length on a phone propped against a bag.
 
 Timing is based on timestamps rather than a ticking counter, so if the phone screen sleeps mid-rep the elapsed time is still correct when it comes back. That is not true of every browser timer and it is an unpleasant thing to discover at rep six.
 
@@ -56,10 +56,10 @@ Timing is based on timestamps rather than a ticking counter, so if the phone scr
 
 There is a difference between timing yourself and being timed. Splits are for the first. When you want fixed work and rest, so you are not deciding when to start the next rep, use an [interval timer](/interval) instead. [1:1 running intervals](/interval/running-intervals-1-1) and [30 second sprints with 90 seconds rest](/interval/sprint-30-90) are both standard shapes and both preset.
 
-The rule of thumb: track repeats at a fixed distance want a stopwatch, because distance is the constant and time is the measurement. Time-based intervals want an interval timer, because time is the constant and the distance is whatever you managed.
+The rule of thumb: track repeats at a fixed distance want a watch, because distance is the constant and time is the measurement. Time-based intervals want an interval timer, because time is the constant and the distance is whatever you managed.
 
 ## One thing worth doing
 
-At the end of a session, write the laps down somewhere that is not the timer. Three months of lap times is a training log. A stopwatch you reset is nothing.
+At the end of a session, write the laps down somewhere that is not the timer. Three months of lap times is a training log. A timer you reset is nothing.
 
-Try it: [open the stopwatch and take some laps](/stopwatch).
+Try it: [set up a running interval](/interval).

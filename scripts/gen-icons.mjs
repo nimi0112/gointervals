@@ -19,7 +19,7 @@ const inner = svg
 const offset = (64 - 64 * SAFE) / 2;
 const maskableSvg =
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">` +
-  `<rect width="64" height="64" fill="#ffffff"/>` +
+  `<rect width="64" height="64" fill="#F7F8F5"/>` +
   `<g transform="translate(${offset} ${offset}) scale(${SAFE})">${inner}</g>` +
   `</svg>`;
 

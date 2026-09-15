@@ -1,2 +1,9 @@
-# Old countdown-based meditation page moved to the dedicated meditation timer.
-/timer/meditation-timer /meditation 301
+# Removed timers. Specific rules first; Cloudflare Pages evaluates top to bottom.
+/stopwatch                                  /interval     301
+/timer                                      /interval     301
+/timer/meditation-timer                     /meditation   301
+/timer/nap-timer                            /meditation   301
+/timer/study-timer                          /pomodoro     301
+/timer/25-minutes                           /pomodoro     301
+/timer/*                                    /interval     301
+/blog/meditation-timer-with-interval-bells  /blog/meditation-timer-interval-bells  301

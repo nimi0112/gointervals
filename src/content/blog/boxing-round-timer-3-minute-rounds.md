@@ -55,7 +55,7 @@ Audio cues are the whole interface. You will not be looking at a screen during a
 
 The screen stays awake with the Screen Wake Lock API, with a silent video fallback on older browsers, so the timer does not go dark on round four. Timing runs off timestamps, so if the phone does sleep, the round count is still correct when it wakes.
 
-Keyboard shortcuts if the laptop is closer than the phone: Space to start and pause, R to reset, Esc to leave fullscreen.
+Keyboard shortcuts if the laptop is closer than the phone: Space to start and pause, R to reset, Esc to stop.
 
 ## Adjusting the numbers
 
