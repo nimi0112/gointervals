@@ -1,7 +1,7 @@
 ---
 import '@/styles/base.css';
 import Head from '@/components/Head.astro';
-import Nav from '@/components/Nav.astro';
+import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import Analytics from '@/components/Analytics.astro';
 import { webApplication } from '@/lib/seo';
@@ -15,8 +15,10 @@ interface Props {
   publishedTime?: string;
   modifiedTime?: string;
   noindex?: boolean;
+  /** timer pages put the digits first and render no site header */
+  header?: boolean;
 }
-const { jsonLd = [], ...head } = Astro.props;
+const { jsonLd = [], header = true, ...head } = Astro.props;
 ---
 
 <html lang="en">
@@ -25,10 +27,8 @@ const { jsonLd = [], ...head } = Astro.props;
     <Analytics />
   </head>
   <body>
-    <a class="skip" href="#main">
-      Skip to content
-    </a>
-    <Nav />
+    <a class="skip" href="#main">Skip to content</a>
+    {header && <Header />}
     <slot />
     <Footer />
     <script is:inline>
@@ -37,30 +37,74 @@ const { jsonLd = [], ...head } = Astro.props;
       // the whole page view. The island reads window.__giInstallEvent on mount
       // and also listens for the replayed event if it arrives later.
       window.__giInstallEvent = null;
+      window.__giSessionActive = false;
       window.addEventListener('beforeinstallprompt', function (e) {
         e.preventDefault();
         window.__giInstallEvent = e;
         window.dispatchEvent(new CustomEvent('gi:installable'));
       });
 
+      // Service worker: never let an update interrupt a running timer. A new
+      // worker waits until the island says the session is idle, then activates.
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
-          navigator.serviceWorker.register('/sw.js').catch(function () {});
+          navigator.serviceWorker
+            .register('/sw.js')
+            .then(function (reg) {
+              function activate() {
+                if (reg.waiting) reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+              }
+              function whenIdle() {
+                if (!window.__giSessionActive) activate();
+                else window.addEventListener('gi:session-idle', activate, { once: true });
+              }
+              if (reg.waiting) whenIdle();
+              reg.addEventListener('updatefound', function () {
+                var w = reg.installing;
+                if (!w) return;
+                w.addEventListener('statechange', function () {
+                  if (w.state === 'installed' && navigator.serviceWorker.controller) whenIdle();
+                });
+              });
+            })
+            .catch(function () {});
         });
       }
-      // Report once per session when we are running as an installed app, so the
-      // install funnel has an end: prompt shown -> installed -> actually used.
+
+      function send(name, params) {
+        try {
+          if (window.gtag) window.gtag('event', name, params);
+        } catch {
+          /* never break the page for a metric */
+        }
+      }
+      // Report once per session when we are running as an installed app.
       try {
-        const ios = window.navigator.standalone === true;
-        const standalone = window.matchMedia('(display-mode: standalone)').matches || ios;
+        var ios = window.navigator.standalone === true;
+        var standalone = window.matchMedia('(display-mode: standalone)').matches || ios;
         if (standalone && !sessionStorage.getItem('gi:launched')) {
           sessionStorage.setItem('gi:launched', '1');
-          if (window.gtag) {
-            window.gtag('event', 'pwa_launch', { platform: ios ? 'ios' : 'native' });
-          }
+          send('pwa_launch', { platform: ios ? 'ios' : 'native' });
         }
       } catch {
-        /* private mode: never break the page for a metric */
+        /* private mode */
+      }
+      // Outbound links, on every page.
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+        if (!a) return;
+        if (a.origin && a.origin !== location.origin) send('outbound_click', { href: a.href });
+      });
+      // Articles: a read is the end of the body scrolled into view.
+      var end = document.querySelector('[data-read-end]');
+      if (end && 'IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (entries.some(function (x) { return x.isIntersecting; })) {
+            io.disconnect();
+            send('blog_read', { slug: end.getAttribute('data-read-end') });
+          }
+        });
+        io.observe(end);
       }
     </script>
   </body>

@@ -1,15 +1,13 @@
 ---
 interface Props {
-  num?: string;
   title: string;
   id?: string;
   flush?: boolean;
 }
-const { num, title, id, flush = false } = Astro.props;
+const { title, id, flush = false } = Astro.props;
 ---
 
 <section class:list={['section', { 'section--flush': flush }]} id={id}>
-  {num && <p class="section__num">{num}</p>}
   <h2>{title}</h2>
   <div class="prose">
     <slot />

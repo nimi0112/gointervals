@@ -1,0 +1,76 @@
+---
+/** Content-page shell header: wordmark, Timers, About. Timer pages do not render it. */
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const timersCurrent = path === '/';
+const aboutCurrent = path === '/about';
+---
+
+<header class="hdr">
+  <div class="wrap hdr__inner">
+    <a class="hdr__brand" href="/" aria-label="gointervals home">gointervals</a>
+    <nav class="hdr__nav" aria-label="Site">
+      <a href="/" aria-current={timersCurrent ? 'page' : undefined}>Timers</a>
+      <a href="/about" aria-current={aboutCurrent ? 'page' : undefined}>About</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .hdr {
+    border-bottom: 1px solid var(--line);
+  }
+  .hdr__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    min-height: 64px;
+  }
+  .hdr__brand {
+    flex: 1;
+    font-size: 1.3125rem;
+    line-height: 1.35;
+    color: var(--accent);
+    text-decoration: none;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .hdr__nav {
+    display: flex;
+    gap: var(--sp-3);
+  }
+  .hdr__nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 44px;
+    padding-inline: var(--sp-2);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: var(--fs-small);
+    border-bottom: 2px solid transparent;
+  }
+  .hdr__nav a:hover {
+    color: var(--accent);
+  }
+  .hdr__nav a[aria-current='page'] {
+    border-bottom-color: var(--accent);
+  }
+  @media (min-width: 720px) {
+    .hdr__inner {
+      min-height: 80px;
+      gap: var(--sp-6);
+    }
+    .hdr__brand {
+      font-size: 1.5rem;
+    }
+    .hdr__nav {
+      gap: var(--sp-6);
+    }
+    .hdr__nav a {
+      font-size: 0.9375rem;
+      min-width: 76px;
+    }
+  }
+</style>
