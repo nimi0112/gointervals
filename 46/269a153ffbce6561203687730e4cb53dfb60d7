@@ -1,0 +1,23 @@
+PLAN.md
+  s_073c48a871cfe8::t_977c9248c10c51 113-114
+package.json
+  s_073c48a871cfe8::t_58c78d0df62eae 37-38
+package-lock.json
+  s_073c48a871cfe8::t_4f2419bdbacbb2 24-25,779-809,963-966,968,970,974-989,7457-7458
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "46269a153ffbce6561203687730e4cb53dfb60d7",
+  "prompts": {},
+  "sessions": {
+    "s_073c48a871cfe8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35446b01-851d-46f7-8ef0-95cc6a3e40d4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
