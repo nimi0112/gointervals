@@ -1,0 +1,19 @@
+src/styles/timer.css
+  s_073c48a871cfe8::t_dba2ba4612a1a2 5-6,12,20,52-53,69-70,109,132,137,226,293-294,385
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3a37fb2b90bc013306c104d48be160b89496de4e",
+  "prompts": {},
+  "sessions": {
+    "s_073c48a871cfe8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35446b01-851d-46f7-8ef0-95cc6a3e40d4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
