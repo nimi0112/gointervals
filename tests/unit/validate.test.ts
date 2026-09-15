@@ -75,6 +75,10 @@ describe('coerceStored', () => {
     expect(coerceStored('pomodoro', { ...defaultConfigs.pomodoro, sessions: 13 })).toBeNull();
     expect(coerceStored('pomodoro', defaultConfigs.pomodoro)).toEqual(defaultConfigs.pomodoro);
     expect(coerceStored('meditation', { ...defaultConfigs.meditation, bell: 2400 })).toBeNull();
+    // with interval bells off the retained bell may exceed the session
+    const off = { ...defaultConfigs.meditation, intervalBell: false, total: 300, bell: 600 };
+    expect(coerceStored('meditation', off)).toEqual(off);
+    expect(coerceStored('meditation', { ...off, bell: 20000 })).toBeNull();
     expect(coerceStored('meditation', { ...defaultConfigs.meditation, bell: 90 })).toBeNull();
     expect(
       coerceStored('meditation', { ...defaultConfigs.meditation, startBell: 'yes' }),

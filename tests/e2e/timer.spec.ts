@@ -258,6 +258,42 @@ test.describe('interval', () => {
     expect(await page.evaluate(() => localStorage.getItem('gi:settings:interval'))).toBeNull();
   });
 
+  test('old second-based settings are normalised to whole minutes on load', async ({ page }) => {
+    await page.addInitScript(() => {
+      if (!sessionStorage.getItem('seeded')) {
+        sessionStorage.setItem('seeded', '1');
+        localStorage.setItem(
+          'gi:settings:interval',
+          JSON.stringify({
+            mode: 'interval',
+            prep: 0,
+            work: 90,
+            rest: 30,
+            rounds: 8,
+            sets: 1,
+            setRest: 0,
+          }),
+        );
+      }
+    });
+    await open(page, '/interval');
+    await expect(page.locator('#f-work')).toHaveValue('2');
+    await expect(page.locator('#f-rest')).toHaveValue('1');
+    await expect(digits(page)).toHaveText('02:00');
+    await expect(page.locator('.timer__summary')).toHaveText('8 rounds · 24:00 total');
+    await expect(page.locator('.shellnav__footer')).toHaveText('Works offline. No account needed.');
+  });
+
+  test('the skip link scrolls without asking to stop the session', async ({ page }) => {
+    await interval(page, 1, 1, 8);
+    await start(page).click();
+    await page.clock.fastForward(3_000);
+    await page.locator('a.skip').focus();
+    await page.keyboard.press('Enter');
+    await expect(phase(page)).toHaveText('Work');
+    await expect(page).toHaveURL(/\/interval#main$/);
+  });
+
   test('navigating away during a session asks first, says why, and continues on confirm', async ({
     page,
   }) => {
@@ -526,8 +562,13 @@ test.describe('meditation', () => {
       'Bell every must be 20 minutes or less.',
     );
     await page.fill('#f-bell', '20');
+    // a bell as long as the session is only the end bell
     await expect(page.locator('.timer__summary')).toHaveText(
-      'A soft bell every 20 minutes. One at the end.',
+      'No interval bells. One soft bell at the end.',
+    );
+    await page.fill('#f-bell', '10');
+    await expect(page.locator('.timer__summary')).toHaveText(
+      'A soft bell every 10 minutes. One at the end.',
     );
     await page.fill('#f-total', '181');
     await expect(page.locator('#f-total-error')).toHaveText(
@@ -544,9 +585,19 @@ test.describe('meditation', () => {
     await expect(page.locator('#f-bell')).toHaveValue('10');
     await expect(page.getByRole('button', { name: 'Start', exact: true })).toBeEnabled();
     await expect(digits(page)).toHaveText('05:00');
+    // the retained bell survives a reload with interval bells off
+    await page.reload();
+    await page.locator('astro-island:not([ssr])').first().waitFor();
+    await expect(page.locator('#f-total')).toHaveValue('5');
+    await expect(page.locator('#f-bell')).toHaveValue('10');
+    await expect(page.locator('.shellnav__footer')).toHaveText('Works offline. No account needed.');
     // turning intervals back on shrinks the bell to fit the session
     await page.getByRole('button', { name: 'Interval bell · Off' }).click();
     await expect(page.locator('#f-bell')).toHaveValue('5');
+    await expect(page.locator('.timer__summary')).toHaveText(
+      'No interval bells. One soft bell at the end.',
+    );
+    await page.fill('#f-total', '10');
     await expect(page.locator('.timer__summary')).toHaveText(
       'A soft bell every 5 minutes. One at the end.',
     );

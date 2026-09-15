@@ -52,6 +52,9 @@ describe('summaryFor (the setup summary line on the canvas)', () => {
     expect(summaryFor({ ...base, bell: 60, intervalBell: true, endBell: true })).toBe(
       'A soft bell every minute. One at the end.',
     );
+    expect(summaryFor({ ...base, bell: 1800, intervalBell: true, endBell: true })).toBe(
+      'No interval bells. One soft bell at the end.',
+    );
   });
 });
 

@@ -93,7 +93,7 @@ export const tabatas: ProgrammaticPage[] = [
       '40 seconds work, 20 seconds rest, 8 rounds. An 8 minute Tabata-style HIIT timer with beeps, last-3-second ticks and screen wake lock. Free, no login.',
     intro: [
       'Forty seconds is long enough to do 10 to 15 reps of most things with decent form, and 20 seconds is long enough to walk to the next station. That is why 40/20 is the default in a lot of group classes: it works as a circuit, not just as a sprint.',
-      'Eight rounds gives you eight minutes. Run it twice with a two-minute break between and you have a proper 18 minute session. The interval timer can do that with sets if you would rather not restart.',
+      'Eight rounds gives you eight minutes. Run it twice with a two-minute break between and you have a proper 18 minute session. Press Run again when the first block finishes; the two minute break is yours to time.',
       'The beeps are different for work and rest so you do not need to look at the screen. A rising pair means go, a falling pair means stop.',
     ],
     uses: [
@@ -110,7 +110,7 @@ export const tabatas: ProgrammaticPage[] = [
       },
       {
         q: 'Can I run two blocks with a break between?',
-        a: 'Yes. Use the interval timer, set 40/20, 8 rounds, 2 sets and a 2 minute rest between sets. This page is the single-block version.',
+        a: 'Yes. Run this page twice with a two minute break between, or set Rounds to 16 on the interval timer for one long block with no gap.',
       },
       {
         q: 'Does the timer beep at the halfway point?',
@@ -187,7 +187,7 @@ export const tabatas: ProgrammaticPage[] = [
       },
       {
         q: 'Can I add a longer rest halfway?',
-        a: 'Use the interval timer with 2 sets of 3 rounds and a rest between sets. This page runs one continuous block.',
+        a: 'Run this page twice with a breather in between, or set Rounds to 6 on the interval timer for one continuous block.',
       },
     ],
     related: ['/tabata/45-15-10', '/interval/running-intervals-1-1', '/interval', '/emom'],
@@ -221,7 +221,7 @@ export const tabatas: ProgrammaticPage[] = [
       },
       {
         q: 'Should I do several blocks of four instead?',
-        a: 'That is a different workout. Four rounds, rest a couple of minutes, four more rounds gives you higher quality per round and less accumulated fatigue. Use the interval timer with 2 sets if you want the rest managed.',
+        a: 'That is a different workout. Four rounds, rest a couple of minutes, four more rounds gives you higher quality per round and less accumulated fatigue. Run this page twice and take the break between.',
       },
     ],
     related: [
@@ -361,7 +361,7 @@ export const tabatas: ProgrammaticPage[] = [
     intro: [
       'Eight stations, 45 seconds each, 15 seconds to move. Eight minutes on the nose, which makes it the shortest circuit that still gets round a reasonable set of movements without repeating any of them.',
       'Fifteen seconds is a transition, not a break, so lay the stations out in a line and put nothing that needs setting up in the middle of the round. Alternate push and pull, upper and lower, so the limiting factor is your lungs rather than one tired muscle group.',
-      'Eight rounds of 45 seconds is six minutes of actual work. Run the block twice with two minutes between for a session that stands on its own; the interval timer handles that with sets if you would rather not restart the page.',
+      'Eight rounds of 45 seconds is six minutes of actual work. Run the block twice with two minutes between for a session that stands on its own; Run again starts the second block as soon as you are ready.',
     ],
     uses: [
       'Eight-station circuits, one movement per round',

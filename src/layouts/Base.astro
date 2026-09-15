@@ -60,13 +60,17 @@ const { jsonLd = [], header = true, ...head } = Astro.props;
                 if (!window.__giSessionActive) activate();
                 else window.addEventListener('gi:session-idle', activate, { once: true });
               }
-              if (reg.waiting) whenIdle();
-              reg.addEventListener('updatefound', function () {
-                const w = reg.installing;
-                if (!w) return;
+              function watch(w) {
                 w.addEventListener('statechange', function () {
                   if (w.state === 'installed' && navigator.serviceWorker.controller) whenIdle();
                 });
+              }
+              if (reg.waiting) whenIdle();
+              // The update check can finish before register() settles; then the new worker is
+              // already installing and updatefound has already fired.
+              if (reg.installing) watch(reg.installing);
+              reg.addEventListener('updatefound', function () {
+                if (reg.installing) watch(reg.installing);
               });
             })
             .catch(function () {});

@@ -137,9 +137,11 @@ export function coerceStored(mode: Mode, raw: unknown): ModeConfig | null {
       const total = o['total'];
       const bell = o['bell'];
       if (!isInt(total, L.total.min * 60, L.total.max * 60) || total % 60 !== 0) return null;
-      if (!isInt(bell, 60, total) || bell % 60 !== 0) return null;
       if (!isBool(o['intervalBell']) || !isBool(o['startBell']) || !isBool(o['endBell']))
         return null;
+      // A switched-off interval bell keeps its value, which may be longer than the session.
+      const bellMax = o['intervalBell'] ? total : L.bell.max * 60;
+      if (!isInt(bell, 60, bellMax) || bell % 60 !== 0) return null;
       const cfg: MeditationConfig = {
         mode,
         total,

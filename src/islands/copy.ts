@@ -3,7 +3,7 @@
  * Pure, so the canvas copy can be checked in unit tests without a browser.
  */
 import type { ModeConfig, Segment, Phase } from '@/engine/schedule';
-import { meditationBellCount } from '@/engine/schedule';
+import { meditationBellCount, totalMs } from '@/engine/schedule';
 import type { TimerSnapshot } from '@/engine/timer';
 import { formatClock } from '@/engine/format';
 import { summaryFor } from '@/engine/describe';
@@ -125,8 +125,8 @@ function guidanceFor(seg: Segment | null): string | null {
   return null;
 }
 
-export function doneCopy(cfg: ModeConfig): DoneCopy {
-  const total = `${formatClock(totalOf(cfg))} total`;
+export function doneCopy(cfg: ModeConfig, segments: readonly Segment[]): DoneCopy {
+  const total = `${formatClock(totalMs(segments))} total`;
   const session = { complete: 'Session complete', total, guidance: 'That’s the session.' };
   switch (cfg.mode) {
     case 'interval':
@@ -134,7 +134,7 @@ export function doneCopy(cfg: ModeConfig): DoneCopy {
     case 'tabata':
       return { context: 'Tabata · 8 of 8 rounds complete', ...session };
     case 'emom': {
-      const n = Math.ceil((cfg.minutes * 60) / cfg.interval);
+      const n = segments.length;
       const unit = cfg.interval === 60 ? 'minutes' : 'intervals';
       return { context: `EMOM · ${n} of ${n} ${unit} complete`, ...session };
     }
@@ -147,26 +147,6 @@ export function doneCopy(cfg: ModeConfig): DoneCopy {
       };
     case 'meditation':
       return { context: `${Math.round(cfg.total / 60)} minutes complete`, ...session };
-  }
-}
-
-function totalOf(cfg: ModeConfig): number {
-  switch (cfg.mode) {
-    case 'interval':
-      return (
-        (cfg.prep + (cfg.work + cfg.rest) * cfg.rounds * cfg.sets + cfg.setRest * (cfg.sets - 1)) *
-        1000
-      );
-    case 'tabata':
-      return 240_000;
-    case 'emom':
-      return cfg.minutes * 60_000;
-    case 'pomodoro':
-      return (
-        (cfg.focus * cfg.sessions + cfg.shortBreak * (cfg.sessions - 1) + cfg.longBreak) * 60_000
-      );
-    case 'meditation':
-      return cfg.total * 1000;
   }
 }
 
@@ -194,7 +174,7 @@ export function screenCopy(
   }
 
   if (snap.status === 'done') {
-    const d = doneCopy(cfg);
+    const d = doneCopy(cfg, segments);
     return {
       digits: '00:00',
       phase: { icon: 'check', text: 'Done' },
@@ -218,7 +198,7 @@ export function screenCopy(
     if (opts.muted) {
       next = 'Bells muted';
       left = leftText;
-    } else if (!cfg.intervalBell) {
+    } else if (!cfg.intervalBell || cfg.bell >= cfg.total) {
       next = 'No interval bells';
       left = leftText;
     } else if (lastSegment && !cfg.endBell) {
@@ -255,5 +235,3 @@ export function screenCopy(
     footer: `${short} · Screen stays on while running`,
   };
 }
-
-export const timerShort = (mode: ModeConfig['mode']): string => SHORT[mode];

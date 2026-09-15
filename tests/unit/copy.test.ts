@@ -152,6 +152,14 @@ describe('screenCopy for meditation', () => {
     expect(c.left).toBe('1 of 2 interval bells');
   });
 
+  it('a bell interval equal to the session is only the end bell', () => {
+    const same: ModeConfig = { ...cfg, bell: 1800 };
+    const s = buildSchedule(same);
+    const c = screenCopy(same, at(same, 60).snap, s, { muted: false });
+    expect(c.next).toBe('No interval bells');
+    expect(c.left).toBe('29:00 left');
+  });
+
   it('muted and interval-off variants', () => {
     const { snap } = at(cfg, 11 * 60 + 18);
     expect(screenCopy(cfg, snap, segments, { muted: true }).next).toBe('Bells muted');
@@ -172,25 +180,26 @@ describe('screenCopy for meditation', () => {
 });
 
 describe('doneCopy', () => {
+  const done = (cfg: ModeConfig) => doneCopy(cfg, buildSchedule(cfg));
   it('per mode', () => {
-    expect(doneCopy(interval)).toEqual({
+    expect(done(interval)).toEqual({
       context: '8 of 8 rounds complete',
       complete: 'Session complete',
       total: '08:00 total',
       guidance: 'That’s the session.',
     });
-    expect(doneCopy(defaultConfigs.tabata).context).toBe('Tabata · 8 of 8 rounds complete');
-    expect(doneCopy(defaultConfigs.emom).context).toBe('EMOM · 10 of 10 minutes complete');
-    expect(doneCopy({ mode: 'emom', minutes: 3, interval: 90 }).context).toBe(
+    expect(done(defaultConfigs.tabata).context).toBe('Tabata · 8 of 8 rounds complete');
+    expect(done(defaultConfigs.emom).context).toBe('EMOM · 10 of 10 minutes complete');
+    expect(done({ mode: 'emom', minutes: 3, interval: 90 }).context).toBe(
       'EMOM · 2 of 2 intervals complete',
     );
-    expect(doneCopy(defaultConfigs.pomodoro)).toEqual({
+    expect(done(defaultConfigs.pomodoro)).toEqual({
       context: 'Pomodoro · 4 of 4 focus sessions done',
       complete: 'Cycle complete',
       total: '130:00 total',
       guidance: 'That’s the cycle.',
     });
-    expect(doneCopy(defaultConfigs.meditation).context).toBe('30 minutes complete');
+    expect(done(defaultConfigs.meditation).context).toBe('30 minutes complete');
   });
 });
 

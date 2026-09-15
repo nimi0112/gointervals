@@ -25,8 +25,10 @@ export function summaryFor(cfg: ModeConfig): string {
     case 'pomodoro':
       return `${cfg.focus} / ${cfg.shortBreak} / ${cfg.longBreak} / ${cfg.sessions} · ${Math.round(configSeconds(cfg) / 60)} minutes total`;
     case 'meditation': {
-      if (!cfg.intervalBell && !cfg.endBell) return 'No bells. Just the clock.';
-      if (!cfg.intervalBell) return 'No interval bells. One soft bell at the end.';
+      // a bell interval as long as the session is only the end bell
+      const intervals = cfg.intervalBell && cfg.bell < cfg.total;
+      if (!intervals && !cfg.endBell) return 'No bells. Just the clock.';
+      if (!intervals) return 'No interval bells. One soft bell at the end.';
       return `${bellEvery(cfg)}. ${cfg.endBell ? 'One' : 'None'} at the end.`;
     }
   }

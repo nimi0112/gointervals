@@ -155,7 +155,7 @@ export const beeps: ProgrammaticPage[] = [
       },
       {
         q: 'Can I read it from across the room?',
-        a: 'The digits are the largest thing on the page and scale with the screen, so a laptop on a bench is readable from the other side of a gym. Space still starts and pauses, and Esc leaves fullscreen.',
+        a: 'The digits are the largest thing on the page and scale with the screen, so a laptop on a bench is readable from the other side of a gym. Space still starts and pauses, and Esc asks before it stops.',
       },
     ],
     related: ['/interval/beep-every-2-minutes', '/interval/beep-every-5-minutes', '/interval'],
@@ -194,7 +194,7 @@ export const beeps: ProgrammaticPage[] = [
       },
       {
         q: 'Do I need to leave it running to keep my settings?',
-        a: 'No. Changed values and saved presets live in your browser, so the page opens with your numbers next time. There is no account and nothing is sent anywhere.',
+        a: 'No. This page always opens with these numbers; the main interval timer keeps your own settings in your browser. There is no account and nothing is sent anywhere.',
       },
     ],
     related: [

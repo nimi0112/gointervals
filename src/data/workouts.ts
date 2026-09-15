@@ -10,7 +10,7 @@ export const workouts: ProgrammaticPage[] = [
     intro: [
       'The 7 minute workout is the 2013 ACSM circuit by Chris Jordan: 12 bodyweight exercises, 30 seconds each, 10 seconds to move between them. Jumping jacks, wall sit, push-ups, crunches, step-ups, squats, triceps dips, plank, high knees, lunges, push-up with rotation, side plank. In that order, on purpose, so big muscle groups alternate.',
       'This timer is set to exactly that: 12 rounds of 30 on, 10 off, straight in from Start. It beeps when a station ends and ticks through the last three seconds so you can set up for the next one.',
-      'The paper suggests repeating the circuit two or three times if you have the time. Change Sets to 2 or 3 in the settings and add a minute of rest between them.',
+      'The paper suggests repeating the circuit two or three times if you have the time. Press Run again when it finishes, or set Rounds to 24 or 36 on the interval timer for one continuous session.',
     ],
     uses: [
       'Hotel-room workouts with a chair and a wall',
@@ -47,7 +47,7 @@ export const workouts: ProgrammaticPage[] = [
       'Boxing round timer preset to 3 minute rounds with 1 minute rest, 12 rounds, ticks before each bell. Bell-style beeps, screen stays on, free.',
     intro: [
       'Three minutes on, one minute off is the professional standard: 12 rounds for a title fight, fewer for club shows. Amateurs box 3 x 3 minutes. This timer is set to 12 rounds and you can stop whenever you like.',
-      'Use it for bag work, pads, shadow boxing or sparring. The work beep is a rising pair, the rest beep is a falling pair, and the last three seconds of every round tick. Turn on fullscreen and prop the phone against the mirror.',
+      'Use it for bag work, pads, shadow boxing or sparring. The work beep is a rising pair, the rest beep is a falling pair, and the last three seconds of every round tick. Prop the phone against the mirror; the digits are the biggest thing on the page.',
       'For a 10 second warning before the bell, the way gyms use a clapper, that is on the list. For now the last-3-second ticks do the job.',
     ],
     uses: [
@@ -64,7 +64,7 @@ export const workouts: ProgrammaticPage[] = [
       },
       {
         q: 'Can I do 2 minute rounds?',
-        a: 'Yes. Change Work to 2:00. Women’s pro boxing and many amateur formats use 2 minute rounds with 1 minute rest.',
+        a: 'Yes. Set Work to 120 seconds. Women’s pro boxing and many amateur formats use 2 minute rounds with 1 minute rest.',
       },
       {
         q: 'Does it sound like a bell?',

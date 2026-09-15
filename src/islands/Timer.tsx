@@ -18,6 +18,7 @@ import {
   resolveDraft,
   stepField,
   clampBell,
+  normaliseToMinutes,
   FIELDS,
   PRESET_FIELDS,
   type Draft,
@@ -122,8 +123,11 @@ export default function Timer({ config: initial, fixed = false }: Props) {
     if (raw === null) return;
     const stored = coerceStored(mode, raw);
     if (stored) {
-      setConfigState(stored);
-      setDraft(draftFrom(stored, (fixed ? PRESET_FIELDS : FIELDS)[mode]));
+      // settings saved before the fields moved to minutes may hold odd seconds
+      const cfg = normaliseToMinutes(stored);
+      if (cfg !== stored) storage.set(KEYS.settings(mode), cfg);
+      setConfigState(cfg);
+      setDraft(draftFrom(cfg, (fixed ? PRESET_FIELDS : FIELDS)[mode]));
     } else {
       storage.remove(KEYS.settings(mode));
       setNotice('Saved settings were reset to the defaults.');
@@ -381,30 +385,42 @@ export default function Timer({ config: initial, fixed = false }: Props) {
     }
   };
 
-  // keyboard
-  useEffect(() =>
-    bindKeys({
-      toggle: () => {
-        if (confirm || status === 'done') return;
-        primary();
-      },
-      reset: () => {
-        if (confirm) return;
-        if (active) openConfirm('reset');
-        else if (status === 'done') {
-          engine.reset();
-          track('timer_change_settings', { mode });
-        } else {
-          // setup: restore the preview to the last valid settings
-          setDraft(draftFrom(config, defs));
-          setErrors({});
-        }
-      },
-      escape: () => {
-        if (confirm) keepGoing();
-        else if (active) openConfirm('stop');
-      },
-    }),
+  // keyboard: bound once; the handlers read the latest state through a ref
+  const keysRef = useRef({
+    toggle: () => {},
+    reset: () => {},
+    escape: () => {},
+  });
+  keysRef.current = {
+    toggle: () => {
+      if (confirm || status === 'done') return;
+      primary();
+    },
+    reset: () => {
+      if (confirm) return;
+      if (active) openConfirm('reset');
+      else if (status === 'done') {
+        engine.reset();
+        track('timer_change_settings', { mode });
+      } else {
+        // setup: restore the preview to the last valid settings
+        setDraft(draftFrom(config, defs));
+        setErrors({});
+      }
+    },
+    escape: () => {
+      if (confirm) keepGoing();
+      else if (active) openConfirm('stop');
+    },
+  };
+  useEffect(
+    () =>
+      bindKeys({
+        toggle: () => keysRef.current.toggle(),
+        reset: () => keysRef.current.reset(),
+        escape: () => keysRef.current.escape(),
+      }),
+    [],
   );
 
   const toggleSound = (): void => {
@@ -439,6 +455,9 @@ export default function Timer({ config: initial, fixed = false }: Props) {
       const a = (e.target as Element | null)?.closest?.('a[href]') as HTMLAnchorElement | null;
       if (!a || a.closest('.timer') || a.target === '_blank' || a.hasAttribute('download')) return;
       if (a.origin !== window.location.origin) return;
+      // in-page anchors (the skip link) scroll, they do not leave
+      if (a.hash && a.pathname === window.location.pathname && a.search === window.location.search)
+        return;
       if (!navigateRef.current(a.getAttribute('href') ?? a.href)) e.preventDefault();
     };
     document.addEventListener('click', onClick);

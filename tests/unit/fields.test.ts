@@ -2,6 +2,7 @@ import {
   FIELDS,
   PRESET_FIELDS,
   clampBell,
+  normaliseToMinutes,
   draftFrom,
   resolveDraft,
   stepField,
@@ -82,6 +83,18 @@ describe('fields', () => {
     });
     const kept = clampBell({ ...off, total: 1200, bell: 600 });
     expect(kept.mode === 'meditation' && kept.bell).toBe(600);
+  });
+
+  it('normaliseToMinutes snaps old second values to whole minutes, never below one minute of work', () => {
+    const old = { ...defaultConfigs.interval, work: 90, rest: 30 };
+    expect(normaliseToMinutes(old)).toEqual({ ...old, work: 120, rest: 60 });
+    expect(normaliseToMinutes({ ...old, work: 20, rest: 10 })).toEqual({
+      ...old,
+      work: 60,
+      rest: 0,
+    });
+    expect(normaliseToMinutes(defaultConfigs.interval)).toBe(defaultConfigs.interval);
+    expect(normaliseToMinutes(defaultConfigs.emom)).toBe(defaultConfigs.emom);
   });
 
   it('meditation bell cannot exceed the session length', () => {

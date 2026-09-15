@@ -116,6 +116,18 @@ export function stepField(
   return String(next);
 }
 
+/**
+ * Older saved interval settings hold any number of seconds; the main page edits whole minutes.
+ * Snap work (at least one minute) and rest to the nearest minute so the fields, the summary and
+ * the schedule agree. Preset pages never call this.
+ */
+export function normaliseToMinutes(cfg: ModeConfig): ModeConfig {
+  if (cfg.mode !== 'interval') return cfg;
+  const work = Math.max(60, Math.round(cfg.work / 60) * 60);
+  const rest = Math.round(cfg.rest / 60) * 60;
+  return work === cfg.work && rest === cfg.rest ? cfg : { ...cfg, work, rest };
+}
+
 /** When interval bells come back on, a retained bell longer than the session shrinks to fit. */
 export function clampBell(cfg: ModeConfig): ModeConfig {
   if (cfg.mode !== 'meditation' || cfg.bell <= cfg.total) return cfg;

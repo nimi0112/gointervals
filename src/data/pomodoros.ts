@@ -89,7 +89,7 @@ export const pomodoros: ProgrammaticPage[] = [
       },
       {
         q: 'Does anything get saved?',
-        a: 'Only in your browser. Adjusted values and any preset you save stay on the device, there is no account, and after the first visit the page works offline.',
+        a: 'Only in your browser. Adjusted values on the main Pomodoro timer stay on the device, there is no account, and after the first visit the page works offline.',
       },
     ],
     related: [
