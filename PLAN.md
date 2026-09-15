@@ -2,8 +2,7 @@
 
 Static Astro site, deployed to Cloudflare Pages. Five free browser timers, no login, no server.
 This document is the contract for the build and the record of why things are the way they are.
-The design source of truth is `goIntervals.pen`; the redesign spec is
-`docs/superpowers/specs/2026-09-15-gointervals-redesign-design.md`.
+The design source of truth is `goIntervals.pen`, kept locally and read through Pencil.
 
 ## 1. Routes
 

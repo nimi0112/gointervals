@@ -13,7 +13,15 @@ import { bindKeys } from '@/platform/keyboard';
 import { track, type EventParams } from '@/platform/analytics';
 import { useEngine } from './useEngine';
 import { screenCopy } from './copy';
-import { draftFrom, resolveDraft, stepField, FIELDS, PRESET_FIELDS, type Draft } from './fields';
+import {
+  draftFrom,
+  resolveDraft,
+  stepField,
+  clampBell,
+  FIELDS,
+  PRESET_FIELDS,
+  type Draft,
+} from './fields';
 import { Icon } from './parts/Icon';
 import { Settings } from './parts/Settings';
 import { Progress } from './parts/Progress';
@@ -142,7 +150,7 @@ export default function Timer({ config: initial, fixed = false }: Props) {
     onText(key, stepField(config, draft, key, delta, defs));
   const onToggle = (key: 'intervalBell' | 'startBell' | 'endBell'): void => {
     if (config.mode !== 'meditation') return;
-    const next = { ...config, [key]: !config[key] };
+    const next = clampBell({ ...config, [key]: !config[key] });
     commit(next);
     if (key === 'intervalBell') setDraft(draftFrom(next, defs));
   };
@@ -419,6 +427,23 @@ export default function Timer({ config: initial, fixed = false }: Props) {
     if (!confirm) openConfirm('leave', href);
     return false;
   };
+
+  // Links outside the island (the guide, the site footer) get the same question while a
+  // session is running or paused. ShellNav handles its own links.
+  const navigateRef = useRef(onNavigate);
+  navigateRef.current = onNavigate;
+  useEffect(() => {
+    const onClick = (e: MouseEvent): void => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)
+        return;
+      const a = (e.target as Element | null)?.closest?.('a[href]') as HTMLAnchorElement | null;
+      if (!a || a.closest('.timer') || a.target === '_blank' || a.hasAttribute('download')) return;
+      if (a.origin !== window.location.origin) return;
+      if (!navigateRef.current(a.getAttribute('href') ?? a.href)) e.preventDefault();
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, []);
 
   const stopLabel = mode === 'interval' || mode === 'meditation' ? 'End session' : 'Stop';
   let primaryLabel: string;

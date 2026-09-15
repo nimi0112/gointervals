@@ -86,6 +86,8 @@ export function resolveDraft(
   const errors: Draft = {};
   const values: Record<string, number> = {};
   for (const d of defs) {
+    // A switched-off interval bell keeps its stored value and is not validated.
+    if (base.mode === 'meditation' && !base.intervalBell && d.key === 'bell') continue;
     const r = parseField(draft[d.key] ?? '', d.limit, maxFor(base, d.key, draft));
     if (r.ok) values[d.key] = r.value * d.scale;
     else errors[d.key] = r.error;
@@ -112,6 +114,12 @@ export function stepField(
   const from = current.ok ? current.value : fieldValue(base, def);
   const next = Math.min(max, Math.max(def.limit.min, from + delta));
   return String(next);
+}
+
+/** When interval bells come back on, a retained bell longer than the session shrinks to fit. */
+export function clampBell(cfg: ModeConfig): ModeConfig {
+  if (cfg.mode !== 'meditation' || cfg.bell <= cfg.total) return cfg;
+  return { ...cfg, bell: cfg.total };
 }
 
 /** Which stepper buttons are at their bound, for aria-disabled. */

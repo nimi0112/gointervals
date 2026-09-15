@@ -9,3 +9,8 @@ test-results/
 .lighthouse/
 .DS_Store
 npm-debug.log*
+
+# Working documents and design sources stay local. See AGENTS.md.
+docs/superpowers/
+.claude/
+*.pen

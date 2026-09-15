@@ -187,6 +187,36 @@ test.describe('interval', () => {
     );
   });
 
+  test('holding a stepper repeats after 400ms and keeps counting', async ({ page }) => {
+    await interval(page, 40, 1, 8);
+    const plus = page.getByRole('button', { name: 'Increase Rounds' });
+    const box = await plus.boundingBox();
+    if (!box) throw new Error('no stepper');
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await page.mouse.down();
+    await expect(page.locator('#f-rounds')).toHaveValue('9');
+    await page.clock.runFor(400 + 100 * 3 + 20);
+    await page.mouse.up();
+    await expect(page.locator('#f-rounds')).toHaveValue('12');
+    await page.clock.runFor(1000);
+    await expect(page.locator('#f-rounds')).toHaveValue('12');
+  });
+
+  test('links outside the island ask first during a session too', async ({ page }) => {
+    await interval(page, 1, 1, 8);
+    await start(page).click();
+    await page.clock.fastForward(3_000);
+    await page.locator('footer a[href="/about"]').click();
+    await expect(page).toHaveURL(/\/interval$/);
+    await expect(phase(page)).toHaveText('Stop session?');
+    await page.getByRole('button', { name: 'Keep going' }).click();
+    await expect(phase(page)).toHaveText('Work');
+    await page.locator('.guide a[href="/tabata"]').first().click();
+    await expect(phase(page)).toHaveText('Stop session?');
+    await page.getByRole('button', { name: 'Stop session' }).click();
+    await expect(page).toHaveURL(/\/tabata$/);
+  });
+
   test('keys are ignored while typing in a field', async ({ page }) => {
     await interval(page, 40, 1, 8);
     await page.locator('#f-work').focus();
@@ -502,6 +532,23 @@ test.describe('meditation', () => {
     await page.fill('#f-total', '181');
     await expect(page.locator('#f-total-error')).toHaveText(
       'Session length must be 180 minutes or less.',
+    );
+  });
+
+  test('with interval bells off, a session shorter than the retained bell still starts', async ({
+    page,
+  }) => {
+    await open(page, '/meditation');
+    await page.getByRole('button', { name: 'Interval bell · On' }).click();
+    await page.fill('#f-total', '5');
+    await expect(page.locator('#f-bell')).toHaveValue('10');
+    await expect(page.getByRole('button', { name: 'Start', exact: true })).toBeEnabled();
+    await expect(digits(page)).toHaveText('05:00');
+    // turning intervals back on shrinks the bell to fit the session
+    await page.getByRole('button', { name: 'Interval bell · Off' }).click();
+    await expect(page.locator('#f-bell')).toHaveValue('5');
+    await expect(page.locator('.timer__summary')).toHaveText(
+      'A soft bell every 5 minutes. One at the end.',
     );
   });
 

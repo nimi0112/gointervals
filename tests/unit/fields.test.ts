@@ -1,4 +1,11 @@
-import { FIELDS, PRESET_FIELDS, draftFrom, resolveDraft, stepField } from '@/islands/fields';
+import {
+  FIELDS,
+  PRESET_FIELDS,
+  clampBell,
+  draftFrom,
+  resolveDraft,
+  stepField,
+} from '@/islands/fields';
 import { defaultConfigs } from '@/engine/presets';
 
 describe('fields', () => {
@@ -61,6 +68,20 @@ describe('fields', () => {
       ok: false,
       errors: { work: 'Work must be at least 1 minute.', rest: 'Enter a number.' },
     });
+  });
+
+  it('ignores the disabled bell field while interval bells are off, keeping its value', () => {
+    const off = { ...defaultConfigs.meditation, intervalBell: false };
+    const r = resolveDraft(off, { total: '5', bell: '10' });
+    expect(r).toEqual({ ok: true, config: { ...off, total: 300, bell: 600 } });
+    expect(resolveDraft(off, { total: '5', bell: 'junk' }).ok).toBe(true);
+    expect(clampBell({ ...off, total: 300, bell: 600 })).toEqual({
+      ...off,
+      total: 300,
+      bell: 300,
+    });
+    const kept = clampBell({ ...off, total: 1200, bell: 600 });
+    expect(kept.mode === 'meditation' && kept.bell).toBe(600);
   });
 
   it('meditation bell cannot exceed the session length', () => {

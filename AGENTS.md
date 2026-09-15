@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Rules for anyone (human or agent) changing gointervals.com. Read fully before touching code. `PLAN.md` explains why things are the way they are; this file says what to keep. The design source of truth is `goIntervals.pen` (Pencil): read it through the Pencil MCP tools, never with Read or Grep, and never modify it.
+Rules for anyone (human or agent) changing gointervals.com. Read fully before touching code. `PLAN.md` explains why things are the way they are; this file says what to keep. The design source of truth is `goIntervals.pen` (Pencil), kept locally in the repo root and not committed: read it through the Pencil MCP tools, never with Read or Grep, and never modify it.
 
 ## What this is
 
@@ -141,3 +141,4 @@ Dry, direct, short sentences, written by a person who uses the thing. Sentence c
 - Do not count ticks in anything time-related.
 - Do not put anything above the digits on a timer page, or a header on one.
 - Do not bring back the stopwatch, the countdown, laps, fullscreen, presets or the Pomodoro session counter.
+- Do not commit working documents: plans, specs, agent scratch files, screenshots or the `.pen` design file. This is a public repository; `docs/superpowers/`, `.claude/` and `*.pen` are gitignored and stay on your machine. `AGENTS.md` and `PLAN.md` are the only documentation that ships.

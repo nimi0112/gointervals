@@ -25,6 +25,9 @@ const HOLD_EVERY = 100;
  */
 export function Stepper(p: Props) {
   const hold = useRef<{ t: number; i: number }>({ t: 0, i: 0 });
+  // The repeat interval outlives the render it started in; always call the latest handler.
+  const onStepRef = useRef(p.onStep);
+  onStepRef.current = p.onStep;
   const stop = (): void => {
     window.clearTimeout(hold.current.t);
     window.clearInterval(hold.current.i);
@@ -34,10 +37,10 @@ export function Stepper(p: Props) {
 
   const press = (delta: 1 | -1) => (e: PointerEvent) => {
     if (e.button !== 0) return;
-    p.onStep(delta);
+    onStepRef.current(delta);
     stop();
     hold.current.t = window.setTimeout(() => {
-      hold.current.i = window.setInterval(() => p.onStep(delta), HOLD_EVERY);
+      hold.current.i = window.setInterval(() => onStepRef.current(delta), HOLD_EVERY);
     }, HOLD_DELAY);
   };
   const errorId = `${p.id}-error`;
