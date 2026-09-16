@@ -1,0 +1,20 @@
+src/pages/about.astro
+  s_5d77b821fb32ed::t_3deb0730d5cdba 48-50,52-57,121-147
+  s_5d77b821fb32ed::t_7879754ac15ee9 51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d46e2612133fcb9e8fa05bd8bfe89ef37c483971",
+  "prompts": {},
+  "sessions": {
+    "s_5d77b821fb32ed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2413b0ef-124e-44b0-ac4d-77f4ecc36864",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
