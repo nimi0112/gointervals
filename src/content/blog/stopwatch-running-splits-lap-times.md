@@ -1,30 +1,33 @@
 ---
 title: 'Running splits and lap times: what to record and why'
-description: Running splits are about laps, not the total. How to take them, what to record, and how a repeating interval timer keeps the reps honest.
+description: Running splits show how you paced a run, not just the total. How to take them with any watch, what to record, and how an interval timer runs your reps.
 pubDate: 2026-08-28
+updatedDate: 2026-09-25
 tags: [running, how-to]
 timer: '/interval'
 keyword: 'running splits'
 ---
 
-Running splits are the whole point of timing a run, because the total time tells you what happened and the splits tell you why. Anyone can run 5K in 24 minutes. The interesting question is whether that was five even kilometres or a fast first one and four apologies.
+Running splits show how you ran, not just how long it took. Your total time tells you what happened. Your splits tell you why. Two 24-minute 5Ks can look very different inside: five even kilometres, or one fast kilometre followed by four slow ones.
 
-## Split vs lap, since everyone mixes them up
+## Split vs lap: what's the difference?
 
-- **Lap time**: the duration of one segment on its own. Kilometre three took 4:42.
-- **Split time**: the cumulative elapsed time at that point. You crossed 3K at 14:10.
+- **Lap time** is the time for one section on its own. Kilometre three took 4:42.
+- **Split time** is the total time so far at that point. You passed 3K at 14:10.
 
-Most stopwatches show both when you hit the lap key: the running total and the segment. Both matter. Lap times tell you about pacing consistency; splits tell you whether you are on target for a goal time.
+Most running watches show both when you press the lap button. Both are useful. Lap times show how even your pace was. Splits show whether you're on track for a goal time.
 
-Any watch records laps. What a watch does not do is tell you when the next rep starts, which is where a [repeating interval timer](/interval) earns its place: set Work to the rep length, Rest to the recovery, and it beeps for you so you can look up instead of down, which matters on a track where looking down is how you end up in lane four.
+Any watch can record laps. What it won't do is tell you when the next rep starts. That's where a [repeating interval timer](/interval) helps. Set Work to your rep length and Rest to your recovery. It beeps at each change, so you can keep your eyes on the track.
 
-## What to actually record
+## What to record
 
-For a track session, take a lap at every repetition and every recovery. The recovery times are the ones people skip and they are the more honest data: if your 400m repeats are holding at 82 seconds but your jog recoveries have crept from 2:00 to 2:40, you are not holding the session, you are extending it.
+On the track, take a lap for every rep and every recovery. The recoveries are easy to skip, but they tell you a lot.
 
-For a road run, lap every kilometre or mile. For a long run, lap at the halfway point at minimum so you can check whether you negative split.
+Say your 400 m reps hold at 82 seconds. But your jog recoveries creep from 2:00 to 2:40. Then you're not really holding the pace. You're resting longer to keep it.
 
-A session worth recording looks like this:
+On a road run, take a lap every kilometre or mile. On a long run, at least take one at halfway. Then you can see if you ran the second half faster.
+
+Here's a session worth recording:
 
 | Rep | Lap  | Target | Recovery |
 | --- | ---- | ------ | -------- |
@@ -34,32 +37,38 @@ A session worth recording looks like this:
 | 4   | 1:30 | 1:30   | 2:00     |
 | 5   | 1:34 | 1:30   | —        |
 
-Rep 5 tells you the session was one rep too long, or the target was two seconds too fast. Without lap times, that session is just "did 5 x 400, felt hard."
+Rep 5 is the clue. Either the session was one rep too long, or the target was two seconds too fast. Without lap times, all you'd know is that five 400s felt hard.
 
-## Negative splits, and why they are the goal
+## Negative splits: the goal
 
-Running the second half faster than the first is called a negative split, and it is how most distance records have been set. The physiological reason is boring but real: going out too fast early accumulates lactate and burns through glycogen at a rate you cannot sustain, and there is no way to give that back later.
+Running the second half faster than the first is called a negative split. Many distance records have been set this way.
 
-Practically, aim for the first kilometre of a 5K to be 5 to 10 seconds **slower** than your target average, and the last to be 10 to 15 seconds faster. It will feel wrong at the start. It will feel considerably less wrong at 4K.
+The reason is simple. If you start too fast, you use up energy you can't get back later. A steady start leaves you something for the finish.
 
-Check this with the split, not with feel. Feel at kilometre one is a liar and says you are going slowly at every speed.
+For a 5K, try running the first kilometre 5 to 10 seconds **slower** than your target pace. Then aim to run the last one 10 to 15 seconds faster. The start will feel too easy. By 4K, you'll be glad you held back.
+
+Check your pace with your splits, not by feel. Early in a race, almost any pace feels easy.
 
 ## Running the session
 
-Start the watch at the beginning of the warm-up or at the first rep, but pick one and stick to it, because comparing sessions across weeks only works if you measured the same thing.
+Start your watch at the same point each time. That might be the start of your warm-up or your first rep. Just pick one and stick with it, so you can compare sessions week to week.
 
-For the reps themselves, an [interval timer](/interval) with Work set to the target and Rest set to the recovery beeps at every change, and Rest set to 0 gives a plain marker every N seconds. Keyboard shortcuts cover it: Space starts and pauses, R asks to reset, Esc asks to stop. The digits are large enough to read from arm's length on a phone propped against a bag.
+For the reps, set the [interval timer](/interval) with Work as your rep and Rest as your recovery. It beeps at every change. The main page takes whole minutes. For reps in seconds, open a preset page, like the sprint one below, and change the numbers there.
 
-Timing is based on timestamps rather than a ticking counter, so if the phone screen sleeps mid-rep the elapsed time is still correct when it comes back. That is not true of every browser timer and it is an unpleasant thing to discover at rep six.
+On a laptop, Space starts and pauses. During a session, R and Esc ask before they reset or stop. On a phone propped against your bag, the numbers are big enough to read from arm's length.
 
-## Interval work where the clock runs you
+The timer works from timestamps, not a counter. So if your phone screen sleeps mid-rep, the time is still right when it wakes up.
 
-There is a difference between timing yourself and being timed. Splits are for the first. When you want fixed work and rest, so you are not deciding when to start the next rep, use an [interval timer](/interval) instead. [1:1 running intervals](/interval/running-intervals-1-1) and [30 second sprints with 90 seconds rest](/interval/sprint-30-90) are both standard shapes and both preset.
+## Timing yourself vs being timed
 
-The rule of thumb: track repeats at a fixed distance want a watch, because distance is the constant and time is the measurement. Time-based intervals want an interval timer, because time is the constant and the distance is whatever you managed.
+Splits are for timing yourself. Sometimes you'd rather be timed, with fixed work and rest, so you never decide when the next rep starts. That's what an [interval timer](/interval) is for.
 
-## One thing worth doing
+Two common shapes are ready to use: [1:1 running intervals](/interval/running-intervals-1-1) and [30 second sprints with 90 seconds rest](/interval/sprint-30-90).
 
-At the end of a session, write the laps down somewhere that is not the timer. Three months of lap times is a training log. A timer you reset is nothing.
+Here's a simple rule. For reps over a set distance, use a watch. The distance stays the same and the time is what you measure. For reps over a set time, use an interval timer. The time stays the same and the distance is whatever you cover.
+
+## One habit worth keeping
+
+After each session, write your lap times down somewhere safe. A notebook or a notes app is fine. Three months of laps makes a real training log, and it's lovely to look back on.
 
 Try it: [set up a running interval](/interval).

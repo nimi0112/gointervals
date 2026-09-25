@@ -1,27 +1,28 @@
 ---
 title: 'EMOM workouts: what it means and 5 templates to start with'
-description: 'An EMOM workout means every minute on the minute: do the work, rest with what is left. Five templates and how to pick your rep count.'
+description: 'An EMOM workout means every minute on the minute: do your reps, then rest for the rest of the minute. Five easy templates and how to pick your reps.'
 pubDate: 2026-08-24
+updatedDate: 2026-09-25
 tags: [emom, workouts, how-to]
 timer: '/emom'
 keyword: 'EMOM workout'
 ---
 
-An EMOM workout means every minute on the minute: at the top of each minute you do a set amount of work, and whatever time is left is your rest. Finish in 35 seconds, rest 25. Finish in 55, rest 5. The clock does not care.
+An EMOM workout means "every minute on the minute." At the start of each minute, you do a set number of reps. Whatever time is left in that minute is your rest. Finish in 35 seconds, and you rest for 25. Finish in 55, and you rest for 5.
 
-## Why the format is good
+## Why EMOM works so well
 
-Rest is the variable, and that makes the workout self-regulating in a way almost nothing else is. As you fatigue, your sets take longer, your rest shrinks, and intensity climbs on its own without you deciding anything. It is a difficulty curve built out of arithmetic.
+In an EMOM, rest is the part that changes. As you get tired, your sets take longer and your rest gets shorter. So the workout gets harder on its own, without you changing a thing.
 
-It also removes the single biggest source of wasted gym time, which is standing around deciding when to start the next set. The minute decides.
+It also keeps you moving. You don't have to decide when to start the next set. The clock does that for you.
 
-## Picking rep counts (the only real skill)
+## How to pick your reps
 
-The rule: choose a number of reps you could do **twice** in the first minute without breaking. If ten kettlebell swings takes you 20 seconds fresh, ten is right for a 10-minute block. If it takes 40 seconds, you have picked a workout, not a rep scheme, and minute seven will end you.
+This is the main skill. Choose a number of reps you could do **twice** in the first minute without stopping. If ten kettlebell swings take you 20 seconds when fresh, ten is right for a 10-minute block. If they take 40 seconds, that's too many to keep up. Pick fewer.
 
-Target finishing each round in **40 to 60 percent** of the minute at the start. By the end you should be at 70 to 80 percent and mildly concerned. If you are still finishing in 20 seconds on the final round, add reps or load next time.
+Early on, aim to finish each round in **40 to 60 percent** of the minute. By the end, you'll likely be at 70 to 80 percent. If you're still done in 20 seconds on the last round, add reps or weight next time.
 
-## Five templates
+## Five EMOM templates
 
 | #   | Name                    | Length | Work                                                       |
 | --- | ----------------------- | ------ | ---------------------------------------------------------- |
@@ -31,34 +32,34 @@ Target finishing each round in **40 to 60 percent** of the minute at the start. 
 | 4   | Ascending ladder        | 10 min | Min 1: 1 burpee. Min 2: 2. Up to 10                        |
 | 5   | Cardio EMOM             | 12 min | 15 calories on the rower every minute                      |
 
-Template 1 is where everyone should start. Ten minutes, one movement, no thinking. Template 4 is the one that looks harmless on paper and is not: the first five minutes are almost entirely rest, the last three are not rest at all.
+Template 1 is the best place to start. Ten minutes, one movement, nothing to remember. Template 4 looks gentle at first. The early minutes are mostly rest, but by the last three there's almost no rest left.
 
-Template 2 is the most practically useful for a home setup, because the push movement recovers while the leg movement works. You can run 20 minutes of it without needing a rest block.
+Template 2 is great for home workouts. Your upper body rests while your legs work, and the other way round. You can stretch it to 20 minutes without needing a break.
 
-An [EMOM timer](/emom) handles the part that is genuinely annoying to track manually, which is knowing whether you are on minute nine or minute ten while your pulse is in your ears.
+An [EMOM timer](/emom) keeps count for you. That's a real help when you can't remember if it's minute nine or ten.
 
-## How long a block should be
+## How long should an EMOM workout be?
 
-Ten to twenty minutes. Under ten and you have not accumulated enough volume for the format to do anything. Over twenty and the rep counts have to be so small that it stops being training and starts being a very slow walk.
+Ten to twenty minutes suits most people. Under ten, you won't build up much work. Over twenty, your reps have to get so small that the session loses its punch.
 
-For longer sessions, run two blocks: 12 minutes, three minutes fully off, another 12 with different movements. Better than one 25-minute block where you spend the last eight minutes failing.
+For a longer session, do two blocks. Try 12 minutes, three minutes of full rest, then another 12 with new movements. That works better than one long 25-minute block where the last part is a struggle.
 
-## E2MOM and other variants
+## E2MOM and other variations
 
-**E2MOM** (every 2 minutes) is for heavier or longer work: 3 front squats at a real weight, or 20 calories on the bike. The extra rest lets you use load that an EMOM cannot support.
+**E2MOM** means every 2 minutes. It suits heavier or longer sets, like 3 front squats at a solid weight, or 20 calories on the bike. The extra rest lets you use more weight. On the [EMOM timer](/emom), set the interval to 120 seconds.
 
-**E30 seconds** exists and is mostly a way to say "intervals" with a fancier name. If your rest is measured in single-digit seconds, use a [regular interval timer](/interval) and stop pretending.
+**Every 30 seconds** is another option. Each interval is short, so keep the work small. If you'd rather have a fixed work time and a fixed rest time, a [regular interval timer](/interval) may suit you better.
 
-**Death by** is the ascending ladder with no upper bound: 1 rep minute one, 2 reps minute two, continuing until you cannot complete the round inside the minute. Fun once. Brutal on purpose. Most people cap out between minute 12 and 18 on burpees.
+**Death by** is the ladder from template 4 with no top limit. Do 1 rep in minute one, 2 in minute two, and keep going. You stop when you can't finish the reps inside the minute. On burpees, most people stop somewhere between minute 12 and 18. It's a fun challenge to try once in a while.
 
 ## Common mistakes
 
-**Rep counts chosen by ego.** Minute one is always a lie. Pick for minute ten.
+**Picking too many reps.** Minute one always feels easy. Pick a number you can still hit in minute ten.
 
-**Technical lifts.** Under a running clock, people rush the setup. Keep barbell work to simple movements and modest loads, or stick with dumbbells and kettlebells.
+**Tricky lifts.** A running clock makes people rush their setup. Keep barbell work simple and the weights moderate. Dumbbells and kettlebells are easier choices.
 
-**No rest between blocks.** The whole point is incomplete recovery. If you never fully recover across a 40-minute session, the last half is just going through motions.
+**No rest between blocks.** Short rests within a block are part of the plan. Between blocks, take a proper break. Without it, the second half of a long session loses quality.
 
-The [kettlebell EMOM 10](/interval/kettlebell-emom-10) preset is template 1 ready to run, and the [EMOM timer](/emom) will let you set any length you want.
+The [kettlebell EMOM 10](/interval/kettlebell-emom-10) preset is template 1, ready to go. The [EMOM timer](/emom) lets you set any length from 1 to 99 minutes.
 
 Try it: [start a 10 minute EMOM](/emom).

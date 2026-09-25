@@ -6,15 +6,15 @@ export const workouts: ProgrammaticPage[] = [
     h1: '7 minute workout timer',
     title: '7 Minute Workout Timer – 12 Exercises, 30/10, Free',
     description:
-      'Timer for the scientific 7 minute workout: 12 exercises, 30 seconds each, 10 seconds rest, beeps between stations. Runs in the browser, no app, no login.',
+      'A timer for the 7 minute workout: 12 exercises, 30 seconds each, 10 seconds rest, with beeps between stations. Runs in your browser, no app, no login.',
     intro: [
-      'The 7 minute workout is the 2013 ACSM circuit by Chris Jordan: 12 bodyweight exercises, 30 seconds each, 10 seconds to move between them. Jumping jacks, wall sit, push-ups, crunches, step-ups, squats, triceps dips, plank, high knees, lunges, push-up with rotation, side plank. In that order, on purpose, so big muscle groups alternate.',
-      'This timer is set to exactly that: 12 rounds of 30 on, 10 off, straight in from Start. It beeps when a station ends and ticks through the last three seconds so you can set up for the next one.',
-      'The paper suggests repeating the circuit two or three times if you have the time. Press Run again when it finishes, or set Rounds to 24 or 36 on the interval timer for one continuous session.',
+      'This 7 minute workout timer runs the 2013 ACSM circuit by Chris Jordan: 12 bodyweight exercises, 30 seconds each, with 10 seconds to move between them. The order is jumping jacks, wall sit, push-ups, crunches, step-ups, squats, triceps dips, plank, high knees, lunges, push-up with rotation and side plank. It is set up so big muscle groups take turns.',
+      'The timer is set to exactly that: 12 rounds of 30 on and 10 off, starting as soon as you press Start. It beeps when a station ends and ticks through the last three seconds, so you can get ready for the next one.',
+      'The paper suggests doing the circuit two or three times if you have time. Press Run again when it ends, or change Rounds on this page to 24 or 36 for one longer session.',
     ],
     uses: [
       'Hotel-room workouts with a chair and a wall',
-      'A fast full-body session with no equipment',
+      'A quick full-body session with no equipment',
       'Repeat 2-3 times for a 15-25 minute workout',
       'Following the exercise list while the timer calls the switches',
     ],
@@ -22,19 +22,19 @@ export const workouts: ProgrammaticPage[] = [
     faq: [
       {
         q: 'What are the 12 exercises in order?',
-        a: 'Jumping jacks, wall sit, push-up, abdominal crunch, step-up onto a chair, squat, triceps dip on a chair, plank, high knees running in place, lunge, push-up and rotation, side plank. Thirty seconds each.',
+        a: 'Jumping jacks, wall sit, push-up, crunch, step-up onto a chair, squat, triceps dip on a chair, plank, high knees in place, lunge, push-up with rotation and side plank. Thirty seconds each.',
       },
       {
         q: 'Does the timer tell me which exercise is next?',
-        a: 'It shows the round number (Work 5/12). Keep the list above visible or memorise it. Round 5 is always step-ups.',
+        a: 'It shows the round number, such as "Round 5 of 12". Keep the list above in view or learn it by heart. Round 5 is always step-ups.',
       },
       {
         q: 'Is 7 minutes actually enough?',
-        a: 'For maintenance and for days when the alternative is nothing, yes. The original paper describes it as high-intensity circuit training and suggests 2 to 3 circuits for a fuller session.',
+        a: 'Yes, for staying fit and for busy days. The paper calls it high-intensity circuit training and suggests 2 to 3 circuits for a fuller session.',
       },
       {
         q: 'Can I make the rest longer?',
-        a: 'Change Rest from 10 to 15 or 20 seconds above the Start button. This page always opens with 10; the interval timer remembers your own numbers.',
+        a: 'Yes. Change Rest from 10 to 15 or 20 seconds above the Start button. This page always opens with 10. The main interval timer remembers your own numbers.',
       },
     ],
     related: ['/blog/7-minute-workout-timer', '/interval', '/tabata/45-15-10', '/tabata'],
@@ -44,11 +44,11 @@ export const workouts: ProgrammaticPage[] = [
     h1: 'Boxing round timer: 3 minute rounds, 1 minute rest',
     title: 'Boxing Round Timer – 3 Min Rounds, 1 Min Rest',
     description:
-      'Boxing round timer preset to 3 minute rounds with 1 minute rest, 12 rounds, ticks before each bell. Bell-style beeps, screen stays on, free.',
+      'A boxing round timer set to 3 minute rounds with 1 minute rest, 12 rounds, and ticks before each switch. Clear beeps, screen stays on. Free.',
     intro: [
-      'Three minutes on, one minute off is the professional standard: 12 rounds for a title fight, fewer for club shows. Amateurs box 3 x 3 minutes. This timer is set to 12 rounds and you can stop whenever you like.',
-      'Use it for bag work, pads, shadow boxing or sparring. The work beep is a rising pair, the rest beep is a falling pair, and the last three seconds of every round tick. Prop the phone against the mirror; the digits are the biggest thing on the page.',
-      'For a 10 second warning before the bell, the way gyms use a clapper, that is on the list. For now the last-3-second ticks do the job.',
+      'This boxing round timer runs 3 minute rounds with 1 minute of rest, the pro standard. Title fights go 12 rounds and club shows go fewer. Amateurs usually box 3 rounds of 3 minutes. The timer is set to 12, and you can stop whenever you like.',
+      'Use it for bag work, pads, shadow boxing or sparring. A rising pair of beeps starts each round and a falling pair starts the rest. The last three seconds of every round tick. Prop your phone against the mirror, since the digits are the biggest thing on the page.',
+      'There is no 10 second warning like a gym clapper. The last-3-second ticks give you the heads-up instead.',
     ],
     uses: [
       'Heavy bag rounds',
@@ -68,11 +68,11 @@ export const workouts: ProgrammaticPage[] = [
       },
       {
         q: 'Does it sound like a bell?',
-        a: 'Not quite. The sounds are generated tones, not a bell sample, so the site works offline and loads instantly. The work tone is distinct enough to hear over a bag.',
+        a: 'Not quite. The sounds are simple tones made in your browser, not a bell recording, so the site loads fast and works offline. The work tone is clear enough to hear over a bag.',
       },
       {
         q: 'Will the screen stay on for 12 rounds?',
-        a: 'Yes. The timer holds a screen wake lock while running, and falls back to a hidden looping video on browsers without one. 48 minutes at full brightness will eat some battery.',
+        a: 'Yes. The timer keeps the screen awake while it runs, even on browsers without built-in support. Twelve rounds is 48 minutes, so it will use some battery.',
       },
     ],
     related: [
@@ -88,27 +88,27 @@ export const workouts: ProgrammaticPage[] = [
     h1: 'Running intervals timer: 1 minute run, 1 minute walk',
     title: 'Run/Walk Interval Timer – 1 Min On, 1 Min Off',
     description:
-      'Interval timer for 1:1 run/walk training: 1 minute run, 1 minute walk, 10 rounds. Beeps to switch so you can put the phone away. Free, no login.',
+      'A run/walk interval timer for 1:1 training: 1 minute run, 1 minute walk, 10 rounds. Beeps tell you when to switch, so the phone can stay away. Free.',
     intro: [
-      'One minute running, one minute walking is where most couch-to-5k plans start, and it is also what a lot of experienced runners fall back to for easy days or coming back from injury. Twenty minutes of it is a real session.',
-      'The point of the timer is that you do not look at your watch. Run until it beeps, walk until it beeps. The run tone rises, the walk tone falls, and it ticks for the last three seconds of each block so the change is never a surprise.',
-      'Progress by stretching the run: 2:1, then 3:1, then 5:1. Open the settings and change Work. The walk stays a minute until you drop it entirely.',
+      'This running intervals timer switches you between 1 minute of running and 1 minute of walking. Most couch-to-5k plans start this way. Many experienced runners use it too, for easy days or coming back from injury. Twenty minutes of it is a real session.',
+      'The timer means you don’t have to watch the clock. Run until it beeps, then walk until it beeps. The run tone rises and the walk tone falls. The last three seconds of each block tick, so the change never catches you out.',
+      'To progress, make the run longer: 2:1, then 3:1, then 5:1. Open the settings and change Work. Keep the walk at a minute until you are ready to drop it.',
     ],
     uses: [
       'Couch-to-5k weeks 1 to 3',
-      'Return-to-running after injury',
+      'Getting back to running after injury',
       'Easy aerobic days without watching pace',
-      'Walking clients into running',
+      'Helping walkers start running',
     ],
     config: { mode: 'interval', prep: 0, work: 60, rest: 60, rounds: 10, sets: 1, setRest: 0 },
     faq: [
       {
         q: 'Will I hear the beeps with the phone in my pocket?',
-        a: 'Usually, and it also vibrates on phones that support it. Headphones are more reliable. The tones are short and high so they cut through traffic.',
+        a: 'Usually, and it also vibrates on phones that support it. Headphones are the most reliable. The tones are short and high, so they carry over traffic.',
       },
       {
         q: 'Does the timer stay accurate if the screen locks?',
-        a: 'The clock is based on timestamps so it will be correct when you look again, and it plays a catch-up tone for anything you missed. To hear every beep in real time, keep the page in the foreground. The timer asks the phone to keep the screen on.',
+        a: 'Yes. It keeps time from the clock, so it is correct when you look again, and it plays one catch-up tone for any switch you missed. To hear every beep on time, keep the page open. The timer asks your phone to keep the screen on.',
       },
       {
         q: 'How do I do 2 minutes run, 1 minute walk?',
@@ -127,11 +127,11 @@ export const workouts: ProgrammaticPage[] = [
     h1: 'Sprint interval timer: 30 seconds on, 90 seconds off',
     title: 'Sprint Interval Timer – 30s On, 90s Recovery',
     description:
-      'Sprint interval timer preset to 30 seconds all-out, 90 seconds recovery, 8 rounds. A 16 minute session with a 1:3 work-to-rest ratio. Free, no signup.',
+      'A sprint interval timer: 30 seconds all-out, 90 seconds recovery, 8 rounds. A 16 minute session with three times more rest than work. Free, no signup.',
     intro: [
-      'Thirty seconds is about as long as an actual sprint lasts before it becomes a hard run. Ninety seconds of recovery, a 1:3 ratio, is what the sprint interval training studies used so that each rep is close to full effort rather than a fade.',
-      'Eight rounds is 16 minutes. It sounds short. It is not. The classic Wingate-style protocols used four to six 30 second efforts, so eight is already an ambitious session for anyone not doing this regularly.',
-      'Works on a track, a hill, a bike, a rower. The recovery beep is a falling pair, so walk it off until the rising pair says go.',
+      'This sprint interval timer gives you 30 seconds all-out, then 90 seconds to recover. Thirty seconds is about as long as a true sprint lasts. The 1:3 ratio matches the sprint studies, so each effort stays close to full speed.',
+      'Eight rounds take 16 minutes. That may sound short, but it is a big session. Classic Wingate-style workouts, named after a well-known 30 second bike test, used just four to six sprints. Eight is plenty unless you do this often.',
+      'Use it on a track, a hill, a bike or a rower. A falling pair of beeps starts the recovery, so walk it off until a rising pair says go.',
     ],
     uses: [
       'Track sprints with a walk-back recovery',
@@ -143,15 +143,15 @@ export const workouts: ProgrammaticPage[] = [
     faq: [
       {
         q: 'Why 90 seconds of rest?',
-        a: 'So that the next sprint is a sprint. With 30 seconds of rest you would be doing HIIT, which is a different session with a different goal. If you are still gassed at 90, make it 2 minutes.',
+        a: 'So your next sprint is still a real sprint. With only 30 seconds of rest it becomes a HIIT session with a different goal. If you still feel spent at 90 seconds, make it 2 minutes.',
       },
       {
         q: 'How many sprints should a beginner do?',
-        a: 'Four. Set Rounds to 4 and add one each week. The default of 8 assumes you have done this before.',
+        a: 'Four. Set Rounds to 4 and add one each week. The default of 8 is for people who have done this before.',
       },
       {
         q: 'Is there a get-ready count?',
-        a: 'No. Start goes straight into the first sprint, so press it at the line. Set Work to a longer first effort if you want a lead-in.',
+        a: 'No. Start goes straight into the first sprint, so press it when you are at the line and ready to go.',
       },
     ],
     related: ['/interval/running-intervals-1-1', '/tabata/20-10-8', '/interval'],
@@ -161,15 +161,15 @@ export const workouts: ProgrammaticPage[] = [
     h1: 'Kettlebell EMOM timer: 10 minutes',
     title: 'Kettlebell EMOM Timer – 10 Minutes, Beep Every Minute',
     description:
-      '10 minute EMOM timer for kettlebell swings, snatches or clean and press. Beeps on every minute so you start each set on time. Free, no login, works offline.',
+      'A 10 minute kettlebell EMOM timer for swings, snatches or clean and press. It beeps every minute so each set starts on time. Free and works offline.',
     intro: [
-      'Every minute on the minute for ten minutes: do your reps, rest for whatever is left of the minute, go again at the beep. For kettlebells that usually means 10 to 15 swings, 5 snatches per arm, or 3 to 5 clean and press per side.',
-      'The beauty of an EMOM is that the rest is built in and it shrinks when you slow down. If a set takes 20 seconds you rest 40. If it starts taking 40 seconds you rest 20, which is the bell telling you the weight or the reps are too high.',
-      'The timer beeps at the start of each minute and ticks through the last three seconds so you can pick the bell up on time. The phase label counts minutes for you.',
+      'This kettlebell EMOM timer beeps every minute on the minute for ten minutes. Do your reps, rest for the rest of the minute, and go again at the beep. For kettlebells that is often 10 to 15 swings, 5 snatches per arm, or 3 to 5 clean and press per side.',
+      'The nice thing about an EMOM is that rest is built in. If a set takes 20 seconds, you rest 40. If it starts taking 40 seconds, you only rest 20, which tells you the weight or reps are too high.',
+      'The timer beeps at the start of each minute and ticks through the last three seconds, so you can pick the bell up on time. The line under the digits counts the minutes for you.',
     ],
     uses: [
       'Kettlebell swings, 10-15 per minute',
-      'Snatch or clean and press, alternating arms each minute',
+      'Snatch or clean and press, switching arms each minute',
       'Simple and Sinister style swing blocks',
       'A finisher after lifting',
     ],
@@ -177,15 +177,15 @@ export const workouts: ProgrammaticPage[] = [
     faq: [
       {
         q: 'Is this the same as the EMOM timer page?',
-        a: 'Same engine, preset for 10 minutes. The EMOM page lets you pick the total length and the interval, this one is ready to go for a kettlebell block.',
+        a: 'It works the same way, set up for 10 minutes. The EMOM page lets you pick the total length and the interval. This one is ready to go for a kettlebell block.',
       },
       {
         q: 'How many reps per minute?',
-        a: 'Pick a number that takes 20 to 30 seconds with good form. For most people that is 10 to 15 two-hand swings or 5 snatches per side. If you cannot finish inside 40 seconds by minute 7, drop the reps.',
+        a: 'Pick a number that takes 20 to 30 seconds with good form. For most people that is 10 to 15 two-hand swings or 5 snatches per side. If you can’t finish within 40 seconds by minute 7, drop the reps.',
       },
       {
         q: 'Can I make it 20 minutes?',
-        a: 'Change Rounds to 20 in the settings. Each round is one minute.',
+        a: 'Yes. Change Rounds to 20 in the settings. Each round is one minute.',
       },
     ],
     related: ['/emom', '/blog/emom-workouts-explained', '/interval', '/interval/beep-every-minute'],

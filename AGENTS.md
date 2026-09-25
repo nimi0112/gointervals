@@ -90,7 +90,7 @@ The site is a PWA and must stay one. `public/manifest.webmanifest`, `public/sw.j
 
 ## Voice
 
-Dry, direct, short sentences, written by a person who uses the thing. Sentence case. No exclamation marks. Buttons say what happens: Start, Pause, Resume, End session, Keep going, Run again, Change settings. Errors say what is wrong and the bound: "Work must be at least 1 second."
+Warm, calm and easy, like a person who uses the thing and is happy to help. Answer first, then explain. Short sentences in everyday words; explain any technical term or drop it. Never argue with the reader, no sharp or sarcastic jokes, no hype. Sentence case. No exclamation marks. Buttons say what happens: Start, Pause, Resume, End session, Keep going, Run again, Change settings. Errors say what is wrong and the bound: "Work must be at least 1 second."
 
 ## SEO checklist for every new page
 

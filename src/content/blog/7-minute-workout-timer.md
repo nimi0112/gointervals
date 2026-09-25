@@ -1,15 +1,16 @@
 ---
 title: '7-minute workout timer: the full circuit with timing'
-description: The 7 minute workout timer runs 12 exercises, 30 seconds each, 10 seconds rest. Here is the full circuit, the source paper, and how to run it.
+description: A 7 minute workout timer runs 12 exercises for 30 seconds each, with 10 seconds between. Here's the full circuit, where it came from, and how to run it.
 pubDate: 2026-09-05
+updatedDate: 2026-09-25
 tags: [hiit, workouts, how-to]
 timer: '/interval/7-minute-workout'
 keyword: '7 minute workout timer'
 ---
 
-A 7 minute workout timer runs twelve bodyweight exercises for 30 seconds each with 10 seconds of transition between them, which comes to 7 minutes and 50 seconds of actual clock. The circuit comes from a 2013 article by Brett Klika and Chris Jordan in the ACSM's Health & Fitness Journal, titled "High-Intensity Circuit Training Using Body Weight: Maximum Results With Minimal Investment."
+A 7 minute workout timer runs twelve bodyweight exercises for 30 seconds each, with 10 seconds between them. Twelve stations and eleven short gaps add up to 7 minutes and 50 seconds. All you need is a wall and a chair.
 
-It went viral after the New York Times wrote it up, which is the only reason anyone has heard of an article in a trade journal for exercise physiologists.
+The circuit comes from a 2013 article by Brett Klika and Chris Jordan in ACSM's Health & Fitness Journal. It was called "High-Intensity Circuit Training Using Body Weight: Maximum Results With Minimal Investment." The New York Times wrote about it soon after, and it spread from there.
 
 ## The full circuit, in order
 
@@ -28,44 +29,44 @@ It went viral after the New York Times wrote it up, which is the only reason any
 | 11  | Push-up and rotation        | 30s  | Chest, core         |
 | 12  | Side plank                  | 30s  | Core, oblique       |
 
-Ten seconds of rest between each. Equipment: a wall and a chair.
+Rest for 10 seconds between each one. ("Isometric" means you hold still rather than move.)
 
-## The order is not arbitrary
+## Why the order matters
 
-The exercises alternate between upper body, lower body, and core on purpose. While your chest is working on the push-up, your legs are recovering from the wall sit. That alternation is what lets you sustain high intensity across twelve stations without a single long rest block.
+The exercises take turns between upper body, lower body and core. While your chest works on push-ups, your legs get a break from the wall sit. That rotation lets you keep working hard across all twelve stations without a long rest.
 
-If you rearrange it into all the leg work then all the upper body work, you have made a much worse circuit. The sequencing is the design.
+So keep the order as it is. If you group all the leg moves together, your legs tire out fast and the circuit gets much harder to do well.
 
-The [7 minute workout timer](/interval/7-minute-workout) is preset with all twelve intervals and the 10 second gaps, so you get a cue at every station change and never have to count.
+The [7 minute workout timer](/interval/7-minute-workout) has all twelve stations and the 10-second gaps built in. It beeps at every change, so you never have to count. It also adds one last 10-second rest after the side plank, so the clock reads 8:00 at the end.
 
-## Intensity, which is the part everyone skips
+## How hard to work
 
-The paper specifies an intensity of roughly **8 to 9 on a 10-point perceived exertion scale**. That means each 30-second block is close to as many good reps as you can manage, not a comfortable 30 seconds of movement.
+The paper asks for an effort of about **8 to 9 out of 10**. That means as many good reps as you can manage in each 30 seconds. It should feel hard, not like a gentle stretch.
 
-Ten seconds of rest is a transition, not a recovery. It exists so you can get from the floor to the wall.
+The 10 seconds between stations is for moving, not for resting. It's just enough time to get from the floor to the wall.
 
-Klika and Jordan also say plainly that one circuit is the minimum dose and the protocol can be repeated two to three times for a longer session. The "7 minutes" framing is marketing that grew around the article, not the ceiling the authors described. Two or three rounds with a minute between them is about 25 minutes and is a genuinely serious workout.
+Klika and Jordan also say one circuit is the minimum. You can repeat it two or three times for a longer session. Two or three rounds with a minute between them takes about 25 minutes. That's a solid workout.
 
-## Common problems
+## Common problems and easy fixes
 
-**Crunches and step-ups feel too easy.** They are the lowest-intensity stations. Speed them up rather than adding reps you cannot control.
+**Crunches and step-ups feel too easy.** These are the gentlest stations. Move a little faster, but keep every rep controlled.
 
-**Push-ups collapse at 20 seconds.** Drop to knees for the remainder. Finishing the interval with worse form is not a better outcome than modifying it.
+**Push-ups fade at 20 seconds.** Drop to your knees for the rest of the interval. Good form on your knees beats poor form on your toes.
 
-**No suitable chair.** Use a step, a bench, or a sturdy low table. For dips, any edge at roughly knee height works.
+**No suitable chair.** Use a step, a bench or a sturdy low table. For dips, any steady edge at about knee height works.
 
-**Side plank only on one side.** The original lists it as one station. Do 15 seconds a side, or run the circuit twice and switch.
+**Side plank is only on one side.** The original lists it as one station. Do 15 seconds on each side, or switch sides when you run the circuit a second time.
 
-## Where it fits
+## Where it fits in your week
 
-This is a good default for days with no equipment, no gym, and no time. It is not a replacement for strength training with load, and the paper does not claim it is. Bodyweight circuits build muscular endurance and cardiovascular capacity. They do not build maximal strength past a fairly early ceiling.
+This circuit is a great choice for days with no gym, no kit and not much time. It isn't a swap for lifting weights, and the paper doesn't say it is. Bodyweight circuits build stamina and heart and lung fitness. For big strength gains, you'll need added weight at some point.
 
-Three sessions a week is a reasonable dose. On the days in between, something longer and easier.
+Three sessions a week works well. On the days between, do something longer and easier, like a walk or an easy ride.
 
-If you want to change the timing, the [interval timer](/interval) lets you set your own work, rest, and round count. For a shorter and harder option, [a tabata timer](/tabata) does four minutes at 20/10. For the opposite end, [3 minute boxing rounds](/interval/boxing-rounds-3-1) give you long work blocks with real rest.
+Want different timing? The [interval timer](/interval) lets you set your own work, rest and rounds. For something shorter and harder, the [Tabata timer](/tabata) runs four minutes of 20/10. For long work blocks with a proper rest, try [3 minute boxing rounds](/interval/boxing-rounds-3-1).
 
 ## Running it
 
-Prop the phone where you can hear it rather than see it, because you will spend a third of the circuit face down. The screen stays awake with a wake lock, and the timing runs off timestamps, so it stays correct even if the display does drop out.
+Put your phone where you can hear it, not just see it. You'll spend about a third of the circuit facing the floor. Press Start and it goes straight into the first station. The screen stays on where your browser allows it. The timer also keeps correct time even if the screen goes dark.
 
 Try it: [run the 12-station circuit](/interval/7-minute-workout).

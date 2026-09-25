@@ -9,31 +9,31 @@ import { meditations } from '@/data/meditations';
 
 <TimerPage
   title="Meditation Timer – Interval Bells, Screen Stays On"
-  description="Free meditation timer with optional interval bells: 30 minutes with a soft bell every 10 by default, or any length you set. No ticks, no alarm, works offline."
+  description="Free meditation timer with gentle interval bells: 30 minutes with a soft bell every 10 by default, or any length you like. No ticking. Works offline."
   path="/meditation"
   h1="Meditation timer with interval bells"
-  lede="One clock for the whole session, a soft bell every 10 minutes if you want one, and one at the end. Nothing else makes a sound."
+  lede="This meditation timer keeps one clock for your whole sit. A soft bell can ring every 10 minutes, and one rings at the end. Nothing else makes a sound."
   config={defaultConfigs.meditation}
   faq={faqs['/meditation']}
   related={relatedTimers['/meditation']!}
   posts={relatedPosts['/meditation']}
   crumbName="Meditation timer"
 >
-  <Section title="How it is different" flush>
+  <Section title="How it's different" flush>
     <p>
-      The other timers on this site are built to be noticed. This one is built to be forgotten. The
-      big number is the time left in the whole session; the quiet line under the bar is the time to
-      the next bell. Interval bells, the start bell and the end bell are three separate switches, so
-      you can have a single bell at the end and silence until then.
+      The other timers here are made to get your attention. This one is made to fade into the
+      background. The big number shows the time left in the whole session. The quiet line under the
+      bar shows the time to the next bell. Interval bells, the start bell and the end bell each have
+      their own switch. So you can have one bell at the end and silence until then.
     </p>
     <p>
-      The default is a 30 minute sit with a bell at 10 and 20 minutes and one to finish. That gives
-      three stretches of silence, which is enough structure for a body scan, then breath, then open
-      awareness, or simply two reminders to come back.
+      The default is a 30 minute sit, with bells at 10 and 20 minutes and one to finish. That gives
+      you three stretches of quiet. You might use them for a body scan, then the breath, then open
+      awareness. Or they can simply be two gentle reminders to come back.
     </p>
   </Section>
   <Section title="Presets">
-    <p>Each length has its own page with the bells already placed.</p>
+    <p>Each length has its own page, with the bells already in place.</p>
     <ul class="links">
       {meditations.map((m) => (
         <li>
@@ -44,14 +44,16 @@ import { meditations } from '@/data/meditations';
   </Section>
   <Section title="Screen, sound, silence">
     <p>
-      The timer asks the phone or laptop to keep the screen awake while it runs, so the sit does not
-      end with a locked phone. Turn the brightness down by hand if you want a dim room. The bell is
-      generated in the browser, so there is nothing to download and it works with no connection
-      after the first visit.
+      While the timer runs, it asks your phone or laptop to keep the screen awake. That way your sit
+      doesn't end with a locked phone. If you'd like a dim room, turn the brightness down yourself.
+      The bell is made right in your browser, so there's nothing to download. After your first
+      visit, it works without a connection.
     </p>
     <p>
-      Browsers only play sound from a page that is open, so keep the tab in front rather than
-      switching away. Sound Off gives you a fully silent sit where you only glance at the digits.
+      Keep this tab open and on screen. In a background tab, browsers slow timers down, so a bell
+      can come late or not at all. With Sound off, phones that can vibrate (most Android phones)
+      still buzz at each bell. iPhone browsers don't vibrate, so there Sound off gives you a silent
+      sit.
     </p>
   </Section>
 </TimerPage>

@@ -6,17 +6,17 @@ export const pomodoros: ProgrammaticPage[] = [
     h1: '50/10 Pomodoro timer',
     title: '50/10 Pomodoro Timer – Free, No Login',
     description:
-      'A 50/10 Pomodoro timer: 50 minutes of focus, 10 minutes off, a 30 minute break every third session. Runs in the browser, no signup.',
+      'A 50/10 Pomodoro timer: 50 minutes of focus, 10 minutes off, and a 30 minute break after the third block. Runs in your browser, no signup.',
     intro: [
-      'The 50/10 Pomodoro timer suits work that takes a while to get into. Reading a paper, writing something long, debugging: twenty-five minutes is often over just as the context has finished loading into your head, and the break undoes the loading. Fifty minutes gives you a real stretch of it.',
-      'Ten minutes off is enough to leave the desk properly rather than just scrolling in the same chair. After three sessions this preset gives you thirty minutes, which is roughly lunch, or a walk that is long enough to count as one.',
-      'Three focus blocks plus their breaks is a three-hour chunk. That is about as much deep work as most people get in a day, so treat this as the shape of a morning rather than something to run four times over.',
+      'The 50/10 Pomodoro timer gives you 50 minutes of focus, then a 10 minute break. It suits work that takes a while to get into, like reading, long writing or debugging. Twenty-five minutes can end just as you’ve warmed up. Fifty gives you a real stretch of focus.',
+      'Ten minutes is enough to leave your desk properly. Stand up, get a drink or step outside. After the third focus block you get a 30 minute break, which is about right for lunch or a proper walk.',
+      'The whole cycle is three focus blocks with two short breaks, just under three hours. Then comes the long break, and the timer stops. That’s a good amount of deep work for most people, so think of it as the shape of a morning.',
     ],
     uses: [
-      'Long-form writing and editing',
-      'Reading dense material that needs a run-up',
-      'Coding sessions where context takes time to rebuild',
-      'Exam revision in half-hour-plus chunks',
+      'Long writing and editing',
+      'Reading dense material that takes time to get into',
+      'Coding when it takes a while to get back up to speed',
+      'Exam revision in longer chunks',
     ],
     config: {
       mode: 'pomodoro',
@@ -28,19 +28,19 @@ export const pomodoros: ProgrammaticPage[] = [
     faq: [
       {
         q: 'Is 50/10 still the Pomodoro technique?',
-        a: 'Loosely. Cirillo’s method is specifically 25 minutes with a 5 minute break, and the 25 is part of the point: a short unit you cannot talk yourself out of starting. Fifty minutes keeps the structure and drops that property, which is a fair trade if starting is not your problem.',
+        a: 'Loosely. Francesco Cirillo’s original method uses 25 minutes of work and a 5 minute break, partly because a short block is easy to start. Fifty minutes keeps the rhythm of work and rest, and it suits you well if starting isn’t the hard part.',
       },
       {
         q: 'What if I get interrupted mid-session?',
-        a: 'Pause with Space, deal with it, resume. Cirillo would tell you the session is void and you should start again; in practice, pausing and carrying on beats abandoning the block.',
+        a: 'Press Space to pause, deal with it, then press Space again to resume. The classic method says to restart the block. In practice, pausing and carrying on works fine.',
       },
       {
         q: 'Can I change the long break?',
-        a: 'Yes. Focus, short break, long break and how many sessions come before the long one are all editable under the timer, and your numbers stay in the browser for next time.',
+        a: 'Yes. You can change the focus length, short break, long break and number of sessions under the timer. Changes on this page last for this visit. The main Pomodoro timer remembers your numbers.',
       },
       {
         q: 'Does it keep time if I switch tabs?',
-        a: 'The clock is derived from timestamps, so it is correct when you come back rather than however far behind you were away. The tab title shows the countdown, and the end-of-session tones play while the page is open and in front.',
+        a: 'Yes. The time is read from the clock, so it’s right when you come back. The tab title shows the time left. The tones only play while the page is open.',
       },
     ],
     related: [
@@ -55,17 +55,17 @@ export const pomodoros: ProgrammaticPage[] = [
     h1: '52/17 timer',
     title: '52/17 Timer – The DeskTime Work Rhythm',
     description:
-      'A 52/17 timer: 52 minutes of work, 17 minutes off, the ratio from DeskTime’s 2014 look at its most productive users. Free, no account.',
+      'A 52/17 timer: 52 minutes of work, then 17 minutes off, based on DeskTime’s 2014 look at its most productive users. Free, no account.',
     intro: [
-      'The 52/17 timer comes from a 2014 write-up by DeskTime, a time-tracking company that looked at the logged activity of the most productive 10 percent of its users and reported that they averaged about 52 minutes of work followed by about 17 minutes away. It was an observation in one company’s usage data, not a controlled study, and the numbers are an average rather than a discovered optimum.',
-      'That is worth saying plainly, because the ratio gets repeated as if it were a finding about human attention. What it does tell you is that people who get a lot done took substantial breaks, which is the useful half of the claim and the part most schedules ignore.',
-      'As a working rhythm it is generous and it holds up. Fifty-two minutes is a long enough block for real work, and seventeen minutes is enough to eat something, walk outside or have an actual conversation instead of half a one. This preset runs four sessions before offering another seventeen, so the day has no special long break: every break is the long break.',
+      'The 52/17 timer gives you 52 minutes of work, then 17 minutes off. The numbers come from DeskTime, a time-tracking company. In 2014 it looked at its most productive 10 percent of users. On average, they worked for about 52 minutes, then took about 17 minutes away.',
+      'This was one company’s look at its own data, not a scientific study. So the numbers are an average, not a magic formula. The helpful lesson is simple: people who got a lot done took real breaks.',
+      'It makes a kind, steady rhythm for a work day. Fifty-two minutes is long enough for real work. Seventeen is enough to eat, walk outside or have a proper chat. This preset runs four work blocks, each followed by 17 minutes off, and then it stops. Every break is a long break.',
     ],
     uses: [
-      'A default work rhythm for a full day at a desk',
-      'Anyone who keeps skipping five-minute breaks as pointless',
+      'A steady rhythm for a full day at a desk',
+      'Anyone who skips short breaks because they feel too short to matter',
       'Pairing work blocks with real meal or walk breaks',
-      'Admin-heavy days that still need protected focus',
+      'Busy admin days that still need quiet focus time',
     ],
     config: {
       mode: 'pomodoro',
@@ -77,19 +77,19 @@ export const pomodoros: ProgrammaticPage[] = [
     faq: [
       {
         q: 'Where do the numbers 52 and 17 come from?',
-        a: 'From DeskTime’s 2014 analysis of its own users’ tracked computer activity, reporting the average work and break lengths of its top 10 percent. Treat it as a description of what productive users happened to do, not as a tested prescription.',
+        a: 'From DeskTime’s 2014 look at its own users’ computer activity. They were the average work and break lengths of the top 10 percent. It shows what productive people happened to do, not a tested rule.',
       },
       {
         q: 'Why is the long break also 17 minutes?',
-        a: 'Because the rhythm does not have a long break in it. Every break in the original description is a proper one, so this preset keeps them all the same length. Change the long break in the settings if you want a bigger gap after four sessions.',
+        a: 'Because this rhythm has no special long break. Every break is already a proper one, so they’re all the same length. You can change the long break in the settings if you’d like a bigger rest at the end.',
       },
       {
         q: 'Is it better than 25/5?',
-        a: 'Neither has good evidence behind the exact numbers. Longer blocks suit work with a slow start; shorter blocks suit work you struggle to begin. Try both for a week and keep the one you actually stick to.',
+        a: 'Neither has strong evidence for its exact numbers. Longer blocks suit work that’s slow to get going. Shorter blocks suit work that’s hard to start. Try each for a week and keep the one you stick with.',
       },
       {
         q: 'Does anything get saved?',
-        a: 'Only in your browser. Adjusted values on the main Pomodoro timer stay on the device, there is no account, and after the first visit the page works offline.',
+        a: 'Only in your browser. If you change the numbers on the main Pomodoro timer, they stay on your device. There’s no account, and after your first visit the page works offline.',
       },
     ],
     related: [
@@ -104,16 +104,16 @@ export const pomodoros: ProgrammaticPage[] = [
     h1: '90/20 focus timer',
     title: '90/20 Focus Timer – Ultradian Work Blocks',
     description:
-      'A 90/20 focus timer: 90 minutes of work, 20 minutes off, two blocks before a longer break. For deep work sessions. Free, no login.',
+      'A 90/20 focus timer: 90 minutes of deep work, 20 minutes off, then a 30 minute break after the second block. Free, no login needed.',
     intro: [
-      'A 90/20 focus timer is built on the ultradian idea: Nathaniel Kleitman, who also co-discovered REM sleep, described a basic rest-activity cycle of roughly 90 minutes running through the night, and the popular extension is that a similar cycle continues during the day. That extension is much less settled than the sleep work it borrows from, and the 90 minute figure is an approximation even where the cycle is well described. Do not treat it as a biological deadline.',
-      'What is fair to say is that ninety minutes is close to the outer limit of sustained concentration for most people, and that pushing past it tends to produce time spent rather than work done. If you notice quality dropping at sixty, the honest number for you is sixty.',
-      'Twenty minutes off after a block that long is not a luxury. The preset runs two 90 minute blocks and then a 30 minute break, which is about four hours of deliberate work and roughly the most that anyone reliably manages in a day.',
+      'The 90/20 focus timer gives you 90 minutes of deep work, then a 20 minute break. “Ultradian” means a body rhythm that repeats more than once a day, like the roughly 90 minute cycle of alertness some researchers describe. The idea comes from sleep research. Nathaniel Kleitman, who helped discover REM sleep, described a rest-and-activity cycle of about 90 minutes during the night. Some believe a similar cycle runs through the day, but that part is much less certain. So take 90 minutes as a rough guide, not a rule for your body.',
+      'Ninety minutes is near the upper limit of steady focus for most people. Past that, you tend to put in time without getting much done. If your focus fades at sixty minutes, sixty is your number.',
+      'After a block this long, twenty minutes off is well earned. The preset runs two 90 minute blocks with a 20 minute break between them. A 30 minute break follows, and then it stops. That’s three hours of focused work, and about as much as most people can do well in a day.',
     ],
     uses: [
-      'Deep work on one problem with no context switching',
+      'Deep work on one problem, with no switching',
       'Practice sessions for music or a language',
-      'Drafting something substantial in one sitting',
+      'Writing a big first draft in one sitting',
       'Mock exams and timed papers of about this length',
     ],
     config: {
@@ -126,19 +126,19 @@ export const pomodoros: ProgrammaticPage[] = [
     faq: [
       {
         q: 'Is the 90 minute cycle real?',
-        a: 'Kleitman’s basic rest-activity cycle is well established in sleep research. The claim that the same roughly 90 minute rhythm governs daytime attention is a plausible extension with far weaker support, so use 90 as a convenient ceiling rather than a fact about your brain.',
+        a: 'At night, yes. Kleitman’s 90 minute sleep cycle is well studied. The daytime version has much less support, so treat 90 minutes as a handy upper limit, not a fact about your brain.',
       },
       {
         q: 'Ninety minutes is too long for me. What should I use?',
-        a: 'Drop Focus to 60 or 45 in the settings and keep the generous break. The useful part of this format is the long block plus a real rest, not the specific number.',
+        a: 'Lower Focus to 60 or 45 in the settings and keep the long breaks. What helps most is a long block with a real rest, not the exact number.',
       },
       {
         q: 'Should I take breaks even if I am in flow?',
-        a: 'If the work is genuinely flowing, finishing the thought is usually better than stopping mid-sentence. The risk is the other case, where you feel busy and are not producing anything. The marker exists so you get to notice which one it is.',
+        a: 'If the work is truly flowing, finish your thought first. Just be honest about whether you’re in flow or only feeling busy. The break signal gives you a moment to check.',
       },
       {
         q: 'Does it keep the screen on?',
-        a: 'It requests a screen wake lock while running, so a laptop or phone left on the page should not dim off. The tab title shows the remaining time if you are working in another window.',
+        a: 'Yes, while the timer is running, your laptop or phone screen should stay on. If you’re working in another window, the tab title shows the time left.',
       },
     ],
     related: [
@@ -154,17 +154,17 @@ export const pomodoros: ProgrammaticPage[] = [
     h1: '15/5 Pomodoro timer',
     title: '15/5 Pomodoro Timer – Short Focus Blocks',
     description:
-      'A 15/5 Pomodoro timer: 15 minutes of focus, 5 minutes off, a longer break every fourth round. A gentler starting point. Free, no signup.',
+      'A 15/5 Pomodoro timer: 15 minutes of focus, 5 minutes off, and a 15 minute break after the fourth round. A gentle place to start. Free.',
     intro: [
-      'The 15/5 Pomodoro timer exists because 25 minutes is not a small ask for everyone. If the hard part of the work is starting it, the size of the block is the thing standing in your way, and fifteen minutes is small enough that the argument with yourself is shorter than the session.',
-      'It is a common suggestion for kids doing homework, where a quarter of an hour matches attention better than half an hour does, and it is often floated as a starting point for people with ADHD who find standard pomodoros a set-up for failure. Whether it suits you is something to work out by trying it, or with whoever helps you plan this stuff; this is a timer, not advice about anyone’s condition.',
-      'Four fifteen-minute rounds with five-minute breaks comes to eighty minutes, ending in a fifteen-minute break. If the blocks start feeling too short, stretch Focus to 20 and then 25 rather than jumping straight to a long session.',
+      'The 15/5 Pomodoro timer gives you 15 minutes of focus, then a 5 minute break. It’s a gentle option when 25 minutes feels like too much. If starting is the hard part, a smaller block really helps. Fifteen minutes is short enough to just begin.',
+      'It’s often suggested for kids doing homework, since fifteen minutes fits a shorter attention span. It’s also a common starting point for people with ADHD. The best way to know if it suits you is to try it, or to ask whoever helps you plan. This is a timer, not medical advice.',
+      'You get four 15 minute rounds with 5 minute breaks between them, which takes 75 minutes. Then comes a 15 minute break, and the timer stops. If the blocks start to feel short, raise Focus to 20, then 25, one step at a time.',
     ],
     uses: [
-      'Homework blocks that match a shorter attention span',
-      'Starting on a task you have been avoiding all week',
+      'Homework blocks for a shorter attention span',
+      'Starting a task you’ve been putting off',
       'Building up to longer sessions a few minutes at a time',
-      'Chores and tidying in small, finishable pieces',
+      'Chores and tidying in small, doable pieces',
     ],
     config: {
       mode: 'pomodoro',
@@ -176,19 +176,19 @@ export const pomodoros: ProgrammaticPage[] = [
     faq: [
       {
         q: 'Is fifteen minutes long enough to get anything done?',
-        a: 'For a lot of tasks, yes, and a finished fifteen minutes beats an abandoned fifty. The other thing it does is get you past the start, which is where most sessions die.',
+        a: 'Yes, for lots of tasks. A finished fifteen minutes beats an unfinished fifty. It also gets you started, which is often the hardest part.',
       },
       {
         q: 'How do I grow the blocks over time?',
-        a: 'Change Focus to 20, then 25, once fifteen stops feeling like the right size. The breaks can stay at five. Your numbers are saved in the browser, so each new default sticks.',
+        a: 'Once fifteen minutes feels easy, move to 20, then 25. The breaks can stay at five. On the main Pomodoro timer, your numbers are saved in your browser, so the new length sticks.',
       },
       {
         q: 'Will the break beep pull my child off task?',
-        a: 'That is usually the point, but if the sound is disruptive you can mute the tab and use the on-screen phase label and the tab title countdown instead.',
+        a: 'That’s usually the idea. If the sound is too much, turn Sound off under the timer. The on-screen label and the tab title still show where you are.',
       },
       {
         q: 'Can I use it without setting anything up?',
-        a: 'Yes. Press Space or Start and it runs the 15/5 pattern as it is. There is no account, nothing to install, and after one visit it works offline.',
+        a: 'Yes. Press Start or Space and the 15/5 pattern runs as it is. There’s no account, nothing to install, and after one visit it works offline.',
       },
     ],
     related: [

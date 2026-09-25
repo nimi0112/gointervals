@@ -1,17 +1,18 @@
 ---
-title: 'Interval timer for running: run/walk, repeats and fartlek'
-description: An interval timer for running frees you from staring at a watch. Run/walk progressions, 400m repeats by time, fartlek sets and how to hear the beep.
+title: 'Interval timer for running: run/walk, repeats, fartlek'
+description: An interval timer for running beeps so you don't have to watch your wrist. Run/walk plans, 400m repeats by time, fartlek and tips for hearing the beep.
 pubDate: 2026-09-15
+updatedDate: 2026-09-25
 tags: [running, hiit, how-to, workouts]
 timer: '/interval/running-intervals-1-1'
 keyword: 'interval timer for running'
 ---
 
-An interval timer for running exists so that you can run instead of doing arithmetic. Set the work and rest, start it, and the next decision gets made for you by a beep rather than by you squinting at a wrist mid-effort.
+An interval timer for running tells you when to run and when to recover, so you don't have to count. Set your work and rest, press Start, and let the beep decide. You just run.
 
-## Run/walk, and how to progress it
+## Run/walk, and how to build it up
 
-The run/walk structure is the most useful thing a beginner runner can do with a timer, and it is also what a lot of marathoners do on purpose at mile 18. The ratio moves as fitness does.
+Run/walk is one of the best ways for a new runner to use a timer. Plenty of marathon runners use it on purpose, too. As you get fitter, the running part grows.
 
 | Stage      | Run  | Walk | Rounds | Total  |
 | ---------- | ---- | ---- | ------ | ------ |
@@ -21,17 +22,21 @@ The run/walk structure is the most useful thing a beginner runner can do with a 
 | Week 7-8   | 5:00 | 1:00 | 5      | 30 min |
 | Continuous | -    | -    | -      | 30 min |
 
-Total time stays about the same the whole way through, which is the point: you are not adding volume, you are converting walking into running. The 1:1 stage is on [running intervals 1:1](/interval/running-intervals-1-1) as a preset; the rest is the same page with the work value changed.
+The total time stays about the same the whole way. You're not adding more exercise. You're slowly turning walking into running.
 
-Move up a stage when the current one feels comfortable for the last two rounds, not the first two. And repeat weeks freely. Nobody is checking.
+The first stage is ready to go on [running intervals 1:1](/interval/running-intervals-1-1). For later stages, change the run time and rounds on the same page.
 
-## 400 m repeats, timed instead of measured
+Move up a stage when the last two rounds feel comfortable, not just the first two. It's fine to repeat a week, or two. Go at your own pace.
 
-Track repeats are usually prescribed by distance, and if you have a track that is fine. If you are on a road, a path, or a treadmill in a hotel, distance is a hassle and time is not.
+## 400 m repeats, by time instead of distance
 
-A 400 m repeat takes most people 75 to 110 seconds. Round it: run hard for 90 seconds, jog or walk for 90 seconds, repeat eight to twelve times. You will cover slightly different distances as you fatigue, which is arguably more honest than forcing the same 400 m at a worse cost each time.
+Track sessions are usually set by distance. That's easy on a track. On a road, a path or a treadmill, time is much simpler.
 
-Common time-based substitutions:
+A 400 m repeat takes most people 75 to 110 seconds. So round it off. Run hard for 90 seconds, then jog or walk for 90 seconds. Repeat eight to twelve times.
+
+You'll cover a bit less ground as you tire, and that's fine. Your effort stays steady, which is what counts.
+
+Here are some common swaps from distance to time:
 
 | Distance | Rough time | Recovery | Repeats |
 | -------- | ---------- | -------- | ------- |
@@ -40,30 +45,34 @@ Common time-based substitutions:
 | 800 m    | 3:00       | 2:00     | 5-8     |
 | 1 km     | 4:00       | 2:00     | 4-6     |
 
-Set those on [interval](/interval) directly. For flat-out short work, [30s sprint, 90s recovery](/interval/sprint-30-90) is the standard shape and hard to improve on.
+The main [interval](/interval) page takes whole minutes, so it handles the 800 m and 1 km rows. For work in seconds, open a preset page and change the numbers there. For short, fast work, [30s sprint, 90s recovery](/interval/sprint-30-90) is a classic shape and a good place to start.
 
 ## Fartlek
 
-Fartlek is meant to be unstructured, which makes a timer sound contradictory. It is not: a timer gives you the surge boundaries and leaves the pace and the terrain to you.
+Fartlek is Swedish for "speed play". It's meant to be loose and playful, so a timer might sound odd. But the timer only marks when each push starts and stops. The pace and the route are up to you.
 
-A workable version is a ladder. One minute hard, one easy, two hard, two easy, three hard, three easy, then back down. That is 24 minutes and it needs six different work values, so in practice most people run it as a repeating block of the middle length and vary effort by feel instead. Two minutes on, two minutes off, eight rounds, and you decide each round whether "on" means 5k pace or a hill.
+A classic version is a ladder. Run hard for 1, 2, 3, 3, 2 and then 1 minute, with the same time easy after each. That's 24 minutes.
 
-## Why a beep beats looking at a watch
+The timer repeats one work length, so it can't run a ladder. Instead, try 2 minutes on and 2 minutes off for eight rounds. Then choose each round whether "on" means 5K pace or a hill.
 
-Looking at your wrist while running hard costs more than it seems. Your head drops, your arm crosses your body, your cadence breaks for two or three steps, and you spend the last twenty seconds of a hard interval watching a number instead of running. Multiply that by twelve repeats.
+## Why a beep beats checking your watch
 
-Worse is the tendency to start easing off as soon as you see 0:08 left. The beep removes the anticipation. You run until you are told to stop, and the interval is the length it says it is.
+Glancing at your wrist costs more than you'd think. Your head drops, your arm swings across your body, and your stride breaks for a few steps. Do that on every rep and it adds up.
 
-## Getting the beep heard
+There's also a pull to ease off once you see only a few seconds left. A beep removes that. You run until it tells you to stop, and each rep is the full length.
 
-This is the part that decides whether the whole thing works outdoors.
+## Making sure you hear the beep
 
-**Headphones.** Best case. The tone plays through whatever audio you are on, over music, and you cannot miss it. Bone conduction headphones are worth considering for road running because they leave your ears open to traffic and still carry a beep fine.
+This is what makes it work outdoors.
 
-**Phone in a pocket.** Workable if you turn the volume up before you start and the pocket is not deep and padded. An armband or a running belt with the phone facing out is noticeably louder than a zipped thigh pocket. Wind and traffic eat a lot of it, so do a test round standing still at the volume you plan to use, then add a bit.
+**Headphones.** The best choice. The beep plays in your headphones along with your music, so it's hard to miss. Bone conduction headphones are worth a look for road running. They leave your ears open to traffic and still carry the beep well.
 
-**Vibrate.** Turn on the vibrate option if you are running without headphones in a loud place, or in a quiet one where you would rather not beep at strangers. A phone against your leg is easy to feel and impossible for anyone else to hear. It is less precise than audio in the sense that you notice it slightly later, but for a 90-second interval that does not matter.
+**Phone in a pocket.** This works if you turn the volume up before you start. An armband or running belt is louder than a zipped pocket. Wind and traffic drown out a lot. So stand still, test one round at your planned volume, then turn it up a bit more.
 
-The screen stays awake while the timer runs, so an accidental glance is possible, and the remaining time also appears in the tab title. If you want raw splits instead of prescribed intervals, a watch does that job; the notes on [running splits](/blog/stopwatch-running-splits-lap-times) cover what to record.
+**Vibration.** On Android phones, the timer also buzzes at each change, even with the sound off. That helps in a loud place, or a quiet one where you'd rather not beep at people. You may notice a buzz a moment later than a beep, but that barely matters over 90 seconds. iPhones don't support this in the browser, so use sound there.
+
+The screen stays on while the timer runs, so you can glance at it if you need to. The time left also shows in the browser tab title.
+
+If you want to record your splits instead, any running watch can do it. See [running splits](/blog/stopwatch-running-splits-lap-times) for what's worth writing down.
 
 Try it: [run 1:1 running intervals](/interval/running-intervals-1-1).
