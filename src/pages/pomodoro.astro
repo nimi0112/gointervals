@@ -9,35 +9,38 @@ import { pomodoros } from '@/data/pomodoros';
 
 <TimerPage
   title="Pomodoro Timer – Free 25/5 Focus Timer, No Login"
-  description="Free online Pomodoro timer: 25 minutes focus, 5 minute break, a 15 minute long break after four. One finite cycle, editable, tab title countdown, works offline."
+  description="Free online Pomodoro timer: 25 minutes of focus, 5 minute breaks, and a 15 minute long break after four. Time left shows in the tab. Works offline."
   path="/pomodoro"
   h1="Pomodoro timer"
-  lede="25 minutes on, 5 off, a long break after four. One finite cycle, then it stops."
+  lede="This Pomodoro timer gives you 25 minutes of focus, then a 5 minute break. After four rounds you get a long break, and then it stops."
   config={defaultConfigs.pomodoro}
   faq={faqs['/pomodoro']}
   related={relatedTimers['/pomodoro']!}
   posts={relatedPosts['/pomodoro']}
   crumbName="Pomodoro timer"
 >
-  <Section title="The technique" flush>
+  <Section title="How the Pomodoro technique works" flush>
     <p>
-      Francesco Cirillo, a tomato-shaped kitchen timer, late 1980s. Work for 25 minutes on one
-      thing, take a 5 minute break, and after four of those take 15 to 30 minutes off. The numbers
-      are less important than the rule that a pomodoro is indivisible: if you get interrupted, it
-      does not count.
+      Francesco Cirillo came up with it in the late 1980s, using a kitchen timer shaped like a
+      tomato. You work on one thing for 25 minutes, then take a 5 minute break. After four of those,
+      you take 15 to 30 minutes off. The exact numbers matter less than one rule: a pomodoro can't
+      be split. If you get interrupted, it doesn't count.
     </p>
   </Section>
-  <Section title="Using this one">
+  <Section title="Using this timer">
     <p>
-      Press Start and leave the tab open. The title shows the minutes left, so you can see it from
-      another tab. A rising pair means focus, a falling pair means break. The cycle runs Focus 1,
-      short break, Focus 2, short break, Focus 3, short break, Focus 4, long break, Done. It does
-      not start again on its own.
+      Press Start and leave the tab open. The tab title shows the minutes left, so you can check it
+      from another tab. A rising pair of beeps means focus, and a falling pair means break. The
+      cycle goes Focus 1, short break, Focus 2, short break, Focus 3, short break, Focus 4, long
+      break, Done. It won't start again on its own.
     </p>
-    <p>Prefer 50/10? Change Focus and Short break above the Start button. The change sticks.</p>
+    <p>
+      Prefer 50/10? Change Focus and Short break above the Start button. Your choice is saved for
+      next time.
+    </p>
   </Section>
   <Section title="Other rhythms">
-    <p>Preset pages for the common alternatives, each with its own reasoning.</p>
+    <p>Other common rhythms have their own pages, each with a short note on who it suits.</p>
     <ul class="links">
       {pomodoros.map((p) => (
         <li>

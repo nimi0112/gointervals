@@ -1,67 +1,70 @@
 ---
 title: How to keep your phone screen on during a workout timer
-description: Keep phone screen on during a workout without changing settings. How Screen Wake Lock works, why browsers block it, and what to do on older phones.
+description: Keep your phone screen on during a workout without changing any settings. How screen wake lock works, when it can fail, and what to do on older phones.
 pubDate: 2026-08-30
+updatedDate: 2026-09-25
 tags: [pwa, how-to, offline, workouts]
 timer: '/interval'
 keyword: 'keep phone screen on'
 ---
 
-To keep your phone screen on during a workout timer, the page has to ask the operating system for permission to stay awake, and that request is called a wake lock. You do not have to change any settings for this to work, as long as the timer you are using asks for one.
+To keep your phone screen on during a workout timer, the page asks your phone to stay awake. That request is called a wake lock. You don't need to change any settings. You just need a timer that asks for one.
 
-## Why the screen goes dark in the first place
+## Why the screen goes dark
 
-Your phone turns the screen off after 30 seconds or a minute of no touches because the display is the single largest consumer of battery on the device. The OS has no idea whether you are reading something or you put the phone in your pocket, so it assumes the pocket.
+Your phone turns the screen off after 30 seconds or a minute without a touch. The screen uses more battery than anything else on the phone. Your phone can't tell if you're reading or if it's in your pocket, so it plays it safe.
 
-During a workout you are, by definition, not touching the screen. So the phone does exactly what it was designed to do, at exactly the wrong moment, roughly eleven seconds into round two.
+During a workout, you're not touching the screen. So the phone does what it was built to do, just at an awkward moment, like early in round two.
 
-## The Screen Wake Lock API
+## Screen wake lock
 
-Browsers added a proper solution for this: the Screen Wake Lock API. A page calls `navigator.wakeLock.request('screen')` and the OS keeps the display on until the page releases the lock or you switch tabs. It is documented on MDN Web Docs if you want the specifics.
+Browsers now have a proper fix, called the Screen Wake Lock API. A web page asks for a wake lock, and the phone keeps the screen on. It stays on until the page lets go or you switch away. MDN Web Docs has the details if you're curious.
 
-Three things about it that matter in practice:
+Three things are worth knowing:
 
-1. **It needs a user gesture.** A page cannot grab a wake lock on load. You have to tap something first. That is why the lock kicks in when you press start, not when the page opens.
-2. **It is released when you leave the tab.** Switch apps and the lock drops. Come back and a well-behaved page reacquires it. This is a privacy and battery decision, not a bug.
-3. **It respects low power mode.** If your phone is in battery saver, the request can be rejected outright. Nothing the page can do about that.
+1. **The timer asks when you tap Start.** It doesn't ask when the page opens, only when a session begins.
+2. **It lets go when you leave the tab.** Switch apps and the lock drops. This saves battery and is on purpose. Come back, and a good timer asks again.
+3. **Battery saver can say no.** In low power mode, your phone may refuse the request. The page can't change that.
 
-The [interval timer](/interval) requests a wake lock when you start a workout, so the screen stays on for the whole session and releases when you finish.
+The [interval timer](/interval) asks for a wake lock when you start. The screen stays on while it runs, and the lock is released when you pause or finish. If you leave the tab and come back mid-session, it asks again.
 
-## The video fallback for older browsers
+## The video trick for older browsers
 
-Screen Wake Lock is well supported now, but not universally, and the older trick still works: play a tiny, silent, looping video in the background. The OS sees active video playback and assumes you are watching something, so it keeps the display on.
+Most browsers support wake lock now, but not all of them. There's an older trick that still works. The page plays a tiny, silent video on a loop. The phone thinks you're watching something, so it keeps the screen on.
 
-It is a hack. It works. Pages that care about older iOS versions in particular still ship it as a fallback, and the [interval timer](/interval) uses it when the real API is not available.
+It's a simple workaround, and it works. It helps most on older iPhones. The [interval timer](/interval) uses it when wake lock isn't available. The video needs a tap to start playing, which is another reason the timer waits for Start.
 
 ## What to do if the screen still sleeps
 
-| Situation                                    | Fix                                                             |
-| -------------------------------------------- | --------------------------------------------------------------- |
-| Low power / battery saver on                 | Turn it off for the session. Wake locks are denied in this mode |
-| You switched apps mid-workout                | Come back to the tab. The lock reacquires on return             |
-| Screen timeout set very short                | Raise it in display settings as a backstop                      |
-| Older browser, no wake lock                  | Update the browser, or keep the tab in the foreground           |
-| iOS with the page in a background Safari tab | Keep it foregrounded. Background tabs get throttled             |
+| Situation                                    | Fix                                                              |
+| -------------------------------------------- | ---------------------------------------------------------------- |
+| Low power / battery saver on                 | Turn it off for the session. Wake locks can be denied in it      |
+| You switched apps mid-workout                | Come back to the tab. The lock is requested again on return      |
+| Screen timeout set very short                | Raise it in display settings as a backup                         |
+| Older browser, no wake lock                  | Update the browser, or keep the tab in the foreground            |
+| iOS with the page in a background Safari tab | Keep it in the foreground. Background tabs are slowed right down |
 
-## The thing that actually saves you
+## Why a dark screen doesn't break the timer
 
-Here is the part people skip: the screen going dark should not matter that much, because a timer should not depend on the screen being on to keep time.
+Here's the good news. Even if the screen goes dark, a well-built timer keeps the right time.
 
-Browsers throttle background tabs aggressively. A timer built on a counter that increments every tick will drift, or stall entirely, when the tab is backgrounded or the phone sleeps. You come back and it says 40 seconds remaining when it should say 10.
+Browsers slow down tabs you're not looking at. A timer that counts down one tick at a time can drift or even stop. You come back and it says 40 seconds left when it should say 10.
 
-The fix is to store the start timestamp and compute the remaining time from the clock every time the page wakes up, rather than counting down. That way sleeping does not lose time; it just means nothing was drawn while the screen was off. Every timer on this site works that way, so if your phone does doze off, the elapsed time is still correct when it comes back.
+The fix is to note the start time and check the clock each time the page wakes. Then sleep doesn't lose any time. Nothing gets drawn while the screen is off, and that's all.
 
-Audio helps too. If the timer beeps at each transition, you can put the phone face down and just listen. A screen that stays on is a convenience; sound is the actual interface during a set.
+Every timer on this site works this way. If your phone dozes off, the time is still right when it wakes.
 
-## Practical setup for a workout
+Sound helps too. The timer beeps at each change, so you can put the phone face down and just listen. A screen that stays on is nice to have. During a set, sound does most of the work.
 
-- Tap start before you put the phone down, so the wake lock has its user gesture.
-- The digits are the biggest thing on the page, readable from across a mat.
-- Turn your volume up enough to hear the cues over music.
-- Leave the tab in the foreground.
+## A quick setup for your workout
 
-Everything is stored in the browser, so your settings are still there the next time you open it, with no account to sign into while your hands are covered in chalk.
+- Tap Start before you put the phone down.
+- Check the numbers read well from where you'll be. They're the biggest thing on the page.
+- Turn the volume up so you can hear the beeps over music.
+- Keep the tab in the foreground.
 
-If you want the timer to keep working with no connection at all, [a free online timer that works offline](/blog/free-online-timer-that-works-offline) covers how that part works.
+Your settings are saved in your browser, so they're there next time. There's no account, so no login with chalky hands.
+
+Want the timer to work with no connection at all? [A free online timer that works offline](/blog/free-online-timer-that-works-offline) explains how.
 
 Try it: [start an interval workout and put the phone down](/interval).

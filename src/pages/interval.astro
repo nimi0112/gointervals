@@ -10,10 +10,10 @@ import { workouts } from '@/data/workouts';
 
 <TimerPage
   title="Interval Timer – Free Work, Rest and Rounds Timer"
-  description="Free online interval timer for HIIT, circuits and repeating reminders. Set work, rest and rounds, get a beep at every change. No login, works offline."
+  description="Free online interval timer for HIIT, circuits and repeating reminders. Set work, rest and rounds, and you'll hear a beep at every change. Works offline."
   path="/interval"
   h1="Interval timer"
-  lede="Work, rest, rounds. A beep at every change so you can put the phone down and get on with it."
+  lede="This interval timer switches between work and rest for as many rounds as you like. It beeps at every change, so you can put your phone down and move."
   config={defaultConfigs.interval}
   faq={faqs['/interval']}
   related={relatedTimers['/interval']!}
@@ -22,29 +22,34 @@ import { workouts } from '@/data/workouts';
 >
   <Section title="Set it up" flush>
     <p>
-      Work is the hard bit, Rest is the easy bit, Rounds is how many times you repeat the pair. Type
-      a number or tap − and +. Start goes straight into the first work block; the rest after the
-      last round is included, so the session ends on a breath rather than a sprint.
+      Work is the hard part and Rest is the easy part. Rounds is how many times you repeat the pair.
+      On this page, Work and Rest are in minutes. Type a number or tap − and +. Start takes you
+      straight into the first work block. The rest after the last round is included, so you finish
+      on a breather, not a sprint.
     </p>
     <p>
-      Set Rest to 0 for a timer that just beeps every N minutes. Thirty minute blocks, eight rounds,
-      and you have a four hour timer with a beep every half hour. That is the default.
+      The default is 30 minutes of work and 5 minutes of rest, eight times. For a simple repeating
+      reminder, set Rest to 0 and it just beeps every few minutes. With 30 minute blocks and eight
+      rounds, you get a beep every half hour for four hours.
     </p>
   </Section>
   <Section title="Run it">
     <p>
-      Press Start or hit Space. Work shows a pulse icon, Rest shows a breath. The sounds are
-      different too: a rising pair to go, a falling pair to stop, a tick for the last three seconds,
-      a three-note finish. Pause keeps the clock exactly where it was.
+      Press Start or the Space key. Work shows a pulse icon and Rest shows a wind icon. The sounds
+      differ too. A rising pair means go and a falling pair means ease off. You'll hear a tick in
+      the last three seconds and three notes at the finish. Pause holds the clock right where it is.
     </p>
     <p>
-      Esc or End session asks before it stops anything. The timer holds a screen wake lock while it
-      runs, so the phone does not go dark halfway through round six, and the tab title counts down
-      when the page is in the background on a desktop.
+      Esc or End session always asks before stopping. While the timer runs, it keeps your screen
+      awake where the browser allows it, so your phone won't go dark in round six. On a computer,
+      the tab title counts down too, so you can check it from another tab.
     </p>
   </Section>
   <Section title="Ready-made">
-    <p>Named workouts and repeating beeps, each on its own page with the timer already set.</p>
+    <p>
+      Want a head start? These pages open with the timer already set for a named workout or a
+      repeating beep.
+    </p>
     <ul class="links">
       {workouts.map((w) => (
         <li>

@@ -8,32 +8,32 @@ import { defaultConfigs } from '@/engine/presets';
 
 <TimerPage
   title="EMOM Timer – Free Every Minute On the Minute Timer"
-  description="Free EMOM timer that beeps at the top of every minute, or every 90 seconds, or every 2. Set the interval and total minutes. No login, works offline."
+  description="Free EMOM timer that beeps at the start of every minute, every 90 seconds or every 2 minutes. Set the interval and total minutes. Works offline."
   path="/emom"
   h1="EMOM timer"
-  lede="Every minute on the minute. Set the interval and the total, get a beep at the top of each one."
+  lede="This EMOM timer beeps at the start of every minute, on the minute. Set the interval and the total time, then work to the beep."
   config={defaultConfigs.emom}
   faq={faqs['/emom']}
   related={relatedTimers['/emom']!}
   posts={relatedPosts['/emom']}
   crumbName="EMOM timer"
 >
-  <Section title="How an EMOM works" flush>
+  <Section title="How does an EMOM work?" flush>
     <p>
-      Do a set at the top of the minute. Rest for whatever is left. When the next minute starts, go
-      again. The rest shrinks as you slow down, which is the whole point: the clock keeps you honest
-      about the weight and the reps.
+      Start your set when the minute begins. Rest for whatever time is left. When the next minute
+      starts, go again. As you get tired, your rest gets shorter. That's the idea: the clock helps
+      you find a weight and a number of reps you can keep up.
     </p>
     <p>
-      Interval length sets how long each block is, from 15 seconds to 5 minutes, so 90 makes it an
-      E90S and 120 an E2MOM. Total minutes sets how long the session runs; if the intervals do not
-      divide it evenly the last one is shorter.
+      Interval length sets how long each block lasts, from 15 seconds to 5 minutes. Set it to 90 for
+      every 90 seconds (E90S), or 120 for every 2 minutes (E2MOM). Total minutes sets how long the
+      session runs. If the blocks don't divide it evenly, the last one is shorter.
     </p>
   </Section>
   <Section title="What you hear">
     <p>
-      A beep at the top of every interval, ticks through the last three seconds so you can pick the
-      bar up on time, and a finish chime. The context line counts the minutes for you.
+      A beep at the start of every interval. Ticks in the last three seconds, so you can grab the
+      bar on time. Three notes when you finish. The line under the timer counts the rounds for you.
     </p>
   </Section>
 </TimerPage>
