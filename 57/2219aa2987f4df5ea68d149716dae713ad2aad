@@ -1,0 +1,87 @@
+src/content/blog/meditation-timer-interval-bells.md
+  s_6b7a25a9f35b0f::t_34f58f43ec135f 30-38
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,16-28
+  s_6b7a25a9f35b0f::t_d88a1fc634a435 3,29
+src/content/blog/study-timer-vs-pomodoro.md
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,23-29
+  s_6b7a25a9f35b0f::t_843f9fbd066d25 30,44,52,56-63
+src/content/blog/interval-timer-for-running.md
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,15,17,19,21,23
+  s_6b7a25a9f35b0f::t_c2a5ea82aaa735 3,39-54
+src/content/blog/plank-timer-how-long-to-hold.md
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,15-21
+  s_6b7a25a9f35b0f::t_5657cb90604e81 3,22
+src/content/blog/how-long-to-meditate.md
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5-6,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41-44,46,48,50,54-58
+  s_6b7a25a9f35b0f::t_6d17e7242d699a 52
+  s_6b7a25a9f35b0f::t_bba6719bc0117a 3
+src/content/blog/what-is-a-tabata-timer.md
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,11,15,17,19,21,23
+  s_6b7a25a9f35b0f::t_ae5508b312013f 25,27,29,41,53-68
+src/content/blog/hiit-interval-timer-beginners.md
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,15-25
+  s_6b7a25a9f35b0f::t_34f58f43ec135f 57,59,61,63
+  s_6b7a25a9f35b0f::t_ea1d843f2fce73 3,26,49,51,53,55
+src/pages/blog/index.astro
+  s_6b7a25a9f35b0f::t_6d17e7242d699a 29-30,44,50
+src/content/blog/7-minute-workout-timer.md
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,23-29
+  s_6b7a25a9f35b0f::t_d4e3ba83883a76 30,33,47,49,51,53,55,57,59
+src/content/blog/pomodoro-technique-25-5.md
+  s_6b7a25a9f35b0f::t_34f58f43ec135f 51-52,54-64
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,15,17,19,21,23,25
+  s_6b7a25a9f35b0f::t_55bdf5422dd37e 3,27,29,31-33,47,53,65
+src/content/blog/how-many-rounds-in-a-boxing-match.md
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,23-29
+  s_6b7a25a9f35b0f::t_29c74f71c17500 30,48,50,52,54,56,58,60,62
+src/content/blog/boxing-round-timer-3-minute-rounds.md
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,15-21
+  s_6b7a25a9f35b0f::t_b4c72875db07f4 3,22,33,59-66
+src/content/blog/best-pomodoro-length.md
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,15-21
+  s_6b7a25a9f35b0f::t_f3ed228c3515bc 22,33,56-63
+src/content/blog/how-long-is-a-tabata-workout.md
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,15-21
+  s_6b7a25a9f35b0f::t_af9b4ba67d1314 22,25,29
+src/pages/index.astro
+  s_6b7a25a9f35b0f::t_6d17e7242d699a 17,94-97
+src/content/blog/emom-workouts-explained.md
+  s_6b7a25a9f35b0f::t_34f58f43ec135f 54,56
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,15-21
+  s_6b7a25a9f35b0f::t_1be9eea749ed09 3,22,44,58,60,62,64,66
+src/content/blog/timer-that-beeps-every-10-minutes.md
+  s_6b7a25a9f35b0f::t_1be6cc5bfc08f7 5,13-21
+  s_6b7a25a9f35b0f::t_45e1730a569fcf 54-61
+AGENTS.md
+  s_6b7a25a9f35b0f::t_15e09d1ec66bcd 129,136-139,147
+PLAN.md
+  s_6b7a25a9f35b0f::t_b2410aaf33f291 180-200
+src/layouts/Post.astro
+  s_6b7a25a9f35b0f::t_733bfaef4e54d5 5,18
+src/pages/emom.astro
+  s_6b7a25a9f35b0f::t_08483d16be5c20 21-34
+src/pages/interval.astro
+  s_6b7a25a9f35b0f::t_d2e8d9c4e1353f 23-36
+src/pages/meditation.astro
+  s_6b7a25a9f35b0f::t_4e0163e2ab2dce 22-35
+src/pages/pomodoro.astro
+  s_6b7a25a9f35b0f::t_b7f75e89677fda 22-35
+src/pages/tabata.astro
+  s_6b7a25a9f35b0f::t_762860e067a4fa 22-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "572219aa2987f4df5ea68d149716dae713ad2aad",
+  "prompts": {},
+  "sessions": {
+    "s_6b7a25a9f35b0f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0d985-838e-7800-b01b-d0c8ab688101",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
