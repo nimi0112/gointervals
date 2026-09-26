@@ -1,0 +1,21 @@
+PLAN.md
+  s_6b7a25a9f35b0f::t_1f2b267cf62ee3 201-202
+src/pages/blog/index.astro
+  s_6b7a25a9f35b0f::t_1f2b267cf62ee3 12-26,47-52,54,58,73-76,79
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "bab79d1cd254bf6c79c0c1aff8b1dd54b12088b5",
+  "prompts": {},
+  "sessions": {
+    "s_6b7a25a9f35b0f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0d985-838e-7800-b01b-d0c8ab688101",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "nimish.nandwana <nimish.nandwana@telekom-digital.com>"
+    }
+  }
+}
