@@ -1,8 +1,8 @@
 ---
 title: 'Interval timer for running: build a clear run/walk session'
-description: 'Set running intervals in minutes or seconds, check the complete session length, and understand why a timed effort is different from a measured distance.'
+description: 'Understand run/walk intervals, how they fit beginner running plans, and how to translate a chosen session into clear work and recovery periods.'
 pubDate: 2026-09-15
-updatedDate: 2026-09-25
+updatedDate: 2026-09-26
 tags: [running, hiit, how-to, workouts]
 timer: '/interval/running-intervals-1-1'
 keyword: 'interval timer for running'
@@ -11,6 +11,30 @@ keyword: 'interval timer for running'
 A running plan says one minute running and ninety seconds walking. Your timer says Work, Rest and Rounds. Translating between the two should be straightforward, but units and the final recovery can change the session you build.
 
 An interval timer for running repeats a fixed effort and recovery. Choose the schedule from your plan first, then enter it and check the total. The timer controls duration; it does not choose an appropriate pace or training progression for you.
+
+## What run/walk intervals are for
+
+Run/walk training alternates running with planned walking periods. The walk is part of the session, rather than evidence that the session failed. Dividing time this way lets a plan introduce running in smaller portions instead of requiring one continuous run immediately.
+
+The [NHS Couch to 5K programme](https://www.nhs.uk/better-health/get-active/get-running-with-couch-to-5k/couch-to-5k-running-plan/) uses a gradual run/walk approach for beginners, with rest days between runs. Its sequence provides the progression; the timer simply helps follow it.
+
+This format can be useful when beginning a suitable running programme and wanting clear boundaries between running and recovery. Faster intervals for performance training are a different use of the same clock. They need a different plan, not just fewer walking seconds.
+
+Before choosing settings, decide which kind of session you mean. That prevents a beginner run/walk outing from quietly becoming a sprint workout because both happen to contain intervals.
+
+## Keep time and distance separate
+
+A timed repetition does not represent a fixed distance unless you hold a particular pace. At a steady 6:00 per kilometre, a ninety-second effort covers 250 metres. At 4:00 per kilometre, the same time covers 375 metres.
+
+So replacing “400 metres” with “ninety seconds” changes the workout unless that time fits your intended pace. For distance repetitions, use measured markers or a suitable watch. For fixed durations, use the beep as the boundary and accept that distance may vary.
+
+The [running splits guide](/blog/stopwatch-running-splits-lap-times) explains how to record individual efforts and recoveries when you want to compare them later.
+
+## Account for the parts outside the repeats
+
+This timer starts the first Work period immediately. It does not insert a warm-up before it or name the next exercise. Complete your preparation first, then start when you are ready.
+
+A ladder of one, two and three-minute efforts is also different from repeating one work/rest pair. The current timer does not schedule a custom ladder automatically. Use separate sessions or a tool that supports the exact sequence.
 
 ## Translate the plan into settings
 
@@ -27,20 +51,6 @@ On the main [interval timer](/interval), Work and Rest use whole minutes. Work 2
 On an interval preset page, the same settings are Work 120 and Rest 60 because those fields use seconds. Presets are the useful starting point for ninety-second periods or other lengths that are not whole minutes.
 
 Before pressing Start, read the total under the settings. For ten rounds of two minutes running and one minute walking, expect thirty minutes. If the total surprises you, check the units and round count before changing your training plan.
-
-## Keep time and distance separate
-
-A timed repetition does not represent a fixed distance unless you hold a particular pace. At a steady 6:00 per kilometre, a ninety-second effort covers 250 metres. At 4:00 per kilometre, the same time covers 375 metres.
-
-So replacing “400 metres” with “ninety seconds” changes the workout unless that time fits your intended pace. For distance repetitions, use measured markers or a suitable watch. For fixed durations, use the beep as the boundary and accept that distance may vary.
-
-The [running splits guide](/blog/stopwatch-running-splits-lap-times) explains how to record individual efforts and recoveries when you want to compare them later.
-
-## Account for the parts outside the repeats
-
-This timer starts the first Work period immediately. It does not insert a warm-up before it or name the next exercise. Complete your preparation first, then start when you are ready.
-
-A ladder of one, two and three-minute efforts is also different from repeating one work/rest pair. The current timer does not schedule a custom ladder automatically. Use separate sessions or a tool that supports the exact sequence.
 
 ## Test the cues where you will use them
 

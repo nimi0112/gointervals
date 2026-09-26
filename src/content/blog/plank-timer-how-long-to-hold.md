@@ -1,8 +1,8 @@
 ---
 title: 'How long to hold a plank: use the clock as a limit'
-description: 'Choose a plank hold you can control, compare single holds with repeated sets, and configure a seconds-based timer without treating duration as a fitness score.'
+description: 'Learn what a plank trains, why position matters more than a duration record, and how to plan comparable holds and recovery around your chosen variation.'
 pubDate: 2026-09-17
-updatedDate: 2026-09-25
+updatedDate: 2026-09-26
 tags: [workouts, how-to]
 timer: '/interval'
 keyword: 'how long to hold a plank'
@@ -11,6 +11,14 @@ keyword: 'how long to hold a plank'
 You planned a thirty-second plank. At twenty seconds, your position changes and you start holding your breath. The display still has ten seconds left.
 
 How long to hold a plank should depend on the version you are doing and the position you can maintain. The timer is a planned limit, not a requirement to stay until it rings. A longer number by itself does not establish a better set.
+
+## What a plank trains
+
+A plank is an isometric exercise: you work to hold a position rather than repeatedly moving through one. In a front plank, the task is to support your body while controlling the position of your trunk. The [American Council on Exercise](https://www.acefitness.org/resources/everyone/blog/5250/4-core-movements-for-beginners/) includes it among introductory core movements.
+
+That explains why duration alone misses the point. If the position changes substantially, the last ten seconds may no longer represent the same task as the first ten. The useful aim is a repeatable hold with appropriate form and breathing, not merely a longer countdown.
+
+A plank can be one part of a strength routine when the variation suits your ability and goal. It does not replace every other movement or establish overall fitness. Learn the setup first, then use time to organise practice you can control.
 
 ## Decide what you are practising
 

@@ -1,8 +1,8 @@
 ---
 title: 'Meditation interval bells: give each bell a purpose'
-description: 'Choose meditation interval bells that support your practice. See example bell schedules, how the end cue works, and when fewer bells make more sense.'
+description: 'Learn how meditation bells can support attention or mark a change of practice, when quiet helps more, and how to plan cues for a purposeful session.'
 pubDate: 2026-09-15
-updatedDate: 2026-09-25
+updatedDate: 2026-09-26
 tags: [meditation, how-to]
 timer: '/meditation'
 keyword: 'meditation timer with interval bells'
@@ -13,7 +13,29 @@ You settle into a quiet sit. A bell rings. Now you are wondering whether to chan
 
 A meditation timer with interval bells is most useful when you decide what each bell means before you start. You can use bells to mark changes, or choose one end bell and leave the rest of the session quiet.
 
-## Begin with the job, then choose the bells
+## What are you returning your attention to?
+
+In a breath-focused meditation, you choose a sensation of breathing as your focus, notice when attention has wandered, and return. The bell can be a reminder to do that, but noticing a distraction yourself is also part of the practice. You do not have to wait for a sound.
+
+Suppose you notice that you have been mentally writing an email. You can recognise the thought and return to the next breath without finishing the email in your head. If a bell later rings, the same response is available. This is an example of how to use a cue, not a test of whether you stayed focused for the whole interval.
+
+If meditation is new to you, begin with [what meditation involves and a first short practice](/blog/how-long-to-meditate). Learn the activity before adding several signals to it.
+
+## When a bell helps, and when quiet helps
+
+A bell is useful when it removes a decision: when to change from sitting to walking, or when your reserved time ends. That leaves you free to follow the practice instead of repeatedly estimating the time.
+
+For a short pause after work, one end bell may be enough. For a practice with distinct sections, intermediate bells can hold the sequence. If you keep anticipating the next sound, try an end-only session and compare. More reminders are not automatically more support.
+
+## A possible three-part sit
+
+Here is one way to use a thirty-minute session. Spend the first ten minutes noticing physical sensations, the next ten attending to your breath, and the final ten noticing sounds and thoughts as they arise.
+
+That is an example of assigning meaning to the bells, not a required sequence or a promise about the benefits of thirty minutes. If you follow a teacher's practice, use the timing that supports it. If you are deciding how much time to reserve, the [meditation length guide](/blog/how-long-to-meditate) helps separate a manageable starting point from a target you feel obliged to reach.
+
+You can also use the bells to alternate sitting and walking. Check that the tone is audible from wherever you will be, and make the route clear before starting.
+
+## Turn your practice into a bell schedule
 
 Suppose you want ten minutes to sit without checking the clock. You need an ending, not intermediate milestones. On the [meditation timer](/meditation), set Session length to 10, turn Interval bell off, leave Start bell off and keep End bell on.
 
@@ -35,14 +57,6 @@ The interval is the space between bells. It is not the session length, and it do
 These examples assume End bell is on and Start bell is off. In the 25-minute example, the last stretch is five minutes. The timer ends at the chosen session length; it does not extend the sit to reach another full interval.
 
 When a scheduled interval lands exactly at the end, you hear the end cue once, rather than two overlapping bells. Turning End bell off removes that finish sound.
-
-## A possible three-part sit
-
-Here is one way to use a thirty-minute session. Spend the first ten minutes noticing physical sensations, the next ten attending to your breath, and the final ten noticing sounds and thoughts as they arise.
-
-That is an example of assigning meaning to the bells, not a required sequence or a promise about the benefits of thirty minutes. If you follow a teacher's practice, use the timing that supports it. If you are deciding how much time to reserve, the [meditation length guide](/blog/how-long-to-meditate) helps separate a manageable starting point from a target you feel obliged to reach.
-
-You can also use the bells to alternate sitting and walking. Check that the tone is audible from wherever you will be, and make the route clear before starting.
 
 ## Test the sound once
 

@@ -2,7 +2,7 @@
 title: 'How long is a Tabata workout? Count the whole session'
 description: 'One Tabata block lasts four minutes, including rest. Calculate multiple blocks, recovery gaps and preparation time before planning your session.'
 pubDate: 2026-09-12
-updatedDate: 2026-09-25
+updatedDate: 2026-09-26
 tags: [tabata, hiit, workouts, how-to]
 timer: '/tabata'
 keyword: 'how long is a tabata workout'
@@ -12,13 +12,21 @@ The class says twenty minutes. The timer says four. Both can describe a Tabata-s
 
 One classic Tabata block is eight rounds of 20 seconds work and 10 seconds rest: four minutes. A whole session may also include preparation, warm-up, additional blocks, longer recovery gaps and cooldown. Those minutes do not disappear because they are outside the headline.
 
+## What counts as the workout?
+
+The familiar Tabata clock alternates twenty-second work periods with ten-second rests. The wider session includes getting ready to perform the chosen activity, the interval block itself and whatever recovery your plan calls for.
+
+That distinction matters when deciding whether it fits your day. Four minutes can be the length of a block without being the full appointment. It also tells you nothing on its own about how demanding that block will be: movement, effort and preparation still matter.
+
+If you are choosing this format for the first time, read [what Tabata is and what its original study found](/blog/what-is-a-tabata-timer). Then plan the session around a suitable activity, rather than selecting it only because four minutes sounds easy to fit in.
+
 ## Separate work time from clock time
 
-Eight efforts of twenty seconds add up to 160 seconds, or 2:40. Eight rests of ten seconds add up to 1:20. Together they make the four-minute block on the [Tabata timer](/tabata).
+Eight efforts of twenty seconds add up to 160 seconds, or 2:40. Eight rests of ten seconds add up to 1:20. Together they make a four-minute block.
 
 The last effort ends at 3:50. This timer includes the final ten-second rest, so Done appears at 4:00. That is why “four minutes of work” is an imprecise description: part of the block is already rest.
 
-The main timer is fixed to this pattern. A [four-round version](/tabata/20-10-4) lasts two minutes, while [30/15 for eight rounds](/tabata/30-15-8) lasts six. Those are interval variations, not the same four-minute block.
+A four-round version lasts two minutes, while 30/15 for eight rounds lasts six. Those are interval variations, not the same four-minute block.
 
 ## Count the gaps between blocks
 

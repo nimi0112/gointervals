@@ -14,11 +14,7 @@ import { pomodoros } from '@/data/pomodoros';
 import { workouts } from '@/data/workouts';
 
 const faq = faqs['/']!;
-const featuredIds = [
-  'best-pomodoro-length',
-  'what-is-a-tabata-timer',
-  'meditation-timer-interval-bells',
-];
+const featuredIds = ['pomodoro-technique-25-5', 'what-is-a-tabata-timer', 'how-long-to-meditate'];
 const articles = await getCollection('blog', (post) => !post.data.draft);
 const featured = featuredIds.flatMap((id) => articles.filter((post) => post.id === id));
 const ready = [
@@ -95,7 +91,10 @@ const ready = [
     <section class="section" aria-labelledby="home-blog-heading">
       <h2 id="home-blog-heading">From the blog</h2>
       <div class="prose">
-        <p>What do the numbers on a timer change? Start with these practical guides.</p>
+        <p>
+          Understand the practice before choosing the clock. Start with meditation, focused work or
+          Tabata training.
+        </p>
       </div>
       <PostList posts={featured} headingLevel="h3" />
       <p class="home__article">

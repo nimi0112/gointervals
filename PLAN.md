@@ -177,3 +177,24 @@ All five main guides and all 35 preset guides are reviewed together with the blo
 Discovery uses existing static components: a homepage Blog link, three curated articles, archive starting points and an article-to-Blog breadcrumb. No client JavaScript or dependency is added. Build-wide sitemap lastmod was removed because deployment time is not a reliable page modification date; article publication and modification metadata retain their actual editorial dates.
 
 After deployment, compare four to six weeks of Search Console impressions/clicks by page and query, plus existing analytics page paths where available. The site currently sends page views and timer events; dedicated homepage-to-blog and article-to-timer click events are not added in this change. No Search Console baseline was available during implementation, and rankings are not guaranteed.
+
+## 12. Teach the subject before the timer (2026-09-26)
+
+The editorial review found that useful arithmetic and accurate product instructions still left a learning gap. Readers should understand the activity and its purpose before choosing a tool. The revision therefore teaches definitions, practical reasons to try an approach, suitable situations, realistic benefits and a first step. Benefits supported by research are distinguished from organisational advantages and illustrative examples.
+
+The plan and implementation cover these learning outcomes:
+
+| Article group                              | What the reader should learn                                                                                                               |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Meditation duration and bells              | What meditation means, returning attention, possible benefits, choosing a time to practise, a first short sit, and using cues purposefully |
+| HIIT, Tabata and workout duration          | Effort versus timing, the role of recovery, what research found, and how a block fits a complete session                                   |
+| EMOM                                       | Why scheduled starts are useful, how task duration changes recovery, and when another structure fits better                                |
+| Pomodoro and focus lengths                 | Choosing a concrete task, handling distractions, using breaks and matching a rhythm to the difficulty                                      |
+| Study                                      | Retrieval and feedback as learning activities, rather than measuring only time at a desk                                                   |
+| Running, planks, circuits and boxing       | The purpose of the format or exercise, suitable context, and how to interpret a planned session                                            |
+| Repeating reminders                        | Linking a cue to a decision and recognising when it becomes an interruption                                                                |
+| Splits, offline use and screen reliability | Existing substantive lessons retained: interpreting pace, cached resources, and the distinction between elapsed time and timely audio      |
+
+Fifteen articles receive substantive additions or rewrites; the three already explanatory technical/measurement articles retain their focused lessons. Five main timer guides gain concise subject introductions below the timer. The shared article header no longer places a timer CTA before the explanation; tool recommendations and setup are concentrated in closing sections after the teaching. No new URLs, timer behaviour changes or client JavaScript are required.
+
+Review each piece for a clear learning outcome, connected section order, accurate sources and an actionable takeaway. Validate metadata, internal links, readable mobile/desktop layout and the existing smoke tests before updating the same PR. Existing publication dates and slugs remain; substantive follow-up edits use their actual September 26 revision date.
