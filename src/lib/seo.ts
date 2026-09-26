@@ -77,8 +77,8 @@ export function webApplication(): JsonLd {
       'Tabata timer',
       'EMOM timer',
       'Pomodoro timer',
-      'Works offline',
-      'Keeps the screen on',
+      'Works offline after required files are cached',
+      'Requests an awake screen while running',
     ],
   };
 }
@@ -185,7 +185,13 @@ export function crumbsFor(path: string, leafName: string): Crumb[] {
 }
 
 /** HowTo for a preset timer page: three real steps the page's copy also describes. */
-export function howTo(name: string, path: string, setup: string, totalSeconds: number): JsonLd {
+export function howTo(
+  name: string,
+  path: string,
+  setup: string,
+  totalSeconds: number,
+  fixedTiming = false,
+): JsonLd {
   const iso = `PT${Math.max(1, Math.round(totalSeconds))}S`;
   return {
     '@context': 'https://schema.org',
@@ -205,13 +211,15 @@ export function howTo(name: string, path: string, setup: string, totalSeconds: n
         '@type': 'HowToStep',
         position: 2,
         name: 'Adjust if needed',
-        text: 'Change any value above the Start button. The summary line describes the result in plain words.',
+        text: fixedTiming
+          ? 'This timer uses fixed 20/10 timing for eight rounds. Choose a variant if you need editable durations.'
+          : 'Change the settings above the Start button. The summary line describes the result in plain words.',
       },
       {
         '@type': 'HowToStep',
         position: 3,
         name: 'Start and listen',
-        text: 'Press Start or the Space bar. Distinct tones mark each change and the screen stays on until it finishes.',
+        text: 'Press Start or the Space bar. Check sound settings and device volume. Keep the page visible for cues; an awake screen depends on browser support.',
       },
     ],
   };

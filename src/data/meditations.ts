@@ -8,15 +8,13 @@ export const meditations: ProgrammaticPage[] = [
     description:
       'A 5 minute meditation timer with one soft bell at the end and quiet until then. Free, runs in your browser, no account needed.',
     intro: [
-      'This 5 minute meditation timer gives you five quiet minutes and one soft bell at the end. It’s a lovely length for your very first sit. It’s also a good length for busy days, when five minutes is all you have.',
-      'If you’d like something to do, count your breaths. Count one on each out-breath, up to ten, then start again at one. You’ll probably lose count by four or so. That’s fine. Noticing you lost count is the whole practice, and five minutes gives you plenty of chances.',
-      'You can also just sit. No counting, no method, nothing to get right. Press Start and rest for five minutes until the bell. Nothing will ask anything of you in between.',
+      'Five minutes gives you a small, clearly bounded space for a first sit or a busy day. This preset is quiet until one end bell; interval and start bells are off.',
+      'Choose a comfortable position and a simple practice before starting. You might attend to your breath and return when you notice attention wandering. The duration is a practical option, not a minimum dose or a promise about how you will feel.',
     ],
     uses: [
-      'Your first try at sitting, before you go longer',
-      'A morning sit that fits before you leave the house',
-      'A calm reset between meetings',
-      'Busy days when five minutes is what you have',
+      'A first short sit',
+      'A quiet pause between tasks',
+      'An end bell without intermediate cues',
     ],
     config: {
       mode: 'meditation',
@@ -29,11 +27,11 @@ export const meditations: ProgrammaticPage[] = [
     faq: [
       {
         q: 'Is five minutes long enough to help?',
-        a: 'It’s enough to practise noticing and coming back, which is the core skill. Five minutes you actually sit beats twenty you keep putting off. Move up to ten when five starts to feel short.',
+        a: 'It provides time to practise, but this duration does not guarantee a particular benefit. Choose a length that fits your day and the practice you follow.',
       },
       {
         q: 'Does it keep the screen on?',
-        a: 'Yes, while the page is open and the timer is running. Your phone shouldn’t go to sleep mid-sit. If a bright screen bothers you, turn the brightness down before you start.',
+        a: 'The timer requests an awake screen while running, but the browser or battery settings may refuse it. Keep the page visible and test your device before relying on bells.',
       },
       {
         q: 'Can I change the interval?',
@@ -41,7 +39,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'Will it sound if the phone locks?',
-        a: 'The screen should stay on while the timer runs, so it shouldn’t lock. Keep the page open and on screen. In a background tab, the end bell can come late or not at all.',
+        a: 'Not reliably. A locked phone may suspend the page or its sound. Keep the timer visible; a correct countdown after resuming does not mean the bell rang on time.',
       },
     ],
     related: [
@@ -58,15 +56,13 @@ export const meditations: ProgrammaticPage[] = [
     description:
       'A 10 minute meditation timer with quiet until one soft bell at the end. A calm daily sit, free in your browser, nothing to install.',
     intro: [
-      'This 10 minute meditation timer is quiet for ten minutes, then rings one soft bell. Ten minutes is a common daily length. It feels like a real sit, yet it still fits into most days.',
-      'Ten minutes gives you time to settle. The first two or three minutes are often spent shifting around, hearing the room and thinking about your day. After that, the mind has less to sort, and you can watch it wander. Gently coming back is the thing you’re practising.',
-      'You don’t need to fill the time. Rest your attention on your breath. When you notice you’ve drifted off, that noticing is one small win. Ten minutes gives you lots of them.',
+      'This ten-minute meditation timer has one bell at the end and no intermediate bells. It suits a sit where you want an ending without periodic reminders.',
+      'If you want a halfway cue, turn Interval bell on and set Bell every to 5 minutes. The main countdown still measures the whole ten minutes. Give the halfway bell a purpose before you begin, or leave it off.',
     ],
     uses: [
-      'A daily sit that fits on a weekday',
-      'A good default if you’re not sure what length to pick',
-      'Winding down at the end of the work day',
-      'A gentle next step up from five minutes',
+      'One uninterrupted ten-minute practice',
+      'Trying a longer session after five minutes',
+      'Adding an optional halfway cue',
     ],
     config: {
       mode: 'meditation',
@@ -79,11 +75,11 @@ export const meditations: ProgrammaticPage[] = [
     faq: [
       {
         q: 'What does the bell sound like?',
-        a: 'It’s one soft tone made in your browser that slowly fades out. It’s loud enough to reach you with your eyes closed, and gentle enough not to startle you. You can try it with Preview bell.',
+        a: 'It is one generated tone with a fading end. Use Preview bell to choose a comfortable device volume before starting.',
       },
       {
         q: 'Is ten minutes long enough to be worth doing?',
-        a: 'Yes. It’s long enough to practise noticing and coming back, which is the heart of most meditation. Small studies suggest daily practice around this length can help a little. Ten minutes most days beats an hour now and then.',
+        a: 'It provides time to practise, but this duration does not guarantee a particular benefit. Choose a length that fits your day and the practice you follow.',
       },
       {
         q: 'Can I change the interval?',
@@ -108,15 +104,13 @@ export const meditations: ProgrammaticPage[] = [
     description:
       'A 20 minute meditation timer with a soft bell at ten minutes and at twenty. Use the middle bell to check your posture. Free, no signup.',
     intro: [
-      'This 20 minute meditation timer rings a soft bell at ten minutes and again at twenty. Twenty minutes comes up often in meditation. Transcendental Meditation teaches twenty minutes twice a day, and many Zen and Vipassana groups sit for twenty to twenty-five. Teachers vary a lot, but twenty is a long, comfortable sit that doesn’t need special training.',
-      'The middle bell is a posture check. Notice if you’ve slumped. Let your back lengthen, soften your jaw and drop your shoulders. Then carry on as before. Ten minutes in is often when the body starts to sag.',
-      'Twenty minutes can feel long at first. Restlessness often shows up in the second half, and that’s a good part to stay with. Press Start: ten minutes, a soft bell, ten more minutes, then the end bell.',
+      'This twenty-minute session has an interval bell at ten minutes and an end bell at twenty. Use the midpoint to mark a planned change of practice or simply to notice your position.',
+      'Twenty minutes is an available length, not a required next step after ten. You can move, shorten the session or turn off the midpoint bell. Comfort and the practice you intend to follow matter more than reaching a larger number.',
     ],
     uses: [
-      'A full daily sit once ten minutes feels short',
-      'Following the twenty-minute habit many practices use',
-      'Morning and evening sits, twice a day',
-      'A longer sit with a gentle posture check halfway',
+      'Two planned parts of a practice',
+      'A midpoint check-in',
+      'A continuous sit with the interval bell disabled',
     ],
     config: {
       mode: 'meditation',
@@ -133,7 +127,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'Does it keep the screen on?',
-        a: 'Yes, while the page is open and the timer is running. Where the browser supports it, the page asks the screen to stay awake. It won’t dim the screen for you, so turn the brightness down before you start.',
+        a: 'The timer requests an awake screen while running, but the browser or battery settings may refuse it. Keep the page visible and test your device before relying on bells.',
       },
       {
         q: 'Can I change the interval?',
@@ -141,7 +135,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'What if I miss the halfway bell?',
-        a: 'Glance at the screen. It shows the time left and how many interval bells have rung. The halfway bell is a posture check, so missing one does no harm.',
+        a: 'Glance at the screen. It shows the time left and the current session progress. The halfway bell is a posture check, so missing one does no harm.',
       },
     ],
     related: [
@@ -158,15 +152,13 @@ export const meditations: ProgrammaticPage[] = [
     description:
       'A 30 minute meditation timer with a soft bell every 10 minutes. Try body scan, breath and open awareness, ten minutes each. Free, no account.',
     intro: [
-      'This 30 minute meditation timer with bells every 10 splits your sit into three parts. Three short parts feel much easier than one long stretch. That’s a big reason half an hour is easier than it sounds.',
-      'Here’s one way to use them. For the first ten minutes, do a body scan, moving your attention slowly from your feet to your head. For the next ten, rest your attention on your breath. For the last ten, just let sounds, thoughts and feelings come and go. This order is only a suggestion. Swap it around, or keep one practice for all thirty minutes.',
-      'Even with one practice, the bell every ten minutes helps. After ten minutes your mind has often wandered off. A single soft tone brings you back, kindly and without fuss.',
+      'This thirty-minute session is divided by bells at ten and twenty minutes, with an end bell at thirty. The main clock continues through all three parts.',
+      'For example, you could use one part for noticing physical sensations, one for the breath and one for noticing sounds. This is only a possible sequence. Keep one practice throughout if that fits better, and use fewer bells if the reminders become distracting.',
     ],
     uses: [
-      'Splitting a longer sit into three calm parts',
-      'Body scan, breath and open awareness in one session',
-      'A weekend sit when you have more time',
-      'Practising with gentle reminders to come back',
+      'Three equal parts of a practice',
+      'A planned change at ten and twenty minutes',
+      'One continuous session with optional reminders',
     ],
     config: {
       mode: 'meditation',
@@ -183,7 +175,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'How do I know which segment I am in?',
-        a: 'Count the bells, which is easy with only three. If you open your eyes, the screen also shows the time left and how many interval bells have rung.',
+        a: 'Count the bells, which is easy with only three. If you open your eyes, the screen also shows the time left and the current session progress.',
       },
       {
         q: 'Can I change the interval?',
@@ -191,7 +183,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'Can I make the bells silent?',
-        a: 'Turn Sound off. Phones that can vibrate (most Android phones) will buzz at ten, twenty and thirty minutes instead. iPhone browsers don’t vibrate, so there you’d have no signal at all.',
+        a: 'Sound off mutes the bell but may leave vibration enabled on supported devices. Test your phone before relying on a silent cue; a muted timer does not guarantee a vibration alert.',
       },
     ],
     related: [
@@ -208,15 +200,13 @@ export const meditations: ProgrammaticPage[] = [
     description:
       'A 45 minute meditation timer with a soft bell every 15 minutes. Sit the whole time, or walk between the bells. Free in your browser, no login.',
     intro: [
-      'This 45 minute meditation timer rings a soft bell every 15 minutes. Forty-five minutes is a long sit, and it’s something you grow into over time. At this length, comfort matters more than willpower. Find a seat that will still feel fine in the last ten minutes.',
-      'The bells at fifteen and thirty minutes split the time into three parts. If you sit the whole way, they’re gentle posture checks. You can also use them as a plan: sit for fifteen, walk slowly for fifteen, then sit for fifteen. Many retreats mix sitting and walking like this. It gives your legs a rest, and a bell is the usual signal to switch.',
-      'Walking meditation needs very little space. Walk a few steps back and forth, slowly, paying attention to your feet. When the bell rings, stop where you are and go back to your seat.',
+      'The forty-five-minute preset rings at fifteen and thirty minutes, then once at the end. It provides three equal sections without restarting the main clock.',
+      'You might alternate sitting, walking and sitting, fifteen minutes each. Plan a clear route and check that you can hear the bell from it. If you prefer one continuous sit, the same bells can be optional check-ins rather than instructions to move.',
     ],
     uses: [
-      'A long sit once thirty minutes feels comfortable',
-      'Sitting and walking in fifteen-minute turns',
-      'A retreat-style session at home on a free morning',
-      'Sitting with a group, with a bell to mark each change',
+      'Alternating sitting and walking',
+      'Three fifteen-minute sections',
+      'An optional cue to check your position',
     ],
     config: {
       mode: 'meditation',
@@ -233,7 +223,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'Does it keep the screen on?',
-        a: 'Yes, while the page is open and the timer is running. It lets the screen sleep again when you pause or stop. A bright screen for 45 minutes uses a fair bit of battery, so turn the brightness down first.',
+        a: 'The timer requests an awake screen while running, but the browser or battery settings may refuse it. Keep the page visible and test your device before relying on bells.',
       },
       {
         q: 'Can I change the interval?',
@@ -258,15 +248,13 @@ export const meditations: ProgrammaticPage[] = [
     description:
       'A 1 hour meditation timer with a soft bell every 20 minutes. A retreat-length sit with gentle check-ins at twenty and forty. Free, no account.',
     intro: [
-      'This 1 hour meditation timer rings a soft bell every 20 minutes, then once more at the end. An hour is the kind of sit you’d find on a retreat. It isn’t just a longer ten minutes. Most of the challenge is in the body, not the mind.',
-      'Set up your posture well before you start. On a cushion or bench, keep your hips a little higher than your knees. Let your back stack up easily, and rest your hands where they won’t pull your shoulders forward. A chair works well too. If your legs go numb, that usually passes when you move. Sharp or shooting pain is different, so shift your position.',
-      'The bells at twenty and forty minutes split the hour into three parts. That gives the hour a gentle shape. Use them to check your posture, switch legs, or change practice. Press Start and take it one bell at a time.',
+      'The one-hour meditation timer marks twenty and forty minutes with interval bells, then ends at sixty. Choose an hour because it fits your practice and circumstances, not because a longer sit is a score.',
+      'Arrange a comfortable position and allow yourself to move when needed. Do not wait for a bell to respond to pain or numbness. For a shorter session, change Session length or choose one of the related timers below.',
     ],
     uses: [
-      'Retreat-style sitting at home',
-      'A long weekend sit in three twenty-minute parts',
-      'Practising at the length a retreat day might use',
-      'A planned moment to move your legs',
+      'A planned hour of practice',
+      'Three twenty-minute sections',
+      'A longer session with optional check-ins',
     ],
     config: {
       mode: 'meditation',
@@ -283,7 +271,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'Should I move if my legs go numb?',
-        a: 'You can. Numbness from a folded leg is common and usually fades once you move. Sharp pain is a clear sign to shift. The bells at twenty and forty are easy moments to switch legs.',
+        a: 'Change position rather than waiting for a bell. If numbness or pain persists or concerns you, seek appropriate guidance. A timer cannot assess the cause.',
       },
       {
         q: 'Can I change the interval?',
@@ -291,7 +279,7 @@ export const meditations: ProgrammaticPage[] = [
       },
       {
         q: 'Will my phone last the full hour?',
-        a: 'Usually. The screen stays on while the timer runs, which uses battery over an hour. Plug in or turn the brightness down before you start.',
+        a: 'Battery use depends on the device, brightness and other activity. Check charge before starting and test the setup you intend to use.',
       },
     ],
     related: [

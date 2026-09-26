@@ -17,16 +17,17 @@ const crumbs = [
 
 <Base
   title="Blog – Timers, Intervals and Focus, Explained"
-  description="Short, specific guides to interval bells, Tabata, HIIT, EMOM, Pomodoro and keeping your phone awake during a workout, by the person who built the timers."
+  description="Practical guides to workout intervals, focus blocks and meditation bells. Understand the timing, check the evidence and choose a setup that fits."
   path="/blog"
   jsonLd={[breadcrumbList(crumbs)]}
 >
   <main id="main" class="wrap">
     <header class="bh">
       <Breadcrumbs {crumbs} />
-      <h1>Blog</h1>
+      <h1>The gointervals blog</h1>
       <p class="bh__lede">
-        How the protocols work and how to run them with a timer. No fluff intros.
+        Why does a four-minute workout need more than four minutes? Is 25 minutes the right focus
+        block? Practical explanations, checked examples and sources to help you choose.
       </p>
       <ul class="links bh__tags" aria-label="Tags">
         {tags.map((t) => (
@@ -36,6 +37,26 @@ const crumbs = [
         ))}
       </ul>
     </header>
+    <nav class="bh" aria-label="Start reading">
+      <h2>Find your starting point</h2>
+      <ul class="bh__starts">
+        <li>
+          <a href="/blog/best-pomodoro-length">Choose a focus rhythm that fits your work</a>
+        </li>
+        <li>
+          <a href="/blog/hiit-interval-timer-beginners">Understand work and recovery intervals</a>
+        </li>
+        <li>
+          <a href="/blog/meditation-timer-interval-bells">Give meditation bells a purpose</a>
+        </li>
+        <li>
+          <a href="/blog/keep-phone-screen-on-workout-timer">Check screen and sound reliability</a>
+        </li>
+      </ul>
+      <p>
+        <a href="/rss.xml">Follow new articles with RSS</a>
+      </p>
+    </nav>
     <PostList {posts} />
   </main>
 </Base>
@@ -47,6 +68,16 @@ const crumbs = [
     flex-direction: column;
     gap: var(--sp-3);
     max-width: var(--measure);
+  }
+  .bh__starts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .bh__starts a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
   .bh h1 {
     margin: 0;

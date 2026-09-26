@@ -9,7 +9,7 @@ import { tabatas } from '@/data/tabatas';
 
 <TimerPage
   title="Tabata Timer – Free 20/10 x 8 Timer with Beeps"
-  description="Free Tabata timer set to the classic 20 seconds work, 10 seconds rest, 8 rounds, 4 minutes. Clear work and rest beeps, your screen stays on, works offline."
+  description="Run the classic Tabata clock: 20 seconds work, 10 seconds rest and eight rounds. See how the four-minute total works and plan the rest of your session."
   path="/tabata"
   h1="Tabata timer"
   lede="This Tabata timer runs the classic pattern: 20 seconds on, 10 seconds off, 8 rounds, 4 minutes. There's nothing to set. Just press Start."
@@ -19,25 +19,40 @@ import { tabatas } from '@/data/tabatas';
   posts={relatedPosts['/tabata']}
   crumbName="Tabata timer"
 >
-  <Section title="The Tabata protocol" flush>
+  <Section title="What the four minutes include" flush>
     <p>
-      The pattern came from Irisawa Koichi, coach of Japan's national speed-skating team. In 1996,
-      Izumi Tabata and his team tested it on young, fit university PE students riding exercise
-      bikes. Each 20 seconds was an all-out sprint, far harder than any pace they could hold for
-      long. Over six weeks, both their stamina and their power for short, hard bursts improved.
-      That's why the name stuck.
+      Eight work periods of twenty seconds total 2:40. Eight rests of ten seconds add 1:20. The last
+      effort ends at 3:50, and the final rest brings the session to 4:00.
     </p>
     <p>
-      The key is effort. If you can chat during the 20 seconds, you're doing gentler intervals with
-      a Tabata timer. That's fine too.
-    </p>
-    <p>
-      This page has the fewest settings on the site. Press Start and it goes straight into round
-      one. For other work and rest times, pick a variant below, such as
-      <a href="/tabata/30-15-8">30/15</a>. Variant pages let you change Work and Rest in seconds.
+      Start begins round one immediately. Preparation, warm-up and any recovery between separate
+      blocks are outside this clock. The{' '}
+      <a href="/blog/how-long-is-a-tabata-workout">session-duration guide</a> shows how to budget
+      the whole session.
     </p>
   </Section>
-  <Section title="Common variants">
+  <Section title="Timing and training are different">
+    <p>
+      The format is associated with{' '}
+      <a href="https://pubmed.ncbi.nlm.nih.gov/8897392/">
+        Tabata and colleagues' 1996 cycling study
+      </a>
+      . That research tested a specific programme and intensity. Using the same work/rest pattern
+      does not guarantee the same results.
+    </p>
+    <p>
+      Choose activity and effort appropriate to your plan. The timer cannot assess technique or
+      recovery. Read{' '}
+      <a href="/blog/what-is-a-tabata-timer">what the Tabata clock does and does not tell you</a>{' '}
+      for the distinction.
+    </p>
+  </Section>
+  <Section title="Other interval patterns">
+    <p>
+      This page is fixed at 20/10 for eight rounds. Apart from the classic 20/10 preset, the
+      variants below use editable interval settings. They are different schedules, not the original
+      protocol.
+    </p>
     <ul class="links">
       {tabatas.map((t) => (
         <li>
@@ -45,12 +60,16 @@ import { tabatas } from '@/data/tabatas';
         </li>
       ))}
     </ul>
-  </Section>
-  <Section title="Sounds">
     <p>
-      You'll hear a rising pair for work and a falling pair for rest. Ticks count down the last
-      three seconds of each. Three notes play after the final rest to tell you you're done. The
-      phase word and icon change too, in case your music is loud.
+      For whole-minute work and rest, use <a href="/interval">Interval</a>. For a planned set at
+      each minute's start, use <a href="/emom">EMOM</a>.
+    </p>
+  </Section>
+  <Section title="Check your cues">
+    <p>
+      A rising tone marks work, a falling tone marks rest, and ticks mark the final three seconds of
+      each phase. Test your volume and keep the page visible. Background sound and an awake screen
+      depend on the browser and device.
     </p>
   </Section>
 </TimerPage>

@@ -126,8 +126,25 @@ Warm, calm and easy, like a person who uses the thing and is happy to help. Answ
 ### Adding a blog post
 
 1. Create `src/content/blog/<slug>.md` with the frontmatter in `src/content.config.ts`. The author defaults to the site author.
-2. Body 500–900 words, no leading H1, keyword in the first sentence, link the timer at least twice, end with a "Try it" line. Every link is a real anchor with a visible underline.
+2. Follow the editorial standard below. No leading H1. Introduce the subject naturally near the opening; do not force an exact-match keyword. Link a timer where the reader can act and end with a specific "Try it" line. Every link is a real anchor with a visible underline.
 3. Add it to `relatedPosts` in `src/data/related.ts` or to a data entry's `related`.
+
+### Editorial standard: useful explanations
+
+Our references are the [Finshots archive](https://finshots.in/archive/), its [Sugar Cosmetics explainer](https://finshots.in/archive/sugar-cosmetics-what-went-wrong/) and [bond tokenisation explainer](https://www.editor.finshots.in/archive/blockchain-for-bonds/). Adopt the craft: a specific puzzle, connected explanation, concrete example and useful implication. Do not imitate catchphrases, copy wording, force jokes or apply one story template to every topic.
+
+- State the reader's question and the distinct value of a piece before drafting. Each article should answer something beyond the timer's instructions. Revise a relevant existing post before creating a near-duplicate.
+- Begin with a recognisable situation or useful detail, and answer the core question within the first two paragraphs. Explain why recommendations follow. Prefer connected paragraphs over a checklist of generic benefits.
+- Include a checked worked example, a decision method or a reproducible procedure. Label illustrative scenarios honestly. Never invent personal experience, testing, expert review, quotes or results.
+- Aim for 500–900 words for explainers, but use the length the answer needs. Do not pad, repeat product features to meet a count or manufacture an FAQ for keywords. Use everyday language, short paragraphs and descriptive headings. No scolding, hype or claims about what everyone should achieve.
+- Cite primary evidence next to research, historical, technical and sporting-rule claims. Read it, note its scope, and distinguish a convention from a proven optimum, observation from causation, and an example from a prescription. No unsupported "most people", clinical advice, universal training progression or guaranteed outcomes.
+- Product examples must match the implementation: main Interval fields use whole minutes; interval presets use seconds; final recovery is included; Pomodoro ends after its final long break; classic Tabata is fixed; EMOM caps the last block; meditation retains one session clock. There is no lap recording, exercise narration or custom interval ladder.
+- Offline use requires cached files and an offline reload test. Correct elapsed time after suspension does not guarantee timely sound or survival of a closed/reloaded tab. Wake lock is a request. Muting sound does not necessarily disable vibration. Local settings do not mean the site never uses analytics.
+- Timer guides answer how to configure this tool, interpret its total, and understand its limitations. Preset guides explain the particular schedule and a useful adjustment. Blog articles explore the underlying question. Keep guides below the timer and marketing copy out of the timer shell.
+- Review the live main-timer and preset URLs as well as their source copy. Audit introductions, examples, uses, FAQs, descriptions and related links together. Do not fix a blog claim while leaving a contradictory claim on its timer page.
+- Preserve published slugs, original publication dates and relevant search intent during revisions. Set `updatedDate` only for substantive edits. Do not refresh sitemap dates on every build or imply structured data guarantees a search feature. Redirect any deliberately removed URL.
+- Keep a direct Blog link near the homepage choices, a small curated reading section and a Blog breadcrumb on articles. Add useful links in both directions between guides and articles. Header/footer remain Timers / About.
+- Before shipping, verify arithmetic against configuration, evidence against sources, metadata and internal links against the build, and layout at mobile and desktop widths. Ask whether the reader can make a better decision without opening our timer. If not, revise the piece.
 
 ## Do not
 

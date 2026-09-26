@@ -20,7 +20,8 @@ const { slug, title, description, pubDate, updatedDate, tags, timer, words, minu
 const path = `/blog/${slug}`;
 const crumbs = [
   { name: 'Home', path: '/' },
-  { name: 'Article', path },
+  { name: 'Blog', path: '/blog' },
+  { name: title, path },
 ];
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -68,7 +69,12 @@ const ld = [
             ·
           </span>
           <time datetime={pubDate.toISOString()}>{fmt(pubDate)}</time>
-          {updatedDate && <span> · updated {fmt(updatedDate)}</span>}
+          {updatedDate && (
+            <span>
+              {' '}
+              · updated <time datetime={updatedDate.toISOString()}>{fmt(updatedDate)}</time>
+            </span>
+          )}
           <span> · {minutes} min read</span>
         </p>
         <p class="post__open">

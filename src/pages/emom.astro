@@ -8,7 +8,7 @@ import { defaultConfigs } from '@/engine/presets';
 
 <TimerPage
   title="EMOM Timer – Free Every Minute On the Minute Timer"
-  description="Free EMOM timer that beeps at the start of every minute, every 90 seconds or every 2 minutes. Set the interval and total minutes. Works offline."
+  description="Set an EMOM timer with intervals from 15 seconds to five minutes. Choose your total duration and see how each work period leaves time for recovery."
   path="/emom"
   h1="EMOM timer"
   lede="This EMOM timer beeps at the start of every minute, on the minute. Set the interval and the total time, then work to the beep."
@@ -18,22 +18,39 @@ import { defaultConfigs } from '@/engine/presets';
   posts={relatedPosts['/emom']}
   crumbName="EMOM timer"
 >
-  <Section title="How does an EMOM work?" flush>
+  <Section title="The minute includes your recovery" flush>
     <p>
-      Start your set when the minute begins. Rest for whatever time is left. When the next minute
-      starts, go again. As you get tired, your rest gets shorter. That's the idea: the clock helps
-      you find a weight and a number of reps you can keep up.
+      Begin your planned set when the minute starts. If the set and reset take 25 seconds, you have
+      35 seconds before the next start. If they take 50 seconds, only ten remain. The clock fixes
+      start times, not how much recovery you get.
     </p>
     <p>
-      Interval length sets how long each block lasts, from 15 seconds to 5 minutes. Set it to 90 for
-      every 90 seconds (E90S), or 120 for every 2 minutes (E2MOM). Total minutes sets how long the
-      session runs. If the blocks don't divide it evenly, the last one is shorter.
+      Choose movements, repetitions and effort from an appropriate plan. If recovery disappears,
+      adjust or stop rather than rushing. The <a href="/blog/emom-workouts-explained">EMOM guide</a>{' '}
+      compares this with fixed work/rest intervals.
     </p>
   </Section>
-  <Section title="What you hear">
+  <Section title="Check how the blocks fit">
     <p>
-      A beep at the start of every interval. Ticks in the last three seconds, so you can grab the
-      bar on time. Three notes when you finish. The line under the timer counts the rounds for you.
+      Interval length uses seconds, from 15 to 300. Set 120 for every two minutes, or 90 for every
+      ninety seconds. Total minutes sets the end of the whole session, from 1 to 99 minutes.
+    </p>
+    <p>
+      The last block is shortened when the total does not divide evenly. Ten minutes with
+      ninety-second blocks gives six full blocks and one thirty-second block. Choose nine or twelve
+      minutes if you want only complete ninety-second blocks.
+    </p>
+  </Section>
+  <Section title="Prepare the sequence">
+    <p>
+      The timer counts blocks but does not announce exercise names. Write down any rotation first. A
+      twelve-minute A/B/C rotation contains four sets of each task. Start begins the first block
+      immediately.
+    </p>
+    <p>
+      Keep the page visible and test volume. Warning ticks occur in the last three seconds, then a
+      cue marks the next block. A hidden page may miss sounds. Use <a href="/interval">Interval</a>{' '}
+      for fixed work/rest pairs or <a href="/tabata">Tabata</a> for the fixed 20/10 pattern.
     </p>
   </Section>
 </TimerPage>

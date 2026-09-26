@@ -4,8 +4,9 @@ import { readingTime } from '@/lib/readingTime';
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
+  headingLevel?: 'h2' | 'h3';
 }
-const { posts } = Astro.props;
+const { posts, headingLevel: Heading = 'h2' } = Astro.props;
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 ---
@@ -19,9 +20,9 @@ const fmt = (d: Date) =>
           <time datetime={p.data.pubDate.toISOString()}>{fmt(p.data.pubDate)}</time> · {rt.minutes}{' '}
           min read
         </p>
-        <h2 class="posts__title">
+        <Heading class="posts__title">
           <a href={`/blog/${p.id}`}>{p.data.title}</a>
-        </h2>
+        </Heading>
         <p class="posts__desc">{p.data.description}</p>
         <ul class="links posts__tags">
           {p.data.tags.map((t) => (

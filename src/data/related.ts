@@ -36,6 +36,8 @@ export const relatedPosts: Record<string, string[]> = {
     '/blog/hiit-interval-timer-beginners',
     '/blog/timer-that-beeps-every-10-minutes',
     '/blog/interval-timer-for-running',
+    '/blog/keep-phone-screen-on-workout-timer',
+    '/blog/free-online-timer-that-works-offline',
   ],
   '/meditation': ['/blog/meditation-timer-interval-bells', '/blog/how-long-to-meditate'],
   '/tabata': ['/blog/what-is-a-tabata-timer', '/blog/how-long-is-a-tabata-workout'],

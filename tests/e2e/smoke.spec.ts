@@ -88,7 +88,7 @@ test('home lists the five timers in order and links whole rows', async ({ page }
     'Pomodoro',
   ]);
   await expect(rows.nth(1)).toHaveAttribute('href', '/meditation');
-  await expect(page.getByRole('link', { name: 'Read the meditation timer guide' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Explore the blog' })).toBeVisible();
   await expect(page.locator('astro-island')).toHaveCount(0);
 });
 
@@ -115,7 +115,9 @@ test('content pages ship no framework JS', async ({ page }) => {
 
 test('the article carries its author and links to the timers', async ({ page }) => {
   await page.goto('/blog/meditation-timer-interval-bells');
-  await expect(page.locator('h1')).toHaveText('How to use a meditation timer with interval bells');
+  await expect(page.locator('h1')).toHaveText(
+    'Meditation interval bells: give each bell a purpose',
+  );
   await expect(page.locator('a[rel~="author"]')).toHaveText('Nimish Nandwana');
   expect(await page.locator('article a[href="/meditation"]').count()).toBeGreaterThanOrEqual(2);
   await expect(page.locator('article a[href="/interval"]')).toHaveCount(1);

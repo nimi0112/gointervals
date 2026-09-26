@@ -1,6 +1,6 @@
 ---
-title: 'Plank timer: how long to hold a plank, and why 2 min is plenty'
-description: 'How long to hold a plank: 20-30 seconds to start, 60 seconds as a goal, 2 minutes is strong. After that, make it harder, not longer. Plus plank sets.'
+title: 'How long to hold a plank: use the clock as a limit'
+description: 'Choose a plank hold you can control, compare single holds with repeated sets, and configure a seconds-based timer without treating duration as a fitness score.'
 pubDate: 2026-09-17
 updatedDate: 2026-09-25
 tags: [workouts, how-to]
@@ -8,71 +8,53 @@ timer: '/interval'
 keyword: 'how long to hold a plank'
 ---
 
-How long to hold a plank? Start with 20 to 30 seconds. Work up to 60 seconds, and treat two minutes as a strong hold. Past two minutes, you gain little, so it's better to make the plank harder instead.
+You planned a thirty-second plank. At twenty seconds, your position changes and you start holding your breath. The display still has ten seconds left.
 
-## Plank hold times by level
+How long to hold a plank should depend on the version you are doing and the position you can maintain. The timer is a planned limit, not a requirement to stay until it rings. A longer number by itself does not establish a better set.
 
-| Level               | Hold       | What it looks like                                |
-| ------------------- | ---------- | ------------------------------------------------- |
-| Starting out        | 20-30s     | Form holds the whole way, no sag at the end       |
-| Building            | 45s        | Last 10 seconds are work but not a fight          |
-| Solid               | 60s        | The standard target, and enough for most purposes |
-| Strong              | 2 min      | Uncommon with genuinely good position throughout  |
-| Diminishing returns | Past 2 min | Endurance of the position, not much new strength  |
+## Decide what you are practising
 
-These times only count with good form. A long plank with sagging hips and an arched lower back trains the wrong position. A shorter, cleaner hold does more for you.
+A plank is a held position, so a repetition counter is not especially useful. Time gives you a way to make sets consistent, provided the position and variation are comparable.
 
-## Check your form first
+The [American Council on Exercise's beginner guidance](https://www.acefitness.org/resources/everyone/blog/5250/4-core-movements-for-beginners/) describes plank setup and maintaining form while breathing. Use appropriate instruction for the version you choose; the timer cannot tell whether your shoulders, trunk or hips are positioned as intended.
 
-Good position matters more than the clock:
+If you are modifying an exercise because of pain or an injury, get suitable guidance rather than using an online hold-time table as a rehabilitation plan. End a hold that becomes painful.
 
-- Elbows under your shoulders, forearms flat on the floor.
-- Ribs down, not flared. Think of bringing your lower chest a little closer to your hips.
-- Squeeze your glutes. This small cue makes a big difference.
-- Keep your neck long. Look at the floor just ahead of your hands.
-- Keep breathing. If you're holding your breath, ease off and reset.
+## Compare like with like
 
-When your lower back starts to arch or your hips drop, the set is done. That's a good moment to stop and rest.
+A hold on the knees, a hold on the toes and a side plank are different tasks. So are two holds using different positions or levels of effort. That is why labels such as “strong at two minutes” do not tell you much without a defined test.
 
-## Why longer isn't better
+For your own notes, record the variation as well as the duration. “Three front-plank holds with controlled breathing” is more informative than a personal record measured under changing conditions.
 
-Stuart McGill is a spine researcher at the University of Waterloo. He's well known for his view on plank length. In short, he suggests building core stamina with **short holds, repeated**, rather than one long one. Form tends to slip as a hold goes on, and then you're practising the slip. His work points to holds of about ten seconds, with brief rests between them.
+Choose a duration you can perform appropriately, then observe whether you can repeat it. You do not need to chase a universal one-minute or two-minute threshold.
 
-That's a plain summary, so do read his own material for the details. The main idea is simple: ten good ten-second holds beat one shaky ninety-second one.
+## Count holds and recovery separately
 
-He's also linked with the **RKC plank**. It's the same position, but with everything tight. Pull your elbows towards your toes and squeeze your glutes and thighs as hard as you can. Most people can only hold it well for ten to fifteen seconds. That shows how much effort a proper plank can take.
+Here is a timing illustration, not an exercise prescription. Suppose your plan uses three twenty-second holds with forty seconds between them.
 
-## Make it harder instead of longer
+The working time is one minute. With two gaps, the last hold ends at 2:20. On this site's interval timer, a third forty-second rest is included after that hold, bringing the complete session to 3:00.
 
-Once 60 seconds feels comfortable, try a harder version rather than a longer hold.
+| Part                             | Time        |
+| -------------------------------- | ----------- |
+| Three 20-second holds            | 60 seconds  |
+| Two rests between holds          | 80 seconds  |
+| Final rest included by the timer | 40 seconds  |
+| Complete timer session           | 180 seconds |
 
-| Progression      | How                                            | Target        |
-| ---------------- | ---------------------------------------------- | ------------- |
-| RKC plank        | Maximal full-body tension, shortened lever     | 10-15s        |
-| Side plank       | One forearm, hips stacked, top arm up          | 30-45s a side |
-| Long-lever plank | Elbows further forward of the shoulders        | 20-30s        |
-| Shoulder taps    | Tap opposite shoulder, resist the hip rotation | 10 a side     |
-| Weighted plank   | A plate on the upper back, someone to place it | 30-45s        |
-| Feet elevated    | Toes on a bench                                | 30s           |
+This distinction lets you compare a coach's instructions with the displayed total without assuming one is wrong.
 
-Side planks are worth extra time. They work the sides of your trunk, which a front plank mostly misses. Most people are weaker on one side. Do that side first, then hold the other side for the same time.
+## Set seconds rather than minutes
 
-## Plank sets on a timer
+Open the editable [30/30 interval page](/tabata/30-30-8) and change Work, Rest and Rounds to your chosen schedule. Despite its URL, this is an editable interval configuration. It does not force you to perform a Tabata workout.
 
-For a single hold, use the [interval timer](/interval). Set Work to 1 or 2 minutes, Rest to 0 and Rounds to 1. Press Start and hold until it beeps. The screen stays on where your browser allows it, so you can keep the phone on the floor beside you.
+The main [interval timer](/interval) uses whole-minute fields, so a preset page is the better starting point for short holds. Check units and total duration before starting. Start goes straight into the first work period; arrange the device and get ready first.
 
-You can also break a long hold into chunks. Set Work to 1 minute, Rest to 0 and Rounds to 2 or 3. You'll hear a beep at each minute, which makes a long hold easier to count.
+## Use sound without surrendering the decision
 
-For short holds in seconds, use a preset page, where Work and Rest are set in seconds. Here are three sets to try:
+A cue can save you from turning your head to inspect the digits. Test it at the volume you will use and keep the page visible, because background browser sound may be delayed.
 
-**McGill-style set:** work 10s, rest 5s, 8 rounds. Two minutes total, eight good holds. Open [30/30 x 8](/tabata/30-30-8) and change the numbers.
+You can stop a hold before the cue. If that happens repeatedly, revise the planned duration or variation rather than counting seconds spent out of position. If you want to change the challenge, change one element at a time and use guidance appropriate to your goal.
 
-**Standard set:** work 30s, rest 30s, 6 rounds. Six minutes. Use [30/30 x 8](/tabata/30-30-8) with Rounds set to 6.
+For more on how recovery changes a timed session, read the [work and rest guide](/blog/hiit-interval-timer-beginners).
 
-**Front and side circuit:** work 30s, rest 15s, 6 rounds. Go front, left side, right side, then repeat. Use [30/15 x 8](/tabata/30-15-8) with Rounds set to 6.
-
-## How much plank work per week?
-
-Two or three sessions a week is plenty. Do three to five sets each time, mixing front and side planks. Aim for one to three minutes of total hold time per session. If you have five minutes for core work, a mix of short holds will do more than one long front plank.
-
-Try it: [hold a plank on the interval timer](/interval).
+Try it: [set short holds and recovery in seconds](/tabata/30-30-8).

@@ -1,6 +1,6 @@
 ---
-title: 'Best pomodoro length: 25/5, 50/10, 52/17 or 90/20'
-description: The best pomodoro length is the one that fits your task. A calm look at 25/5, 50/10, 52/17 and 90/20, where each comes from, and how to pick yours.
+title: 'Best Pomodoro length: choose a rhythm that fits your work'
+description: 'Compare 25/5, 50/10, 52/17 and 90/20 focus blocks, check how much time each needs, and run a simple experiment to find a rhythm that fits.'
 pubDate: 2026-09-16
 updatedDate: 2026-09-25
 tags: [pomodoro, focus, study, how-to]
@@ -8,55 +8,49 @@ timer: '/pomodoro'
 keyword: 'best pomodoro length'
 ---
 
-The best pomodoro length is the one that fits the work in front of you. For most focused work, 50 minutes on and 10 off is a good place to start. No study has compared the common lengths head to head, so the choice is yours to make.
+You have an hour before your next meeting. Two 25-minute focus blocks and two five-minute breaks fit exactly. A 50-minute block and a ten-minute break fit too. Both give you fifty minutes of work. So why might one feel much better?
 
-## The four common lengths
+The best Pomodoro length depends on where your work gets stuck. A shorter block can make starting feel manageable. A longer one gives you more uninterrupted time once you are underway. The useful question is what you need the timer to protect.
 
-| Work   | Break  | Origin                       | Blocks before a long break |
-| ------ | ------ | ---------------------------- | -------------------------- |
-| 25 min | 5 min  | Cirillo's kitchen timer      | 4                          |
-| 50 min | 10 min | Same 5:1 ratio, doubled      | 2-3                        |
-| 52 min | 17 min | DeskTime usage data, 2014    | 2-3                        |
-| 90 min | 20 min | Natural focus cycles (model) | 2                          |
+## What changes when the blocks get longer
 
-## Where each length comes from
+Imagine you are editing a report. Each time you return, you spend a few minutes finding your place and remembering your argument. Breaking twice means doing that twice. For this task, a longer block may be convenient.
 
-**25/5 was a personal choice.** Francesco Cirillo was a university student in the late 1980s. He had a tomato-shaped kitchen timer and wanted a short block he could stick to. He tried a few lengths and picked one he liked. The real tools in his method are the unbroken block and the list of interruptions. Both work at any length. You can read more in [pomodoro technique 25/5](/blog/pomodoro-technique-25-5).
+Now imagine clearing a queue of small administrative tasks. Each item has a natural ending. A shorter block gives you a nearby stopping point without cutting through a long argument.
 
-**52/17 came from app data.** In 2014, the time-tracking company DeskTime looked at its own users. It took the top 10% by its own measure of productivity. Those people worked about 52 minutes, then stepped away for about 17. That's an interesting pattern, but it shows a link, not a cause. It's also an average, so few people worked in exact 52-minute chunks.
+These are examples, not rules about which jobs deserve which timer. The same writer might use fifteen minutes to start a difficult paragraph and fifty minutes to revise a finished draft.
 
-**90/20 is based on a rough model.** Nathaniel Kleitman's sleep research found cycles of about 90 minutes. These are called ultradian rhythms, which just means cycles shorter than a day. Later work suggested similar ups and downs in alertness during the day. Turning that into "work 90, rest 20" is a guess, not a measurement. Your own cycle may be longer or shorter. Treat 90/20 as a good shape for deep work, not a rule.
+## The numbers have different origins
 
-**50/10 is simply 25/5 doubled.** Same ratio, half as many stops and starts. That's why it's a sensible default for most desk work.
+The [Pomodoro technique](/blog/pomodoro-technique-25-5) uses 25-minute work periods. A [50/10 timer](/pomodoro/50-10) doubles those work and short-break lengths. That makes it convenient to plan around an hour, but convenience is not evidence of an optimum.
 
-In short, all four sit around four or five parts work to one part rest. The thing that matters most is how long it takes you to get back into a task.
+The oddly precise 52/17 pattern came from DeskTime's analysis of its users' activity. The company's [account of its research and later updates](https://desktime.com/blog/52-17-updated/) describes an observed work-and-break pattern. It does not establish that assigning everyone those numbers will make them more productive.
 
-## Choosing by task
+And 90/20? Treat it as a long scheduled block. A ninety-minute setting is not a measurement of your personal attention cycle. You do not need a biological explanation to reserve a longer stretch for a task.
 
-Think about warm-up time. If it takes you eight minutes to get back into your code, a 25-minute block spends a third of itself warming up.
+| Rhythm | One work block and following break | A reason to try it                           |
+| ------ | ---------------------------------- | -------------------------------------------- |
+| 25/5   | 30 minutes                         | You want a nearby stopping point             |
+| 50/10  | 60 minutes                         | You want fewer interruptions within an hour  |
+| 52/17  | 69 minutes                         | You want a longer break between blocks       |
+| 90/20  | 110 minutes                        | You have a long, protected stretch available |
 
-| Task                                    | Length | Why                                            |
-| --------------------------------------- | ------ | ---------------------------------------------- |
-| Email, admin, small discrete items      | 25/5   | Easy to pick back up, and the list is the win  |
-| Writing, coding, analysis, design       | 50/10  | One warm-up instead of two                     |
-| Long meetings-free stretch, mixed work  | 52/17  | Longer break genuinely recovers you            |
-| Dense reading, proofs, hard debugging   | 90/20  | Some problems need an hour before they open up |
-| Something you have been avoiding a week | 10/3   | The task is starting, not sustaining           |
+Notice that 52/17 gives substantially more break time relative to work than 25/5. Changing the numbers changes both the interruption frequency and the amount of work you can fit into a morning.
 
-Two simple habits help more than the exact numbers.
+## Check the whole cycle before starting
 
-**Fit the block to a piece you can finish.** Say a task takes about 40 minutes. A 25-minute block stops you mid-thought. A 50-minute block lets you finish with ten minutes to spare. Pick the length that ends at a natural stopping point.
+On this site's [Pomodoro timer](/pomodoro), the final long break replaces the short break after the last focus block. The cycle then ends.
 
-**Longer blocks need real breaks.** After 90 minutes of focus, five minutes on your phone won't refresh you. Give yourself the full break, away from the screen if you can.
+The default is four 25-minute focus blocks, three five-minute breaks and one fifteen-minute break: **130 minutes altogether**, including 100 minutes of focus. Selecting a rhythm does not necessarily mean selecting just one work-and-break pair.
 
-There are presets ready to go: [50/10](/pomodoro/50-10) for everyday deep work, [52/17](/pomodoro/52-17) for the DeskTime shape, and [90/20](/pomodoro/90-20) for long sessions. You can also type your own numbers on the [pomodoro timer](/pomodoro). It runs one cycle of focus blocks and breaks, then stops.
+For the one-hour example, set Focus to 25, Short break to 5, Long break to 5 and Focus sessions to 2. That produces exactly sixty minutes. For one 50-minute block, set Focus sessions to 1 and Long break to 10; the short-break field is unused in that cycle.
 
-## How to find your length
+## Run a small comparison
 
-Try one length for a full week, not just a day. After each block, jot down two things. Did you finish what you sat down to do? Did you want to stop before the bell? Then try a different length the next week.
+Choose two lengths and try them on similar tasks over several sessions. Before starting, write down a concrete output: edit two pages, solve three problems, or reconcile one batch of expenses.
 
-If you often want to stop early, the block is too long. If you keep working past the bell, it's probably too short. Your own notes will tell you more than any study, because they're about you.
+Afterwards, note what you completed, whether the bell interrupted a useful thought, and whether you struggled before it rang. Keep the notes short. This is a practical experiment, not a controlled study, so account for differences in task difficulty and interruptions.
 
-Studying has its own twist, around spacing and memory. [Study timer vs pomodoro](/blog/study-timer-vs-pomodoro) covers it.
+If a block repeatedly ends mid-task, try a longer one. If it feels difficult to begin, try a shorter commitment. Keep breaks in the plan, and change one setting at a time so you can understand the result.
 
-Try it: [start a pomodoro](/pomodoro).
+Try it: [set a Pomodoro cycle that fits your available time](/pomodoro).

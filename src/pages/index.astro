@@ -1,5 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro';
+import PostList from '@/components/PostList.astro';
+import { getCollection } from 'astro:content';
 import Faq from '@/components/Faq.astro';
 import { TIMERS, SITE } from '@/lib/site';
 import { faqs } from '@/data/faqs';
@@ -12,6 +14,13 @@ import { pomodoros } from '@/data/pomodoros';
 import { workouts } from '@/data/workouts';
 
 const faq = faqs['/']!;
+const featuredIds = [
+  'best-pomodoro-length',
+  'what-is-a-tabata-timer',
+  'meditation-timer-interval-bells',
+];
+const articles = await getCollection('blog', (post) => !post.data.draft);
+const featured = featuredIds.flatMap((id) => articles.filter((post) => post.id === id));
 const ready = [
   ...beeps.slice(0, 4),
   ...meditations.slice(1, 4),
@@ -37,9 +46,13 @@ const ready = [
           <br class="home__br-m" /> your next
           <br class="home__br-d" /> thing.
         </h1>
-        <p class="home__lede home__lede--m">Choose a timer. Find your rhythm.</p>
+        <p class="home__lede home__lede--m">Free timers for workouts, focus and meditation.</p>
         <p class="home__lede home__lede--d">
-          A little structure for work, rest and everything in between. Choose a timer to get going.
+          Set work and rest intervals, focus blocks or meditation bells. Free in your browser, with
+          no account needed.
+        </p>
+        <p class="home__article">
+          <a href="/blog">Explore the blog</a>
         </p>
         <p class="home__index">
           <span class="num">01-05</span>
@@ -73,12 +86,22 @@ const ready = [
         </p>
         <p>
           For study or work, Pomodoro splits your time into focus and breaks. For meditation, soft
-          bells mark the time, so you don't have to watch the screen. A good first try is 30 minutes
-          with a bell every 10.
+          bells mark the time, so you don't have to watch the screen. Choose one end bell for a
+          quiet sit, or interval bells to mark changes in your practice.
         </p>
       </div>
     </section>
 
+    <section class="section" aria-labelledby="home-blog-heading">
+      <h2 id="home-blog-heading">From the blog</h2>
+      <div class="prose">
+        <p>What do the numbers on a timer change? Start with these practical guides.</p>
+      </div>
+      <PostList posts={featured} headingLevel="h3" />
+      <p class="home__article">
+        <a href="/blog">Browse all articles</a>
+      </p>
+    </section>
     <Faq items={faq} />
 
     <section class="section">
@@ -94,10 +117,6 @@ const ready = [
         ))}
       </ul>
     </section>
-
-    <p class="home__article">
-      <a href="/blog/meditation-timer-interval-bells">Read the meditation timer guide</a>
-    </p>
   </main>
 </Base>
 
@@ -170,7 +189,7 @@ const ready = [
   .home__article a {
     display: inline-flex;
     align-items: center;
-    height: 44px;
+    min-height: 44px;
     font-size: 0.9375rem;
   }
   @media (min-width: 720px) {

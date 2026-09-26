@@ -1,6 +1,6 @@
 ---
-title: 'EMOM workouts: what it means and 5 templates to start with'
-description: 'An EMOM workout means every minute on the minute: do your reps, then rest for the rest of the minute. Five easy templates and how to pick your reps.'
+title: 'EMOM workouts: why your rest changes each minute'
+description: 'Learn how EMOM workouts share each minute between a set and recovery, compare them with fixed intervals, and plan a block with room to reset.'
 pubDate: 2026-08-24
 updatedDate: 2026-09-25
 tags: [emom, workouts, how-to]
@@ -8,58 +8,53 @@ timer: '/emom'
 keyword: 'EMOM workout'
 ---
 
-An EMOM workout means "every minute on the minute." At the start of each minute, you do a set number of reps. Whatever time is left in that minute is your rest. Finish in 35 seconds, and you rest for 25. Finish in 55, and you rest for 5.
+Your first set takes twenty seconds. A few minutes later, the same number of repetitions takes forty-five. You have not changed the timer, but your rest has shrunk from forty seconds to fifteen.
 
-## Why EMOM works so well
+That is the defining feature of an EMOM workout: every minute on the minute, you begin a planned set and use the remaining time as recovery. The clock fixes the start times. Your set duration determines how much rest remains.
 
-In an EMOM, rest is the part that changes. As you get tired, your sets take longer and your rest gets shorter. So the workout gets harder on its own, without you changing a thing.
+## The minute is a budget
 
-It also keeps you moving. You don't have to decide when to start the next set. The clock does that for you.
+For a sixty-second interval, subtract time spent working and resetting from sixty. What remains is the time available before the next start.
 
-## How to pick your reps
+| Set and reset time | Time left in the minute |
+| ------------------ | ----------------------- |
+| 20 seconds         | 40 seconds              |
+| 35 seconds         | 25 seconds              |
+| 50 seconds         | 10 seconds              |
+| 60 seconds         | None                    |
 
-This is the main skill. Choose a number of reps you could do **twice** in the first minute without stopping. If ten kettlebell swings take you 20 seconds when fresh, ten is right for a 10-minute block. If they take 40 seconds, that's too many to keep up. Pick fewer.
+Those numbers explain why finishing inside a minute is not always enough. If every set uses almost the whole interval, you have scheduled very little recovery. Moving equipment and preparing for the next set also take time.
 
-Early on, aim to finish each round in **40 to 60 percent** of the minute. By the end, you'll likely be at 70 to 80 percent. If you're still done in 20 seconds on the last round, add reps or weight next time.
+Choose repetitions and a movement suited to your existing training plan. The timer cannot assess technique or decide that a particular weight is appropriate. Do not rush repetitions simply to beat the next beep.
 
-## Five EMOM templates
+## Compare it with fixed intervals
 
-| #   | Name                    | Length | Work                                                       |
-| --- | ----------------------- | ------ | ---------------------------------------------------------- |
-| 1   | Single movement         | 10 min | 10 kettlebell swings every minute                          |
-| 2   | Alternating pair        | 12 min | Odd: 8 goblet squats. Even: 8 push-ups                     |
-| 3   | Three-movement rotation | 15 min | Min 1: 12 air squats. Min 2: 10 push-ups. Min 3: 30s plank |
-| 4   | Ascending ladder        | 10 min | Min 1: 1 burpee. Min 2: 2. Up to 10                        |
-| 5   | Cardio EMOM             | 12 min | 15 calories on the rower every minute                      |
+In a fixed work/rest session, thirty seconds of Work is followed by thirty seconds of Rest regardless of how many repetitions you complete. In an EMOM, a fixed task might take a different amount of time each minute.
 
-Template 1 is the best place to start. Ten minutes, one movement, nothing to remember. Template 4 looks gentle at first. The early minutes are mostly rest, but by the last three there's almost no rest left.
+Imagine the same set takes thirty seconds at first and forty seconds later. Under EMOM, rest falls from thirty to twenty seconds. Under a 30/30 timer, the work period still ends after thirty seconds, so you might complete fewer repetitions instead.
 
-Template 2 is great for home workouts. Your upper body rests while your legs work, and the other way round. You can stretch it to 20 minutes without needing a break.
+Neither clock solves every training problem. The useful distinction is what you want to keep fixed: work duration, or the task at each scheduled start. A [regular interval timer](/interval) handles the first; an [EMOM timer](/emom) handles the second.
 
-An [EMOM timer](/emom) keeps count for you. That's a real help when you can't remember if it's minute nine or ten.
+## Plan a simple rotation
 
-## How long should an EMOM workout be?
+Suppose your programme calls for two movements over ten minutes. Write them as A and B: start A in minutes 1, 3, 5, 7 and 9; start B in minutes 2, 4, 6, 8 and 10.
 
-Ten to twenty minutes suits most people. Under ten, you won't build up much work. Over twenty, your reps have to get so small that the session loses its punch.
+You get five sets of each movement. The timer counts intervals but does not announce A or B, so keep the plan visible. For three movements over twelve minutes, repeat A, B and C four times.
 
-For a longer session, do two blocks. Try 12 minutes, three minutes of full rest, then another 12 with new movements. That works better than one long 25-minute block where the last part is a struggle.
+These examples explain organisation, not which exercises or loads you should choose. A familiar single movement is simpler to track than a complicated rotation with equipment changes.
 
-## E2MOM and other variations
+## Longer intervals need a divisibility check
 
-**E2MOM** means every 2 minutes. It suits heavier or longer sets, like 3 front squats at a solid weight, or 20 calories on the bike. The extra rest lets you use more weight. On the [EMOM timer](/emom), set the interval to 120 seconds.
+On the [EMOM timer](/emom), Interval length uses seconds and Total minutes controls the whole session. Set Interval length to 120 for starts every two minutes.
 
-**Every 30 seconds** is another option. Each interval is short, so keep the work small. If you'd rather have a fixed work time and a fixed rest time, a [regular interval timer](/interval) may suit you better.
+If you set Total minutes to 10 and Interval length to 90 seconds, you get six full ninety-second blocks and a final thirty-second block. The timer caps the last block at the total you selected. Use nine or twelve total minutes if you need only complete ninety-second blocks.
 
-**Death by** is the ladder from template 4 with no top limit. Do 1 rep in minute one, 2 in minute two, and keep going. You stop when you can't finish the reps inside the minute. On burpees, most people stop somewhere between minute 12 and 18. It's a fun challenge to try once in a while.
+That last-block detail matters if you intend every set to have the same time budget. Check the complete schedule before starting, not just the first countdown.
 
-## Common mistakes
+## Respond when recovery disappears
 
-**Picking too many reps.** Minute one always feels easy. Pick a number you can still hit in minute ten.
+If the session stops leaving appropriate rest, reduce the task, lengthen the interval or stop. Increasing fatigue is information to act on, not a reason to let the beep overrule your plan.
 
-**Tricky lifts.** A running clock makes people rush their setup. Keep barbell work simple and the weights moderate. Dumbbells and kettlebells are easier choices.
+For a comparison with fixed short intervals, see the [HIIT work/rest guide](/blog/hiit-interval-timer-beginners). For a ready-made minute-by-minute clock, the [kettlebell timing page](/interval/kettlebell-emom-10) starts with ten one-minute rounds and does not prescribe your repetitions.
 
-**No rest between blocks.** Short rests within a block are part of the plan. Between blocks, take a proper break. Without it, the second half of a long session loses quality.
-
-The [kettlebell EMOM 10](/interval/kettlebell-emom-10) preset is template 1, ready to go. The [EMOM timer](/emom) lets you set any length from 1 to 99 minutes.
-
-Try it: [start a 10 minute EMOM](/emom).
+Try it: [set an interval and total that divide evenly](/emom).

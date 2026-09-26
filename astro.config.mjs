@@ -14,7 +14,6 @@ export default defineConfig({
   integrations: [
     preact(),
     sitemap({
-      lastmod: new Date(),
       filter: (page) => !page.includes('/og/') && !page.endsWith('/404'),
     }),
   ],
