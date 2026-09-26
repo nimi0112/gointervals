@@ -9,6 +9,21 @@ const posts = (await getCollection('blog', (p) => !p.data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+const topicLabels: Record<string, string> = {
+  boxing: 'Boxing',
+  emom: 'EMOM workouts',
+  focus: 'Focus',
+  hiit: 'High-intensity interval training',
+  'how-to': 'Practical guides',
+  meditation: 'Meditation',
+  offline: 'Offline use',
+  pomodoro: 'Pomodoro',
+  pwa: 'Browser apps',
+  running: 'Running',
+  study: 'Study',
+  tabata: 'Tabata',
+  workouts: 'Workouts',
+};
 const crumbs = [
   { name: 'Home', path: '/' },
   { name: 'Blog', path: '/blog' },
@@ -29,35 +44,21 @@ const crumbs = [
         What happens when you meditate? Why do workouts alternate effort and rest? Learn the ideas,
         understand the evidence and find a practical way to begin.
       </p>
-      <ul class="links bh__tags" aria-label="Tags">
-        {tags.map((t) => (
+    </header>
+    <PostList {posts} />
+    <nav class="bh bh--topics" aria-labelledby="blog-topics">
+      <h2 id="blog-topics">Browse by topic</h2>
+      <ul class="links bh__tags">
+        {tags.map((tag) => (
           <li>
-            <a href={`/blog/tag/${t}`}>{t}</a>
+            <a href={`/blog/tag/${tag}`}>{topicLabels[tag] ?? tag}</a>
           </li>
         ))}
       </ul>
-    </header>
-    <nav class="bh" aria-label="Start reading">
-      <h2>Find your starting point</h2>
-      <ul class="bh__starts">
-        <li>
-          <a href="/blog/pomodoro-technique-25-5">Understand Pomodoro and plan a focused task</a>
-        </li>
-        <li>
-          <a href="/blog/hiit-interval-timer-beginners">Understand work and recovery intervals</a>
-        </li>
-        <li>
-          <a href="/blog/how-long-to-meditate">Learn what meditation is and how to begin</a>
-        </li>
-        <li>
-          <a href="/blog/keep-phone-screen-on-workout-timer">Check screen and sound reliability</a>
-        </li>
-      </ul>
-      <p>
+      <p class="bh__rss">
         <a href="/rss.xml">Follow new articles with RSS</a>
       </p>
     </nav>
-    <PostList {posts} />
   </main>
 </Base>
 
@@ -69,12 +70,13 @@ const crumbs = [
     gap: var(--sp-3);
     max-width: var(--measure);
   }
-  .bh__starts {
-    list-style: none;
-    padding: 0;
+  .bh--topics {
+    border-top: 1px solid var(--line);
+  }
+  .bh__rss {
     margin: 0;
   }
-  .bh__starts a {
+  .bh__rss a {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
