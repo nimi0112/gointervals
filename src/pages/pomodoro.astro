@@ -9,7 +9,7 @@ import { pomodoros } from '@/data/pomodoros';
 
 <TimerPage
   title="Pomodoro Timer – Free 25/5 Focus Timer, No Login"
-  description="Free online Pomodoro timer: 25 minutes of focus, 5 minute breaks, and a 15 minute long break after four. Time left shows in the tab. Works offline."
+  description="Plan focus sessions with short breaks and a final long break. Adjust the Pomodoro timer, check the full cycle length and choose a task before starting."
   path="/pomodoro"
   h1="Pomodoro timer"
   lede="This Pomodoro timer gives you 25 minutes of focus, then a 5 minute break. After four rounds you get a long break, and then it stops."
@@ -19,28 +19,55 @@ import { pomodoros } from '@/data/pomodoros';
   posts={relatedPosts['/pomodoro']}
   crumbName="Pomodoro timer"
 >
-  <Section title="How the Pomodoro technique works" flush>
+  <Section title="What is the Pomodoro technique?" flush>
     <p>
-      Francesco Cirillo came up with it in the late 1980s, using a kitchen timer shaped like a
-      tomato. You work on one thing for 25 minutes, then take a 5 minute break. After four of those,
-      you take 15 to 30 minutes off. The exact numbers matter less than one rule: a pomodoro can't
-      be split. If you get interrupted, it doesn't count.
+      Pomodoro organises a chosen task into focus periods separated by breaks. A defined block can
+      give you a manageable starting commitment; the pause gives you a point to review the next
+      step.
+    </p>
+    <p>
+      Try it for work you can protect from interruptions, such as writing, revision or a batch of
+      administrative tasks. Adjust the length when the task needs a different stopping point. Our{' '}
+      <a href="/blog/pomodoro-technique-25-5">Pomodoro introduction</a> explains planning,
+      distractions and breaks before the timer settings.
     </p>
   </Section>
-  <Section title="Using this timer">
+  <Section title="Give the first block a clear task">
     <p>
-      Press Start and leave the tab open. The tab title shows the minutes left, so you can check it
-      from another tab. A rising pair of beeps means focus, and a falling pair means break. The
-      cycle goes Focus 1, short break, Focus 2, short break, Focus 3, short break, Focus 4, long
-      break, Done. It won't start again on its own.
+      Choose something you can recognise as progress: draft a paragraph, check a set of figures or
+      answer five questions. The familiar Pomodoro rhythm is 25 minutes of focus with short breaks,
+      but the task inside the block matters too.
     </p>
     <p>
-      Prefer 50/10? Change Focus and Short break above the Start button. Your choice is saved for
-      next time.
+      Francesco Cirillo developed the{' '}
+      <a href="https://www.pomodorotechnique.com/francesco-cirillo/">Pomodoro technique</a>. Our{' '}
+      <a href="/blog/pomodoro-technique-25-5">practical guide</a> explains planning, interruptions
+      and using a complete cycle.
     </p>
   </Section>
-  <Section title="Other rhythms">
-    <p>Other common rhythms have their own pages, each with a short note on who it suits.</p>
+  <Section title="Count the whole cycle">
+    <p>
+      The default contains four 25-minute focus blocks, three 5-minute short breaks and one
+      15-minute long break. That is 100 minutes of focus and 130 minutes overall. The final long
+      break replaces the last short break; it is not added after it.
+    </p>
+    <p>
+      After the long break, the timer stops. Run again starts a fresh cycle. For one block, set
+      Focus sessions to 1: that block is followed by the configured long break. For a single work
+      period with no automatic break, use <a href="/interval">Interval</a> with Rest 0 and Rounds 1.
+    </p>
+  </Section>
+  <Section title="Choose a rhythm that fits">
+    <p>
+      Change Focus, Short break, Long break and Focus sessions before starting. The main page saves
+      valid settings in this browser. Longer blocks can be convenient for a task with a slow setup,
+      while a shorter commitment may help you begin.
+    </p>
+    <p>
+      There is no need to treat one setting as a universal optimum. Read the{' '}
+      <a href="/blog/best-pomodoro-length">focus-length comparison</a>, or try a prepared rhythm
+      below.
+    </p>
     <ul class="links">
       {pomodoros.map((p) => (
         <li>
@@ -48,5 +75,13 @@ import { pomodoros } from '@/data/pomodoros';
         </li>
       ))}
     </ul>
+  </Section>
+  <Section title="Use the cues as part of your plan">
+    <p>
+      The tab title shows the remaining time while the page runs. Sound cues can be delayed when a
+      page is hidden or the device sleeps, so keep the timer visible when hearing each change
+      matters. For a quiet pause rather than a work/break cycle, try{' '}
+      <a href="/meditation">Meditation</a>.
+    </p>
   </Section>
 </TimerPage>

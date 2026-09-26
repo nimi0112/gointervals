@@ -8,7 +8,7 @@ export const faqs: Record<string, Faq[]> = {
     },
     {
       q: 'Can I use the timers offline?',
-      a: 'Yes, after your first visit. Your browser saves the app, so the timers keep working without a connection. If you clear your site data, visit once online again before you count on it.',
+      a: 'Yes, once the required files are saved. Open the timer online, reload it, then test an offline reload and a short session. Clearing site data or changing browsers means preparing again.',
     },
     {
       q: 'Is gointervals free?',
@@ -16,7 +16,7 @@ export const faqs: Record<string, Faq[]> = {
     },
     {
       q: 'Does the timer keep going if my phone screen locks?',
-      a: 'While a session runs, the timer asks your phone to keep the screen on, so it shouldn’t lock. If it does, the time stays right, because it’s read from the clock. Beeps need the page open and on screen, or they can come late or not at all.',
+      a: 'The timer requests an awake screen, but the browser can refuse. If the same session resumes after sleep, its elapsed position catches up. Sound may be late or missing while locked; closing or reloading the page does not preserve a running session.',
     },
     {
       q: 'What are the keyboard shortcuts?',
@@ -44,7 +44,7 @@ export const faqs: Record<string, Faq[]> = {
   '/tabata': [
     {
       q: 'What is the Tabata protocol exactly?',
-      a: 'It’s 20 seconds of all-out work and 10 seconds of rest, for 8 rounds. That’s 4 minutes in total. It comes from Izumi Tabata’s 1996 study, and this page runs exactly that.',
+      a: 'The classic clock repeats 20 seconds of work and 10 seconds of rest eight times, for four minutes. This page provides that timing; it does not prescribe the intensity or reproduce the full research programme.',
     },
     {
       q: 'Can I change the work and rest times?',
@@ -86,7 +86,7 @@ export const faqs: Record<string, Faq[]> = {
   '/meditation': [
     {
       q: 'What does the bell sound like?',
-      a: 'One soft tone that fades over about two seconds. It’s made in your browser, not recorded, so nothing downloads and it works offline. Tap Preview bell to hear it before you start.',
+      a: 'One soft tone that fades over about two seconds, generated in your browser without an audio file. Tap Preview bell to hear it. Offline use still needs the page and its code to be cached.',
     },
     {
       q: 'Can I have one bell at the end and nothing in between?',
@@ -94,11 +94,11 @@ export const faqs: Record<string, Faq[]> = {
     },
     {
       q: 'Will the screen stay on while I sit?',
-      a: 'Yes. While the timer runs, it asks your device to keep the screen on, with a backup method for browsers that can’t. Turn the brightness down yourself if the light bothers you.',
+      a: 'The timer requests an awake screen while running. The browser or battery settings can refuse or release that request. Keep the page visible and test your device before relying on bells.',
     },
     {
       q: 'Does the bell ring if my phone locks or I switch apps?',
-      a: 'The timing stays exact, and you’ll be at the right point when you come back. But browsers only play sound from a page that’s open, so keep the tab in front. A timer in a browser tab isn’t a guaranteed alarm.',
+      a: 'A locked device or hidden page may delay or suppress sound. The countdown can catch up when the same session resumes, but that does not deliver missed bells on time. Keep the page visible when cues matter.',
     },
     {
       q: 'Why is there no countdown tick before the bell?',

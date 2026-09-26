@@ -16,8 +16,8 @@ export interface ProgrammaticPage {
   description: string;
   /** 2-3 short paragraphs of plain text, no markdown */
   intro: string[];
-  /** 3-5 short "good for" bullets */
-  uses: string[];
+  /** Optional concrete uses; omit when the introduction already covers them. */
+  uses?: string[];
   config: Exclude<ModeConfig, { mode: 'stopwatch' }>;
   faq: Faq[];
   /** related paths on this site */

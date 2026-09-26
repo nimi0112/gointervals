@@ -14,6 +14,8 @@ const { page, posts = [] } = Astro.props;
 const setup = describeConfig(page.config);
 const total = configSeconds(page.config);
 const med = page.config.mode === 'meditation';
+const pomo = page.config.mode === 'pomodoro';
+const fixedTabata = page.config.mode === 'tabata';
 ---
 
 <TimerPage
@@ -28,20 +30,22 @@ const med = page.config.mode === 'meditation';
   related={page.related.filter((r) => !r.startsWith('/blog/'))}
   posts={[...page.related.filter((r) => r.startsWith('/blog/')), ...posts]}
   crumbName={page.h1}
-  jsonLd={[howTo(page.h1, page.path, setup, total)]}
+  jsonLd={[howTo(page.h1, page.path, setup, total, fixedTabata)]}
 >
   <Section title="What this one is for" flush>
     {page.intro.map((p) => (
       <p>{p}</p>
     ))}
   </Section>
-  <Section title="Good for">
-    <ul>
-      {page.uses.map((u) => (
-        <li>{u}</li>
-      ))}
-    </ul>
-  </Section>
+  {page.uses?.length ? (
+    <Section title="Good for">
+      <ul>
+        {page.uses.map((u) => (
+          <li>{u}</li>
+        ))}
+      </ul>
+    </Section>
+  ) : null}
   <Section title="How it runs">
     <p>
       {setup} Press Start, or hit Space. The phase word and icon above the progress bar tell you
@@ -49,20 +53,26 @@ const med = page.config.mode === 'meditation';
     </p>
     {med ? (
       <p>
-        The only sound is one soft bell at each interval and one at the end, and each of those is a
-        switch you can turn off. Sound On/Off under the timer silences everything. The screen stays
-        on while the session runs.
+        Start, interval and end bells have independent switches. Only enabled bells play; interval
+        bells do not restart the session clock. Sound off mutes audio, though supported devices may
+        still vibrate.
       </p>
     ) : (
       <p>
-        Sound is on by default and needs a tap on Start to unlock: a rising pair for work, a falling
-        pair for rest, a tick through the last three seconds and a three-note finish. The screen
-        stays on while the timer runs and the tab title shows the time left.
+        Check the Sound chip and device volume before starting. Work and rest have different tones.
+        The tab title shows the time left. Start begins the first phase immediately; prepare your
+        space first.
       </p>
     )}
     <p>
-      Change the numbers above the Start button before you begin. This page always opens with the
-      preset shown here; the main {med ? 'meditation' : 'timer'} page remembers your own settings.
+      Keep the page visible for cues. The timer requests an awake screen, but the browser can refuse
+      it or delay background sound. For offline use, load this exact page online and test a reload
+      without a connection before relying on it.
+    </p>
+    <p>
+      {fixedTabata
+        ? 'This page uses fixed 20/10 timing for eight rounds. Choose a variant to edit the durations.'
+        : `Change the settings before starting. ${med || pomo ? 'Durations use minutes.' : 'Work and Rest use seconds on this page.'} This page opens with its preset each visit; the main timer page remembers your valid settings.`}
     </p>
   </Section>
 </TimerPage>

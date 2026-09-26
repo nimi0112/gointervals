@@ -8,8 +8,8 @@ import { meditations } from '@/data/meditations';
 ---
 
 <TimerPage
-  title="Meditation Timer – Interval Bells, Screen Stays On"
-  description="Free meditation timer with gentle interval bells: 30 minutes with a soft bell every 10 by default, or any length you like. No ticking. Works offline."
+  title="Meditation Timer – Choose Your Session and Interval Bells"
+  description="Choose a meditation session from 1 to 180 minutes, with optional start, interval and end bells. Keep one session clock and adjust the bells to suit you."
   path="/meditation"
   h1="Meditation timer with interval bells"
   lede="This meditation timer keeps one clock for your whole sit. A soft bell can ring every 10 minutes, and one rings at the end. Nothing else makes a sound."
@@ -19,21 +19,50 @@ import { meditations } from '@/data/meditations';
   posts={relatedPosts['/meditation']}
   crumbName="Meditation timer"
 >
-  <Section title="How it's different" flush>
+  <Section title="What is meditation?" flush>
     <p>
-      The other timers here are made to get your attention. This one is made to fade into the
-      background. The big number shows the time left in the whole session. The quiet line under the
-      bar shows the time to the next bell. Interval bells, the start bell and the end bell each have
-      their own switch. So you can have one bell at the end and silence until then.
+      Meditation includes several practices for working with attention. In a simple breath-focused
+      practice, notice your natural breathing and gently return when your attention wanders. You can
+      reserve a quiet moment after breakfast, during a break or after work; choose a time when you
+      can safely give it your attention.
     </p>
     <p>
-      The default is a 30 minute sit, with bells at 10 and 20 minutes and one to finish. That gives
-      you three stretches of quiet. You might use them for a body scan, then the breath, then open
-      awareness. Or they can simply be two gentle reminders to come back.
+      Our <a href="/blog/how-long-to-meditate">introduction to meditation</a> explains a first short
+      practice, possible benefits and what the evidence can tell you. An end bell simply marks the
+      space you have reserved.
     </p>
   </Section>
-  <Section title="Presets">
-    <p>Each length has its own page, with the bells already in place.</p>
+  <Section title="Choose what each bell means">
+    <p>
+      For a quiet ten-minute sit, set Session length to 10, turn Interval bell off, leave Start bell
+      off and keep End bell on. Use Preview bell to check the tone and device volume before settling
+      in.
+    </p>
+    <p>
+      For a session with two parts, set twenty minutes and a bell every ten. You will hear one
+      intermediate bell and one end bell. Decide whether the midpoint marks a change of practice or
+      a simple check-in. The <a href="/blog/meditation-timer-interval-bells">interval-bell guide</a>{' '}
+      has more examples.
+    </p>
+  </Section>
+  <Section title="Understand the whole-session clock">
+    <p>
+      The default is thirty minutes with bells at ten and twenty minutes, then one end bell at
+      thirty. The large countdown measures the whole session; it does not restart at each bell.
+      Start, interval and end bells have separate switches.
+    </p>
+    <p>
+      If the interval does not divide the session evenly, the final part is shorter. A 25-minute
+      session with ten-minute bells has cues at ten and twenty, then ends at twenty-five. An
+      interval at the exact ending is not played twice.
+    </p>
+  </Section>
+  <Section title="Choose a session length">
+    <p>
+      Pick a length that fits your practice and available time. Longer is not automatically better.
+      Read <a href="/blog/how-long-to-meditate">how to choose a meditation length</a>, or open one
+      of these schedules.
+    </p>
     <ul class="links">
       {meditations.map((m) => (
         <li>
@@ -42,18 +71,16 @@ import { meditations } from '@/data/meditations';
       ))}
     </ul>
   </Section>
-  <Section title="Screen, sound, silence">
+  <Section title="Screen and sound">
     <p>
-      While the timer runs, it asks your phone or laptop to keep the screen awake. That way your sit
-      doesn't end with a locked phone. If you'd like a dim room, turn the brightness down yourself.
-      The bell is made right in your browser, so there's nothing to download. After your first
-      visit, it works without a connection.
+      Keep the page visible when you need the bell. The timer requests an awake screen, but device
+      settings can refuse it. A locked phone or background page may miss sound cues even though
+      elapsed time is correct when the page resumes.
     </p>
     <p>
-      Keep this tab open and on screen. In a background tab, browsers slow timers down, so a bell
-      can come late or not at all. With Sound off, phones that can vibrate (most Android phones)
-      still buzz at each bell. iPhone browsers don't vibrate, so there Sound off gives you a silent
-      sit.
+      Sound off mutes all selected bells. Vibration may still occur on devices that support it. For
+      offline use, first load this page online and test a reload without a connection. For distinct
+      work and rest phases, choose the <a href="/interval">interval timer</a>.
     </p>
   </Section>
 </TimerPage>

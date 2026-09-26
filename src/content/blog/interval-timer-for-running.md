@@ -1,78 +1,61 @@
 ---
-title: 'Interval timer for running: run/walk, repeats, fartlek'
-description: An interval timer for running beeps so you don't have to watch your wrist. Run/walk plans, 400m repeats by time, fartlek and tips for hearing the beep.
+title: 'Interval timer for running: build a clear run/walk session'
+description: 'Understand run/walk intervals, how they fit beginner running plans, and how to translate a chosen session into clear work and recovery periods.'
 pubDate: 2026-09-15
-updatedDate: 2026-09-25
+updatedDate: 2026-09-26
 tags: [running, hiit, how-to, workouts]
 timer: '/interval/running-intervals-1-1'
 keyword: 'interval timer for running'
 ---
 
-An interval timer for running tells you when to run and when to recover, so you don't have to count. Set your work and rest, press Start, and let the beep decide. You just run.
+A running plan says one minute running and ninety seconds walking. Your timer says Work, Rest and Rounds. Translating between the two should be straightforward, but units and the final recovery can change the session you build.
 
-## Run/walk, and how to build it up
+An interval timer for running repeats a fixed effort and recovery. Choose the schedule from your plan first, then enter it and check the total. The timer controls duration; it does not choose an appropriate pace or training progression for you.
 
-Run/walk is one of the best ways for a new runner to use a timer. Plenty of marathon runners use it on purpose, too. As you get fitter, the running part grows.
+## What run/walk intervals are for
 
-| Stage      | Run  | Walk | Rounds | Total  |
-| ---------- | ---- | ---- | ------ | ------ |
-| Starting   | 1:00 | 1:00 | 15     | 30 min |
-| Week 3-4   | 2:00 | 1:00 | 10     | 30 min |
-| Week 5-6   | 3:00 | 1:00 | 8      | 32 min |
-| Week 7-8   | 5:00 | 1:00 | 5      | 30 min |
-| Continuous | -    | -    | -      | 30 min |
+Run/walk training alternates running with planned walking periods. The walk is part of the session, rather than evidence that the session failed. Dividing time this way lets a plan introduce running in smaller portions instead of requiring one continuous run immediately.
 
-The total time stays about the same the whole way. You're not adding more exercise. You're slowly turning walking into running.
+The [NHS Couch to 5K programme](https://www.nhs.uk/better-health/get-active/get-running-with-couch-to-5k/couch-to-5k-running-plan/) uses a gradual run/walk approach for beginners, with rest days between runs. Its sequence provides the progression; the timer simply helps follow it.
 
-The first stage is ready to go on [running intervals 1:1](/interval/running-intervals-1-1). For later stages, change the run time and rounds on the same page.
+This format can be useful when beginning a suitable running programme and wanting clear boundaries between running and recovery. Faster intervals for performance training are a different use of the same clock. They need a different plan, not just fewer walking seconds.
 
-Move up a stage when the last two rounds feel comfortable, not just the first two. It's fine to repeat a week, or two. Go at your own pace.
+Before choosing settings, decide which kind of session you mean. That prevents a beginner run/walk outing from quietly becoming a sprint workout because both happen to contain intervals.
 
-## 400 m repeats, by time instead of distance
+## Keep time and distance separate
 
-Track sessions are usually set by distance. That's easy on a track. On a road, a path or a treadmill, time is much simpler.
+A timed repetition does not represent a fixed distance unless you hold a particular pace. At a steady 6:00 per kilometre, a ninety-second effort covers 250 metres. At 4:00 per kilometre, the same time covers 375 metres.
 
-A 400 m repeat takes most people 75 to 110 seconds. So round it off. Run hard for 90 seconds, then jog or walk for 90 seconds. Repeat eight to twelve times.
+So replacing “400 metres” with “ninety seconds” changes the workout unless that time fits your intended pace. For distance repetitions, use measured markers or a suitable watch. For fixed durations, use the beep as the boundary and accept that distance may vary.
 
-You'll cover a bit less ground as you tire, and that's fine. Your effort stays steady, which is what counts.
+The [running splits guide](/blog/stopwatch-running-splits-lap-times) explains how to record individual efforts and recoveries when you want to compare them later.
 
-Here are some common swaps from distance to time:
+## Account for the parts outside the repeats
 
-| Distance | Rough time | Recovery | Repeats |
-| -------- | ---------- | -------- | ------- |
-| 200 m    | 40s        | 40-60s   | 10-16   |
-| 400 m    | 90s        | 90s      | 8-12    |
-| 800 m    | 3:00       | 2:00     | 5-8     |
-| 1 km     | 4:00       | 2:00     | 4-6     |
+This timer starts the first Work period immediately. It does not insert a warm-up before it or name the next exercise. Complete your preparation first, then start when you are ready.
 
-The main [interval](/interval) page takes whole minutes, so it handles the 800 m and 1 km rows. For work in seconds, open a preset page and change the numbers there. For short, fast work, [30s sprint, 90s recovery](/interval/sprint-30-90) is a classic shape and a good place to start.
+A ladder of one, two and three-minute efforts is also different from repeating one work/rest pair. The current timer does not schedule a custom ladder automatically. Use separate sessions or a tool that supports the exact sequence.
 
-## Fartlek
+## Translate the plan into settings
 
-Fartlek is Swedish for "speed play". It's meant to be loose and playful, so a timer might sound odd. But the timer only marks when each push starts and stops. The pace and the route are up to you.
+The [1:1 running preset](/interval/running-intervals-1-1) starts with Work 60 seconds, Rest 60 seconds and 10 rounds. That is twenty minutes, including the final walking period.
 
-A classic version is a ladder. Run hard for 1, 2, 3, 3, 2 and then 1 minute, with the same time easy after each. That's 24 minutes.
+For a different repeated pattern, edit those seconds fields. Work 60, Rest 90 and Rounds 8 produces twenty minutes: eight runs totalling eight minutes and eight walks totalling twelve.
 
-The timer repeats one work length, so it can't run a ladder. Instead, try 2 minutes on and 2 minutes off for eight rounds. Then choose each round whether "on" means 5K pace or a hill.
+That arithmetic does not make it an exact copy of every beginner programme. For example, the [NHS Couch to 5K plan](https://www.nhs.uk/better-health/get-active/get-running-with-couch-to-5k/couch-to-5k-running-plan/) includes warm-up and cooldown walks, and its first session distinguishes the final run from the earlier run/walk pairs. Follow the actual plan rather than relying on a similar-looking preset name.
 
-## Why a beep beats checking your watch
+## Watch the units
 
-Glancing at your wrist costs more than you'd think. Your head drops, your arm swings across your body, and your stride breaks for a few steps. Do that on every rep and it adds up.
+On the main [interval timer](/interval), Work and Rest use whole minutes. Work 2 and Rest 1 mean two minutes running and one minute recovery.
 
-There's also a pull to ease off once you see only a few seconds left. A beep removes that. You run until it tells you to stop, and each rep is the full length.
+On an interval preset page, the same settings are Work 120 and Rest 60 because those fields use seconds. Presets are the useful starting point for ninety-second periods or other lengths that are not whole minutes.
 
-## Making sure you hear the beep
+Before pressing Start, read the total under the settings. For ten rounds of two minutes running and one minute walking, expect thirty minutes. If the total surprises you, check the units and round count before changing your training plan.
 
-This is what makes it work outdoors.
+## Test the cues where you will use them
 
-**Headphones.** The best choice. The beep plays in your headphones along with your music, so it's hard to miss. Bone conduction headphones are worth a look for road running. They leave your ears open to traffic and still carry the beep well.
+A beep that sounds clear indoors may be hard to hear outside. Test at a safe location without letting the phone distract you from your surroundings.
 
-**Phone in a pocket.** This works if you turn the volume up before you start. An armband or running belt is louder than a zipped pocket. Wind and traffic drown out a lot. So stand still, test one round at your planned volume, then turn it up a bit more.
+More importantly, locking the phone or switching apps can suspend browser sound. Keeping accurate elapsed time after the page resumes does not guarantee every cue arrived. If reliable pocket or locked-screen alerts are essential, use a running device or app intended for that job.
 
-**Vibration.** On Android phones, the timer also buzzes at each change, even with the sound off. That helps in a loud place, or a quiet one where you'd rather not beep at people. You may notice a buzz a moment later than a beep, but that barely matters over 90 seconds. iPhones don't support this in the browser, so use sound there.
-
-The screen stays on while the timer runs, so you can glance at it if you need to. The time left also shows in the browser tab title.
-
-If you want to record your splits instead, any running watch can do it. See [running splits](/blog/stopwatch-running-splits-lap-times) for what's worth writing down.
-
-Try it: [run 1:1 running intervals](/interval/running-intervals-1-1).
+Try it: [enter your run/walk schedule on the seconds-based preset](/interval/running-intervals-1-1).

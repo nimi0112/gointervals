@@ -1,52 +1,73 @@
 ---
-title: How to use a meditation timer with interval bells
-description: How to set up a meditation timer with interval bells, pick a session length, and choose start and end bells, so you can sit without watching the clock.
+title: 'Meditation interval bells: give each bell a purpose'
+description: 'Learn how meditation bells can support attention or mark a change of practice, when quiet helps more, and how to plan cues for a purposeful session.'
 pubDate: 2026-09-15
-updatedDate: 2026-09-25
+updatedDate: 2026-09-26
 tags: [meditation, how-to]
 timer: '/meditation'
 keyword: 'meditation timer with interval bells'
 author: Nimish Nandwana
 ---
 
-A meditation timer with interval bells rings softly at set points in your sit, so you can track time without looking. You choose the session length, how often the bells ring, and whether there's a bell at the start or end. You can also keep the whole sit silent until the very end.
+You settle into a quiet sit. A bell rings. Now you are wondering whether to change practice, adjust your posture or simply carry on.
 
-## Start with fewer bells
+A meditation timer with interval bells is most useful when you decide what each bell means before you start. You can use bells to mark changes, or choose one end bell and leave the rest of the session quiet.
 
-You don't need every sound the timer offers. Start with the simplest setup you'll actually use.
+## What are you returning your attention to?
 
-If you're new, try a 10-minute session with just an end bell. Turn interval bells off, leave the start bell off, and keep the end bell on. Press Start when you're ready. You don't need a sound at the beginning to know you've started.
+In a breath-focused meditation, you choose a sensation of breathing as your focus, notice when attention has wandered, and return. The bell can be a reminder to do that, but noticing a distraction yourself is also part of the practice. You do not have to wait for a sound.
 
-The [meditation timer](/meditation) always opens on its setup screen, so a link never starts a session for you. Set the length, pick your bells, and press Start once you're sitting comfortably.
+Suppose you notice that you have been mentally writing an email. You can recognise the thought and return to the next breath without finishing the email in your head. If a bell later rings, the same response is available. This is an example of how to use a cue, not a test of whether you stayed focused for the whole interval.
 
-## What the default means
+If meditation is new to you, begin with [what meditation involves and a first short practice](/blog/how-long-to-meditate). Learn the activity before adding several signals to it.
 
-The default session is 30 minutes, with a bell every 10 minutes. So you'll hear interval bells at 10 and 20 minutes. The sound at 30 minutes is the end bell, not another interval bell. By default, the start bell is off and the end bell is on.
+## When a bell helps, and when quiet helps
 
-Think of the interval as the space between bells, not the length of the sit. With the defaults, your sit has three stretches of quiet. You can keep the same practice all the way through. Or you can use the two bells to mark a change, without checking the time.
+A bell is useful when it removes a decision: when to change from sitting to walking, or when your reserved time ends. That leaves you free to follow the practice instead of repeatedly estimating the time.
 
-## Choose each sound on its own
+For a short pause after work, one end bell may be enough. For a practice with distinct sections, intermediate bells can hold the sequence. If you keep anticipating the next sound, try an end-only session and compare. More reminders are not automatically more support.
 
-Interval bells, the start bell and the end bell are separate settings. You can keep interval bells and turn off the end bell. Or you can turn off interval bells and keep only the end bell. Add a start bell if you like an audible beginning. Each one works without the others.
+## A possible three-part sit
 
-The Sound chip mutes every bell at once, including any start or end bell you've chosen. Use it when you don't want to hear anything. Phones that can vibrate, which is most Android phones, still buzz at each bell with Sound off. iPhone browsers don't vibrate. If you want just one sound, leave Sound on and switch off the bells you don't need.
+Here is one way to use a thirty-minute session. Spend the first ten minutes noticing physical sensations, the next ten attending to your breath, and the final ten noticing sounds and thoughts as they arise.
 
-Before you settle in, check your device volume as well as the timer settings. Preview bell plays the tone once, so you know what to listen for.
+That is an example of assigning meaning to the bells, not a required sequence or a promise about the benefits of thirty minutes. If you follow a teacher's practice, use the timing that supports it. If you are deciding how much time to reserve, the [meditation length guide](/blog/how-long-to-meditate) helps separate a manageable starting point from a target you feel obliged to reach.
 
-## Give each bell a purpose
+You can also use the bells to alternate sitting and walking. Check that the tone is audible from wherever you will be, and make the route clear before starting.
 
-You might sit for the first 10 minutes, walk slowly for the next 10, then sit again for the last 10. Or let each bell be a quiet reminder to notice what you're doing. Decide before you begin, so the bell doesn't become one more choice mid-sit.
+## Turn your practice into a bell schedule
 
-If the bells feel too frequent, make the interval longer or turn interval bells off. A short sit doesn't need to be split up. The timer is there to hold the time you chose, not to set you a task. You can pause or stop whenever you need to.
+Suppose you want ten minutes to sit without checking the clock. You need an ending, not intermediate milestones. On the [meditation timer](/meditation), set Session length to 10, turn Interval bell off, leave Start bell off and keep End bell on.
 
-## Keep the timer open
+Now suppose you have a twenty-minute practice with two parts. A bell at ten minutes can mark the change. Set Session length to 20, Bell every to 10, and switch Interval bell on. The bell has a specific job, so you do not need to make a decision when it rings.
 
-Keep the timer tab open for the whole sit. Once you've visited the page, it can work offline. Open it once while you're connected before you rely on it without a connection. On a new device, try a short sit first, so you know how the bell sounds at your volume.
+A third possibility is a gentle reminder during one continuous practice. That may suit you, but it is optional. If every bell makes you calculate how much time remains, try fewer bells or only the end cue.
 
-Sound in the background isn't guaranteed. Browsers and phones may pause a tab or quiet its sound when you switch apps or lock the screen. If hearing the bell matters, keep the page on screen. An open tab is a helpful timer, but not a guaranteed alarm.
+## Read the schedule before you sit
 
-## Bells in one sit, or work and rest
+The interval is the space between bells. It is not the session length, and it does not restart the main clock.
 
-Want to switch between work and rest instead? Use the [interval timer for work and rest](/interval). It repeats two phases, with a different sound for each change. The meditation timer is for one continuous sit, with quiet bells along the way.
+| Session    | Bell interval     | Intermediate bells   | End bell      |
+| ---------- | ----------------- | -------------------- | ------------- |
+| 10 minutes | Interval bell off | None                 | At 10 minutes |
+| 20 minutes | 10 minutes        | At 10 minutes        | At 20 minutes |
+| 25 minutes | 10 minutes        | At 10 and 20 minutes | At 25 minutes |
+| 30 minutes | 10 minutes        | At 10 and 20 minutes | At 30 minutes |
 
-Try it: [meditation timer](/meditation).
+These examples assume End bell is on and Start bell is off. In the 25-minute example, the last stretch is five minutes. The timer ends at the chosen session length; it does not extend the sit to reach another full interval.
+
+When a scheduled interval lands exactly at the end, you hear the end cue once, rather than two overlapping bells. Turning End bell off removes that finish sound.
+
+## Test the sound once
+
+Use Preview bell at the volume you intend to use. Then check the Sound chip: it mutes all selected bells together. Turning individual bells off and muting the whole timer do different things.
+
+On devices that support vibration, a cue may still vibrate when sound is muted. Do not assume that muting guarantees a completely silent device, or that every phone supports vibration.
+
+Keep the page visible. The timer requests an awake screen, but the browser or operating system can refuse. A locked screen or background tab may delay or suppress a bell; correct elapsed time when you return does not recover a cue at the moment you needed it.
+
+## Choose a different timer for different phases
+
+Meditation keeps one continuous session clock and uses the same soft tone. If you need distinct work and rest phases with different cues, choose the [interval timer](/interval). If the point is a quiet sit, keep only the signals that help you follow it.
+
+Try it: [choose your session length and bells](/meditation).

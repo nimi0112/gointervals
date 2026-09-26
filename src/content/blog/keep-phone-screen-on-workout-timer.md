@@ -1,6 +1,6 @@
 ---
-title: How to keep your phone screen on during a workout timer
-description: Keep your phone screen on during a workout without changing any settings. How screen wake lock works, when it can fail, and what to do on older phones.
+title: 'Keep your timer screen on: why the request can fail'
+description: 'Learn why a workout timer screen can sleep, how to test wake lock and sound, and why correct elapsed time does not guarantee a beep while your phone is locked.'
 pubDate: 2026-08-30
 updatedDate: 2026-09-25
 tags: [pwa, how-to, offline, workouts]
@@ -8,63 +8,40 @@ timer: '/interval'
 keyword: 'keep phone screen on'
 ---
 
-To keep your phone screen on during a workout timer, the page asks your phone to stay awake. That request is called a wake lock. You don't need to change any settings. You just need a timer that asks for one.
+The screen goes dark during a round. When you unlock it, the countdown jumps to the right place, but you never heard the rest cue.
 
-## Why the screen goes dark
+Those observations can both be correct. Keeping the screen awake, calculating elapsed time and playing sound are separate jobs. To keep a phone screen on, the timer requests a wake lock; the device decides whether to grant it.
 
-Your phone turns the screen off after 30 seconds or a minute without a touch. The screen uses more battery than anything else on the phone. Your phone can't tell if you're reading or if it's in your pocket, so it plays it safe.
+## What the browser is allowed to request
 
-During a workout, you're not touching the screen. So the phone does what it was built to do, just at an awkward moment, like early in round two.
+A screen wake lock asks the device not to dim or lock while the page is visible. It is not a permanent change to your display settings. According to [MDN's wake-lock documentation](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API), the system may reject or release a lock because of battery conditions, power-saving settings or page visibility.
 
-## Screen wake lock
+The [interval timer](/interval) requests a lock while running, releases it when paused or finished, and requests it again when you return to the visible page during a session. There is also a fallback for browsers without the API, but it is not a guarantee on every device.
 
-Browsers now have a proper fix, called the Screen Wake Lock API. A web page asks for a wake lock, and the phone keeps the screen on. It stays on until the page lets go or you switch away. MDN Web Docs has the details if you're curious.
+## Try a short diagnosis
 
-Three things are worth knowing:
+Start with the simplest setup: one visible timer tab, enough battery, audible device volume and Sound on. Run a short session without changing apps.
 
-1. **The timer asks when you tap Start.** It doesn't ask when the page opens, only when a session begins.
-2. **It lets go when you leave the tab.** Switch apps and the lock drops. This saves battery and is on purpose. Come back, and a good timer asks again.
-3. **Battery saver can say no.** In low power mode, your phone may refuse the request. The page can't change that.
+If the screen stays awake there but sleeps after switching apps, the change in visibility is the likely explanation. Return to the timer and try again. If it sleeps even while visible, check power-saving settings and whether the browser is current. You can consider a longer display timeout for the session, then restore it afterwards.
 
-The [interval timer](/interval) asks for a wake lock when you start. The screen stays on while it runs, and the lock is released when you pause or finish. If you leave the tab and come back mid-session, it asks again.
+Check sound separately. On the [meditation timer](/meditation), Preview bell lets you test the selected audio route and volume. For a workout, test a short transition before starting the real session. Headphones, speakers and device sound settings can change what you hear.
 
-## The video trick for older browsers
+If the utility line reports blocked sound, tap the Sound control to retry. Turning up the device volume does not resolve a browser that has not allowed audio to start.
 
-Most browsers support wake lock now, but not all of them. There's an older trick that still works. The page plays a tiny, silent video on a loop. The phone thinks you're watching something, so it keeps the screen on.
+## Why the countdown can recover
 
-It's a simple workaround, and it works. It helps most on older iPhones. The [interval timer](/interval) uses it when wake lock isn't available. The video needs a tap to start playing, which is another reason the timer waits for Start.
+Imagine a timer starts at noon and its page stops executing for two minutes. On returning, it can compare the current time with when the session began and account for pauses. It does not need to subtract every missed second one by one.
 
-## What to do if the screen still sleeps
+That is how this timer recovers its position while the session remains in memory. The screen can jump ahead because the elapsed time changed while the browser was not updating the display.
 
-| Situation                                    | Fix                                                              |
-| -------------------------------------------- | ---------------------------------------------------------------- |
-| Low power / battery saver on                 | Turn it off for the session. Wake locks can be denied in it      |
-| You switched apps mid-workout                | Come back to the tab. The lock is requested again on return      |
-| Screen timeout set very short                | Raise it in display settings as a backup                         |
-| Older browser, no wake lock                  | Update the browser, or keep the tab in the foreground            |
-| iOS with the page in a background Safari tab | Keep it in the foreground. Background tabs are slowed right down |
+Sound is different. Code that did not run at the boundary could not deliver that boundary's cue on time. When several boundaries have been missed, the timer uses one catch-up tone rather than a burst of old signals. A catch-up tone is not evidence that you received all earlier cues.
 
-## Why a dark screen doesn't break the timer
+## Choose the setup for the job
 
-Here's the good news. Even if the screen goes dark, a well-built timer keeps the right time.
+For a phone on a gym bench, keeping the page visible is practical. For running with a locked phone in a pocket, a browser timer may not be the right tool if every cue must arrive reliably. Test under your actual conditions, and use a device or app designed for background alerts when that is essential.
 
-Browsers slow down tabs you're not looking at. A timer that counts down one tick at a time can drift or even stop. You come back and it says 40 seconds left when it should say 10.
+Do not treat the timer as a safety alarm. Its large digits and sounds help ordinary sessions, but the browser remains subject to device restrictions.
 
-The fix is to note the start time and check the clock each time the page wakes. Then sleep doesn't lose any time. Nothing gets drawn while the screen is off, and that's all.
+Offline use is another independent question. A page can have working wake lock but lack cached files for its next offline load. Follow the [offline preparation guide](/blog/free-online-timer-that-works-offline) before relying on it without a connection.
 
-Every timer on this site works this way. If your phone dozes off, the time is still right when it wakes.
-
-Sound helps too. The timer beeps at each change, so you can put the phone face down and just listen. A screen that stays on is nice to have. During a set, sound does most of the work.
-
-## A quick setup for your workout
-
-- Tap Start before you put the phone down.
-- Check the numbers read well from where you'll be. They're the biggest thing on the page.
-- Turn the volume up so you can hear the beeps over music.
-- Keep the tab in the foreground.
-
-Your settings are saved in your browser, so they're there next time. There's no account, so no login with chalky hands.
-
-Want the timer to work with no connection at all? [A free online timer that works offline](/blog/free-online-timer-that-works-offline) explains how.
-
-Try it: [start an interval workout and put the phone down](/interval).
+Try it: [test a short interval with the page visible](/interval).

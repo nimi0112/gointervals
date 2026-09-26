@@ -1,62 +1,66 @@
 ---
-title: 'Pomodoro technique: why 25/5 works and how to tweak it'
-description: The pomodoro technique is 25 minutes of focus and a 5 minute break. Where it came from, why it works, and how to change the length to suit your work.
+title: 'Pomodoro technique: turn 25 minutes into a clear task'
+description: 'Understand the Pomodoro technique, when focused blocks can help, and how to plan tasks, handle interruptions and use breaks in a practical work session.'
 pubDate: 2026-08-26
-updatedDate: 2026-09-25
+updatedDate: 2026-09-26
 tags: [pomodoro, focus, study, how-to]
 timer: '/pomodoro'
 keyword: 'pomodoro technique'
 ---
 
-The pomodoro technique is simple: work on one thing for 25 minutes, then take a 5 minute break. After four rounds, take a longer break of 15 to 30 minutes. Francesco Cirillo came up with it as a university student in the late 1980s. He used a kitchen timer shaped like a tomato, and pomodoro is Italian for tomato.
+The timer says 25 minutes. Your task says “work on the report”. Twenty-five minutes later, you have opened several documents and still do not know whether the block went well.
 
-## What makes it work
+The Pomodoro technique is easier to use when you give each block a concrete job. The familiar rhythm is 25 minutes of focus, a short break, and a longer break after four blocks. But the clock is only the structure around the work.
 
-The 25 minutes isn't magic. Cirillo has said so himself. He wanted a block short enough to commit to and long enough to get something done.
+## What the technique is for
 
-The real engine is **the unbroken block**. A pomodoro can't be split. If you stop to check a message, that block doesn't count, and you start a fresh one. That one rule is the heart of the method. The timer just helps you keep it.
+Pomodoro is a method for organising work into focused periods followed by breaks. Its useful unit is one chosen task with a boundary around it. That can turn “I must finish this whole project” into “I will spend this block on one defined part”.
 
-The second piece is **the interruption list**. When something pops into your head mid-block, you write it down instead of acting on it. Most of those things can wait until the break, or turn out not to matter. Writing them down clears your head without breaking your focus.
+The potential gain is practical: a clear starting commitment, a place to defer distractions, and regular moments to review what remains. You can judge those changes in your own work without assuming that twenty-five minutes is a scientifically ideal attention span.
 
-## When 25 minutes is too short
+## When it fits your day
 
-Some work takes a while to get into. Writing, debugging, dense reading and design are all like this. If it takes you five minutes to settle back in, you lose a fifth of every block to warm-up.
+Try this structure when a task is easy to postpone or when unrelated work keeps pulling you away. A revision session, a batch of expenses or the first draft of a difficult email are possible examples. Choose work you can reasonably protect from interruptions.
 
-Here are some easy adjustments:
+It may be less useful during a meeting, a live support shift, or a task that already has a fixed duration. If a timed block repeatedly interrupts a productive flow, adjust the length or use natural stopping points. The method should help you direct your attention, rather than give you another score to chase.
 
-| Task type                   | Work   | Break  | Why                            |
-| --------------------------- | ------ | ------ | ------------------------------ |
-| Admin, email, small tasks   | 25 min | 5 min  | Standard. Easy to pick back up |
-| Writing, coding, analysis   | 50 min | 10 min | One warm-up, not two           |
-| Deep reading, hard problems | 90 min | 20 min | Matches a natural focus cycle  |
-| Anything you are avoiding   | 10 min | 3 min  | The point is starting          |
+## Make the task smaller than the project
 
-The 90-minute version is based on ultradian rhythms. These are natural cycles of alertness, roughly 90 to 120 minutes long, first described by Nathaniel Kleitman. Treat that as a rough guide, not an exact rule. Many people notice a dip somewhere past the hour mark.
+Francesco Cirillo developed the method, and his [account of the technique](https://www.pomodorotechnique.com/francesco-cirillo/) emphasises that it extends beyond a 25-minute countdown. Planning and handling interruptions matter too.
 
-The 10-minute version is easy to overlook, and it's very useful. If a task has sat on your list for a week, the hard part is starting. Ten minutes feels small enough to just begin.
+Before you start, name an output you can recognise. “Work on the report” can become “draft the paragraph explaining last month's costs”. You might not finish it within one block. Even then, you can see what moved forward and what remains.
 
-You can set any of these lengths on the [pomodoro timer](/pomodoro). It runs one full cycle: focus, short break, focus, and so on, then a long break, then done. For a single block, set Focus sessions to 1. You'll get one focus block and a long break, and then it stops.
+For a larger task, use the first block to reduce uncertainty. Find the missing figures, outline the argument, or list the decisions someone needs to make. A useful block does not have to produce a finished document.
 
-## Make the break a real break
+## Decide what interruptions mean
 
-Scrolling your phone for five minutes doesn't rest your mind. It's the same kind of attention, just sitting differently.
+Keep a piece of paper beside you. If you remember an unrelated task, write a few words and return to the current one. At the break, decide whether it needs attention. The note gives the thought somewhere to go without opening a new task immediately.
 
-Better breaks are simple. Stand up, walk around, get some water, or stretch. Look out a window at something more than six metres away. Cirillo suggests the break should have nothing to do with work. That gives your mind a chance to let things settle.
+An urgent request is different. You can pause the timer and respond. If you resume later, leave yourself a sentence describing the next action: “Check the March total against the invoice sheet.” That is more helpful than returning to a screen full of tabs.
 
-The long break after four pomodoros matters too. Two hours of real focus is a lot. If you push straight into a fifth block, the quality tends to slip without you noticing.
+Strict versions of the method treat an interrupted block as incomplete. You can follow that convention, but it does not mean the work you already did has no value. This timer allows pausing; decide how you will record interruptions if you are using blocks to estimate effort.
 
-## What to expect in a day
+## Give the break a boundary too
 
-Most people who track honestly get **six to ten** pomodoros done in a working day at 25 minutes. That's a good day. If you plan for twelve, you'll likely feel behind even when you've done well.
+Before the break, note where to restart. Then choose something you can leave when the next block begins: refill water, stand up, or look away from your work. If a five-minute break routinely becomes half an hour, choose an activity with a clearer ending.
 
-Try guessing how many pomodoros a task will take before you start. Then note how many it really took. After two weeks, your guesses will get much better. That might be the most useful thing the whole method gives you.
+If the bell repeatedly cuts through useful work, compare another length using the [focus-length guide](/blog/best-pomodoro-length).
 
-## When it doesn't fit
+The purpose is a repeatable way to begin, stop and review a piece of work. You do not need a daily quota of completed blocks to make that useful.
 
-The technique is a poor fit for work where interruptions are the job, like support or being on call. It can also get in the way when you're already deep in flow. Cirillo's advice there is simple: finish the pomodoro, then keep going if you want. The timer marks the least you'll do, not the most.
+## Follow one cycle on the clock
 
-Studying raises a slightly different question about interval length. [Study timer vs pomodoro](/blog/study-timer-vs-pomodoro) goes into it.
+Once you have chosen a task and a plan for interruptions, a timer can mark the work and break boundaries for you. For one block with no automatic break, use the [interval timer](/interval) with Rest 0 and Rounds 1. The default [Pomodoro timer](/pomodoro) runs this sequence:
 
-The [pomodoro timer](/pomodoro) shows the time left in the tab title. You can leave it in a background tab and glance at it without switching.
+| Stage                | Duration        | Elapsed time at the end |
+| -------------------- | --------------- | ----------------------- |
+| Focus 1, short break | 25 + 5 minutes  | 30 minutes              |
+| Focus 2, short break | 25 + 5 minutes  | 60 minutes              |
+| Focus 3, short break | 25 + 5 minutes  | 90 minutes              |
+| Focus 4, long break  | 25 + 15 minutes | 130 minutes             |
 
-Try it: [start a 25/5 pomodoro](/pomodoro).
+That is 100 minutes of focus and 30 minutes of breaks. There is no extra five-minute break before the long break. After that final break, the timer stops instead of beginning another cycle.
+
+You do not have to reserve the whole cycle. Change Focus sessions to match the time available. With one session, the timer runs one focus block followed by the configured long break.
+
+Try it: [pick one task and start a Pomodoro cycle](/pomodoro).

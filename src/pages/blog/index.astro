@@ -9,6 +9,21 @@ const posts = (await getCollection('blog', (p) => !p.data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+const topicLabels: Record<string, string> = {
+  boxing: 'Boxing',
+  emom: 'EMOM workouts',
+  focus: 'Focus',
+  hiit: 'High-intensity interval training',
+  'how-to': 'Practical guides',
+  meditation: 'Meditation',
+  offline: 'Offline use',
+  pomodoro: 'Pomodoro',
+  pwa: 'Browser apps',
+  running: 'Running',
+  study: 'Study',
+  tabata: 'Tabata',
+  workouts: 'Workouts',
+};
 const crumbs = [
   { name: 'Home', path: '/' },
   { name: 'Blog', path: '/blog' },
@@ -17,26 +32,33 @@ const crumbs = [
 
 <Base
   title="Blog – Timers, Intervals and Focus, Explained"
-  description="Short, specific guides to interval bells, Tabata, HIIT, EMOM, Pomodoro and keeping your phone awake during a workout, by the person who built the timers."
+  description="Practical guides to workout intervals, focus blocks and meditation bells. Understand the timing, check the evidence and choose a setup that fits."
   path="/blog"
   jsonLd={[breadcrumbList(crumbs)]}
 >
   <main id="main" class="wrap">
     <header class="bh">
       <Breadcrumbs {crumbs} />
-      <h1>Blog</h1>
+      <h1>The gointervals blog</h1>
       <p class="bh__lede">
-        How the protocols work and how to run them with a timer. No fluff intros.
+        What happens when you meditate? Why do workouts alternate effort and rest? Learn the ideas,
+        understand the evidence and find a practical way to begin.
       </p>
-      <ul class="links bh__tags" aria-label="Tags">
-        {tags.map((t) => (
+    </header>
+    <PostList {posts} />
+    <nav class="bh bh--topics" aria-labelledby="blog-topics">
+      <h2 id="blog-topics">Browse by topic</h2>
+      <ul class="links bh__tags">
+        {tags.map((tag) => (
           <li>
-            <a href={`/blog/tag/${t}`}>{t}</a>
+            <a href={`/blog/tag/${tag}`}>{topicLabels[tag] ?? tag}</a>
           </li>
         ))}
       </ul>
-    </header>
-    <PostList {posts} />
+      <p class="bh__rss">
+        <a href="/rss.xml">Follow new articles with RSS</a>
+      </p>
+    </nav>
   </main>
 </Base>
 
@@ -47,6 +69,17 @@ const crumbs = [
     flex-direction: column;
     gap: var(--sp-3);
     max-width: var(--measure);
+  }
+  .bh--topics {
+    border-top: 1px solid var(--line);
+  }
+  .bh__rss {
+    margin: 0;
+  }
+  .bh__rss a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
   .bh h1 {
     margin: 0;

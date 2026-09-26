@@ -10,7 +10,7 @@ The design source of truth is `goIntervals.pen`, kept locally and read through P
 
 | Route         | Mode         | Setup fields                                                    |
 | ------------- | ------------ | --------------------------------------------------------------- |
-| `/interval`   | `interval`   | Work (s), Rest (s), Rounds. Default 1800 / 300 / 8              |
+| `/interval`   | `interval`   | Work (min), Rest (min), Rounds. Default 30 / 5 / 8              |
 | `/meditation` | `meditation` | Session length (min), Bell every (min), three bell chips        |
 | `/tabata`     | `tabata`     | None. Fixed 20 / 10 / 8, 04:00                                  |
 | `/emom`       | `emom`       | Interval length (s), Total minutes. Default 60 / 10             |
@@ -29,14 +29,14 @@ Every entry carries slug, H1, title, description, hand-written intro, config, 3â
 
 ### Content and utility pages
 
-| Route                                                                                                                          | Notes                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
-| `/`                                                                                                                            | Header, intro, five timer rows, guide, FAQ, ready-made links, article link. No island |
-| `/about`                                                                                                                       | Under 150 words, source/author/X links, Clear my data                                 |
-| `/blog`, `/blog/[slug]`, `/blog/tag/[tag]`, `/rss.xml`                                                                         | Content Collections, Article (Person author) + BreadcrumbList JSON-LD                 |
-| `/404`                                                                                                                         | One line and a home link, real 404, noindex                                           |
-| `/og/[...slug].png`                                                                                                            | Build-time social card per page (satori + resvg)                                      |
-| `/sitemap-index.xml`, `/robots.txt`, `/llms.txt`, `/humans.txt`, `/manifest.webmanifest`, `/sw.js`, `/_headers`, `/_redirects` | Static or generated                                                                   |
+| Route                                                                                                                          | Notes                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| `/`                                                                                                                            | Header, intro, five timer rows, guide, curated articles, FAQ, ready-made links. No island |
+| `/about`                                                                                                                       | Under 150 words, source/author/X links, Clear my data                                     |
+| `/blog`, `/blog/[slug]`, `/blog/tag/[tag]`, `/rss.xml`                                                                         | Content Collections, Article (Person author) + BreadcrumbList JSON-LD                     |
+| `/404`                                                                                                                         | One line and a home link, real 404, noindex                                               |
+| `/og/[...slug].png`                                                                                                            | Build-time social card per page (satori + resvg)                                          |
+| `/sitemap-index.xml`, `/robots.txt`, `/llms.txt`, `/humans.txt`, `/manifest.webmanifest`, `/sw.js`, `/_headers`, `/_redirects` | Static or generated                                                                       |
 
 Removed on 2026-09-15 with 301s in `public/_redirects`: `/stopwatch`, `/timer`, `/timer/*`, and the old article slug `/blog/meditation-timer-with-interval-bells`.
 
@@ -102,7 +102,7 @@ TimerPage.astro (no site header)
 | ---------------------------------- | ----------------------------------------------------------- |
 | `astro`                            | The framework. `output: 'static'`.                          |
 | `@astrojs/preact` + `preact`       | Smallest island runtime; only loaded on timer routes.       |
-| `@astrojs/sitemap`, `@astrojs/rss` | Sitemap with lastmod, blog RSS.                             |
+| `@astrojs/sitemap`, `@astrojs/rss` | Sitemap and blog RSS.                                       |
 | `satori` + `@resvg/resvg-js`       | Build-time social cards. Nothing ships to the client.       |
 | `@fontsource-variable/dm-sans`     | UI face, self-hosted latin woff2 copied to `public/fonts/`. |
 | `@fontsource-variable/azeret-mono` | Digits face, tabular numerals, self-hosted.                 |
@@ -125,11 +125,11 @@ Porcelain & Ink: paper `#F7F8F5`, ink `#202722`, muted `#58615A`, line `#D6DDD5`
 - `robots.txt` allows everyone including AI crawlers. `llms.txt` lists every route and the limits of each timer.
 - `_headers`: CSP allowing self + GA + Cloudflare Insights, long cache on `/_astro/*` and `/fonts/*`, no-cache on `sw.js`.
 - Fonts preloaded, metric-matched fallbacks for CLS 0.
-- Internal links: `src/data/related.ts` maps every timer route to related timers and posts; every post names its `timer`; home links to ready-made pages and the meditation guide.
+- Internal links: `src/data/related.ts` maps every timer route to related timers and posts; every post names its `timer`; home links directly to the blog and three curated starting articles, as well as ready-made timers.
 
 ## 7. Analytics
 
-`PUBLIC_GA_MEASUREMENT_ID` and `PUBLIC_SITE_URL` in `.env`. GA4 loaded deferred after first paint, only if the ID is set. Events: `timer_start`, `timer_pause`, `timer_resume`, `timer_stop_confirmed`, `timer_reset_confirmed`, `timer_complete`, `timer_run_again`, `timer_change_settings`, `invalid_input`, `audio_toggle`, `audio_unavailable`, `wakelock_failed` (only the unsupported case is observable), `nav_away_during_session`, `blog_read` (end of article scrolled into view), `outbound_click`, and the `pwa_*` install funnel. Timer events carry `mode` and the configured values. No cookies of our own; About says so honestly.
+`PUBLIC_GA_MEASUREMENT_ID` and `PUBLIC_SITE_URL` in `.env`. GA4 loaded deferred after first paint, only if the ID is set. Events: `timer_start`, `timer_pause`, `timer_resume`, `timer_stop_confirmed`, `timer_reset_confirmed`, `timer_complete`, `timer_run_again`, `timer_change_settings`, `invalid_input`, `audio_toggle`, `audio_unavailable`, `wakelock_failed` (only the unsupported case is observable), `nav_away_during_session`, `blog_read` (end of article scrolled into view), `outbound_click`, and the `pwa_*` install funnel. Timer events carry `mode` and the configured values. About distinguishes locally saved settings from optional analytics.
 
 ## 8. Tests and CI
 
@@ -165,3 +165,38 @@ Porcelain & Ink: paper `#F7F8F5`, ink `#202722`, muted `#58615A`, line `#D6DDD5`
 8. Preset data on the new engine types
 9. Unit and e2e tests, screenshot comparison against the canvas at 375 and 1280
 10. AGENTS.md and PLAN.md
+
+## 11. Editorial decisions (2026-09-25)
+
+The eighteen existing article URLs remain. Each now owns a distinct reader question: Pomodoro setup versus length selection versus study activity; Tabata meaning versus session duration; boxing training setup versus competition formats; meditation bells versus choosing a duration. Worked timing examples replace unsupported performance benchmarks. Sources sit beside the claims they support.
+
+The proposed new topics were incorporated into existing coverage: background audio into the screen guide, fitting focus blocks into available time into the length guide, and EMOM versus fixed intervals into the EMOM article. No extra near-duplicate routes are needed for this revision.
+
+All five main guides and all 35 preset guides are reviewed together with the blog. Copy distinguishes duration from training intensity, local settings from analytics, cached resources from guaranteed offline installation, and elapsed-time recovery from timely audio. Timer behaviour and preset configurations are unchanged.
+
+Discovery uses existing static components: a homepage Blog link, three curated articles, archive starting points and an article-to-Blog breadcrumb. No client JavaScript or dependency is added. Build-wide sitemap lastmod was removed because deployment time is not a reliable page modification date; article publication and modification metadata retain their actual editorial dates.
+
+After deployment, compare four to six weeks of Search Console impressions/clicks by page and query, plus existing analytics page paths where available. The site currently sends page views and timer events; dedicated homepage-to-blog and article-to-timer click events are not added in this change. No Search Console baseline was available during implementation, and rankings are not guaranteed.
+
+## 12. Teach the subject before the timer (2026-09-26)
+
+The editorial review found that useful arithmetic and accurate product instructions still left a learning gap. Readers should understand the activity and its purpose before choosing a tool. The revision therefore teaches definitions, practical reasons to try an approach, suitable situations, realistic benefits and a first step. Benefits supported by research are distinguished from organisational advantages and illustrative examples.
+
+The plan and implementation cover these learning outcomes:
+
+| Article group                              | What the reader should learn                                                                                                               |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Meditation duration and bells              | What meditation means, returning attention, possible benefits, choosing a time to practise, a first short sit, and using cues purposefully |
+| HIIT, Tabata and workout duration          | Effort versus timing, the role of recovery, what research found, and how a block fits a complete session                                   |
+| EMOM                                       | Why scheduled starts are useful, how task duration changes recovery, and when another structure fits better                                |
+| Pomodoro and focus lengths                 | Choosing a concrete task, handling distractions, using breaks and matching a rhythm to the difficulty                                      |
+| Study                                      | Retrieval and feedback as learning activities, rather than measuring only time at a desk                                                   |
+| Running, planks, circuits and boxing       | The purpose of the format or exercise, suitable context, and how to interpret a planned session                                            |
+| Repeating reminders                        | Linking a cue to a decision and recognising when it becomes an interruption                                                                |
+| Splits, offline use and screen reliability | Existing substantive lessons retained: interpreting pace, cached resources, and the distinction between elapsed time and timely audio      |
+
+Fifteen articles receive substantive additions or rewrites; the three already explanatory technical/measurement articles retain their focused lessons. Five main timer guides gain concise subject introductions below the timer. The shared article header no longer places a timer CTA before the explanation; tool recommendations and setup are concentrated in closing sections after the teaching. No new URLs, timer behaviour changes or client JavaScript are required.
+
+Review each piece for a clear learning outcome, connected section order, accurate sources and an actionable takeaway. Validate metadata, internal links, readable mobile/desktop layout and the existing smoke tests before updating the same PR. Existing publication dates and slugs remain; substantive follow-up edits use their actual September 26 revision date.
+
+The blog archive puts its chronological article previews immediately after the introduction. Topic navigation uses readable labels below the articles, followed by RSS. The separate starting-point link list is removed; introductory recommendations remain on the homepage. This keeps auxiliary navigation from delaying the reading list.

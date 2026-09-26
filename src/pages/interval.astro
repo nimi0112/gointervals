@@ -10,46 +10,69 @@ import { workouts } from '@/data/workouts';
 
 <TimerPage
   title="Interval Timer – Free Work, Rest and Rounds Timer"
-  description="Free online interval timer for HIIT, circuits and repeating reminders. Set work, rest and rounds, and you'll hear a beep at every change. Works offline."
+  description="Set work, rest and rounds on a free interval timer. Check your session total, follow clear phase cues and find ready-made timings for shorter intervals."
   path="/interval"
   h1="Interval timer"
-  lede="This interval timer switches between work and rest for as many rounds as you like. It beeps at every change, so you can put your phone down and move."
+  lede="This interval timer alternates work and rest for up to 99 rounds. Set a schedule, check its total, and follow the phase cues with the page visible."
   config={defaultConfigs.interval}
   faq={faqs['/interval']}
   related={relatedTimers['/interval']!}
   posts={relatedPosts['/interval']}
   crumbName="Interval timer"
 >
-  <Section title="Set it up" flush>
+  <Section title="Why use intervals?" flush>
     <p>
-      Work is the hard part and Rest is the easy part. Rounds is how many times you repeat the pair.
-      On this page, Work and Rest are in minutes. Type a number or tap − and +. Start takes you
-      straight into the first work block. The rest after the last round is included, so you finish
-      on a breather, not a sprint.
+      Intervals divide an activity into repeated periods. In a run/walk session, one period is
+      running and the next is walking. In a workout, the recovery is part of the plan, giving you
+      time before the next effort.
     </p>
     <p>
-      The default is 30 minutes of work and 5 minutes of rest, eight times. For a simple repeating
-      reminder, set Rest to 0 and it just beeps every few minutes. With 30 minute blocks and eight
-      rounds, you get a beep every half hour for four hours.
-    </p>
-  </Section>
-  <Section title="Run it">
-    <p>
-      Press Start or the Space key. Work shows a pulse icon and Rest shows a wind icon. The sounds
-      differ too. A rising pair means go and a falling pair means ease off. You'll hear a tick in
-      the last three seconds and three notes at the finish. Pause holds the clock right where it is.
-    </p>
-    <p>
-      Esc or End session always asks before stopping. While the timer runs, it keeps your screen
-      awake where the browser allows it, so your phone won't go dark in round six. On a computer,
-      the tab title counts down too, so you can check it from another tab.
+      This structure makes the work and recovery explicit. It does not require every effort to be
+      intense. Read <a href="/blog/hiit-interval-timer-beginners">how interval training works</a>{' '}
+      for the distinction between a timing pattern and HIIT, or{' '}
+      <a href="/blog/interval-timer-for-running">how run/walk training uses intervals</a>.
     </p>
   </Section>
-  <Section title="Ready-made">
+  <Section title="Choose work, rest and rounds">
     <p>
-      Want a head start? These pages open with the timer already set for a named workout or a
-      repeating beep.
+      Work and Rest use whole minutes on this page. Rounds is the number of times the pair repeats.
+      For example, Work 3, Rest 1 and Rounds 8 take 32 minutes. That includes one minute of recovery
+      after the last work period.
     </p>
+    <p>
+      The default is 30 minutes of work and 5 minutes of rest for eight rounds: 280 minutes
+      altogether. Change those values to match your plan before starting. For durations such as 30
+      or 90 seconds, use an editable preset below.
+    </p>
+  </Section>
+  <Section title="One block or repeating reminders">
+    <p>
+      Set Rest to 0 when you want consecutive work blocks without a break phase. Work 10 and Rounds
+      6 then give you one hour, with boundaries every ten minutes and a finish cue at the end. Set
+      Rounds to 1 for one timed block.
+    </p>
+    <p>
+      For fixed starts with recovery inside each block, try <a href="/emom">EMOM</a>. For a focus
+      cycle with short breaks and a final long break, use <a href="/pomodoro">Pomodoro</a>. The{' '}
+      <a href="/blog/hiit-interval-timer-beginners">work and recovery guide</a> explains what
+      changes when you adjust the ratio.
+    </p>
+  </Section>
+  <Section title="Before you press Start">
+    <p>
+      Start begins the first work period immediately. Test your volume and get ready first. A rising
+      tone marks work, a falling tone marks rest, and warning ticks occur in the final three seconds
+      of a phase.
+    </p>
+    <p>
+      Keep the page visible when cues matter. The timer requests an awake screen, but the browser
+      can refuse it. If the page is suspended, the countdown can catch up when it resumes; sound may
+      arrive late or be missed. Pause holds your place, and End session asks before ending a running
+      or paused session.
+    </p>
+  </Section>
+  <Section title="Ready-made timers">
+    <p>These pages open with a specific schedule and let you edit Work and Rest in seconds.</p>
     <ul class="links">
       {workouts.map((w) => (
         <li>
