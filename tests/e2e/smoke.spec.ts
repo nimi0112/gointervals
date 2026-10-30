@@ -39,6 +39,14 @@ test('the removed timers are gone from the build and covered by redirects', asyn
   const text = await redirects.text();
   expect(text).toMatch(/^\/stopwatch\s+\/interval\s+301$/m);
   expect(text).toMatch(/^\/timer\/\*\s+\/interval\s+301$/m);
+  // Lengths that a preset still times keep their intent, ahead of the catch-all.
+  expect(text).toMatch(/^\/timer\/5-minutes\s+\/interval\/beep-every-5-minutes\s+301$/m);
+  expect(text).toMatch(/^\/timer\/90-minutes\s+\/pomodoro\/90-20\s+301$/m);
+  expect(text.indexOf('/timer/5-minutes')).toBeLessThan(text.indexOf('/timer/*'));
+  for (const line of text.split('\n').filter((l) => l.startsWith('/timer/') && !l.includes('*'))) {
+    const target = line.split(/\s+/)[1];
+    expect((await request.get(target)).status(), target).toBe(200);
+  }
   expect(text).toMatch(
     /^\/blog\/meditation-timer-with-interval-bells\s+\/blog\/meditation-timer-interval-bells\s+301$/m,
   );
@@ -60,6 +68,7 @@ test('robots, sitemap, llms, humans and rss are served', async ({ request }) => 
   expect(xml).toContain('/blog/meditation-timer-interval-bells');
   expect(xml).not.toContain('<loc>https://gointervals.com/stopwatch</loc>');
   expect(xml).not.toContain('<loc>https://gointervals.com/timer');
+  expect(xml).not.toContain('/blog/tag/');
   const llms = await request.get('/llms.txt');
   expect(llms.status()).toBe(200);
   expect(await llms.text()).toContain('/meditation');
@@ -67,6 +76,13 @@ test('robots, sitemap, llms, humans and rss are served', async ({ request }) => 
   const rss = await request.get('/rss.xml');
   expect(rss.status()).toBe(200);
   expect(await rss.text()).toContain('<item>');
+});
+
+test('tag pages stay reachable but are noindex', async ({ page }) => {
+  await page.goto('/blog/tag/tabata');
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex');
+  await page.goto('/blog/what-is-a-tabata-timer');
+  await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
 });
 
 test('header and footer navigation are Timers and About only', async ({ page }) => {

@@ -80,7 +80,7 @@ export const tabatas: ProgrammaticPage[] = [
   {
     path: '/tabata/40-20-8',
     h1: 'Tabata-style interval timer 40/20 x 8',
-    title: 'Tabata Timer 40/20 x 8 – 8 Minute HIIT Preset',
+    title: '40/20 Timer – 40 Seconds On, 20 Off, 8 Rounds',
     description:
       'Set eight one-minute cycles of 40 seconds work and 20 seconds recovery. Edit your work, rest and round count to match a prepared circuit or session.',
     intro: [
