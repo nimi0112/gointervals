@@ -39,12 +39,11 @@ test('the removed timers are gone from the build and covered by redirects', asyn
   const text = await redirects.text();
   expect(text).toMatch(/^\/stopwatch\s+\/interval\s+301$/m);
   expect(text).toMatch(/^\/timer\/\*\s+\/interval\s+301$/m);
-  // Lengths that a preset still times keep their intent, ahead of the catch-all.
-  expect(text).toMatch(/^\/timer\/5-minutes\s+\/interval\/beep-every-5-minutes\s+301$/m);
-  expect(text).toMatch(/^\/timer\/90-minutes\s+\/pomodoro\/90-20\s+301$/m);
+  // A length that a single-session preset ends on keeps its intent, ahead of the catch-all.
+  expect(text).toMatch(/^\/timer\/5-minutes\s+\/meditation\/5-minutes\s+301$/m);
   expect(text.indexOf('/timer/5-minutes')).toBeLessThan(text.indexOf('/timer/*'));
   for (const line of text.split('\n').filter((l) => l.startsWith('/timer/') && !l.includes('*'))) {
-    const target = line.split(/\s+/)[1];
+    const target = line.split(/\s+/)[1] ?? '';
     expect((await request.get(target)).status(), target).toBe(200);
   }
   expect(text).toMatch(

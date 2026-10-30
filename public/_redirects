@@ -1,27 +1,13 @@
 # Removed timers. Specific rules first; Cloudflare Pages evaluates top to bottom.
-# Old /timer/<length> countdowns go to the preset that times the same length,
-# so the page keeps its search intent instead of collapsing into /interval.
+# An old /timer/<length> countdown goes to a preset only when that preset is a
+# single session ending at the same length; repeating presets would keep running.
 /stopwatch                                  /interval     301
 /timer                                      /interval     301
 /timer/meditation-timer                     /meditation   301
 /timer/nap-timer                            /meditation   301
 /timer/study-timer                          /pomodoro     301
 /timer/25-minutes                           /pomodoro     301
-/timer/20-seconds                           /tabata/20-10-8                 301
-/timer/30-seconds                           /interval/beep-every-30-seconds 301
-/timer/40-seconds                           /tabata/40-20-8                 301
-/timer/45-seconds                           /tabata/45-15-10                301
-/timer/60-seconds                           /interval/beep-every-minute     301
-/timer/1-minute                             /interval/beep-every-minute     301
-/timer/2-minutes                            /interval/beep-every-2-minutes  301
-/timer/3-minutes                            /interval/beep-every-3-minutes  301
-/timer/5-minutes                            /interval/beep-every-5-minutes  301
-/timer/10-minutes                           /interval/beep-every-10-minutes 301
-/timer/15-minutes                           /interval/beep-every-15-minutes 301
-/timer/20-minutes                           /interval/beep-every-20-minutes 301
-/timer/30-minutes                           /interval/beep-every-30-minutes 301
-/timer/50-minutes                           /pomodoro/50-10                 301
-/timer/60-minutes                           /interval/beep-every-hour       301
-/timer/90-minutes                           /pomodoro/90-20                 301
+/timer/5-minutes                            /meditation/5-minutes   301
+/timer/10-minutes                           /meditation/10-minutes  301
 /timer/*                                    /interval     301
 /blog/meditation-timer-with-interval-bells  /blog/meditation-timer-interval-bells  301
