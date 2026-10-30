@@ -1,0 +1,22 @@
+tests/e2e/smoke.spec.ts
+  s_ef2acd154f0939::t_47957e7691dd1d 42-43,46
+public/_redirects
+  s_ef2acd154f0939::t_47957e7691dd1d 10-11
+  s_ef2acd154f0939::t_c3df39669b3599 2-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a4ab828eee2c5e06be7f7009ca9d1da7d6ab6308",
+  "prompts": {},
+  "sessions": {
+    "s_ef2acd154f0939": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d5a3424e-4d15-43c7-9022-62a431cd585e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "nimish.nandwana <nimishnandwana@gmail.com>"
+    }
+  }
+}
