@@ -1,0 +1,32 @@
+tests/e2e/smoke.spec.ts
+  s_ef2acd154f0939::t_d2ae4420a2b39d 42-49,71,81-85
+  s_ef2acd154f0939::t_c1d21222e2a4cc 86-87
+src/data/tabatas.ts
+  s_ef2acd154f0939::t_9640bc1ff3996d 83
+src/data/pomodoros.ts
+  s_ef2acd154f0939::t_9640bc1ff3996d 7
+src/pages/blog/tag/[tag].astro
+  s_ef2acd154f0939::t_c496753e9b5ba8 36
+astro.config.mjs
+  s_ef2acd154f0939::t_c496753e9b5ba8 17-20
+src/components/Head.astro
+  s_ef2acd154f0939::t_c496753e9b5ba8 29
+public/_redirects
+  s_ef2acd154f0939::t_f09497313601b8 2-3,10-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c61d5bdab4d359b0a71bcde9e3a1cceaa62bb8f9",
+  "prompts": {},
+  "sessions": {
+    "s_ef2acd154f0939": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d5a3424e-4d15-43c7-9022-62a431cd585e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "nimish.nandwana <nimishnandwana@gmail.com>"
+    }
+  }
+}
