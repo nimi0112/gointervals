@@ -4,7 +4,7 @@ export const pomodoros: ProgrammaticPage[] = [
   {
     path: '/pomodoro/50-10',
     h1: '50/10 Pomodoro timer',
-    title: '50/10 Pomodoro Timer – Free, No Login',
+    title: '50/10 Timer – 50 Minute Pomodoro, 10 Minute Break',
     description:
       'A 50/10 Pomodoro timer: 50 minutes of focus, 10 minutes off, and a 30 minute break after the third block. Runs in your browser, no signup.',
     intro: [

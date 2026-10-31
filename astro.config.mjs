@@ -14,7 +14,10 @@ export default defineConfig({
   integrations: [
     preact(),
     sitemap({
-      filter: (page) => !page.includes('/og/') && !page.endsWith('/404'),
+      // Tag pages are thin lists that compete with the posts they link to; they stay
+      // crawlable for navigation but are noindex, so keep them out of the sitemap.
+      filter: (page) =>
+        !page.includes('/og/') && !page.endsWith('/404') && !page.includes('/blog/tag/'),
     }),
   ],
   vite: {

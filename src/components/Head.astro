@@ -26,7 +26,7 @@ const {
 const canonical = `${SITE.url}${path === '/' ? '' : path}` || SITE.url;
 // Suffix the site name unless that would push the title past what Google shows.
 const withSuffix = path === '/' ? `${SITE.name} · ${title}` : `${title} · ${SITE.name}`;
-const fullTitle = withSuffix.length <= 65 ? withSuffix : title;
+const fullTitle = withSuffix.length <= 60 ? withSuffix : title;
 const image = `${SITE.url}/og/${ogSlug(path)}.png`;
 ---
 
