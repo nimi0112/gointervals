@@ -20,7 +20,7 @@ License: MIT, open source. Content may be quoted with attribution. Issues and co
 - Tabata variants: https://gointervals.com/tabata/20-10-8, /tabata/30-15-8, /tabata/40-20-8, /tabata/45-15-10, /tabata/60-30-6, /tabata/20-10-4, /tabata/10-20-8, /tabata/30-10-8, /tabata/30-30-8, /tabata/45-15-8
 - Workouts: https://gointervals.com/interval/7-minute-workout, /interval/boxing-rounds-3-1, /interval/running-intervals-1-1, /interval/sprint-30-90, /interval/kettlebell-emom-10
 - Repeating beeps: https://gointervals.com/interval/beep-every-30-seconds, /interval/beep-every-minute, /interval/beep-every-2-minutes, /interval/beep-every-3-minutes, /interval/beep-every-5-minutes, /interval/beep-every-10-minutes, /interval/beep-every-15-minutes, /interval/beep-every-20-minutes, /interval/beep-every-30-minutes, /interval/beep-every-hour
-- Meditation lengths: https://gointervals.com/meditation/5-minutes, /meditation/10-minutes, /meditation/20-minutes, /meditation/30-minutes, /meditation/45-minutes, /meditation/1-hour
+- Meditation lengths: https://gointervals.com/meditation/5-minutes, /meditation/10-minutes, /meditation/20-minutes, /meditation/30-minutes, /meditation/45-minutes, /meditation/1-hour, /meditation/nap-timer (20 minutes, one soft end bell)
 - Pomodoro variants: https://gointervals.com/pomodoro/50-10, /pomodoro/52-17, /pomodoro/90-20, /pomodoro/15-5
 
 ## Blog

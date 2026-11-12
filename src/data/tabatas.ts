@@ -121,7 +121,7 @@ export const tabatas: ProgrammaticPage[] = [
   {
     path: '/tabata/45-15-10',
     h1: 'Tabata-style interval timer 45/15 x 10',
-    title: 'Tabata Timer 45/15 x 10 – 10 Minute Circuit Preset',
+    title: '45/15 Timer – 45 Seconds On, 15 Off, 10 Rounds',
     description:
       'Time ten planned stations with 45 seconds work and 15 seconds transition. A ten-minute block with editable recovery and clear work and rest cues.',
     intro: [
