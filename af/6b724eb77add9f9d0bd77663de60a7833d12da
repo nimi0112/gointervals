@@ -1,0 +1,30 @@
+public/_redirects
+  s_f3a7c7896e3042::t_b7b2fa303118ea 7
+public/llms.txt
+  s_f3a7c7896e3042::t_b7b2fa303118ea 23
+src/data/tabatas.ts
+  s_f3a7c7896e3042::t_b7b2fa303118ea 124
+src/data/beeps.ts
+  s_f3a7c7896e3042::t_b7b2fa303118ea 9,53,55,57,107
+src/data/meditations.ts
+  s_f3a7c7896e3042::t_b7b2fa303118ea 145,293-335
+  s_f3a7c7896e3042::t_7c4f1bef04558e 336
+src/data/related.ts
+  s_f3a7c7896e3042::t_b7b2fa303118ea 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "af6b724eb77add9f9d0bd77663de60a7833d12da",
+  "prompts": {},
+  "sessions": {
+    "s_f3a7c7896e3042": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4540064e-de9c-428c-9052-945fa053da69",
+        "model": "claude-fable-5-2"
+      },
+      "human_author": "nimish.nandwana <nimishnandwana@gmail.com>"
+    }
+  }
+}
