@@ -6,7 +6,7 @@ export const beeps: ProgrammaticPage[] = [
     h1: 'Timer that beeps every 30 seconds',
     title: 'Timer That Beeps Every 30 Seconds – Free',
     description:
-      'Mark half-minute practice blocks with a repeating 30-second timer. Twenty rounds fill ten minutes, with editable durations and a clear finish cue.',
+      'A timer that beeps every 30 seconds for half-minute practice blocks. Twenty rounds fill ten minutes, with editable durations and a clear finish cue.',
     intro: [
       'Half-minute markers suit a drill with frequent changes: a short speaking exercise, a planned station rotation or a movement check agreed with a coach. Twenty rounds occupy ten minutes.',
       'At this frequency, a missed cue can make the sequence confusing. Keep the timer visible, test your volume and write the sequence down. The timer counts blocks but does not announce the task at each change.',
@@ -50,11 +50,11 @@ export const beeps: ProgrammaticPage[] = [
   {
     path: '/interval/beep-every-minute',
     h1: 'Timer that beeps every minute',
-    title: 'Timer That Beeps Every Minute – Free, No Login',
+    title: 'Timer That Beeps Every Minute – 60 Second Intervals',
     description:
-      'Mark twenty one-minute practice blocks, or change the round count to fit your session. Use for planned drills or EMOM timing with the page visible.',
+      'A 60 second interval timer that beeps every minute. It runs twenty one-minute blocks; change the rounds to fit a planned drill or an EMOM session.',
     intro: [
-      'This timer marks twenty consecutive one-minute blocks. For an EMOM session, start your planned set at the beginning of each minute and use the time left as recovery.',
+      'This is a 60 second interval timer: twenty one-minute blocks in a row, with a beep as each one ends. For an EMOM session, start your planned set at the beginning of each minute and use the time left as recovery.',
       'Outside exercise, you might use each minute for one practice question or speaking prompt. Choose the task size beforehand. If the task does not fit, change the plan rather than rushing to obey the next beep.',
     ],
     uses: [
@@ -104,7 +104,7 @@ export const beeps: ProgrammaticPage[] = [
     h1: 'Timer that beeps every 2 minutes',
     title: 'Timer That Beeps Every 2 Minutes – Free Online',
     description:
-      'Practise two-minute answers or speaking turns with fifteen consecutive blocks. Thirty minutes total, with editable timing and a clear finish cue.',
+      'A 2 minute interval timer that beeps every two minutes. Fifteen blocks fill thirty minutes, with editable timing for answers or speaking turns.',
     intro: [
       'Two-minute markers can give a rehearsal a clear boundary. Practise a short answer, then use the next block to review it or try again. Fifteen blocks fill half an hour.',
       'Decide whether each beep means stop, switch speaker or begin a new attempt. With Rest at zero, there is no automatic pause to read notes. Add recovery or reduce the number of rounds if your rehearsal needs that time.',

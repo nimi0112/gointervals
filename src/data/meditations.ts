@@ -142,6 +142,7 @@ export const meditations: ProgrammaticPage[] = [
       '/meditation',
       '/meditation/30-minutes',
       '/meditation/10-minutes',
+      '/meditation/nap-timer',
       '/blog/meditation-timer-interval-bells',
     ],
   },
@@ -288,5 +289,49 @@ export const meditations: ProgrammaticPage[] = [
       '/meditation/30-minutes',
       '/blog/how-long-to-meditate',
     ],
+  },
+  {
+    path: '/meditation/nap-timer',
+    h1: 'Nap timer: 20 minutes with one soft bell',
+    title: 'Nap Timer – 20 Minutes, One Soft Bell',
+    description:
+      'A 20 minute nap timer that stays silent and plays one soft bell at the end. Free in your browser, no account. Set a backup alarm if you must wake.',
+    intro: [
+      'This nap timer counts down twenty minutes in silence and plays one soft bell at the end. There are no ticks and no interval bells, so nothing sounds while you rest.',
+      'Twenty minutes is a common choice for a short daytime rest. Treat it as a starting point and change the length to fit your break. Start once you are settled: the countdown begins straight away and does not wait for you to fall asleep.',
+      'The bell is gentle by design. Turn your volume up, keep the page open with the screen facing you, and set a separate alarm if waking on time really matters.',
+    ],
+    uses: [
+      'A short rest in a lunch break',
+      'Lying down with your eyes closed between tasks',
+      'A quiet twenty minutes with one bell at the end',
+    ],
+    config: {
+      mode: 'meditation',
+      total: 1200,
+      bell: 1200,
+      intervalBell: false,
+      startBell: false,
+      endBell: true,
+    },
+    faq: [
+      {
+        q: 'Will the bell wake me up?',
+        a: 'It may not. The end bell is one soft tone, made for ending a quiet sit rather than waking a deep sleeper. If you have to be up at a set time, set your phone’s alarm as well.',
+      },
+      {
+        q: 'Will it ring if my phone locks?',
+        a: 'Not reliably. A locked phone can pause the page or its sound. The timer asks the screen to stay awake, but the browser or battery settings may refuse. Leave the page open and test it once before you rely on it.',
+      },
+      {
+        q: 'Why twenty minutes?',
+        a: 'It is a common length for a short daytime rest, and that is all it is here: a convention, not a proven best. Change the session length above the Start button to the time you have.',
+      },
+      {
+        q: 'Can I get a bell before the end?',
+        a: 'Yes. Turn on Interval bell and set Bell every to 15 minutes. You’ll hear a soft bell five minutes before the end, and the countdown still covers the whole twenty minutes.',
+      },
+    ],
+    related: ['/meditation', '/meditation/20-minutes', '/meditation/30-minutes', '/pomodoro'],
   },
 ];

@@ -11,6 +11,7 @@ export const relatedTimers: Record<string, string[]> = {
     '/meditation/10-minutes',
     '/meditation/20-minutes',
     '/meditation/30-minutes',
+    '/meditation/nap-timer',
     '/interval',
     '/pomodoro',
   ],
